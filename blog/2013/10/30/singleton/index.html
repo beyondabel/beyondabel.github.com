@@ -1,0 +1,215 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS设计模式之单例模式 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS设计模式之单例模式 单例模式是iOS常用设计模式中的一种。单例设计模式的作用是使得这个类的一个对象成为系统中的唯一实例，因此需要用一种唯一的方法去创建这个对象并返回这个对象的地址。那么，我们何时使用单例模式呢？ 1、类只能有一个实例，而且必须从一个为人熟知的访问点对其访问。 2、 &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2013/10/30/singleton/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS设计模式之单例模式</h1>
+	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2013/10/30/singleton.png" alt="image" /></p>
+
+<!--more-->
+
+
+<p>单例模式是iOS常用设计模式中的一种。单例设计模式的作用是使得这个类的一个对象成为系统中的唯一实例，因此需要用一种唯一的方法去创建这个对象并返回这个对象的地址。那么，我们何时使用单例模式呢？</p>
+
+<p>1、类只能有一个实例，而且必须从一个为人熟知的访问点对其访问。</p>
+
+<p>2、这个唯一的实例只能通过子类化进行扩展，而且扩展的对象不会破坏客户端代码。</p>
+
+<p>那么用Objective-C如何实现单例模式呢？下面我们来新建一个Singleton类，在Singleton.h中实现如下</p>
+
+<pre><code>@interface Singleton : NSObject 
++ (Singleton *) sharedInstance;
+@end 
+</code></pre>
+
+<p>在Singleton.m</p>
+
+<pre><code>@implementation Singleton 
+static Singleton * sharedSingleton = nil;
+
++ (Singleton *) sharedInstance  { 
+    if (sharedSingleton == nil) {    
+        sharedSingleton = [[Singleton alloc] init]; 
+    } 
+    return sharedSingleton;
+}  
+
+@end 
+</code></pre>
+
+<p>这样就创建一个简单的单例模式，实际上有一部分程序员也是这样实现的，但实际上这是一个不“严格”版本，在实际中使用，可能会遇到发起调用的对象不能以其他分配方式实例化单例对象，否则，就会创建多个实例。（之前有人和我讨论过这个问题，说使用者应该严格按照接口来使用，当实际上Singleton是一个对象，我们不能保证使用者不会使用其他的方法去创建（比如alloc）,这个时候他就会创建多个实例，这样就会出现这些无法感知的bug）</p>
+
+<p>下面我对<code>Singleton.m</code>的进行改进</p>
+
+<pre><code>@implementation Singleton  
+ static Singleton * sharedSingleton = nil;  
++ (Singleton *) sharedInstance  {  
+    if (sharedSingleton == nil) {  
+        sharedSingleton = [[super allocWithZone:NULL] init];  
+    }  
+    return sharedSingleton;  
+}  
+
++ (id) allocWithZone:(struct _NSZone *)zone  {  
+    return [[self sharedInstance] retain];  
+}  
+
+- (id) copyWithZone:(NSZone *) zone  {  
+    return self;  
+}  
+
+- (id) retain  {  
+    return self;  
+}  
+
+- (NSUInteger) retainCount  {  
+    return NSUIntegerMax;  
+}  
+
+
+- (void) release  {  
+//  
+}  
+
+- (id) autorelease  {  
+    return self;  
+}  
+@end 
+</code></pre>
+
+<p>也许你注意到了，我重载了<code>allocWithZone:</code>，保持了从<code>sharedInstance</code>方法返回的单例对象，使用者哪怕使用<code>alloc</code>时也会返回唯一的实例（<code>alloc</code>方法中会先调用<code>allocWithZone:</code>创建对象）。而<code>retain</code>等内存管理的函数也被重载了，这样做让我们有了把<code>Singleton</code>类变得“严格”了。</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"beyondvincent"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2013 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>
