@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Abel之家]]></title>
   <link href="http://beyondabel.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2013-12-30T14:16:22+08:00</updated>
+  <updated>2013-12-30T14:26:45+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -20,7 +20,7 @@
     <id>http://beyondabel.github.io/blog/2013/12/26/octopress</id>
     <content type="html"><![CDATA[<p><img src="/images/2013/12/26/OctopressAndGithub.png" alt="image" /></p>
 
-<p><strong>引导</strong></p>
+<p><strong>引言</strong></p>
 
 <p><a href="http://http://octopress.org/">Octopress</a>是利用<a href="http://http://github.com/mojombo/jekyll">Jekyll</a>博客引擎开发的一个博客系统，生成的静态页面能够很好的在<em>github page</em>上展现。号称是hacker专属的一个博客系统(A blogging framework for hackers.)<!--more--></p>
 

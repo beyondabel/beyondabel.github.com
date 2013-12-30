@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2013-12-30T14:16:22+08:00</updated>
+  <updated>2013-12-30T14:26:45+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -14,10 +14,344 @@
 
   
   <entry>
+    <title type="html"><![CDATA[我的新起点之年——2013]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/12/29/2013summarize/"/>
+    <updated>2013-12-29T15:25:42+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/12/29/2013summarize</id>
+    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/12/29/summarize.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<p>最近逛一些论坛和博客看了很多人都在总结自己的2013年，我也想了想自己这一年来发生的事情，自己也真的是需要好好整理一下自己，调整一下的生活方向，避免自己在现有的环境中迷失方向。思绪万千，我该从哪儿开始呢？想了想，还是从我从一个学生正式步入社会开始说起吧～</p>
+
+<!--more-->
+
+
+<p>2013年对于我来说是事情多多的一年，也是收获的一年，同时也是失望的一年。还记得去年11月刚工作时满怀激情，一晃一年过去了。</p>
+
+<p>2013年对于我来说最大的事莫过毕业。在毕业答道前的一周，我向公司请了一个礼拜的假，回到了学校，曾经无数次想像离开学校回去的样子，当真正再次回到学校时感觉是那么的陌生，曾经是多么盼望着早些离开的校园、离开宿舍、离开学生的称呼，但到了真正不得不离开的那一刹那，才明白，自己对这片土地是多么的留念。在那个校园里，有着我太多的回忆。</p>
+
+<p>回到学校的第一件事就是去系里“拜访”各位领导（没办法，谁叫我很多的东西没办好呢？），找指导老师修改论文，修改论文，吃饭，基本上就是这几件事，这样的情况一直持续到毕业答辩结束。毕业答辩一结束，我就收拾东西带着对学校留恋和不舍与同学道别搭上北上的火车。</p>
+
+<p>从学校回到帝都，宣示着自己的学生生涯的正式结束，从此正式开始要面对每天工作、生活、感情、家庭这些事了，回到帝都的第一件事就是把住的地方换了，之前那个房子住了太多人了，里面什么人都有，感觉非常的不安全，特别是我们中间大部分都是女生，所以哪怕房租贵一些，还是忍一忍换了一个二室二厅的房子，里面就住着我们几个熟悉的人，东西放在那再也不用担心吊胆的了，特别放心。</p>
+
+<p>在工作方面我感觉2013年是特别糟糕的一年，我从去年11月份入职到现在，公司的产品的方向变了又变，做出来的产品也随着产品方向的改变而pass掉了，以致到现在为止，我还没有什么能够拿得出手的东西。但是在今年还是有很多的收获，自己利用空余的时间写了一个图片下载库，看了《Objective-C设计模式》、《重构》、《代码整洁之道》。</p>
+
+<p>2013即将成为历史，2014将是我参加工作的第2个年头，希望在工作的第2个年头，自己能够学会如何利用现在公司给与我的平台，去施展自己的抱负，我不想像今年一样地平庸，因为平庸只会慢慢消磨自己的斗争。我不希望自己和别人一样，觉得现在的生活就这样了，完全没有了当初毕业的那份豪气。2014年不管会发生什么，自己绝不能丧失斗志，不能做一天和尚撞一天钟。2014改变自己，敞开双手迎接我的2014！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[利用Octopress在Github搭建一个博客]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/12/26/octopress/"/>
+    <updated>2013-12-26T23:59:57+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/12/26/octopress</id>
+    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/12/26/OctopressAndGithub.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<p><a href="http://http://octopress.org/">Octopress</a>是利用<a href="http://http://github.com/mojombo/jekyll">Jekyll</a>博客引擎开发的一个博客系统，生成的静态页面能够很好的在<em>github page</em>上展现。号称是hacker专属的一个博客系统(A blogging framework for hackers.)<!--more--></p>
+
+<p>从自己开始使用Octopress搭建博客到正在写博客，中间差不多花了我三个星期，在这三个星期中，我走了很多的弯路，使用Octopress搭建博客的错误我相信我已经遇到80～90%了，所以想写一篇使用Octopress在Github上怎么搭建博客，一来为了与其他人分享，令想利用Octopress搭建博客的人少走一些弯路，另一方面也是自己对这方面的知识一个积累，首先我说一下我的在mac系统环境下搭建的，本文需要读者熟悉一些shell命令，并掌握基本的git操作。</p>
+
+<p><strong>目录</strong></p>
+
+<pre><code>1、搭建环境
+2、安装Octopress
+3、配置Octopress
+4、将博客部署到GitHub上
+5、开始写博客
+</code></pre>
+
+<p><strong>1、搭建环境</strong></p>
+
+<p>Octopress需要Ruby环境，RVM(Ruby Version Manager)负责安装和管理Ruby的环境。所以我们先在终端输入如下命令，来安装RVM：</p>
+
+<pre><code>1、curl -L https://get.rvm.io | bash -s stable --ruby
+</code></pre>
+
+<p>接着是安装<code>Ruby 2.0.0</code>，在终端依次运行如下命令：</p>
+
+<pre><code>1、rvm install 1.9.3
+2、rvm use 1.9.3
+3、rvm rubygems latest
+</code></pre>
+
+<p>完成上面的操作之后，运行ruby &mdash;v应该可以看到ruby 2.0.0环境已经安装好了。</p>
+
+<p>参考：<code>Installing Ruby With RVM</code></p>
+
+<p>在安装Octopress时还需要make命令，所以还会用到command_line_tools，所以还需要下载Xcode，打开Xcode,到Xcode->preferences->Downloads，里面有一个command_line_tools点击下载。</p>
+
+<p>2、安装Octopress</p>
+
+<p>在安装Octopress之前，请确保你的电脑上已经安装有git了，在终端输入git &mdash;version，如果安装了可以看到电脑中的git版本(一般情况下，mac系统现在都已经自带git了)，如果没有显示相关内容，请先安装git。</p>
+
+<p>git安装之后，利用git命令将<code>octopress</code>从<code>github上clone</code>到本机，如下命令：</p>
+
+<pre><code>1、git clone git://github.com/imathis/octopress.git octopress
+2、cd octopress    # If you use RVM, You'll be asked if you trust the .rvmrc file (say yes).
+</code></pre>
+
+<p>接着安装相关依赖项：</p>
+
+<pre><code>1、gem install bundler
+3、bundle install
+</code></pre>
+
+<p>最后安装默认的<code>Octopress</code>主题。</p>
+
+<pre><code>1、rake install
+</code></pre>
+
+<p>如果执行<code>rake install</code>报如下错误：<code>You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2. Using bundle exec may solve this.</code></p>
+
+<p>解决办法：打开<code>Gemfile</code>文件，把<code>gem 'rake', '~&gt; 0.9.0'</code>修改成<code>gem 'rake', '~&gt; 0.9.6'</code></p>
+
+<p>参考： <code>Octopress Setup</code></p>
+
+<p><strong>3、配置Octopress</strong></p>
+
+<p><code>Octopress</code>的作者已经尽量让配置简化了。大多数情况下只需要配置<code>_config.yml</code>和<code>Rakefile</code>文件即可。其中Rakefile是跟博客部署相关，一般情况下并不需要修改这个文件，除非使用了<code>rsync</code>。</p>
+
+<p><code>config.yml</code>是博客重要的一个配置文件，在<code>config.yml</code>文件中有三大配置项：<code>Main Configs</code>、<code>Jekyll &amp; Plugins</code>和<code>3rd Party Settings</code>。</p>
+
+<p>一般，该文件中其中<code>url</code>是必须要填写的，这里的<code>url</code>是在<code>github</code>上创建的一个仓库地址，具体请看第四步中创建的地址。另外再修改一下<code>title</code>、<code>subtitle</code>和<code>author</code>，根据需求，在开启一些第三方组件服务。</p>
+
+<pre><code>url: beyondabel.github.io     #网站地址 
+title: abel之家               #网站标题 
+subtitle: 天行健，君子以自强不息.地势坤，君子以厚德载物.     #网站副标题 
+author: abel                      #网站作者，通常显示在页尾和每篇文章的尾部 
+simple_search: http://google.com/search   # 搜索引擎 
+description:             #网站的描述，出现在HTML页面中的 meta 中的 description
+</code></pre>
+
+<p>更多内容，请看这里的内容：<a href="http://octopress.org/docs/configuring/">Configuring Octopress</a></p>
+
+<p><strong>4、将博客部署到GitHub上</strong></p>
+
+<p><code>Github</code>的<code>Page service</code>可以免费托管博客，并且还可以自定义域名。</p>
+
+<p>首先需要在GitHub上创建一个仓库，并将仓库名称按照这样的方式进行命名：<code>username.github.com</code>或<code>organization.github.com</code>。等后面配置完毕之后，我们就可以在浏览器中使用页面地址<code>http://username.github.com</code>来访问我们的博客。一般来说，我们希望在将博客的源码放到source分支下，并把生成的内容提交到master分支。</p>
+
+<p>创建好仓库之后，我们需要利用octopress的一个配置rake任务来自动配置上面创建的仓库：可以让我们方便的部署<code>GitHub page</code>。在终端输入如下命令：</p>
+
+<pre><code>1、$ rake setup_github_pages
+</code></pre>
+
+<p>上面的命令会做一些事情(详细介绍看下面给出的参考链接)。其中最主要的就是创建一个_deploy目录，目录用来存放部署到master分支的内容。期间会要求你输入仓库的url，根据提示，进行输入即可。
+完成上面的命令之后，我们就可以生成博客并真正的部署到仓库中了。执行如下命令：</p>
+
+<pre><code>1、rake generate
+2、rake deploy
+</code></pre>
+
+<p>上面的命令首先生成博客文件，并将生成的博客文件拷贝到<code>_deploy/</code>目录下，然后将这些内容添加到git中，并commit和push到仓库的master分支。</p>
+
+<p>现在可以访问<code>http://username.github.io</code>了。注意：有时候可能会有延时，要等几分钟才能打开。
+至此，我们的博客已经完成基本的部署。</p>
+
+<p>如果在部署到仓库之前，需要先预览一下博客，可以在终端输入<code>rake preview</code>命令，然后就能在浏览器中进行本地预览访问了：<code>http://127.0.0.1:4000/</code>或<code>http://localhost:4000/</code>，效果跟仓库中的一样。
+参考：<code>Deploying to Github Pages</code></p>
+
+<p>如果本地访问时出现了404错误，请关注一下你生成的文件是否直接在public目录下，如果不在，请修改一下<code>config.rb</code>文件，使<code>http_path = "/"</code>。如果访问<code>http://username.github.com</code>上出现了404错误，看一下你的<code>repositories</code>是否有内容，如果有，请你再次确认你的<code>repositories</code>的名称是否是<code>username.github.io</code>,如果不是，那么请用<code>http://username.github.io/[your repositories name]</code>，如果还是不行，请关注一下，你的账号是否使用邮箱激活了，如果没有，请先激活，然后删除这个<code>repositories</code>重新再来。</p>
+
+<p><strong>5、开始写博客</strong></p>
+
+<p><code>Octopress</code>为我们提供了一些task来创建博文和页面。博文必须存储在<code>source/_posts</code>目录下，并且需要按照Jekyll的命名规范对文章进行命名：<code>YYYY-MM-DD-post-title.markdown</code>。文章的名字会被当做url的一部分，而其中的日期用于对博文的区分和排序。</p>
+
+<p>通过<code>Octopress</code>提供的<code>task</code>可以正确的按照命名规范创建一个博文，并且在博文中会附带常用的一些yaml元数据。只需要在终端输入如下命令：</p>
+
+<pre><code>1、rake new_post["title"]
+</code></pre>
+
+<p>其中<code>title</code>为博文的文件名，创建出来的文件默认是<code>markdown</code>格式。上面的命令会创建出这样一个文件：<code>source/_posts/2013-08-03-title.markdown</code>。打开这个文件，可以看到里面有如下一些内容了(告诉Jekyll博客引擎如何处理博文和页面)：</p>
+
+<pre><code>---
+layout: post
+title: "title"
+date: 2013-12-26 16:36
+comments: true
+categories: 
+---
+</code></pre>
+
+<p>接着我们就可以在这个文件中写我们的博文啦。完成之后，我们可以预览和部署博文。下面是创建并部署博文的一个完整过程：</p>
+
+<pre><code>1、$ rake new_post["New Post"]
+2、$ rake generate
+3、$ rake deploy
+</code></pre>
+
+<p>参考：<a href="http://octopress.org/docs/blogging/">Blogging Basics</a></p>
+
+<p>到此，我们使用Octopress在Github上博客就搭建好了，这中间如果遇到什么问题，可以给我留言。接下来，我将带给大家如何更换博客样式，如何添加评论。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我的博客搬家啦～]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/12/01/my-new-blog/"/>
+    <updated>2013-12-01T23:37:45+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/12/01/my-new-blog</id>
+    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/12/01/my-new-blog.png" alt="image" /></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;我是一个非常喜欢折腾的程序猿，之前我一直在CSDN上写博文，但由于一些种种的原因，后来放弃了CSDN,之后一直都有搭建个人站点的想法,在网上搜索了如何搭建个人站点,网上有很多的人建议用Octopress+Github,转而开始用Octopress搭建博客<!--more-->，从开始弄Octopress到成功在Github上发布博文已经差不多一个月了，虽然网上有太多关于得用Octopress搭建Github博客的博文，但对于一个小白的我使用Octopress搭建Github博客过程的坚苦也只有自己知道，所以在下一篇博文中我将会记录我使用Octopress搭建Github博客的点点滴滴。</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;搭建博客的主要原因一是可以与大家分享交流，二是可以总结一下自己。
+使用Octopress+Github与CSDN、百度、新郎、博客园相比，它更自由，可以自定义自己的时尚元素，有一些我非常喜欢的style.如果想使用Octopress+Github搭建博客，将会经历如下步骤：</p>
+
+<p>1.首先，注册一个github账号。</p>
+
+<p>2.配置环境</p>
+
+<p>3.下载Octopress包</p>
+
+<p>4.配置Octopress</p>
+
+<p>5.绑定Github账号</p>
+
+<p>6.把Octopress提交到Github</p>
+
+<p>如果想用域名可以访问的话，还需要经历如下的步骤：</p>
+
+<p>7.域名注册</p>
+
+<p>8.购买虚拟主机</p>
+
+<p>9.域名与虚拟主机中的IP进行绑定。</p>
+
+<p>到此，博客就基本搭建好了～</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS设计模式之单例模式]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/10/30/singleton/"/>
+    <updated>2013-10-30T12:55:59+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/10/30/singleton</id>
+    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/10/30/singleton.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<p>单例模式是iOS常用设计模式中的一种。单例设计模式的作用是使得这个类的一个对象成为系统中的唯一实例，因此需要用一种唯一的方法去创建这个对象并返回这个对象的地址。那么，我们何时使用单例模式呢？</p>
+
+<!--more-->
+
+
+<p>1、类只能有一个实例，而且必须从一个为人熟知的访问点对其访问。</p>
+
+<p>2、这个唯一的实例只能通过子类化进行扩展，而且扩展的对象不会破坏客户端代码。</p>
+
+<p>那么用Objective-C如何实现单例模式呢？下面我们来新建一个Singleton类，在Singleton.h中实现如下</p>
+
+<pre><code>@interface Singleton : NSObject 
++ (Singleton *) sharedInstance;
+@end 
+</code></pre>
+
+<p>在Singleton.m</p>
+
+<pre><code>@implementation Singleton 
+static Singleton * sharedSingleton = nil;
+
++ (Singleton *) sharedInstance  { 
+    if (sharedSingleton == nil) {    
+        sharedSingleton = [[Singleton alloc] init]; 
+    } 
+    return sharedSingleton;
+}  
+
+@end 
+</code></pre>
+
+<p>这样就创建一个简单的单例模式，实际上有一部分程序员也是这样实现的，但实际上这是一个不“严格”版本，在实际中使用，可能会遇到发起调用的对象不能以其他分配方式实例化单例对象，否则，就会创建多个实例。（之前有人和我讨论过这个问题，说使用者应该严格按照接口来使用，当实际上Singleton是一个对象，我们不能保证使用者不会使用其他的方法去创建（比如alloc）,这个时候他就会创建多个实例，这样就会出现这些无法感知的bug）</p>
+
+<p>下面我对<code>Singleton.m</code>的进行改进</p>
+
+<pre><code>@implementation Singleton  
+ static Singleton * sharedSingleton = nil;  
++ (Singleton *) sharedInstance  {  
+    if (sharedSingleton == nil) {  
+        sharedSingleton = [[super allocWithZone:NULL] init];  
+    }  
+    return sharedSingleton;  
+}  
+
++ (id) allocWithZone:(struct _NSZone *)zone  {  
+    return [[self sharedInstance] retain];  
+}  
+
+- (id) copyWithZone:(NSZone *) zone  {  
+    return self;  
+}  
+
+- (id) retain  {  
+    return self;  
+}  
+
+- (NSUInteger) retainCount  {  
+    return NSUIntegerMax;  
+}  
+
+
+- (void) release  {  
+//  
+}  
+
+- (id) autorelease  {  
+    return self;  
+}  
+@end 
+</code></pre>
+
+<p>也许你注意到了，我重载了<code>allocWithZone:</code>，保持了从<code>sharedInstance</code>方法返回的单例对象，使用者哪怕使用<code>alloc</code>时也会返回唯一的实例（<code>alloc</code>方法中会先调用<code>allocWithZone:</code>创建对象）。而<code>retain</code>等内存管理的函数也被重载了，这样做让我们有了把<code>Singleton</code>类变得“严格”了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS成长之路：iOS多线程之GCD]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one/"/>
+    <updated>2013-09-26T15:39:29+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one</id>
+    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/09/26/gcd.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<p>GCD（Grand Central Dispatch）是一套低层API，提供了一种新的方法来进行并发程序编写。允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行。GCD比之NSOpertionQueue更底层更高效，并且它不是Cocoa框架的一部分。</p>
+
+<!--more-->
+
+
+<p>GCD的API很大程度上基于block，当然，GCD也可以脱离block来使用，比如使用传统c机制提供函数指针和上下文指针。实践证明，当配合block使用时，GCD非常简单易用且能发挥其最大能力。</p>
+
+<p>GCD相比传统多线程编程的优势：</p>
+
+<p>从使用来看: GCD比之thread跟简单易用。由于GCD基于work unit而非像thread那样基于运算，所以GCD可以控制诸如等待任务结束、监视文件描述符、周期执行代码以及工作挂起等任务。基于block的血统导致它能极为简单得在不同代码作用域之间传递上下文。</p>
+
+<p>从效率看: GCD被实现得如此轻量和优雅，使得它在很多地方比之专门创建消耗资源的线程更实用且快速。这关系到易用性：导致GCD易用的原因有一部分在于你可以不用担心太多的效率问题而仅仅使用它就行了。</p>
+
+<p>从性能上来看: GCD自动根据系统负载来增减线程数量，这就减少了上下文切换以及增加了计算效率。</p>
+
+<p>注：尽管GCD是纯C语言，但它被组建成面向对象的风格，被称为dispatch object。它像cocoa对象一样是引用计数的。使用dispatch_release和dispatch_retain函数来操作dispatch object的引用计数来进行内存管理。如果你使用了ARC，但由于它不是OC对象，所以并不参与垃圾回收，所以即使你使用了ARC，也记得一定要对内存进行手动管理。</p>
+
+<p>GCD的基本概念就是dispatch queue。dispatch queue是一个对象，它可以接受任务，并将任务以先到先执行的顺序来执行。dispatch queue可以是并发的或串行的。并发任务会像NSOperationQueue那样基于系统负载来合适地并发进行，串行队列同一时间只执行单一任务。</p>
+
+<p>GCD中有三种队列类型：</p>
+
+<p>main queue: 与主线程功能相同。实际上，提交至main queue的任务会在主线程中执行。main queue可以调用dispatch_get_main_queue()来获得。因为main queue是与主线程相关的，所以这是一个串行队列。</p>
+
+<p>Global queues: 全局队列是并发队列，并由整个进程共享。进程中存在三个全局队列：高、中（默认）、低三个优先级队列。可以调用dispatch_get_global_queue函数传入优先级来访问队列。</p>
+
+<p>用户创建队列: 用函数 dispatch_queue_create 创建的队列. 这些队列是串行的，正因为如此，它们可以用来完成同步机制, 有点像传统线程中的mutex。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[面试中常遇到的几个问题]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/12/30/interview/"/>
-    <updated>2013-12-30T11:28:02+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/12/30/interview</id>
+    <link href="http://beyondabel.github.io/blog/2013/09/10/interview/"/>
+    <updated>2013-09-10T11:28:02+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/09/10/interview</id>
     <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/09/10/interview.png" alt="image" /></p>
 
 <p>引言</p>
@@ -221,339 +555,6 @@ return;
 
  所谓同步，是指散步在不同进程之间的若干程序片断，它们的运行必须严格按照规定的某种先后次序来运行，这种先后次序依赖于要完成的特定的任务。如果用对资源的访问来定义的话，同步是指在互斥的基础上（大多数情况），通过其它机制实现访问者对资源的有序访问。在大多数情况下，同步已经实现了互斥，特别是所有写入资源的情况必定是互斥的。少数情况是指可以允许多个访问者同时访问资源
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[我的新起点之年——2013]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/12/29/2013summarize/"/>
-    <updated>2013-12-29T15:25:42+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/12/29/2013summarize</id>
-    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/12/29/summarize.png" alt="image" /></p>
-
-<!--more-->
-
-
-<p>最近逛一些论坛和博客看了很多人都在总结自己的2013年，我也想了想自己这一年来发生的事情，自己也真的是需要好好整理一下自己，调整一下的生活方向，避免自己在现有的环境中迷失方向。思绪万千，我该从哪儿开始呢？想了想，还是从我从一个学生正式步入社会开始说起吧～</p>
-
-<p>2013年对于我来说是事情多多的一年，也是收获的一年，同时也是失望的一年。还记得去年11月刚工作时满怀激情，一晃一年过去了。</p>
-
-<p>2013年对于我来说最大的事莫过毕业。在毕业答道前的一周，我向公司请了一个礼拜的假，回到了学校，曾经无数次想像离开学校回去的样子，当真正再次回到学校时感觉是那么的陌生，曾经是多么盼望着早些离开的校园、离开宿舍、离开学生的称呼，但到了真正不得不离开的那一刹那，才明白，自己对这片土地是多么的留念。在那个校园里，有着我太多的回忆。</p>
-
-<p>回到学校的第一件事就是去系里“拜访”各位领导（没办法，谁叫我很多的东西没办好呢？），找指导老师修改论文，修改论文，吃饭，基本上就是这几件事，这样的情况一直持续到毕业答辩结束。毕业答辩一结束，我就收拾东西带着对学校留恋和不舍与同学道别搭上北上的火车。</p>
-
-<p>从学校回到帝都，宣示着自己的学生生涯的正式结束，从此正式开始要面对每天工作、生活、感情、家庭这些事了，回到帝都的第一件事就是把住的地方换了，之前那个房子住了太多人了，里面什么人都有，感觉非常的不安全，特别是我们中间大部分都是女生，所以哪怕房租贵一些，还是忍一忍换了一个二室二厅的房子，里面就住着我们几个熟悉的人，东西放在那再也不用担心吊胆的了，特别放心。</p>
-
-<p>在工作方面我感觉2013年是特别糟糕的一年，我从去年11月份入职到现在，公司的产品的方向变了又变，做出来的产品也随着产品方向的改变而pass掉了，以致到现在为止，我还没有什么能够拿得出手的东西。但是在今年还是有很多的收获，自己利用空余的时间写了一个图片下载库，看了《Objective-C设计模式》、《重构》、《代码整洁之道》。</p>
-
-<p>2013即将成为历史，2014将是我参加工作的第2个年头，希望在工作的第2个年头，自己能够学会如何利用现在公司给与我的平台，去施展自己的抱负，我不想像今年一样地平庸，因为平庸只会慢慢消磨自己的斗争。我不希望自己和别人一样，觉得现在的生活就这样了，完全没有了当初毕业的那份豪气。2014年不管会发生什么，自己绝不能丧失斗志，不能做一天和尚撞一天钟。2014改变自己，敞开双手迎接我的2014！</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[利用Octopress在Github搭建一个博客]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/12/26/octopress/"/>
-    <updated>2013-12-26T23:59:57+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/12/26/octopress</id>
-    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/12/26/OctopressAndGithub.png" alt="image" /></p>
-
-<p><strong>引导</strong></p>
-
-<p><a href="http://http://octopress.org/">Octopress</a>是利用<a href="http://http://github.com/mojombo/jekyll">Jekyll</a>博客引擎开发的一个博客系统，生成的静态页面能够很好的在<em>github page</em>上展现。号称是hacker专属的一个博客系统(A blogging framework for hackers.)<!--more--></p>
-
-<p>从自己开始使用Octopress搭建博客到正在写博客，中间差不多花了我三个星期，在这三个星期中，我走了很多的弯路，使用Octopress搭建博客的错误我相信我已经遇到80～90%了，所以想写一篇使用Octopress在Github上怎么搭建博客，一来为了与其他人分享，令想利用Octopress搭建博客的人少走一些弯路，另一方面也是自己对这方面的知识一个积累，首先我说一下我的在mac系统环境下搭建的，本文需要读者熟悉一些shell命令，并掌握基本的git操作。</p>
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、搭建环境
-2、安装Octopress
-3、配置Octopress
-4、将博客部署到GitHub上
-5、开始写博客
-</code></pre>
-
-<p><strong>1、搭建环境</strong></p>
-
-<p>Octopress需要Ruby环境，RVM(Ruby Version Manager)负责安装和管理Ruby的环境。所以我们先在终端输入如下命令，来安装RVM：</p>
-
-<pre><code>1、curl -L https://get.rvm.io | bash -s stable --ruby
-</code></pre>
-
-<p>接着是安装<code>Ruby 2.0.0</code>，在终端依次运行如下命令：</p>
-
-<pre><code>1、rvm install 1.9.3
-2、rvm use 1.9.3
-3、rvm rubygems latest
-</code></pre>
-
-<p>完成上面的操作之后，运行ruby &mdash;v应该可以看到ruby 2.0.0环境已经安装好了。</p>
-
-<p>参考：<code>Installing Ruby With RVM</code></p>
-
-<p>在安装Octopress时还需要make命令，所以还会用到command_line_tools，所以还需要下载Xcode，打开Xcode,到Xcode->preferences->Downloads，里面有一个command_line_tools点击下载。</p>
-
-<p>2、安装Octopress</p>
-
-<p>在安装Octopress之前，请确保你的电脑上已经安装有git了，在终端输入git &mdash;version，如果安装了可以看到电脑中的git版本(一般情况下，mac系统现在都已经自带git了)，如果没有显示相关内容，请先安装git。</p>
-
-<p>git安装之后，利用git命令将<code>octopress</code>从<code>github上clone</code>到本机，如下命令：</p>
-
-<pre><code>1、git clone git://github.com/imathis/octopress.git octopress
-2、cd octopress    # If you use RVM, You'll be asked if you trust the .rvmrc file (say yes).
-</code></pre>
-
-<p>接着安装相关依赖项：</p>
-
-<pre><code>1、gem install bundler
-3、bundle install
-</code></pre>
-
-<p>最后安装默认的<code>Octopress</code>主题。</p>
-
-<pre><code>1、rake install
-</code></pre>
-
-<p>如果执行<code>rake install</code>报如下错误：<code>You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2. Using bundle exec may solve this.</code></p>
-
-<p>解决办法：打开<code>Gemfile</code>文件，把<code>gem 'rake', '~&gt; 0.9.0'</code>修改成<code>gem 'rake', '~&gt; 0.9.6'</code></p>
-
-<p>参考： <code>Octopress Setup</code></p>
-
-<p><strong>3、配置Octopress</strong></p>
-
-<p><code>Octopress</code>的作者已经尽量让配置简化了。大多数情况下只需要配置<code>_config.yml</code>和<code>Rakefile</code>文件即可。其中Rakefile是跟博客部署相关，一般情况下并不需要修改这个文件，除非使用了<code>rsync</code>。</p>
-
-<p><code>config.yml</code>是博客重要的一个配置文件，在<code>config.yml</code>文件中有三大配置项：<code>Main Configs</code>、<code>Jekyll &amp; Plugins</code>和<code>3rd Party Settings</code>。</p>
-
-<p>一般，该文件中其中<code>url</code>是必须要填写的，这里的<code>url</code>是在<code>github</code>上创建的一个仓库地址，具体请看第四步中创建的地址。另外再修改一下<code>title</code>、<code>subtitle</code>和<code>author</code>，根据需求，在开启一些第三方组件服务。</p>
-
-<pre><code>url: beyondabel.github.io     #网站地址 
-title: abel之家               #网站标题 
-subtitle: 天行健，君子以自强不息.地势坤，君子以厚德载物.     #网站副标题 
-author: abel                      #网站作者，通常显示在页尾和每篇文章的尾部 
-simple_search: http://google.com/search   # 搜索引擎 
-description:             #网站的描述，出现在HTML页面中的 meta 中的 description
-</code></pre>
-
-<p>更多内容，请看这里的内容：<a href="http://octopress.org/docs/configuring/">Configuring Octopress</a></p>
-
-<p><strong>4、将博客部署到GitHub上</strong></p>
-
-<p><code>Github</code>的<code>Page service</code>可以免费托管博客，并且还可以自定义域名。</p>
-
-<p>首先需要在GitHub上创建一个仓库，并将仓库名称按照这样的方式进行命名：<code>username.github.com</code>或<code>organization.github.com</code>。等后面配置完毕之后，我们就可以在浏览器中使用页面地址<code>http://username.github.com</code>来访问我们的博客。一般来说，我们希望在将博客的源码放到source分支下，并把生成的内容提交到master分支。</p>
-
-<p>创建好仓库之后，我们需要利用octopress的一个配置rake任务来自动配置上面创建的仓库：可以让我们方便的部署<code>GitHub page</code>。在终端输入如下命令：</p>
-
-<pre><code>1、$ rake setup_github_pages
-</code></pre>
-
-<p>上面的命令会做一些事情(详细介绍看下面给出的参考链接)。其中最主要的就是创建一个_deploy目录，目录用来存放部署到master分支的内容。期间会要求你输入仓库的url，根据提示，进行输入即可。
-完成上面的命令之后，我们就可以生成博客并真正的部署到仓库中了。执行如下命令：</p>
-
-<pre><code>1、rake generate
-2、rake deploy
-</code></pre>
-
-<p>上面的命令首先生成博客文件，并将生成的博客文件拷贝到<code>_deploy/</code>目录下，然后将这些内容添加到git中，并commit和push到仓库的master分支。</p>
-
-<p>现在可以访问<code>http://username.github.io</code>了。注意：有时候可能会有延时，要等几分钟才能打开。
-至此，我们的博客已经完成基本的部署。</p>
-
-<p>如果在部署到仓库之前，需要先预览一下博客，可以在终端输入<code>rake preview</code>命令，然后就能在浏览器中进行本地预览访问了：<code>http://127.0.0.1:4000/</code>或<code>http://localhost:4000/</code>，效果跟仓库中的一样。
-参考：<code>Deploying to Github Pages</code></p>
-
-<p>如果本地访问时出现了404错误，请关注一下你生成的文件是否直接在public目录下，如果不在，请修改一下<code>config.rb</code>文件，使<code>http_path = "/"</code>。如果访问<code>http://username.github.com</code>上出现了404错误，看一下你的<code>repositories</code>是否有内容，如果有，请你再次确认你的<code>repositories</code>的名称是否是<code>username.github.io</code>,如果不是，那么请用<code>http://username.github.io/[your repositories name]</code>，如果还是不行，请关注一下，你的账号是否使用邮箱激活了，如果没有，请先激活，然后删除这个<code>repositories</code>重新再来。</p>
-
-<p><strong>5、开始写博客</strong></p>
-
-<p><code>Octopress</code>为我们提供了一些task来创建博文和页面。博文必须存储在<code>source/_posts</code>目录下，并且需要按照Jekyll的命名规范对文章进行命名：<code>YYYY-MM-DD-post-title.markdown</code>。文章的名字会被当做url的一部分，而其中的日期用于对博文的区分和排序。</p>
-
-<p>通过<code>Octopress</code>提供的<code>task</code>可以正确的按照命名规范创建一个博文，并且在博文中会附带常用的一些yaml元数据。只需要在终端输入如下命令：</p>
-
-<pre><code>1、rake new_post["title"]
-</code></pre>
-
-<p>其中<code>title</code>为博文的文件名，创建出来的文件默认是<code>markdown</code>格式。上面的命令会创建出这样一个文件：<code>source/_posts/2013-08-03-title.markdown</code>。打开这个文件，可以看到里面有如下一些内容了(告诉Jekyll博客引擎如何处理博文和页面)：</p>
-
-<pre><code>---
-layout: post
-title: "title"
-date: 2013-12-26 16:36
-comments: true
-categories: 
----
-</code></pre>
-
-<p>接着我们就可以在这个文件中写我们的博文啦。完成之后，我们可以预览和部署博文。下面是创建并部署博文的一个完整过程：</p>
-
-<pre><code>1、$ rake new_post["New Post"]
-2、$ rake generate
-3、$ rake deploy
-</code></pre>
-
-<p>参考：<a href="http://octopress.org/docs/blogging/">Blogging Basics</a></p>
-
-<p>到此，我们使用Octopress在Github上博客就搭建好了，这中间如果遇到什么问题，可以给我留言。接下来，我将带给大家如何更换博客样式，如何添加评论。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[我的博客搬家啦～]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/12/01/my-new-blog/"/>
-    <updated>2013-12-01T23:37:45+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/12/01/my-new-blog</id>
-    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/12/01/my-new-blog.png" alt="image" /></p>
-
-<!--more-->
-
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;我是一个非常喜欢折腾的程序猿，之前我一直在CSDN上写博文，但由于一些种种的原因，后来放弃了CSDN,之后一直都有搭建个人站点的想法,在网上搜索了如何搭建个人站点,网上有很多的人建议用Octopress+Github,转而开始用Octopress搭建博客，从开始弄Octopress到成功在Github上发布博文已经差不多一个月了，虽然网上有太多关于得用Octopress搭建Github博客的博文，但对于一个小白的我使用Octopress搭建Github博客过程的坚苦也只有自己知道，所以在下一篇博文中我将会记录我使用Octopress搭建Github博客的点点滴滴。</p>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;搭建博客的主要原因一是可以与大家分享交流，二是可以总结一下自己。
-使用Octopress+Github与CSDN、百度、新郎、博客园相比，它更自由，可以自定义自己的时尚元素，有一些我非常喜欢的style.如果想使用Octopress+Github搭建博客，将会经历如下步骤：</p>
-
-<p>1.首先，注册一个github账号。</p>
-
-<p>2.配置环境</p>
-
-<p>3.下载Octopress包</p>
-
-<p>4.配置Octopress</p>
-
-<p>5.绑定Github账号</p>
-
-<p>6.把Octopress提交到Github</p>
-
-<p>如果想用域名可以访问的话，还需要经历如下的步骤：</p>
-
-<p>7.域名注册</p>
-
-<p>8.购买虚拟主机</p>
-
-<p>9.域名与虚拟主机中的IP进行绑定。</p>
-
-<p>到此，博客就基本搭建好了～</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS设计模式之单例模式]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/10/30/singleton/"/>
-    <updated>2013-10-30T12:55:59+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/10/30/singleton</id>
-    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/10/30/singleton.png" alt="image" /></p>
-
-<!--more-->
-
-
-<p>单例模式是iOS常用设计模式中的一种。单例设计模式的作用是使得这个类的一个对象成为系统中的唯一实例，因此需要用一种唯一的方法去创建这个对象并返回这个对象的地址。那么，我们何时使用单例模式呢？</p>
-
-<p>1、类只能有一个实例，而且必须从一个为人熟知的访问点对其访问。</p>
-
-<p>2、这个唯一的实例只能通过子类化进行扩展，而且扩展的对象不会破坏客户端代码。</p>
-
-<p>那么用Objective-C如何实现单例模式呢？下面我们来新建一个Singleton类，在Singleton.h中实现如下</p>
-
-<pre><code>@interface Singleton : NSObject 
-+ (Singleton *) sharedInstance;
-@end 
-</code></pre>
-
-<p>在Singleton.m</p>
-
-<pre><code>@implementation Singleton 
-static Singleton * sharedSingleton = nil;
-
-+ (Singleton *) sharedInstance  { 
-    if (sharedSingleton == nil) {    
-        sharedSingleton = [[Singleton alloc] init]; 
-    } 
-    return sharedSingleton;
-}  
-
-@end 
-</code></pre>
-
-<p>这样就创建一个简单的单例模式，实际上有一部分程序员也是这样实现的，但实际上这是一个不“严格”版本，在实际中使用，可能会遇到发起调用的对象不能以其他分配方式实例化单例对象，否则，就会创建多个实例。（之前有人和我讨论过这个问题，说使用者应该严格按照接口来使用，当实际上Singleton是一个对象，我们不能保证使用者不会使用其他的方法去创建（比如alloc）,这个时候他就会创建多个实例，这样就会出现这些无法感知的bug）</p>
-
-<p>下面我对<code>Singleton.m</code>的进行改进</p>
-
-<pre><code>@implementation Singleton  
- static Singleton * sharedSingleton = nil;  
-+ (Singleton *) sharedInstance  {  
-    if (sharedSingleton == nil) {  
-        sharedSingleton = [[super allocWithZone:NULL] init];  
-    }  
-    return sharedSingleton;  
-}  
-
-+ (id) allocWithZone:(struct _NSZone *)zone  {  
-    return [[self sharedInstance] retain];  
-}  
-
-- (id) copyWithZone:(NSZone *) zone  {  
-    return self;  
-}  
-
-- (id) retain  {  
-    return self;  
-}  
-
-- (NSUInteger) retainCount  {  
-    return NSUIntegerMax;  
-}  
-
-
-- (void) release  {  
-//  
-}  
-
-- (id) autorelease  {  
-    return self;  
-}  
-@end 
-</code></pre>
-
-<p>也许你注意到了，我重载了<code>allocWithZone:</code>，保持了从<code>sharedInstance</code>方法返回的单例对象，使用者哪怕使用<code>alloc</code>时也会返回唯一的实例（<code>alloc</code>方法中会先调用<code>allocWithZone:</code>创建对象）。而<code>retain</code>等内存管理的函数也被重载了，这样做让我们有了把<code>Singleton</code>类变得“严格”了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS成长之路：iOS多线程之GCD]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one/"/>
-    <updated>2013-09-26T15:39:29+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one</id>
-    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2013/09/26/gcd.png" alt="image" /></p>
-
-<!--more-->
-
-
-<p>什么是GCD？</p>
-
-<p>GCD（Grand Central Dispatch）是一套低层API，提供了一种新的方法来进行并发程序编写。允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行。GCD比之NSOpertionQueue更底层更高效，并且它不是Cocoa框架的一部分。</p>
-
-<p>GCD的API很大程度上基于block，当然，GCD也可以脱离block来使用，比如使用传统c机制提供函数指针和上下文指针。实践证明，当配合block使用时，GCD非常简单易用且能发挥其最大能力。</p>
-
-<p>GCD相比传统多线程编程的优势：</p>
-
-<p>从使用来看: GCD比之thread跟简单易用。由于GCD基于work unit而非像thread那样基于运算，所以GCD可以控制诸如等待任务结束、监视文件描述符、周期执行代码以及工作挂起等任务。基于block的血统导致它能极为简单得在不同代码作用域之间传递上下文。</p>
-
-<p>从效率看: GCD被实现得如此轻量和优雅，使得它在很多地方比之专门创建消耗资源的线程更实用且快速。这关系到易用性：导致GCD易用的原因有一部分在于你可以不用担心太多的效率问题而仅仅使用它就行了。</p>
-
-<p>从性能上来看: GCD自动根据系统负载来增减线程数量，这就减少了上下文切换以及增加了计算效率。</p>
-
-<p>注：尽管GCD是纯C语言，但它被组建成面向对象的风格，被称为dispatch object。它像cocoa对象一样是引用计数的。使用dispatch_release和dispatch_retain函数来操作dispatch object的引用计数来进行内存管理。如果你使用了ARC，但由于它不是OC对象，所以并不参与垃圾回收，所以即使你使用了ARC，也记得一定要对内存进行手动管理。</p>
-
-<p>GCD的基本概念就是dispatch queue。dispatch queue是一个对象，它可以接受任务，并将任务以先到先执行的顺序来执行。dispatch queue可以是并发的或串行的。并发任务会像NSOperationQueue那样基于系统负载来合适地并发进行，串行队列同一时间只执行单一任务。</p>
-
-<p>GCD中有三种队列类型：</p>
-
-<p>main queue: 与主线程功能相同。实际上，提交至main queue的任务会在主线程中执行。main queue可以调用dispatch_get_main_queue()来获得。因为main queue是与主线程相关的，所以这是一个串行队列。</p>
-
-<p>Global queues: 全局队列是并发队列，并由整个进程共享。进程中存在三个全局队列：高、中（默认）、低三个优先级队列。可以调用dispatch_get_global_queue函数传入优先级来访问队列。</p>
-
-<p>用户创建队列: 用函数 dispatch_queue_create 创建的队列. 这些队列是串行的，正因为如此，它们可以用来完成同步机制, 有点像传统线程中的mutex。</p>
 ]]></content>
   </entry>
   

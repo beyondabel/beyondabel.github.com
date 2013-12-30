@@ -9,7 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS成长之路：iOS多线程之GCD 什么是GCD？ GCD（Grand Central Dispatch）是一套低层API，提供了一种新的方法来进行并发程序编写。允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行。GCD比之NSOpertionQueue更底层更高效， &hellip;">
+	<meta name="description" content="iOS成长之路：iOS多线程之GCD 引言 GCD（Grand Central Dispatch）是一套低层API，提供了一种新的方法来进行并发程序编写。允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行。GCD比之NSOpertionQueue更底层更高效， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,12 +92,12 @@
 	<h1 class="title" itemprop="name">iOS成长之路：iOS多线程之GCD</h1>
 	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2013/09/26/gcd.png" alt="image" /></p>
 
-<!--more-->
-
-
-<p>什么是GCD？</p>
+<p><strong>引言</strong></p>
 
 <p>GCD（Grand Central Dispatch）是一套低层API，提供了一种新的方法来进行并发程序编写。允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行。GCD比之NSOpertionQueue更底层更高效，并且它不是Cocoa框架的一部分。</p>
+
+<!--more-->
+
 
 <p>GCD的API很大程度上基于block，当然，GCD也可以脱离block来使用，比如使用传统c机制提供函数指针和上下文指针。实践证明，当配合block使用时，GCD非常简单易用且能发挥其最大能力。</p>
 
