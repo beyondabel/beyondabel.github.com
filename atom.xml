@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-01T19:02:18+08:00</updated>
+  <updated>2014-01-01T23:13:45+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -200,6 +200,196 @@ categories:
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[iOS时间相关各种技巧]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/12/24/ios-time/"/>
+    <updated>2013-12-24T22:33:47+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/12/24/ios-time</id>
+    <content type="html"><![CDATA[<p><strong>一、通过自带的日历得到年月日、时间、以及星期</strong></p>
+
+<!--more-->
+
+
+<pre><code>NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+NSDate *now;
+NSDateComponents *comps = [[NSDateComponents alloc] init];
+NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | 
+                                     NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+now=[NSDate date];
+comps = [calendar components:unitFlags fromDate:now];
+week = [comps weekday];    
+month = [comps month];
+day = [comps day];
+hour = [comps hour];
+min = [comps minute];
+sec = [comps second];
+</code></pre>
+
+<p><strong>二、世界标准时间UTC /GMT 转为当前系统时区对应的时间</strong></p>
+
+<pre><code>- (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
+{
+    //设置源日期时区
+    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];//或GMT
+    //设置转换后的目标日期时区
+    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
+    //得到源日期与世界标准时间的偏移量
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:anyDate];
+    //目标日期与本地时区的偏移量
+    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:anyDate];
+    //得到时间偏移量的差值
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+    //转为现在时间
+    NSDate* destinationDateNow = [[[NSDate alloc] initWithTimeInterval:interval sinceDate:anyDate] autorelease];
+    return destinationDateNow;
+}
+</code></pre>
+
+<p><strong>三、NSString格式转化为NSDate</strong></p>
+
+<pre><code>- (NSDate *)stringToDate:(NSString *)strdate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatteralloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];// NSString的时间格式
+    NSDate *retdate = [dateFormatter dateFromString:strdate];
+    [dateFormatter release];
+    return retdate;
+}
+</code></pre>
+
+<p><strong>四、NSDate转化为NSString</strong></p>
+
+<pre><code>- (NSString *)dateToString:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatteralloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    [dateFormatter release];
+    return strDate;
+}
+</code></pre>
+
+<p><strong>五、将本地日期字符串转为UTC日期字符串</strong></p>
+
+<pre><code>//本地日期格式:2013-08-03 12:53:51
+//可自行指定输入输出格式
+-(NSString *)getUTCFormateLocalDate:(NSString *)localDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //输入格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+    NSDate *dateFormatted = [dateFormatter dateFromString:localDate];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    //输出格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    NSString *dateString = [dateFormatter stringFromDate:dateFormatted];
+    [dateFormatter release];
+    return dateString;
+}
+</code></pre>
+
+<p><strong>六、将UTC日期字符串转为本地时间字符串</strong></p>
+
+<pre><code>//输入的UTC日期格式2013-08-03T04:53:51+0000
+-(NSString *)getLocalDateFormateUTCDate:(NSString *)utcDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //输入格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    NSTimeZone *localTimeZone = [NSTimeZone localTimeZone];
+    [dateFormatter setTimeZone:localTimeZone];
+
+    NSDate *dateFormatted = [dateFormatter dateFromString:utcDate];
+    //输出格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:dateFormatted];
+    [dateFormatter release];
+    return dateString;
+}
+</code></pre>
+
+<p><strong>七、iOS开发之格式化日期时间</strong></p>
+
+<p>字符说明</p>
+
+<p>(:)时间分隔符。在某些区域设置中，可以使用其他字符表示时间分隔符。时间分隔符在格式化时间值时分隔小时、分钟和秒。格式化输出中用作时间分隔符的实际字符由您的应用程序的当前区域性值确定。</p>
+
+<p>(/)日期分隔符。在某些区域设置中，可以使用其他字符表示日期分隔符。日期分隔符在格式化日期值时分隔日、月和年。格式化输出中用作日期分隔符的实际字符由您的应用程序的当前区域性确定。</p>
+
+<p>(%)用于表明不论尾随什么字母，随后字符都应该以单字母格式读取。也用于表明单字母格式应以用户定义格式读取。有关更多详细信息，请参见下面的内容。</p>
+
+<p>D将日显示为不带前导零的数字（如 1）。如果这是用户定义的数字格式中的唯一字符，请使用 %D。</p>
+
+<p>DD将日显示为带前导零的数字（如 01）。</p>
+
+<p>EEE将日显示为缩写形式（例如 SUN）。</p>
+
+<p>EEEE将日显示为全名（例如 SUNDAY）。</p>
+
+<p>M将月份显示为不带前导零的数字（如一月表示为 1）。如果这是用户定义的数字格式中的唯一字符，请使用 %M。</p>
+
+<p>MM将月份显示为带前导零的数字（例如 01/12/01）。</p>
+
+<p>MMM将月份显示为缩写形式（例如 JAN）。</p>
+
+<p>MMMM将月份显示为完整月份名（例如 JANUARY）。</p>
+
+<p>GG显示时代/纪元字符串（例如 A.D.）</p>
+
+<p>H使用 12 小时制将小时显示为不带前导零的数字（例如 1:15:15 PM）。如果这是用户定义的数字格式中的唯一字符，请使用 %H。</p>
+
+<p>HH使用 12 小时制将小时显示为带前导零的数字（例如 01:15:15 PM）。</p>
+
+<p>H使用 24 小时制将小时显示为不带前导零的数字（例如 1:15:15）。如果这是用户定义的数字格式中的唯一字符，请使用 %H。</p>
+
+<p>HH使用 24 小时制将小时显示为带前导零的数字（例如 01:15:15）。</p>
+
+<p>M将分钟显示为不带前导零的数字（例如 12:1:15）。如果这是用户定义的数字格式中的唯一字符，请使用 %M。</p>
+
+<p>MM将分钟显示为带前导零的数字（例如 12:01:15）。</p>
+
+<p>S将秒显示为不带前导零的数字（例如 12:15:5）。如果这是用户定义的数字格式中的唯一字符，请使用 %S。</p>
+
+<p>SS将秒显示为带前导零的数字（例如 12:15:05）。</p>
+
+<p>F显示秒的小数部分。例如，FF 将精确显示到百分之一秒，而 FFFF 将精确显示到万分之一秒。用户定义格式中最多可使用七个 F 符号。如果这是用户定义的数字格式中的唯一字符，请使用 %F。</p>
+
+<p>T使用 12 小时制，并对中午之前的任一小时显示大写的 A，对中午到 11:59 P.M 之间的任一小时显示大写的 P。如果这是用户定义的数字格式中的唯一字符，请使用 %T。</p>
+
+<p>TT对于使用 12 小时制的区域设置，对中午之前任一小时显示大写的 AM，对中午到 11:59 P.M 之间的任一小时显示大写的 PM。对于使用 24 小时制的区域设置，不显示任何字符。</p>
+
+<p>Y将年份 (0-9) 显示为不带前导零的数字。如果这是用户定义的数字格式中的唯一字符，请使用 %Y。</p>
+
+<p>YY以带前导零的两位数字格式显示年份（如果适用）。</p>
+
+<p>YYY以四位数字格式显示年份。</p>
+
+<p>YYYY以四位数字格式显示年份。</p>
+
+<p>Z显示不带前导零的时区偏移量（如 -8）。如果这是用户定义的数字格式中的唯一字符，请使用 %Z。</p>
+
+<p>ZZ显示带前导零的时区偏移量（例如 -08）</p>
+
+<p>ZZZ显示完整的时区偏移量（例如 -08:00）</p>
+
+<p>格式显示</p>
+
+<pre><code>M/D/YY    12/7/58
+D-MMM    7-DEC
+D-MMMM-YY     7-DECEMBER-58
+D MMMM      7 DECEMBER
+MMMM YY    DECEMBER 58
+HH:MM TT     08:50 PM
+H:MM:SS T     8:50:35 P
+H:MM    20:50
+H:MM:SS    20:50:35
+M/D/YYYY H:MM     12/7/1958 20:50   
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[我的博客搬家啦～]]></title>
     <link href="http://beyondabel.github.io/blog/2013/12/01/my-new-blog/"/>
     <updated>2013-12-01T23:37:45+08:00</updated>
@@ -232,6 +422,81 @@ categories:
 <p>9.域名与虚拟主机中的IP进行绑定。</p>
 
 <p>到此，博客就基本搭建好了～</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac下CocoaPods安装步骤]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/11/13/mac-install-cocoapods/"/>
+    <updated>2013-11-13T19:16:34+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/11/13/mac-install-cocoapods</id>
+    <content type="html"><![CDATA[<p>介绍：
+开发应用的时候第三方的库是不可缺少的，它能提高开发的效率。一些经常用到的库，在新的项目里用是，你又得手工的Add到项目里，用的到库多起来了，就不方便管理了。CocoaPods这个软件，可以方便的帮你管理Xcode里的第三方的库。</p>
+
+<!--more-->
+
+
+<p>安装步骤：
+1、打开终端在终端输入</p>
+
+<pre><code> sudo gem install -V cocoapods 
+</code></pre>
+
+<p>2、等待下载完成后，会出现</p>
+
+<pre><code>/usr/bin/xcodeproj
+Building native extensions.  This could take a while...
+ERROR:  Error installing cocoapods:
+
+ERROR: Failed to build gem native extension.
+
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb
+checking for -std=c99 option to compiler... yes
+checking for CoreFoundation... yes
+checking for CoreFoundation/CoreFoundation.h... yes
+checking for CoreFoundation/CFStream.h... yes
+checking for CoreFoundation/CFPropertyList.h... yes
+checking for ruby/st.h... yes
+creating extconf.h
+creating Makefile
+
+make
+xcrun cc -I. -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I. -
+DRUBY_EXTCONF_H=\"extconf.h\"  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common  -std=c99  -c xcodeproj_ext.c
+xcrun: Error: could not stat active Xcode path '/Applications/Xcode5-DP3.app/Contents/Developer'. (No such file or directory)
+cc -arch i386 -arch x86_64 -pipe -bundle -undefined dynamic_lookup -o xcodeproj_ext.bundle xcodeproj_ext.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64  -ObjC -framework CoreFoundation    -lruby  -lpthread -ldl -lobjc 
+clang: error: no such file or directory: 'xcodeproj_ext.o'
+make: *** [xcodeproj_ext.bundle] Error 1
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/xcodeproj-0.5.2 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/xcodeproj-0.5.2/ext/xcodeproj/gem_make.out
+</code></pre>
+
+<p>说明：出现上面错误原因是因为找不到xcode
+解决办法：在终端输入sudo xcode-select &mdash;switch /Applications/Xcode5-DP5.app/Contents/Developer（Xcode5-DP5是Xcode版本号）</p>
+
+<p>3、更新cocoapods 在终端上输入sudo gem update -V
+如果更新出错或者发现cocoapods不是最新版本的话，最好就是去下载一个最新版本，然后在本地安装</p>
+
+<p>4、搜索  先试试搜索功能，你需要什么库，可以用pod来搜索，比如要用AFNetworking这个库：pod search是搜索命名，后面写上库名称就行了。搜索pod search AFNetworking</p>
+
+<p>能够搜索出来说明cocoapods安装成功，下面我就来说说怎么使用cocoapods.</p>
+
+<p>1、创建一个xcode项目，并通过终端进入一个xcode项目目录。在终端输入</p>
+
+<pre><code>vi Podfile
+在Podfile里写入
+platform :ios, '5.0'
+pod 'AFNetworking', '~&gt;1.1.0'
+</code></pre>
+
+<p>2、在终端进入项目目录，在终端上输入 pod install</p>
+
+<pre><code> 你会发现这个目录多了*.xcworkspace pod等文件。这是pod生成的项目管理文件，打开*.xcworkspace 项目文件，在Xcode里看到是这样的目录结构：
+
+ ![image](http://)
+</code></pre>
 ]]></content>
   </entry>
   
@@ -320,7 +585,48 @@ static Singleton * sharedSingleton = nil;
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS成长之路：iOS多线程之GCD]]></title>
+    <title type="html"><![CDATA[禁止键盘弹出时UIWebView自动滑动]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/09/28/ios-webview-keybord/"/>
+    <updated>2013-09-28T23:01:15+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/09/28/ios-webview-keybord</id>
+    <content type="html"><![CDATA[<p>之前在做公司项目的时候，需要做一个页面编辑功能，当我们点击编辑器的时候，网页会自动的滑动，结果导致编辑器的fram发生变化。为了解决这个问题，我们需要去禁止webView的自动滑动，我们只需要重写viewForZoomingInScrollView方法就可以了</p>
+
+<!--more-->
+
+
+<pre><code>webview.scrollView.delegate=self;
+
+-(UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView 
+{
+    return nil;
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[网页颜色值转化成UIColor]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/09/27/webcolor-uicolor/"/>
+    <updated>2013-09-27T19:14:03+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/09/27/webcolor-uicolor</id>
+    <content type="html"><![CDATA[<p>在做项目过程中，有时设计人员给我们往往是一个设计图，而我们用PS取值的时候可以得到一个红绿蓝和一个网页的颜色值，用红绿蓝往往不是很方便，后来我们在项目工具中写一个方法，专门把网页的颜色值转化成UIColor，这样一来，方便了许多。</p>
+
+<!--more-->
+
+
+<pre><code>+ (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScannerscannerWithString:hexString];
+    [scanner setScanLocation:1];// bypass '#' character
+    [scannerscanHexInt:&amp;rgbValue];
+    return [UIColorcolorWithRed:((rgbValue &amp; 0xFF0000) &gt;&gt; 16)/255.0green:((rgbValue &amp; 0xFF00) &gt;&gt; 8)/255.0 blue:(rgbValue &amp; 0xFF)/255.0 alpha:1.0];
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS多线程之GCD]]></title>
     <link href="http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one/"/>
     <updated>2013-09-26T15:39:29+08:00</updated>
     <id>http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one</id>
@@ -354,6 +660,27 @@ static Singleton * sharedSingleton = nil;
 <p>Global queues: 全局队列是并发队列，并由整个进程共享。进程中存在三个全局队列：高、中（默认）、低三个优先级队列。可以调用dispatch_get_global_queue函数传入优先级来访问队列。</p>
 
 <p>用户创建队列: 用函数 dispatch_queue_create 创建的队列. 这些队列是串行的，正因为如此，它们可以用来完成同步机制, 有点像传统线程中的mutex。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS开发过程中出现错误整理]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/09/25/ios-developerment-error/"/>
+    <updated>2013-09-25T19:10:57+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/09/25/ios-developerment-error</id>
+    <content type="html"><![CDATA[<p>1、No architectures to compile for (ONLY_ACTIVE_ARCH=YES, active arch=armv7s, VALID_ARCHS=armv7 armv6).</p>
+
+<!--more-->
+
+
+<p>今天上午开完会，一回来真机调试就报 No architectures to compile for (ONLY_ACTIVE_ARCH=YES, active arch=armv7s, VALID_ARCHS=armv7 armv6)错误。虚拟机没事，一旦用真机就报这个错误，开始以为是我安装几个软件之后，安装不成功，系统问题。然后就是重装系统，都不成功。最终解决办法：</p>
+
+<p>1.把Build Active Architecture Only 下面的Debug 设为NO release 设置为YES
+2.Valid Architectures 设置为 armv7 armv6 就OK 了。</p>
+
+<p>1.Xcode编译出现错误如下：CodeSign error: code signing is required for product type &lsquo;Application&rsquo; in SDK &lsquo;iOS 5.0&rsquo;
+解决方法如下：
+选择工程－>Build Settings &ndash;> Code Signing &ndash;> Code Signing Identity &ndash;> Debug &ndash;> Any ios SDK 将选项改为：iPhone Developer</p>
 ]]></content>
   </entry>
   

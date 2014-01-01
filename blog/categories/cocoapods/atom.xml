@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CocoaPods | Abel之家]]></title>
+  <link href="http://beyondabel.github.io/blog/categories/cocoapods/atom.xml" rel="self"/>
+  <link href="http://beyondabel.github.io/"/>
+  <updated>2014-01-01T23:13:45+08:00</updated>
+  <id>http://beyondabel.github.io/</id>
+  <author>
+    <name><![CDATA[Abel]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mac下CocoaPods安装步骤]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/11/13/mac-install-cocoapods/"/>
+    <updated>2013-11-13T19:16:34+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/11/13/mac-install-cocoapods</id>
+    <content type="html"><![CDATA[<p>介绍：
+开发应用的时候第三方的库是不可缺少的，它能提高开发的效率。一些经常用到的库，在新的项目里用是，你又得手工的Add到项目里，用的到库多起来了，就不方便管理了。CocoaPods这个软件，可以方便的帮你管理Xcode里的第三方的库。</p>
+
+<!--more-->
+
+
+<p>安装步骤：
+1、打开终端在终端输入</p>
+
+<pre><code> sudo gem install -V cocoapods 
+</code></pre>
+
+<p>2、等待下载完成后，会出现</p>
+
+<pre><code>/usr/bin/xcodeproj
+Building native extensions.  This could take a while...
+ERROR:  Error installing cocoapods:
+
+ERROR: Failed to build gem native extension.
+
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb
+checking for -std=c99 option to compiler... yes
+checking for CoreFoundation... yes
+checking for CoreFoundation/CoreFoundation.h... yes
+checking for CoreFoundation/CFStream.h... yes
+checking for CoreFoundation/CFPropertyList.h... yes
+checking for ruby/st.h... yes
+creating extconf.h
+creating Makefile
+
+make
+xcrun cc -I. -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I. -
+DRUBY_EXTCONF_H=\"extconf.h\"  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common  -std=c99  -c xcodeproj_ext.c
+xcrun: Error: could not stat active Xcode path '/Applications/Xcode5-DP3.app/Contents/Developer'. (No such file or directory)
+cc -arch i386 -arch x86_64 -pipe -bundle -undefined dynamic_lookup -o xcodeproj_ext.bundle xcodeproj_ext.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64  -ObjC -framework CoreFoundation    -lruby  -lpthread -ldl -lobjc 
+clang: error: no such file or directory: 'xcodeproj_ext.o'
+make: *** [xcodeproj_ext.bundle] Error 1
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/xcodeproj-0.5.2 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/xcodeproj-0.5.2/ext/xcodeproj/gem_make.out
+</code></pre>
+
+<p>说明：出现上面错误原因是因为找不到xcode
+解决办法：在终端输入sudo xcode-select &mdash;switch /Applications/Xcode5-DP5.app/Contents/Developer（Xcode5-DP5是Xcode版本号）</p>
+
+<p>3、更新cocoapods 在终端上输入sudo gem update -V
+如果更新出错或者发现cocoapods不是最新版本的话，最好就是去下载一个最新版本，然后在本地安装</p>
+
+<p>4、搜索  先试试搜索功能，你需要什么库，可以用pod来搜索，比如要用AFNetworking这个库：pod search是搜索命名，后面写上库名称就行了。搜索pod search AFNetworking</p>
+
+<p>能够搜索出来说明cocoapods安装成功，下面我就来说说怎么使用cocoapods.</p>
+
+<p>1、创建一个xcode项目，并通过终端进入一个xcode项目目录。在终端输入</p>
+
+<pre><code>vi Podfile
+在Podfile里写入
+platform :ios, '5.0'
+pod 'AFNetworking', '~&gt;1.1.0'
+</code></pre>
+
+<p>2、在终端进入项目目录，在终端上输入 pod install</p>
+
+<pre><code> 你会发现这个目录多了*.xcworkspace pod等文件。这是pod生成的项目管理文件，打开*.xcworkspace 项目文件，在Xcode里看到是这样的目录结构：
+
+ ![image](http://)
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,324 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS时间相关各种技巧 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS时间相关各种技巧 一、通过自带的日历得到年月日、时间、以及星期 NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+NSDate *now; &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2013/12/24/ios-time/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS时间相关各种技巧</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>一、通过自带的日历得到年月日、时间、以及星期</strong></p>
+
+<!--more-->
+
+
+<pre><code>NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+NSDate *now;
+NSDateComponents *comps = [[NSDateComponents alloc] init];
+NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | 
+                                     NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+now=[NSDate date];
+comps = [calendar components:unitFlags fromDate:now];
+week = [comps weekday];    
+month = [comps month];
+day = [comps day];
+hour = [comps hour];
+min = [comps minute];
+sec = [comps second];
+</code></pre>
+
+<p><strong>二、世界标准时间UTC /GMT 转为当前系统时区对应的时间</strong></p>
+
+<pre><code>- (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
+{
+    //设置源日期时区
+    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];//或GMT
+    //设置转换后的目标日期时区
+    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
+    //得到源日期与世界标准时间的偏移量
+    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:anyDate];
+    //目标日期与本地时区的偏移量
+    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:anyDate];
+    //得到时间偏移量的差值
+    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+    //转为现在时间
+    NSDate* destinationDateNow = [[[NSDate alloc] initWithTimeInterval:interval sinceDate:anyDate] autorelease];
+    return destinationDateNow;
+}
+</code></pre>
+
+<p><strong>三、NSString格式转化为NSDate</strong></p>
+
+<pre><code>- (NSDate *)stringToDate:(NSString *)strdate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatteralloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];// NSString的时间格式
+    NSDate *retdate = [dateFormatter dateFromString:strdate];
+    [dateFormatter release];
+    return retdate;
+}
+</code></pre>
+
+<p><strong>四、NSDate转化为NSString</strong></p>
+
+<pre><code>- (NSString *)dateToString:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatteralloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    [dateFormatter release];
+    return strDate;
+}
+</code></pre>
+
+<p><strong>五、将本地日期字符串转为UTC日期字符串</strong></p>
+
+<pre><code>//本地日期格式:2013-08-03 12:53:51
+//可自行指定输入输出格式
+-(NSString *)getUTCFormateLocalDate:(NSString *)localDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //输入格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+    NSDate *dateFormatted = [dateFormatter dateFromString:localDate];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    //输出格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    NSString *dateString = [dateFormatter stringFromDate:dateFormatted];
+    [dateFormatter release];
+    return dateString;
+}
+</code></pre>
+
+<p><strong>六、将UTC日期字符串转为本地时间字符串</strong></p>
+
+<pre><code>//输入的UTC日期格式2013-08-03T04:53:51+0000
+-(NSString *)getLocalDateFormateUTCDate:(NSString *)utcDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //输入格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
+    NSTimeZone *localTimeZone = [NSTimeZone localTimeZone];
+    [dateFormatter setTimeZone:localTimeZone];
+
+    NSDate *dateFormatted = [dateFormatter dateFromString:utcDate];
+    //输出格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:dateFormatted];
+    [dateFormatter release];
+    return dateString;
+}
+</code></pre>
+
+<p><strong>七、iOS开发之格式化日期时间</strong></p>
+
+<p>字符说明</p>
+
+<p>(:)时间分隔符。在某些区域设置中，可以使用其他字符表示时间分隔符。时间分隔符在格式化时间值时分隔小时、分钟和秒。格式化输出中用作时间分隔符的实际字符由您的应用程序的当前区域性值确定。</p>
+
+<p>(/)日期分隔符。在某些区域设置中，可以使用其他字符表示日期分隔符。日期分隔符在格式化日期值时分隔日、月和年。格式化输出中用作日期分隔符的实际字符由您的应用程序的当前区域性确定。</p>
+
+<p>(%)用于表明不论尾随什么字母，随后字符都应该以单字母格式读取。也用于表明单字母格式应以用户定义格式读取。有关更多详细信息，请参见下面的内容。</p>
+
+<p>D将日显示为不带前导零的数字（如 1）。如果这是用户定义的数字格式中的唯一字符，请使用 %D。</p>
+
+<p>DD将日显示为带前导零的数字（如 01）。</p>
+
+<p>EEE将日显示为缩写形式（例如 SUN）。</p>
+
+<p>EEEE将日显示为全名（例如 SUNDAY）。</p>
+
+<p>M将月份显示为不带前导零的数字（如一月表示为 1）。如果这是用户定义的数字格式中的唯一字符，请使用 %M。</p>
+
+<p>MM将月份显示为带前导零的数字（例如 01/12/01）。</p>
+
+<p>MMM将月份显示为缩写形式（例如 JAN）。</p>
+
+<p>MMMM将月份显示为完整月份名（例如 JANUARY）。</p>
+
+<p>GG显示时代/纪元字符串（例如 A.D.）</p>
+
+<p>H使用 12 小时制将小时显示为不带前导零的数字（例如 1:15:15 PM）。如果这是用户定义的数字格式中的唯一字符，请使用 %H。</p>
+
+<p>HH使用 12 小时制将小时显示为带前导零的数字（例如 01:15:15 PM）。</p>
+
+<p>H使用 24 小时制将小时显示为不带前导零的数字（例如 1:15:15）。如果这是用户定义的数字格式中的唯一字符，请使用 %H。</p>
+
+<p>HH使用 24 小时制将小时显示为带前导零的数字（例如 01:15:15）。</p>
+
+<p>M将分钟显示为不带前导零的数字（例如 12:1:15）。如果这是用户定义的数字格式中的唯一字符，请使用 %M。</p>
+
+<p>MM将分钟显示为带前导零的数字（例如 12:01:15）。</p>
+
+<p>S将秒显示为不带前导零的数字（例如 12:15:5）。如果这是用户定义的数字格式中的唯一字符，请使用 %S。</p>
+
+<p>SS将秒显示为带前导零的数字（例如 12:15:05）。</p>
+
+<p>F显示秒的小数部分。例如，FF 将精确显示到百分之一秒，而 FFFF 将精确显示到万分之一秒。用户定义格式中最多可使用七个 F 符号。如果这是用户定义的数字格式中的唯一字符，请使用 %F。</p>
+
+<p>T使用 12 小时制，并对中午之前的任一小时显示大写的 A，对中午到 11:59 P.M 之间的任一小时显示大写的 P。如果这是用户定义的数字格式中的唯一字符，请使用 %T。</p>
+
+<p>TT对于使用 12 小时制的区域设置，对中午之前任一小时显示大写的 AM，对中午到 11:59 P.M 之间的任一小时显示大写的 PM。对于使用 24 小时制的区域设置，不显示任何字符。</p>
+
+<p>Y将年份 (0-9) 显示为不带前导零的数字。如果这是用户定义的数字格式中的唯一字符，请使用 %Y。</p>
+
+<p>YY以带前导零的两位数字格式显示年份（如果适用）。</p>
+
+<p>YYY以四位数字格式显示年份。</p>
+
+<p>YYYY以四位数字格式显示年份。</p>
+
+<p>Z显示不带前导零的时区偏移量（如 -8）。如果这是用户定义的数字格式中的唯一字符，请使用 %Z。</p>
+
+<p>ZZ显示带前导零的时区偏移量（例如 -08）</p>
+
+<p>ZZZ显示完整的时区偏移量（例如 -08:00）</p>
+
+<p>格式显示</p>
+
+<pre><code>M/D/YY    12/7/58
+D-MMM    7-DEC
+D-MMMM-YY     7-DECEMBER-58
+D MMMM      7 DECEMBER
+MMMM YY    DECEMBER 58
+HH:MM TT     08:50 PM
+H:MM:SS T     8:50:35 P
+H:MM    20:50
+H:MM:SS    20:50:35
+M/D/YYYY H:MM     12/7/1958 20:50   
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"beyondvincent"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>
