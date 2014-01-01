@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>我的博客搬家啦～ - Abel之家</title>
+	<title>thread-overview - Abel之家</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="我的博客搬家啦～ &nbsp;&nbsp;&nbsp;&nbsp;我是一个非常喜欢折腾的程序猿，之前我一直在CSDN上写博文，但由于一些种种的原因，后来放弃了CSDN,之后一直都有搭建个人站点的想法,在网上搜索了如何搭建个人站点,网上有很多的人建议用Octopress+Github, &hellip;">
+	<meta name="description" content="Thread-overview 引言 1、iOS有三种多线程编程的技术，分别是： 1.NSThread 2.Cocoa NSOperation （IOS多线程编程之NSOperation和NSOperationQueue的使用） 3.GCD 全称：Grand Central Dispatch（ &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/2013/12/01/my-new-blog/">
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2013/09/24/thread-overview/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -89,35 +89,46 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">我的博客搬家啦～</h1>
-	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2013/12/01/my-new-blog.png" alt="image" /></p>
+	<h1 class="title" itemprop="name">Thread-overview</h1>
+	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2013/09/26/multithreading.png" alt="image" /></p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;我是一个非常喜欢折腾的程序猿，之前我一直在CSDN上写博文，但由于一些种种的原因，后来放弃了CSDN,之后一直都有搭建个人站点的想法,在网上搜索了如何搭建个人站点,网上有很多的人建议用Octopress+Github,转而开始用Octopress搭建博客<!--more-->，从开始弄Octopress到成功在Github上发布博文已经差不多一个月了，虽然网上有太多关于得用Octopress搭建Github博客的博文，但对于一个小白的我使用Octopress搭建Github博客过程的坚苦也只有自己知道，所以在下一篇博文中我将会记录我使用Octopress搭建Github博客的点点滴滴。</p>
+<p><strong>引言</strong></p>
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;搭建博客的主要原因一是可以与大家分享交流，二是可以总结一下自己。
-使用Octopress+Github与CSDN、百度、新郎、博客园相比，它更自由，可以自定义自己的时尚元素，有一些我非常喜欢的style.如果想使用Octopress+Github搭建博客，将会经历如下步骤：</p>
+<p>1、iOS有三种多线程编程的技术，分别是：</p>
 
-<p>1.首先，注册一个github账号。</p>
+<p>1.NSThread</p>
 
-<p>2.配置环境</p>
+<p>2.Cocoa NSOperation （IOS多线程编程之NSOperation和NSOperationQueue的使用）</p>
 
-<p>3.下载Octopress包</p>
+<p>3.GCD 全称：Grand Central Dispatch（ IOS多线程编程之Grand Central Dispatch(GCD)介绍和使用）</p>
 
-<p>4.配置Octopress</p>
+<p>这三种编程方式从上到下，抽象度层次是从低到高的，抽象度越高的使用越简单，也是Apple最推荐使用的。</p>
 
-<p>5.绑定Github账号</p>
+<p>2、三种方式的有缺点介绍：</p>
 
-<p>6.把Octopress提交到Github</p>
+<p>NSThread:</p>
 
-<p>如果想用域名可以访问的话，还需要经历如下的步骤：</p>
+<p>优点：NSThread 比其他两个轻量级</p>
 
-<p>7.域名注册</p>
+<p>缺点：需要自己管理线程的生命周期，线程同步。线程同步对数据的加锁会有一定的系统开销</p>
 
-<p>8.购买虚拟主机</p>
+<p>NSThread实现的技术有下面三种:</p>
 
-<p>9.域名与虚拟主机中的IP进行绑定。</p>
+<p>Cocoa threads:</p>
 
-<p>到此，博客就基本搭建好了～</p>
+<p>Technology  Description
+Cocoa threads   Cocoa implements threads using the NSThread class. Cocoa also provides methods on NSObject for spawning new threads and executing code on already-running threads. For more information, see “Using NSThread” and “Using NSObject to Spawn a Thread.”
+POSIX threads   POSIX threads provide a C-based interface for creating threads. If you are not writing a Cocoa application, this is the best choice for creating threads. The POSIX interface is relatively simple to use and offers ample flexibility for configuring your threads. For more information, see “Using POSIX Threads”
+Multiprocessing Services    Multiprocessing Services is a legacy C-based interface used by applications transitioning from older versions of Mac OS. This technology is available in OS X only and should be avoided for any new development. Instead, you should use the NSThread class or POSIX threads. If you need more information on this technology, see Multiprocessing Services Programming Guide.
+一般使用cocoa thread 技术。</p>
+
+<p>Cocoa operation</p>
+
+<p>优点：不需要关心线程管理，数据同步的事情，可以把精力放在自己需要执行的操作上。</p>
+
+<p>Cocoa operation相关的类是 NSOperation,NSOperationQueue。NSOperation是个抽象类，使用它必须用它的子类，可以实现它或者使用它定义好的两个子类：NSInvocationOperation和NSBlockOperation。创建NSOperation子类的对象，把对象添加到NSOperationQueue队列里执行。</p>
+
+<p>GCD:Grand Central Dispatch (GCD)是Apple开发的一个多核编程的解决方法。在iOS4.0开始之后才能使用。GCD是一个替代诸如NSThread, NSOperationQueue, NSInvocationOperation等技术的很高效和强大的技术。现在的iOS系统都升级到6了，所以不用担心该技术不能使用。</p>
 </div>
 
 </article>

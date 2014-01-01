@@ -9,7 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Dec 29th, 2013 我的新起点之年——2013 引言 最近逛一些论坛和博客看了很多人都在总结自己的2013年，我也想了想自己这一年来发生的事情，自己也真的是需要好好整理一下自己，调整一下的生活方向，避免自己在现有的环境中迷失方向。思绪万千，我该从哪儿开始呢？想了想， &hellip;">
+	<meta name="description" content="Dec 29th, 2013 我的新起点之年——2013 引言 人生如一本书，应该多一些精彩的细节，少一些乏味的字眼;人生如一支歌，应该多一些昂扬的旋律，少一些忧伤的音符;人生如一幅画，应该多一些亮丽的色彩，少一些灰暗的色调。 阅读全文 &rarr; Dec 26th, 2013 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -118,7 +118,7 @@
 
 <p><strong>引言</strong></p>
 
-<p>最近逛一些论坛和博客看了很多人都在总结自己的2013年，我也想了想自己这一年来发生的事情，自己也真的是需要好好整理一下自己，调整一下的生活方向，避免自己在现有的环境中迷失方向。思绪万千，我该从哪儿开始呢？想了想，还是从我从一个学生正式步入社会开始说起吧～</p>
+<p>人生如一本书，应该多一些精彩的细节，少一些乏味的字眼;人生如一支歌，应该多一些昂扬的旋律，少一些忧伤的音符;人生如一幅画，应该多一些亮丽的色彩，少一些灰暗的色调。</p>
 
 
 		
@@ -288,6 +288,75 @@
   
 
 
+<time datetime="2013-09-24T10:34:29+08:00" data-updated="true" itemprop="datePublished">Sep 24<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/09/24/thread-overview/" itemprop="url">Thread-overview</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/images/2013/09/26/multithreading.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<p>1、iOS有三种多线程编程的技术，分别是：</p>
+
+<p>1.NSThread</p>
+
+<p>2.Cocoa NSOperation （IOS多线程编程之NSOperation和NSOperationQueue的使用）</p>
+
+<p>3.GCD 全称：Grand Central Dispatch（ IOS多线程编程之Grand Central Dispatch(GCD)介绍和使用）</p>
+
+<p>这三种编程方式从上到下，抽象度层次是从低到高的，抽象度越高的使用越简单，也是Apple最推荐使用的。</p>
+
+<p>2、三种方式的有缺点介绍：</p>
+
+<p>NSThread:</p>
+
+<p>优点：NSThread 比其他两个轻量级</p>
+
+<p>缺点：需要自己管理线程的生命周期，线程同步。线程同步对数据的加锁会有一定的系统开销</p>
+
+<p>NSThread实现的技术有下面三种:</p>
+
+<p>Cocoa threads:</p>
+
+<p>Technology  Description
+Cocoa threads   Cocoa implements threads using the NSThread class. Cocoa also provides methods on NSObject for spawning new threads and executing code on already-running threads. For more information, see “Using NSThread” and “Using NSObject to Spawn a Thread.”
+POSIX threads   POSIX threads provide a C-based interface for creating threads. If you are not writing a Cocoa application, this is the best choice for creating threads. The POSIX interface is relatively simple to use and offers ample flexibility for configuring your threads. For more information, see “Using POSIX Threads”
+Multiprocessing Services    Multiprocessing Services is a legacy C-based interface used by applications transitioning from older versions of Mac OS. This technology is available in OS X only and should be avoided for any new development. Instead, you should use the NSThread class or POSIX threads. If you need more information on this technology, see Multiprocessing Services Programming Guide.
+一般使用cocoa thread 技术。</p>
+
+<p>Cocoa operation</p>
+
+<p>优点：不需要关心线程管理，数据同步的事情，可以把精力放在自己需要执行的操作上。</p>
+
+<p>Cocoa operation相关的类是 NSOperation,NSOperationQueue。NSOperation是个抽象类，使用它必须用它的子类，可以实现它或者使用它定义好的两个子类：NSInvocationOperation和NSBlockOperation。创建NSOperation子类的对象，把对象添加到NSOperationQueue队列里执行。</p>
+
+<p>GCD:Grand Central Dispatch (GCD)是Apple开发的一个多核编程的解决方法。在iOS4.0开始之后才能使用。GCD是一个替代诸如NSThread, NSOperationQueue, NSInvocationOperation等技术的很高效和强大的技术。现在的iOS系统都升级到6了，所以不用担心该技术不能使用。</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
 <time datetime="2013-09-10T11:28:02+08:00" data-updated="true" itemprop="datePublished">Sep 10<span>th</span>, 2013</time></div>
 		<div class="tags">
 
@@ -317,7 +386,7 @@
 </nav></div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2013 - Abel -
+  Copyright &copy; 2014 - Abel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
