@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-03T17:58:09+08:00</updated>
+  <updated>2014-01-03T19:17:55+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -463,7 +463,7 @@ pod 'AFNetworking', '~&gt;1.1.0'
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS设计模式之单例模式]]></title>
+    <title type="html"><![CDATA[iOS常用设计模式之单例模式]]></title>
     <link href="http://beyondabel.github.io/blog/2013/10/30/singleton/"/>
     <updated>2013-10-30T12:55:59+08:00</updated>
     <id>http://beyondabel.github.io/blog/2013/10/30/singleton</id>
@@ -471,14 +471,55 @@ pod 'AFNetworking', '~&gt;1.1.0'
 
 <p><strong>引言</strong></p>
 
-<p>单例模式是iOS常用设计模式中的一种。单例设计模式的作用是使得这个类的一个对象成为系统中的唯一实例，因此需要用一种唯一的方法去创建这个对象并返回这个对象的地址。那么，我们何时使用单例模式呢？</p>
+<p>在很多时间，singleton定义为“有且仅有一个元素的集合”，所以不管那个对象到底有多大，每次我们拿这个对象时都是同一个。在什么情况下会需要单例以及单例在Objective-C中如何实现呢？本节Abel将与您一起探讨一些有关singleton的知识。</p>
 
 <!--more-->
 
 
-<p>1、类只能有一个实例，而且必须从一个为人熟知的访问点对其访问。</p>
+<p><strong>目录</strong></p>
 
-<p>2、这个唯一的实例只能通过子类化进行扩展，而且扩展的对象不会破坏客户端代码。</p>
+<pre><code>1、什么是单例模式
+2、什么时候用单例模式
+3、Objective-C中单例模式的实现
+4、线程安全
+5、总结
+</code></pre>
+
+<p><strong>1、什么是单例模式</strong></p>
+
+<p>单例模式几乎是设计模式中最简单的了。这一模式的意图是使得类的一个对象成为系统中唯一的实例。要实例这一点，可以从客户端对其进行实例化开始。因此需要用一种只允许生成对象类的唯一实例的机制，“阻止”所有想要生成对象的访问。我们可以用工厂方法来限制实例化过程。这个方法应该是一个静态的方法（类方法），因为让类的实例去生成另一个唯一实例毫无意义。</p>
+
+<p><strong>2、什么时候使用单例模式</strong></p>
+
+<pre><code>1、类只能有一个实例，而且必须从一个为人熟知的访问点对其访问。
+2、这个唯一的实例只能通过子类化进行扩展，而且扩展的对象不会破坏客户端代码。
+</code></pre>
+
+<p><strong>3、Objective-C中单例模式的实现</strong></p>
+
+<p>在《设计模式》一书中的原始示例中，单例模式的C++例子如下所求：</p>
+
+<pre><code>class Singleton
+{
+    public:
+        static Singleton *Instance();
+    protected:
+        Singleton();
+    private:
+        static Singletion * _instance;
+}
+
+Singleton *Singleton::Instance()
+{
+    if(_instance == 0)
+    {
+        instance = new Singleton;
+    }
+    return _instance;
+}
+</code></pre>
+
+<p>知道C++语言的人都能看出来，在上面的C++代码Instance()方法中，检查静态的_instance实例变量，看它是否为0，如果是，会生成一个新的Singleton对象，然后将实例返回，现在我们把它改造成Objective-C版。</p>
 
 <p>那么用Objective-C如何实现单例模式呢？下面我们来新建一个Singleton类，在Singleton.h中实现如下</p>
 
@@ -498,11 +539,14 @@ static Singleton * sharedSingleton = nil;
     } 
     return sharedSingleton;
 }  
-
 @end 
 </code></pre>
 
-<p>这样就创建一个简单的单例模式，实际上有一部分程序员也是这样实现的，但实际上这是一个不“严格”版本，在实际中使用，可能会遇到发起调用的对象不能以其他分配方式实例化单例对象，否则，就会创建多个实例。（之前有人和我讨论过这个问题，说使用者应该严格按照接口来使用，当实际上Singleton是一个对象，我们不能保证使用者不会使用其他的方法去创建（比如alloc）,这个时候他就会创建多个实例，这样就会出现这些无法感知的bug）</p>
+<p>按照C++改造成Objective-C就完成了。如果真是这样的话，那么单例模式真的是太简单了，但实际上，需要克服一些障碍，才能让单例模式更可靠，可以真正放心地应用于程序中。如果需要实现一个“严格”的单例模式，还需要面对两个主要的障碍。</p>
+
+<pre><code>发起调用的对象不能以其他分配方式实例化对象。否则，就有可能创建多个单例实例。
+对单例对象实例化的限制应该与引用计数内存模型共存。
+</code></pre>
 
 <p>下面我对<code>Singleton.m</code>的进行改进</p>
 
@@ -542,7 +586,15 @@ static Singleton * sharedSingleton = nil;
 @end 
 </code></pre>
 
-<p>也许你注意到了，我重载了<code>allocWithZone:</code>，保持了从<code>sharedInstance</code>方法返回的单例对象，使用者哪怕使用<code>alloc</code>时也会返回唯一的实例（<code>alloc</code>方法中会先调用<code>allocWithZone:</code>创建对象）。而<code>retain</code>等内存管理的函数也被重载了，这样做让我们有了把<code>Singleton</code>类变得“严格”了。</p>
+<p>也许你注意到了，我重载了<code>allocWithZone:</code>，保持了从<code>sharedInstance</code>方法返回的单例对象，使用者哪怕使用<code>alloc</code>时也会返回唯一的实例（<code>alloc</code>方法中会先调用<code>allocWithZone:</code>创建对象）。而<code>retain</code>等内存管理的函数也被重载了，这样实现了合适的内存管理原则。</p>
+
+<p><strong>4、线程安全</strong></p>
+
+<p>如果单例对象要由多个线程访问，那么使它的线程安全至关重要。例子中的Singleton类只能胜任一般用途。要让它线程安全，需要在sharedSingleton静态实例的nil检查周围加入一些@synchronized()程序块或者NSLock实例。如果有其他的属性需要保护，也可以把它们声明为atomic型。</p>
+
+<p><strong>5、总结</strong></p>
+
+<p>到此，单例模式的讲解就到些结束了。不管在哪个平台开发，单例模式都极为常用。如果单例模式还有不懂的地方，可以给我留言。</p>
 ]]></content>
   </entry>
   
