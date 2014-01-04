@@ -116,7 +116,14 @@
 <pre><code>1、curl -L https://get.rvm.io | bash -s stable --ruby
 </code></pre>
 
-<p>接着是安装<code>Ruby 2.0.0</code>，在终端依次运行如下命令：</p>
+<p>先查看Ruby的版本号，在终端依次运行如下命令：</p>
+
+<pre><code>ruby -v
+</code></pre>
+
+<p>如果ruby的版本号大于1.9.3，那么就不用安装了，如果小于1.9.3那就需要安装Ruby</p>
+
+<p>接着是安装<code>Ruby 2.0.0</code>,在终端依次运行如下命令：</p>
 
 <pre><code>1、rvm install 1.9.3
 2、rvm use 1.9.3

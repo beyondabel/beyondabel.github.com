@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-03T19:17:55+08:00</updated>
+  <updated>2014-01-04T20:48:33+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,129 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS常用设计模式之委托模式]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/03/ios-proxymode/"/>
+    <updated>2014-01-03T19:20:57+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/03/ios-proxymode</id>
+    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+
+<p>在代理模式中，有两个对象参与处理同一个请求，接受请求的对象将请求委托给另一个对象来处理。</p>
+
+<p>目录</p>
+
+<pre><code>1、什么是代理模式
+2、使用代理模式的优点
+3、什么时候使用代理模式
+4、代理模式一般涉及到的角色
+5、Objective-C的代理模式实现
+</code></pre>
+
+<p><strong>1、什么是代理模式</strong>
+对其他对象提供一种代理以控制对这个对象的访问。</p>
+
+<p><strong>2、使用代理模式的优点</strong></p>
+
+<pre><code>(1)职责清晰：真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，
+            通过后期的代理完成一件完成事务，附带的结果就是编程简洁清晰。
+(2)代理对象可以在客户端和目标对象之间起到中介的作用，这样起到了的作用和保护了目标对象的作用。
+(3)高扩展性
+</code></pre>
+
+<p><strong>3、什么时候使用代理模式</strong></p>
+
+<p>在对已有的方法进行使用的时候出现需要对原有方法进行改进或者修改，这时候有两种改进选择：修改原有方法来适应现在的使用方式，或者使用一个“第三者”方法来调用原有的方法并且对方法产生的结果进行一定的控制。第一种方法是明显违背了“对扩展开放、对修改关闭”（开闭原则），而且在原来方法中作修改可能使得原来类的功能变得模糊和多元化（就像现在企业多元化一样），而使用第二种方式可以将功能划分的更加清晰，有助于后面的维护。所以在一定程度上第二种方式是一个比较好的选择！</p>
+
+<p><strong>4、代理模式一般涉及到的角色</strong></p>
+
+<p>抽象角色：声明真实对象和代理对象的共同接口；</p>
+
+<p>代理角色：代理对象角色内部含有对真实对象的引用，从而可以操作真实对象，同时代理对象提供与真实对象相同的接口以便在任何时刻都能代替真实对象。同时，代理对象可以在执行真实对象操作时，附加其他的操作，相当于对真实对象进行封装。</p>
+
+<p>真实角色：代理角色所代表的真实对象，是我们最终要引用的对象。</p>
+
+<p><strong>5、Objective-C的代理模式实现</strong></p>
+
+<p>现在借助主人和仆人的角色来讲解代理模式。我们想象一下，主人想喝水，需要去买水，但主人不知道怎么去买水，那他叫仆人去帮他买水，仆人听到命令就去买水，仆人买完水再交给主人，这个时候主人就有水喝了。</p>
+
+<p>现在我们用Objective-C来实现这个过程</p>
+
+<p>新建一个Servant协议类</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+@protocol ServantProtocol &lt;NSObject&gt;
+- (void) finishedBuyWater;
+- (void) finishedBuyWaterError;
+@end
+
+
+新建一个仆人Servant类，.h文件如下：
+
+#import &lt;Foundation/Foundation.h&gt;
+#import "ServantProtocol.h"
+
+@interface Servant : NSObject
+@property (nonatomic,assign) id&lt;ServantProtocol&gt; delegate;
+- (void) buyWater;
+@end
+</code></pre>
+
+<p>.m文件如下：</p>
+
+<pre><code>#import "Servant.h"
+
+@implementation Servant
+- (void) buyWater:(NSInteger)money
+{
+    if (money &gt; 2) {
+        [self.delegate finishedBuyWater];
+    }else{
+        [self.delegate finishedBuyWaterError];
+    }
+}
+@end
+</code></pre>
+
+<p>新建一个Master类，.h文件如下：</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import "ServantProtocol.h"
+
+@interface Master : NSObject&lt;ServantProtocol&gt;
+- (void) drinkWater;
+@end
+</code></pre>
+
+<p>.m文件如下：</p>
+
+<pre><code>#import "Master.h"
+#import "Servant.h"
+
+@implementation Master
+
+- (void) drinkWater
+{
+    Servant * servant = [[Servant alloc] init];
+    servant.delegate = self;
+    // 命令仆人去买水
+    [servant buyWater];
+}
+
+#pragma mark - ServantProtocol
+- (void) finishedBuyWater
+{
+    NSLog(@"完成买水");
+}
+
+- (void) finishedBuyWaterError
+{
+    NSLog(@"买水出错");
+}
+@end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[利用Octopress在Github搭建一个博客]]></title>
@@ -42,7 +165,14 @@
 <pre><code>1、curl -L https://get.rvm.io | bash -s stable --ruby
 </code></pre>
 
-<p>接着是安装<code>Ruby 2.0.0</code>，在终端依次运行如下命令：</p>
+<p>先查看Ruby的版本号，在终端依次运行如下命令：</p>
+
+<pre><code>ruby -v
+</code></pre>
+
+<p>如果ruby的版本号大于1.9.3，那么就不用安装了，如果小于1.9.3那就需要安装Ruby</p>
+
+<p>接着是安装<code>Ruby 2.0.0</code>,在终端依次运行如下命令：</p>
 
 <pre><code>1、rvm install 1.9.3
 2、rvm use 1.9.3

@@ -9,7 +9,11 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Dec 26th, 2013 Octopress 利用Octopress在Github搭建一个博客 引言 Octopress是利用Jekyll博客引擎开发的一个博客系统，生成的静态页面能够很好的在github page上展现。号称是hacker专属的一个博客系统(A blogging &hellip;">
+	<meta name="description" content="Jan 3rd, 2014 iOS常用设计模式 iOS常用设计模式之委托模式 引言 在代理模式中，有两个对象参与处理同一个请求，接受请求的对象将请求委托给另一个对象来处理。 目录 1、什么是代理模式
+2、使用代理模式的优点
+3、什么时候使用代理模式
+4、代理模式一般涉及到的角色
+5、 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +96,155 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-03T19:20:57+08:00" data-updated="true" itemprop="datePublished">Jan 3<span>rd</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ioschang-yong-she-ji-mo-shi/'>iOS常用设计模式</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/03/ios-proxymode/" itemprop="url">iOS常用设计模式之委托模式</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><strong>引言</strong></p>
+
+<p>在代理模式中，有两个对象参与处理同一个请求，接受请求的对象将请求委托给另一个对象来处理。</p>
+
+<p>目录</p>
+
+<pre><code>1、什么是代理模式
+2、使用代理模式的优点
+3、什么时候使用代理模式
+4、代理模式一般涉及到的角色
+5、Objective-C的代理模式实现
+</code></pre>
+
+<p><strong>1、什么是代理模式</strong>
+对其他对象提供一种代理以控制对这个对象的访问。</p>
+
+<p><strong>2、使用代理模式的优点</strong></p>
+
+<pre><code>(1)职责清晰：真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，
+            通过后期的代理完成一件完成事务，附带的结果就是编程简洁清晰。
+(2)代理对象可以在客户端和目标对象之间起到中介的作用，这样起到了的作用和保护了目标对象的作用。
+(3)高扩展性
+</code></pre>
+
+<p><strong>3、什么时候使用代理模式</strong></p>
+
+<p>在对已有的方法进行使用的时候出现需要对原有方法进行改进或者修改，这时候有两种改进选择：修改原有方法来适应现在的使用方式，或者使用一个“第三者”方法来调用原有的方法并且对方法产生的结果进行一定的控制。第一种方法是明显违背了“对扩展开放、对修改关闭”（开闭原则），而且在原来方法中作修改可能使得原来类的功能变得模糊和多元化（就像现在企业多元化一样），而使用第二种方式可以将功能划分的更加清晰，有助于后面的维护。所以在一定程度上第二种方式是一个比较好的选择！</p>
+
+<p><strong>4、代理模式一般涉及到的角色</strong></p>
+
+<p>抽象角色：声明真实对象和代理对象的共同接口；</p>
+
+<p>代理角色：代理对象角色内部含有对真实对象的引用，从而可以操作真实对象，同时代理对象提供与真实对象相同的接口以便在任何时刻都能代替真实对象。同时，代理对象可以在执行真实对象操作时，附加其他的操作，相当于对真实对象进行封装。</p>
+
+<p>真实角色：代理角色所代表的真实对象，是我们最终要引用的对象。</p>
+
+<p><strong>5、Objective-C的代理模式实现</strong></p>
+
+<p>现在借助主人和仆人的角色来讲解代理模式。我们想象一下，主人想喝水，需要去买水，但主人不知道怎么去买水，那他叫仆人去帮他买水，仆人听到命令就去买水，仆人买完水再交给主人，这个时候主人就有水喝了。</p>
+
+<p>现在我们用Objective-C来实现这个过程</p>
+
+<p>新建一个Servant协议类</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+@protocol ServantProtocol &lt;NSObject&gt;
+- (void) finishedBuyWater;
+- (void) finishedBuyWaterError;
+@end
+
+
+新建一个仆人Servant类，.h文件如下：
+
+#import &lt;Foundation/Foundation.h&gt;
+#import "ServantProtocol.h"
+
+@interface Servant : NSObject
+@property (nonatomic,assign) id&lt;ServantProtocol&gt; delegate;
+- (void) buyWater;
+@end
+</code></pre>
+
+<p>.m文件如下：</p>
+
+<pre><code>#import "Servant.h"
+
+@implementation Servant
+- (void) buyWater:(NSInteger)money
+{
+    if (money &gt; 2) {
+        [self.delegate finishedBuyWater];
+    }else{
+        [self.delegate finishedBuyWaterError];
+    }
+}
+@end
+</code></pre>
+
+<p>新建一个Master类，.h文件如下：</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+#import "ServantProtocol.h"
+
+@interface Master : NSObject&lt;ServantProtocol&gt;
+- (void) drinkWater;
+@end
+</code></pre>
+
+<p>.m文件如下：</p>
+
+<pre><code>#import "Master.h"
+#import "Servant.h"
+
+@implementation Master
+
+- (void) drinkWater
+{
+    Servant * servant = [[Servant alloc] init];
+    servant.delegate = self;
+    // 命令仆人去买水
+    [servant buyWater];
+}
+
+#pragma mark - ServantProtocol
+- (void) finishedBuyWater
+{
+    NSLog(@"完成买水");
+}
+
+- (void) finishedBuyWaterError
+{
+    NSLog(@"买水出错");
+}
+@end
+</code></pre>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -420,46 +573,6 @@
 
 		
 		<a href="/blog/2013/09/25/ios-developerment-error/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-24T10:34:29+08:00" data-updated="true" itemprop="datePublished">Sep 24<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/thread/'>Thread</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/24/thread-overview/" itemprop="url">多线程总述</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/images/2013/09/26/multithreading.png" alt="image" /></p>
-
-<p><strong>引言</strong></p>
-
-<p>多线程是一个比较轻量级的方法来实现单个应用程序内多个代码执行路径。在系统级别内，程序并排执行，系统分配到每个程序的执行时间是基于该程序的所需时间和其他程序的所需时间来决定的。然而在每个应程序的内部，存在一个或多个执行线程，它同时或在一个几乎同时发生的方式里执行不同的任务。系统本身管理这些执行的线程，调度它们在可用的内核上运行，并在需要让其他线程执行的时候抢先打断它们。</p>
-
-
-		
-		<a href="/blog/2013/09/24/thread-overview/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>
