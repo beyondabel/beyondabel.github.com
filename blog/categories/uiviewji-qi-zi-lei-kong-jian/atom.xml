@@ -1,101 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE HTML>
-
-<html>
-
-<head>
-	<meta charset="utf-8">
-	<title>视图鼻祖之UIView详解 - Abel之家</title>
-	<meta name="author" content="Abel">
-
-	
-	<meta name="description" content="视图鼻祖之UIView详解 引言 UIView表示屏幕上的一块矩形区域，它在App中占有绝对重要的地位，因为iOS中几乎所有可视化控件都是UIView的子类。负责渲染区域的内容，并且响应该区域内发生的触摸事件 目录 1、UIView家族
-2、UIView的基本属性
-3、几何方法类
-4、控制级别类 &hellip;">
-	
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
-	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/04/uiview/">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <title><![CDATA[Category: UIView及其子类控件 | Abel之家]]></title>
+  <link href="http://beyondabel.github.io/blog/categories/uiviewji-qi-zi-lei-kong-jian/atom.xml" rel="self"/>
+  <link href="http://beyondabel.github.io/"/>
+  <updated>2014-01-05T23:34:47+08:00</updated>
+  <id>http://beyondabel.github.io/</id>
+  <author>
+    <name><![CDATA[Abel]]></name>
+    <email><![CDATA[abel_tu@163.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-</head>
-
-
-<body>
-	<div class="container">
-		<div class="left-col">
-			<div class="intrude-less">
-			<header id="header" class="inner"><div class="profilepic">
-	
-	<script src="/javascripts/md5.js"></script>
-	<script type="text/javascript">
-		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
-	</script>
-	
-</div>
-<hgroup>
-  <h1><a href="/">Abel之家</a></h1>
-  
-    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
-  
-</hgroup>
-
-<nav id="main-nav"><ul class="main-navigation">
-  <li><a href="/">首页</a></li>
-  <li><a href="/blog/archives">所有文章</a></li>
-  <li><a href="/about">关于</a></li>
-</ul>
-
-</nav>
-<nav id="sub-nav">
-	<div class="social">
-		
-			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
-		
-	</div>
-</nav>
-</header>				
-			</div>
-		</div>	
-		<div class="mid-col">
-			
-				
-			
-			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">视图鼻祖之UIView详解</h1>
-	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+  <entry>
+    <title type="html"><![CDATA[视图鼻祖之UIView详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/04/uiview/"/>
+    <updated>2014-01-04T21:04:48+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/04/uiview</id>
+    <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
 <p>UIView表示屏幕上的一块矩形区域，它在App中占有绝对重要的地位，因为iOS中几乎所有可视化控件都是UIView的子类。负责渲染区域的内容，并且响应该区域内发生的触摸事件</p>
 
@@ -677,52 +600,7 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 - (UIView *)resizableSnapshotViewFromRect:(CGRect)rect afterScreenUpdates:(BOOL)afterUpdates withCapInsets:(UIEdgeInsets)capInsets;
 - (BOOL)drawViewHierarchyInRect:(CGRect)rect afterScreenUpdates:(BOOL)afterUpdates;
 </code></pre>
-</div>
-
-</article>
-
-	<div class="share">
-	<div class="addthis_toolbox addthis_default_style ">
-	
-	
-	
-	<a class="addthis_counter addthis_pill_style"></a>
-	</div>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
-</div>
-
-
-
-
-
-<section>
-    <h1>Comments</h1>
-    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread"></div>
-<script type="text/javascript">
-    var duoshuoQuery = {short_name:"abel"};
-    (function() {
-     var ds = document.createElement('script');
-     ds.type = 'text/javascript';ds.async = true;
-     ds.src = 'http://static.duoshuo.com/embed.js';
-     ds.charset = 'UTF-8';
-     (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-     })();
-    </script>
-<!-- Duoshuo Comment END --></div>
-</section>
-</div>
-			</div>
-			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2014 - Abel -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
-			
-
-		</div>
-	</div>
-</body>
-</html>
+]]></content>
+  </entry>
+  
+</feed>
