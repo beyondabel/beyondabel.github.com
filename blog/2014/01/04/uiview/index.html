@@ -6,8 +6,20 @@
 
 <pre><code>1、UIView家族
 2、UIView的基本属性
-3、UIView的常用方法
-4、UIView动画
+3、几何方法类
+4、控制级别类
+5、渲染类
+6、动画类
+7、手势类
+8、移动效果类
+9、基于布局约束类(iOS6.0)
+10、基于布局的约束core方法(iOS 6.0)
+11、基于约束的兼容性（iOS 6.0）
+12、层次布局的约束（iOS 6.0）
+13、设备大小布局约束(iOS 6.0)
+14、布局调度(iOS 6.0)
+15、状态恢复(iOS 6.0)
+16、快照 （iOS7.0）
 </code></pre>
 
 <!--more-->
@@ -51,9 +63,7 @@ NSArray *subviews;// 子视图
 <p>*opaque和alpha 是有关系的。 一个不透明视图需要整个边界里面的内容都是不透明的。基于这个原因，opaque设置为YES，要求对应的alpha必须为1.0。如果一个UIView实例opaque被设置为YES, 而同时它又没有完全填充它的边界(bounds),或者它包含了整个或部分的透明的内容视图，那么将会导致未知的结果。
 因此，如果视图部分或全部支持透明，那么你必须把opaque这个值设置为NO.</p>
 
-<p><strong>3、UIView的常用方法</strong></p>
-
-<p><strong>几何方法类</strong></p>
+<p><strong>3、几何方法类</strong></p>
 
 <pre><code>// hitTest主要用途是用来寻找那个视图是被触摸了
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event;   
@@ -100,7 +110,7 @@ NSArray *subviews;// 子视图
 - (CGRect)convertRect:(CGRect)rect fromView:(UIView *)view;
 </code></pre>
 
-<p><strong>控制级别类</strong></p>
+<p><strong>4、控制级别类</strong></p>
 
 <pre><code>// 把视图从父类移除
 - (void)removeFromSuperview;
@@ -156,7 +166,7 @@ NSArray *subviews;// 子视图
 - (void)layoutSubviews; 
 </code></pre>
 
-<p><strong>渲染类</strong></p>
+<p><strong>5、渲染类</strong></p>
 
 <pre><code>// 重写此方法，执行重绘
 - (void)drawRect:(CGRect)rect;
@@ -169,7 +179,7 @@ NSArray *subviews;// 子视图
 
 <p>注：drawRect是对receiver的重绘。setNeedDisplay在receiver标上一个需要被重新绘图的标记，在下一个draw周期自动重绘，iphone device的刷新频率是60hz，也就是1/60秒后重绘</p>
 
-<p><strong>动画类</strong></p>
+<p><strong>6、动画类</strong></p>
 
 <pre><code>// 开始一个动画
 + (void)beginAnimations:(NSString *)animationID context:(void *)context; 
@@ -350,7 +360,7 @@ cache
 + (void)performSystemAnimation:(UISystemAnimation)animation onViews:(NSArray *)views options:(UIViewAnimationOptions)options animations:(void (^)(void))parallelAnimations completion:(void (^)(BOOL finished))completion NS_AVAILABLE_IOS(7_0);
 </code></pre>
 
-<p><strong>手势类</strong></p>
+<p><strong>7、手势类</strong></p>
 
 <p>// 手势识别器（iOS3.2）
 @property(nonatomic,copy) NSArray *gestureRecognizers;</p>
@@ -379,7 +389,7 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 <pre><code>- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer;
 </code></pre>
 
-<p><strong>移动效果类</strong></p>
+<p><strong>8、移动效果类</strong></p>
 
 <ul>
 <li>(void)addMotionEffect:(UIMotionEffect *)effect NS_AVAILABLE_IOS(7_0);</li>
@@ -396,7 +406,7 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 </ul>
 
 
-<p><strong>基于布局约束类(iOS6.0)</strong></p>
+<p><strong>9、基于布局约束类(iOS6.0)</strong></p>
 
 <p>// 视图布局约束</p>
 
@@ -423,7 +433,7 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 <pre><code>- (void)removeConstraints:(NSArray *)constraints;
 </code></pre>
 
-<p><strong>基于布局的约束core方法(iOS 6.0)</strong></p>
+<p><strong>10、基于布局的约束core方法(iOS 6.0)</strong></p>
 
 <p>// 调用新的视图布局自动触发，更新视图布局上的约束</p>
 
@@ -445,7 +455,7 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 <pre><code>- (void)setNeedsUpdateConstraints;
 </code></pre>
 
-<p><strong>基于约束的兼容性（iOS 6.0）</strong></p>
+<p><strong>11、基于约束的兼容性（iOS 6.0）</strong></p>
 
 <p>// 标示是否自动遵循视图布局约束，默认为YES</p>
 
@@ -462,7 +472,7 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 <pre><code>+ (BOOL)requiresConstraintBasedLayout NS_AVAILABLE_IOS(6_0);
 </code></pre>
 
-<p><strong>层次布局的约束（iOS 6.0）</strong></p>
+<p><strong>12、层次布局的约束（iOS 6.0）</strong></p>
 
 <p>// 返回矩形对于指定视图框架</p>
 
@@ -504,14 +514,14 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 <pre><code>- (void)setContentCompressionResistancePriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis;
 </code></pre>
 
-<p><strong>设备大小布局约束(iOS 6.0)</strong></p>
+<p><strong>13、设备大小布局约束(iOS 6.0)</strong></p>
 
 <p>// 满足约束视图布局的大小</p>
 
 <pre><code>- (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize;
 </code></pre>
 
-<p><strong>布局调度(iOS 6.0)</strong></p>
+<p><strong>14、布局调度(iOS 6.0)</strong></p>
 
 <p>// 返回影响视图布局限制的轴线</p>
 
@@ -528,7 +538,7 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 <pre><code>- (void)exerciseAmbiguityInLayout; 
 </code></pre>
 
-<p><strong>状态恢复(iOS 6.0)</strong></p>
+<p><strong>15、状态恢复(iOS 6.0)</strong></p>
 
 <p>// 标志是否支持保存，恢复视图状态信息</p>
 
@@ -545,7 +555,7 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 <pre><code>- (void) decodeRestorableStateWithCoder:(NSCoder *)coder; 
 </code></pre>
 
-<p><strong>快照 （iOS7.0）</strong></p>
+<p><strong>16、快照 （iOS7.0）</strong></p>
 
 <p>我们有时候可能需要取UIView对象的快照，有几个原因，您可能希望从动画性能改进上去分享您的应用程序的屏幕截图。现有的方法面临几个问题：</p>
 
