@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-05T23:34:47+08:00</updated>
+  <updated>2014-01-06T00:12:23+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -22,7 +22,7 @@
 
 <p>UIView表示屏幕上的一块矩形区域，它在App中占有绝对重要的地位，因为iOS中几乎所有可视化控件都是UIView的子类。负责渲染区域的内容，并且响应该区域内发生的触摸事件</p>
 
-<p>目录</p>
+<p><strong>目录</strong></p>
 
 <pre><code>1、UIView家族
 2、UIView的基本属性
@@ -49,7 +49,7 @@
 
 <p>下图就是视图的内层次</p>
 
-<p><img src="http://my.csdn.net/uploads/201208/21/1345519482_8327.png" alt="image" /></p>
+<p><img src="http://beyondabel.github.io/images/2014/01/04/uiview.png" alt="image" /></p>
 
 <p><strong>2、UIView的基本属性</strong></p>
 
