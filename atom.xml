@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-06T12:20:43+08:00</updated>
+  <updated>2014-01-06T16:20:28+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -14,10 +14,123 @@
 
   
   <entry>
+    <title type="html"><![CDATA[iOS组件之UISwitch详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/06/uiswitch/"/>
+    <updated>2014-01-06T12:34:31+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/06/uiswitch</id>
+    <content type="html"><![CDATA[<p>// 开关是否打开</p>
+
+<pre><code>BOOL on;
+</code></pre>
+
+<p>// 这个frame会被忽略，他会强制设置大小</p>
+
+<!--more-->
+
+
+<pre><code>- (id)initWithFrame:(CGRect)frame;
+</code></pre>
+
+<p>// 打开/关闭调用函数(animated：是否使用动画)</p>
+
+<pre><code>- (void)setOn:(BOOL)on animated:(BOOL)animated;
+</code></pre>
+
+<p><strong>iOS5新增    </strong></p>
+
+<p>// 开关打开时颜色</p>
+
+<pre><code>UIColor *onTintColor;
+</code></pre>
+
+<p><strong>iOS6新增</strong>
+// 背影颜色</p>
+
+<pre><code>UIColor *tintColor;
+</code></pre>
+
+<p>// 开关的圆形滑钮的颜色</p>
+
+<pre><code>UIColor *thumbTintColor;
+</code></pre>
+
+<p>// 开关打开时自定义图片</p>
+
+<pre><code>UIImage *onImage;
+</code></pre>
+
+<p>// 开关关闭时自定义图片</p>
+
+<pre><code>UIImage *offImage;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UIProgressView详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/06/uiprogressview/"/>
+    <updated>2014-01-06T12:28:03+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/06/uiprogressview</id>
+    <content type="html"><![CDATA[<p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+2、iOS5新增内容
+</code></pre>
+
+<!--more-->
+
+
+<p><strong>1、基本属性及方法</strong></p>
+
+<p>// 初始化progressView的样式</p>
+
+<pre><code>- (id)initWithProgressViewStyle:(UIProgressViewStyle)style; 
+</code></pre>
+
+<p>// progressView的样式（默认为UIProgressViewStyleDefault）</p>
+
+<pre><code>UIProgressViewStyle progressViewStyle;
+</code></pre>
+
+<p>// 进度（范围为0-1）</p>
+
+<pre><code>float progress; 
+</code></pre>
+
+<p><strong>2、iOS5新增内容</strong></p>
+
+<p>// 进度填充部分的颜色(譬如进度到40%,那么40%部分的颜色就是这个属性)</p>
+
+<pre><code>UIColor* progressTintColor;
+</code></pre>
+
+<p>// 未填充部分的颜色</p>
+
+<pre><code>UIColor* trackTintColor ;
+</code></pre>
+
+<p>// 进度填充部分的图片，如progressTintColor</p>
+
+<pre><code>UIImage* progressImage;
+</code></pre>
+
+<p>// 未填充部分的图片，如trackTintColor</p>
+
+<pre><code>UIImage* trackImage;
+</code></pre>
+
+<p>// 设置progress的进度</p>
+
+<pre><code>- (void)setProgress:(float)progress animated:(BOOL)animated;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[iOS组件之UILabel详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/06/uilabel/"/>
-    <updated>2014-01-06T09:57:41+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/06/uilabel</id>
+    <link href="http://beyondabel.github.io/blog/2014/01/05/uilabel/"/>
+    <updated>2014-01-05T09:57:41+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/05/uilabel</id>
     <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2014/01/06/uilabel.png" alt="image" /></p>
 
 <p><strong>引言</strong></p>
