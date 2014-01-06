@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-06T16:20:28+08:00</updated>
+  <updated>2014-01-06T17:25:00+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -62,6 +62,109 @@
 <p>// 开关关闭时自定义图片</p>
 
 <pre><code>UIImage *offImage;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UIPageControl详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/06/uipagecontrol/"/>
+    <updated>2014-01-06T12:33:46+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/06/uipagecontrol</id>
+    <content type="html"><![CDATA[<p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+2、iOS6.0新增
+</code></pre>
+
+<!--more-->
+
+
+<p><strong>1、基本属性及方法</strong></p>
+
+<p>// 指定页面个数（默认为0）</p>
+
+<pre><code>NSInteger numberOfPages;
+</code></pre>
+
+<p>// 当前选中的页面（默认为0，范围为0 ～ numberOfPages-1）</p>
+
+<pre><code>NSInteger currentPage;
+</code></pre>
+
+<p>// 如果在numberOfPages为1的情况下隐藏指示器，可以将hideForSinglePage的值设为YES。默认情况下，即使只有一个页面，指示器也会显示进来。</p>
+
+<pre><code>BOOL hidesForSinglePage;
+</code></pre>
+
+<p>// 如果你希望直到有时间执行完你的操作之后，才更新当前指示器当前指示页，可以将 defersCurrentPageDisPlay 设为YES。这样的话你必须调用控件的 updateCurentPageDisPlay 来更新当前页</p>
+
+<pre><code>BOOL defersCurrentPageDisplay;
+</code></pre>
+
+<p>// 更新当前页</p>
+
+<pre><code>- (void)updateCurrentPageDisplay;
+</code></pre>
+
+<p>// 返回接受者的边界大小，与容纳被给的页面数有关</p>
+
+<pre><code>- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;
+</code></pre>
+
+<p><strong>2、iOS6.0新增</strong>
+// 未选中的点的颜色</p>
+
+<pre><code>UIColor *pageIndicatorTintColor;
+</code></pre>
+
+<p>// 当前点颜色</p>
+
+<pre><code>UIColor *currentPageIndicatorTintColor;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UIActivityIndicatorView详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/06/uiactivityindicatorview/"/>
+    <updated>2014-01-06T12:30:48+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/06/uiactivityindicatorview</id>
+    <content type="html"><![CDATA[<p>// 初始化样式</p>
+
+<pre><code>- (id)initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyle)style;     // sizes the view according to the style
+</code></pre>
+
+<p>// 设置样式（默认为UIActivityIndicatorViewStyleWhite）</p>
+
+<pre><code>UIActivityIndicatorViewStyle activityIndicatorViewStyle;
+</code></pre>
+
+<p>// 停止时是否隐藏</p>
+
+<pre><code>BOOL hidesWhenStopped;
+</code></pre>
+
+<p>// 开始播放动画</p>
+
+<pre><code>- (void)startAnimating;
+</code></pre>
+
+<p>// 停止播放动画</p>
+
+<pre><code>- (void)stopAnimating;
+</code></pre>
+
+<p>// 是否正在播放动画</p>
+
+<pre><code>- (BOOL)isAnimating;
+</code></pre>
+
+<p><strong>iOS5.0新增</strong></p>
+
+<p>// 设置圈圈的颜色</p>
+
+<pre><code>UIColor *color;
 </code></pre>
 ]]></content>
   </entry>
