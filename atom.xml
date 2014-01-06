@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-06T11:24:52+08:00</updated>
+  <updated>2014-01-06T11:54:57+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -153,9 +153,14 @@ typedef enum {
     <link href="http://beyondabel.github.io/blog/2014/01/04/uiview/"/>
     <updated>2014-01-04T21:04:48+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/04/uiview</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2014/01/04/uiview.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
 
 <p>UIView表示屏幕上的一块矩形区域，它在App中占有绝对重要的地位，因为iOS中几乎所有可视化控件都是UIView的子类。负责渲染区域的内容，并且响应该区域内发生的触摸事件</p>
+
+<!--more-->
+
 
 <p><strong>目录</strong></p>
 
@@ -177,14 +182,11 @@ typedef enum {
 16、快照 （iOS7.0）
 </code></pre>
 
-<!--more-->
-
-
 <p><strong>1、UIView家族</strong></p>
 
 <p>下图就是视图的内层次</p>
 
-<p><img src="http://beyondabel.github.io/images/2014/01/04/uiview.png" alt="image" /></p>
+<p><img src="http://beyondabel.github.io/images/2014/01/04/uiviewStructure.png" alt="image" /></p>
 
 <p><strong>2、UIView的基本属性</strong></p>
 
