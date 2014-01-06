@@ -4,7 +4,7 @@
   <title><![CDATA[Category: UIView及子类控件 | Abel之家]]></title>
   <link href="http://beyondabel.github.io/blog/categories/uiviewji-zi-lei-kong-jian/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-06T17:25:00+08:00</updated>
+  <updated>2014-01-06T17:28:02+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -130,7 +130,18 @@
     <link href="http://beyondabel.github.io/blog/2014/01/06/uiactivityindicatorview/"/>
     <updated>2014-01-06T12:30:48+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/06/uiactivityindicatorview</id>
-    <content type="html"><![CDATA[<p>// 初始化样式</p>
+    <content type="html"><![CDATA[<p><strong>目录</strong></p>
+
+<pre><code>1、UIActivityIndicatorView基本属性及方法
+2、iOS5.0新增
+</code></pre>
+
+<!--more-->
+
+
+<p><strong>1、UIActivityIndicatorView基本属性及方法</strong></p>
+
+<p>// 初始化样式</p>
 
 <pre><code>- (id)initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyle)style;     // sizes the view according to the style
 </code></pre>
@@ -160,7 +171,7 @@
 <pre><code>- (BOOL)isAnimating;
 </code></pre>
 
-<p><strong>iOS5.0新增</strong></p>
+<p><strong>2、iOS5.0新增</strong></p>
 
 <p>// 设置圈圈的颜色</p>
 
