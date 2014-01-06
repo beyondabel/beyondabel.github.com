@@ -1,0 +1,271 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS组件之UILabel详解 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS组件之UILabel详解 引言 目录 1、属性
+2、方法 1、属性 // UILabel显示内容 NSString *text; // 文字字体(默认为系统字体，大小17) UIFont *font; // 字体颜色 UIColor *textColor; // 阴影颜色（默认没有阴影） &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/06/uilabel/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS组件之UILabel详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2014/01/06/uilabel.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<pre><code>1、属性
+2、方法
+</code></pre>
+
+<p><strong>1、属性</strong></p>
+
+<p>// UILabel显示内容</p>
+
+<pre><code>NSString           *text;
+</code></pre>
+
+<p>// 文字字体(默认为系统字体，大小17)</p>
+
+<pre><code>UIFont             *font;
+</code></pre>
+
+<p>// 字体颜色</p>
+
+<pre><code>UIColor            *textColor;
+</code></pre>
+
+<p>// 阴影颜色（默认没有阴影）</p>
+
+<pre><code>UIColor            *shadowColor;
+</code></pre>
+
+<p>// 阴影大小（默认为（0，-1））</p>
+
+<pre><code>CGSize             shadowOffset; 
+</code></pre>
+
+<p>// 文字对齐模式（默认是居左）</p>
+
+<pre><code>NSTextAlignment    textAlignment;
+</code></pre>
+
+<p>//  设置单词折行方式（默认NSLineBreakByTruncatingTail）</p>
+
+<pre><code> NSLineBreakMode    lineBreakMode; 
+</code></pre>
+
+<p>// 文字显示属性(iOS6.0)</p>
+
+<pre><code>NSAttributedString *attributedText;
+</code></pre>
+
+<p>// 文字高亮时的颜色</p>
+
+<pre><code>UIColor *highlightedTextColor; 
+</code></pre>
+
+<p>// 是否支持高亮（默认为NO）</p>
+
+<pre><code>BOOL     highlighted;          // default is NO
+</code></pre>
+
+<p>// 是否允许接收触摸事件(默认为NO)</p>
+
+<pre><code>BOOL userInteractionEnabled;  // default is NO
+</code></pre>
+
+<p>// 文本是否可变(默认YES)</p>
+
+<pre><code>BOOL enabled;                 // default is YES. changes how the label is drawn
+</code></pre>
+
+<p>// 设置label可以显示多少行(0表示多行，默认为1)</p>
+
+<pre><code>NSInteger numberOfLines;
+</code></pre>
+
+<p>// 文本文字是否自适应大小(默认为NO)</p>
+
+<pre><code>BOOL adjustsFontSizeToFitWidth;         // default is NO
+</code></pre>
+
+<p>//</p>
+
+<pre><code>BOOL adjustsLetterSpacingToFitWidth NS_DEPRECATED_IOS(6_0,7_0); // deprecated - hand tune by using NSKernAttributeName to affect tracking
+</code></pre>
+
+<p>// 最小字体，行数为1时有效（默认为0.0 iOS2.0 &ndash; iOS6.0）</p>
+
+<pre><code>CGFloat minimumFontSize;
+</code></pre>
+
+<p>// 控制文本的基线位置，只有文本行数为1是有效（默认为UIBaselineAdjustmentAlignBaselines）</p>
+
+<pre><code>UIBaselineAdjustment baselineAdjustment;
+//有三种方式
+typedef enum {
+    UIBaselineAdjustmentAlignBaselines = 0, 默认值文本最上端于label中线对齐
+    UIBaselineAdjustmentAlignCenters,//文本中线于label中线对齐
+    UIBaselineAdjustmentNone,//文本最低端与label中线对齐
+} UIBaselineAdjustment;
+</code></pre>
+
+<p>// 设置最小字体,与minimumFontSize相同（iOS6.0）</p>
+
+<pre><code>CGFloat minimumScaleFactor; 
+</code></pre>
+
+<p>// 优先选择标签布局的最大宽度(iOS 6.0)</p>
+
+<pre><code>CGFloat preferredMaxLayoutWidth;    
+</code></pre>
+
+<p><strong>2、方法</strong></p>
+
+<p>// 不可直接调用,需要子类重载,第二参数为0时没有行数限制</p>
+
+<pre><code>- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines;
+</code></pre>
+
+<p>// 不可直接调用,需要子类重载</p>
+
+<pre><code>- (void)drawTextInRect:(CGRect)rect;
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>
