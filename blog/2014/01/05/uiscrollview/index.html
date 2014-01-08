@@ -1,0 +1,389 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS组件之UIScrollView详解 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS组件之UIScrollView详解 引言 目录 // 监控目前滚动的位置(默认CGPointZero) CGPoint contentOffset; - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL) &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/05/uiscrollview/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS组件之UIScrollView详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<p>// 监控目前滚动的位置(默认CGPointZero)</p>
+
+<pre><code>CGPoint                      contentOffset; 
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
+</code></pre>
+
+<p>// 滚动范围的大小(默认CGSizeZero)</p>
+
+<pre><code>CGSize                       contentSize; 
+</code></pre>
+
+<p>// 视图在scrollView中的位置(UIEdgeInsetsZero)</p>
+
+<pre><code>UIEdgeInsets                 contentInset;                   
+</code></pre>
+
+<p>// 设置协议</p>
+
+<pre><code>id&lt;UIScrollViewDelegate&gt;      delegate;                       
+</code></pre>
+
+<p>// 指定控件是否只能在一个方向上滚动(默认为NO)</p>
+
+<pre><code>BOOL directionalLockEnabled;         
+</code></pre>
+
+<p>// 控制控件遇到边框是否反弹(默认为YES)</p>
+
+<pre><code>BOOL                         bounces;                        
+</code></pre>
+
+<p>// 控制垂直方向遇到边框是否反弹(默认为NO,如果为YES，bounces也是YES)</p>
+
+<pre><code>BOOL                         alwaysBounceVertical;           
+</code></pre>
+
+<p>// 控制水平方向遇到边框是否反弹(默认为NO,如果为YES，bounces也是YES)</p>
+
+<pre><code>BOOL                         alwaysBounceHorizontal;         
+</code></pre>
+
+<p>// 控制控件是否整页翻动(默认为NO)</p>
+
+<pre><code>BOOL          pagingEnabled;                  
+</code></pre>
+
+<p>// 控制控件是否能滚动</p>
+
+<pre><code>BOOL          scrollEnabled;                  
+</code></pre>
+
+<p>// 控制是否显示水平方向的滚动条</p>
+
+<pre><code>BOOL                         showsHorizontalScrollIndicator; 
+</code></pre>
+
+<p>// 控制是否显示垂直方向的滚动条</p>
+
+<pre><code>BOOL                         showsVerticalScrollIndicator;   
+</code></pre>
+
+<p>// 指定滚动条在scrollerView中的位置</p>
+
+<pre><code>UIEdgeInsets                 scrollIndicatorInsets;          
+</code></pre>
+
+<p>// 设定滚动条的样式</p>
+
+<pre><code>UIScrollViewIndicatorStyle   indicatorStyle;                 
+</code></pre>
+
+<p>// 改变scrollerView的减速点位置</p>
+
+<pre><code>CGFloat                      decelerationRate;
+</code></pre>
+
+<p>// UITableView 在EnablePage状态下滚动到指定的页面上</p>
+
+<pre><code>- (void)scrollRectToVisible:(CGRect)rect animated:(BOOL)animated;
+</code></pre>
+
+<p>//  这个很有用，闪一下滚动条，暗示是否有可滚动的内容。可以在ViewDidAppear或[table reload]之后调用。</p>
+
+<pre><code>- (void)flashScrollIndicators; 
+</code></pre>
+
+<p>// 监控当前目标是否正在被跟踪(只读)</p>
+
+<pre><code>BOOL tracking;
+</code></pre>
+
+<p>//  监控当前目标是否正在被拖拽(只读)</p>
+
+<pre><code>BOOL dragging;
+</code></pre>
+
+<p>// 监控当前目标是否正在减速(只读)</p>
+
+<pre><code>BOOL decelerating;    
+</code></pre>
+
+<p>// 控制视图是否延时调用开始滚动的方法</p>
+
+<pre><code>BOOL delaysContentTouches;       
+</code></pre>
+
+<p>// 控制控件是否接触取消touch的事件</p>
+
+<pre><code>BOOL canCancelContentTouches;
+</code></pre>
+
+<p>//返回yes 是不滚动 scroll 返回no 是滚动scroll</p>
+
+<pre><code>- (BOOL)touchesShouldBegin:(NSSet *)touches withEvent:(UIEvent *)event inContentView:(UIView *)view;
+</code></pre>
+
+<p>//NO scroll不可以滚动 YES scroll可以滚动</p>
+
+<pre><code>- (BOOL)touchesShouldCancelInContentView:(UIView *)view;
+</code></pre>
+
+<p>// 缩小的最小比例</p>
+
+<pre><code>CGFloat minimumZoomScale;     
+</code></pre>
+
+<p>// 放大的最大比例</p>
+
+<pre><code>CGFloat maximumZoomScale;     
+</code></pre>
+
+<p>// 设置变化比例</p>
+
+<pre><code>CGFloat zoomScale;  
+- (void)setZoomScale:(CGFloat)scale animated:(BOOL)animated;
+</code></pre>
+
+<p>//  设置变化范围</p>
+
+<pre><code>- (void)zoomToRect:(CGRect)rect animated:(BOOL)animated;
+</code></pre>
+
+<p>// 控制缩放的时候是否会反弹</p>
+
+<pre><code>BOOL  bouncesZoom;
+</code></pre>
+
+<p>// 判断控件的大小是否正在改变(只读)</p>
+
+<pre><code>BOOL zooming;
+</code></pre>
+
+<p>// 判断是否正在进行缩放反弹(只读)</p>
+
+<pre><code>BOOL zoomBouncing;
+</code></pre>
+
+<p>// 控制控件滚动到顶部</p>
+
+<pre><code>BOOL  scrollsToTop;
+</code></pre>
+
+<p>// Use these accessors to configure the scroll view&rsquo;s built-in gesture recognizers.
+// Do not change the gestures&#8217; delegates or override the getters for these properties.
+// 只读</p>
+
+<pre><code>UIPanGestureRecognizer *panGestureRecognizer NS_AVAILABLE_IOS(5_0);
+</code></pre>
+
+<p>// <code>pinchGestureRecognizer</code> will return nil when zooming is disabled.
+// 只读</p>
+
+<pre><code>UIPinchGestureRecognizer *pinchGestureRecognizer NS_AVAILABLE_IOS(5_0);
+
+UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // default is UIScrollViewKeyboardDismissModeNone
+</code></pre>
+
+<p>@end</p>
+
+<p>UIScrollViewDelegate协议（可选）</p>
+
+<p>//只要滚动了就会触发</p>
+
+<pre><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+</code></pre>
+
+<p>// 当scrollview发生缩放的时相应</p>
+
+<pre><code>- (void)scrollViewDidZoom:(UIScrollView *)scrollView;
+</code></pre>
+
+<p>// 将要拖拽视图</p>
+
+<pre><code>- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
+</code></pre>
+
+<p>// 开始拖拽视图</p>
+
+<pre><code>- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset;
+</code></pre>
+
+<p>// 完成拖拽</p>
+
+<pre><code>- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+</code></pre>
+
+<p>// 将开始降速时</p>
+
+<pre><code>- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView;   
+</code></pre>
+
+<p>// 减速停止了时执行</p>
+
+<pre><code>- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;      
+</code></pre>
+
+<p>// 滚动动画停止时执行,代码改变时出发,也就是setContentOffset改变时</p>
+
+<pre><code>- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView; 
+</code></pre>
+
+<p>// 设置放大缩小的视图，要是uiscrollview的subview</p>
+
+<pre><code>- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView;     
+</code></pre>
+
+<p>// 当scrollview将要发生缩放的时相应</p>
+
+<pre><code>- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view; 
+</code></pre>
+
+<p>// 完成放大缩小时调用</p>
+
+<pre><code>- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale; 
+</code></pre>
+
+<p>// //如果你不是完全滚动到滚轴视图的顶部，你可以轻点状态栏，那个可视的滚轴视图会一直滚动到顶部，那是默认行为，你可以通过该方法返回NO来关闭它 。点击状态栏，scroll view回到顶部，如果想实现这个，实现代理方法scrollViewShouldScrollToTop返回YES，当完成时，给代理发送scrollViewDidScrollToTop: 消息</p>
+
+<pre><code>- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView;   
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView;
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>

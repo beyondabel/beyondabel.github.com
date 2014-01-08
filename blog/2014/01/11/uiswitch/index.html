@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Category: iOS常用设计模式 - Abel之家</title>
+	<title>iOS组件之UISwitch详解 - Abel之家</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Category: iOS常用设计模式">
+	<meta name="description" content="iOS组件之UISwitch详解 // 开关是否打开 BOOL on; // 这个frame会被忽略，他会强制设置大小 - (id)initWithFrame:(CGRect)frame; // 打开/关闭调用函数(animated：是否使用动画) - (void)setOn:(BOOL)on &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.ioblog/categories/ioschang-yong-she-ji-mo-shi/">
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/11/uiswitch/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -88,49 +88,88 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner">
-	
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS组件之UISwitch详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p>// 开关是否打开</p>
+
+<pre><code>BOOL on;
+</code></pre>
+
+<p>// 这个frame会被忽略，他会强制设置大小</p>
+
+<!--more-->
 
 
-	
-	
-	<section class="archives"><h1 class="year">2013</h1>
+<pre><code>- (id)initWithFrame:(CGRect)frame;
+</code></pre>
 
-<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<span class="date"><time datetime="2013-10-31T19:20:57+08:00" itemprop="datePublished">Oct 31</time></span>
-		<br>
-		<span class="tags">
+<p>// 打开/关闭调用函数(animated：是否使用动画)</p>
 
+<pre><code>- (void)setOn:(BOOL)on animated:(BOOL)animated;
+</code></pre>
 
-	<a class='category' href='/blog/categories/ioschang-yong-she-ji-mo-shi/'>iOS常用设计模式</a>
+<p><strong>iOS5新增    </strong></p>
 
+<p>// 开关打开时颜色</p>
 
-</span>
-	    
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/10/31/ios-proxymode/">iOS常用设计模式之委托模式</a></h1>
+<pre><code>UIColor *onTintColor;
+</code></pre>
+
+<p><strong>iOS6新增</strong>
+// 背影颜色</p>
+
+<pre><code>UIColor *tintColor;
+</code></pre>
+
+<p>// 开关的圆形滑钮的颜色</p>
+
+<pre><code>UIColor *thumbTintColor;
+</code></pre>
+
+<p>// 开关打开时自定义图片</p>
+
+<pre><code>UIImage *onImage;
+</code></pre>
+
+<p>// 开关关闭时自定义图片</p>
+
+<pre><code>UIImage *offImage;
+</code></pre>
+</div>
+
 </article>
 
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 	
-
-
-<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<span class="date"><time datetime="2013-10-30T12:55:59+08:00" itemprop="datePublished">Oct 30</time></span>
-		<br>
-		<span class="tags">
-
-
-	<a class='category' href='/blog/categories/ioschang-yong-she-ji-mo-shi/'>iOS常用设计模式</a>
-
-
-</span>
-	    
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/10/30/singleton/">iOS常用设计模式之单例模式</a></h1>
-</article>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
 
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>

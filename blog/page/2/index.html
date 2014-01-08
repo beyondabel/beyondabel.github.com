@@ -9,8 +9,11 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Nov 13th, 2013 CocoaPods Mac下CocoaPods安装步骤 介绍：
-开发应用的时候第三方的库是不可缺少的，它能提高开发的效率。一些经常用到的库，在新的项目里用是，你又得手工的Add到项目里，用的到库多起来了，就不方便管理了。CocoaPods这个软件， &hellip;">
+	<meta name="description" content="Jan 3rd, 2014 UIView及子类控件 iOS组件之UIToolBar详解 引言 目录 1、UIToolBar的基本属性及方法
+2、iOS5.0新增
+3、iOS6.0新增
+4、iOS7.0新增
+5、UIToolbar协议 1、UIToolBar的基本属性及方法 // &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,24 +110,94 @@
   
 
 
-<time datetime="2013-11-13T19:16:34+08:00" data-updated="true" itemprop="datePublished">Nov 13<span>th</span>, 2013</time></div>
+<time datetime="2014-01-03T12:31:14+08:00" data-updated="true" itemprop="datePublished">Jan 3<span>rd</span>, 2014</time></div>
 		<div class="tags">
 
 
-	<a class='category' href='/blog/categories/cocoapods/'>CocoaPods</a>
+	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
 
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/11/13/mac-install-cocoapods/" itemprop="url">Mac下CocoaPods安装步骤</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/03/uitoolbar/" itemprop="url">iOS组件之UIToolBar详解</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>介绍：
-开发应用的时候第三方的库是不可缺少的，它能提高开发的效率。一些经常用到的库，在新的项目里用是，你又得手工的Add到项目里，用的到库多起来了，就不方便管理了。CocoaPods这个软件，可以方便的帮你管理Xcode里的第三方的库。</p>
+		<p><strong>引言</strong></p>
 
+<p><strong>目录</strong></p>
+
+<pre><code>1、UIToolBar的基本属性及方法
+2、iOS5.0新增
+3、iOS6.0新增
+4、iOS7.0新增
+5、UIToolbar协议
+</code></pre>
+
+<p><strong>1、UIToolBar的基本属性及方法</strong></p>
+
+<p>// UIToolBar的样式 （默认为blue）</p>
+
+<pre><code>UIBarStyle barStyle;
+</code></pre>
+
+<p>// 设置tooBar的选项</p>
+
+<pre><code>NSArray   *items;
+</code></pre>
+
+<p>// 设置上面的一层view是否半透明</p>
+
+<pre><code>BOOL translucent;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (void)setItems:(NSArray *)items animated:(BOOL)animated;
+</code></pre>
+
+<p>// 背景颜色</p>
+
+<pre><code>UIColor *tintColor;
+</code></pre>
+
+<p>2、iOS5.0新增</p>
+
+<p>// 背景图片设置</p>
+
+<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forToolbarPosition:(UIBarPosition)topOrBottom barMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (UIImage *)backgroundImageForToolbarPosition:(UIBarPosition)topOrBottom barMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>3、iOS6.0新增</p>
+
+<p>// 设置ToolBar上边沿的阴影</p>
+
+<pre><code>- (void)setShadowImage:(UIImage *)shadowImage forToolbarPosition:(UIBarPosition)topOrBottom;
+- (UIImage *)shadowImageForToolbarPosition:(UIBarPosition)topOrBottom;
+</code></pre>
+
+<p>4、iOS7.0新增</p>
+
+<p>// 设置背景颜色</p>
+
+<pre><code>UIColor *barTintColor;
+</code></pre>
+
+<p>// 设置代理</p>
+
+<pre><code>id&lt;UIToolbarDelegate&gt; delegate;
+</code></pre>
+
+<p><strong>5、UIToolbar协议</strong></p>
+
+<p>目前还没有协议</p>
 
 		
-		<a href="/blog/2013/11/13/mac-install-cocoapods/" class="more-link">阅读全文 &rarr;</a>
+		
 	</div>
 
 </article>
@@ -144,27 +217,184 @@
   
 
 
-<time datetime="2013-10-30T12:55:59+08:00" data-updated="true" itemprop="datePublished">Oct 30<span>th</span>, 2013</time></div>
+<time datetime="2014-01-03T12:31:06+08:00" data-updated="true" itemprop="datePublished">Jan 3<span>rd</span>, 2014</time></div>
 		<div class="tags">
 
 
-	<a class='category' href='/blog/categories/ioschang-yong-she-ji-mo-shi/'>iOS常用设计模式</a>
+	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
 
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/10/30/singleton/" itemprop="url">iOS常用设计模式之单例模式</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/03/uitabbar/" itemprop="url">iOS组件之UITabBar详解</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/images/2013/10/30/singleton.png" alt="image" /></p>
+		<p><strong>引言</strong></p>
+
+<p>UITabBar作为一个标签栏控制，它本身继承于UIView,也就是说UITabBar本身是一个视图控件。</p>
+
+
+		
+		<a href="/blog/2014/01/03/uitabbar/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-03T12:30:58+08:00" data-updated="true" itemprop="datePublished">Jan 3<span>rd</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/03/uiimageview/" itemprop="url">iOS组件之UIImageView详解</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><strong>目录</strong></p>
+
+<pre><code>1、基本属性
+2、动画图片相关
+3、iOS7新增
+</code></pre>
+
+
+		
+		<a href="/blog/2014/01/03/uiimageview/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-03T12:30:48+08:00" data-updated="true" itemprop="datePublished">Jan 3<span>rd</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/03/uiactivityindicatorview/" itemprop="url">iOS组件之UIActivityIndicatorView详解</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><strong>目录</strong></p>
+
+<pre><code>1、UIActivityIndicatorView基本属性及方法
+2、iOS5.0新增
+</code></pre>
+
+
+		
+		<a href="/blog/2014/01/03/uiactivityindicatorview/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-02T12:28:03+08:00" data-updated="true" itemprop="datePublished">Jan 2<span>nd</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/02/uiprogressview/" itemprop="url">iOS组件之UIProgressView详解</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+2、iOS5新增内容
+</code></pre>
+
+
+		
+		<a href="/blog/2014/01/02/uiprogressview/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-02T09:57:41+08:00" data-updated="true" itemprop="datePublished">Jan 2<span>nd</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/02/uilabel/" itemprop="url">iOS组件之UILabel详解</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/images/2014/01/06/uilabel.png" alt="image" /></p>
 
 <p><strong>引言</strong></p>
 
-<p>在很多时间，singleton定义为“有且仅有一个元素的集合”，所以不管那个对象到底有多大，每次我们拿这个对象时都是同一个。在什么情况下会需要单例以及单例在Objective-C中如何实现呢？本节Abel将与您一起探讨一些有关singleton的知识。</p>
-
 
 		
-		<a href="/blog/2013/10/30/singleton/" class="more-link">阅读全文 &rarr;</a>
+		<a href="/blog/2014/01/02/uilabel/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>
@@ -184,7 +414,85 @@
   
 
 
-<time datetime="2013-09-28T23:01:15+08:00" data-updated="true" itemprop="datePublished">Sep 28<span>th</span>, 2013</time></div>
+<time datetime="2014-01-01T21:04:48+08:00" data-updated="true" itemprop="datePublished">Jan 1<span>st</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/01/uiview/" itemprop="url">视图鼻祖之UIView详解</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/images/2014/01/04/uiview.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<p>UIView表示屏幕上的一块矩形区域，它在App中占有绝对重要的地位，因为iOS中几乎所有可视化控件都是UIView的子类。负责渲染区域的内容，并且响应该区域内发生的触摸事件</p>
+
+
+		
+		<a href="/blog/2014/01/01/uiview/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-26T23:59:57+08:00" data-updated="true" itemprop="datePublished">Dec 26<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/octopress/'>Octopress</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/12/26/octopress/" itemprop="url">利用Octopress在Github搭建一个博客</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/images/2013/12/26/OctopressAndGithub.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<p><a href="http://http://octopress.org/">Octopress</a>是利用<a href="http://http://github.com/mojombo/jekyll">Jekyll</a>博客引擎开发的一个博客系统，生成的静态页面能够很好的在<em>github page</em>上展现。号称是hacker专属的一个博客系统(A blogging framework for hackers.)
+		
+		<a href="/blog/2013/12/26/octopress/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-24T22:33:47+08:00" data-updated="true" itemprop="datePublished">Dec 24<span>th</span>, 2013</time></div>
 		<div class="tags">
 
 
@@ -194,13 +502,13 @@
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/28/ios-webview-keybord/" itemprop="url">禁止键盘弹出时UIWebView自动滑动</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/12/24/ios-time/" itemprop="url">iOS时间相关各种技巧</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>之前在做公司项目的时候，需要做一个页面编辑功能，当我们点击编辑器的时候，网页会自动的滑动，结果导致编辑器的fram发生变化。为了解决这个问题，我们需要去禁止webView的自动滑动，我们只需要重写viewForZoomingInScrollView方法就可以了</p>
+		<p><strong>一、通过自带的日历得到年月日、时间、以及星期</strong></p>
 
 
 		
-		<a href="/blog/2013/09/28/ios-webview-keybord/" class="more-link">阅读全文 &rarr;</a>
+		<a href="/blog/2013/12/24/ios-time/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>
@@ -220,179 +528,19 @@
   
 
 
-<time datetime="2013-09-27T19:14:03+08:00" data-updated="true" itemprop="datePublished">Sep 27<span>th</span>, 2013</time></div>
+<time datetime="2013-12-01T23:37:45+08:00" data-updated="true" itemprop="datePublished">Dec 1<span>st</span>, 2013</time></div>
 		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ioskai-fa-bi-ji/'>iOS开发笔记</a>
-
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/27/webcolor-uicolor/" itemprop="url">网页颜色值转化成UIColor</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/12/01/my-new-blog/" itemprop="url">我的博客搬家啦～</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>在做项目过程中，有时设计人员给我们往往是一个设计图，而我们用PS取值的时候可以得到一个红绿蓝和一个网页的颜色值，用红绿蓝往往不是很方便，后来我们在项目工具中写一个方法，专门把网页的颜色值转化成UIColor，这样一来，方便了许多。</p>
+		<p><img src="/images/2013/12/01/my-new-blog.png" alt="image" /></p>
 
-
+<p>&nbsp;&nbsp;&nbsp;&nbsp;我是一个非常喜欢折腾的程序猿，之前我一直在CSDN上写博文，但由于一些种种的原因，后来放弃了CSDN,之后一直都有搭建个人站点的想法,在网上搜索了如何搭建个人站点,网上有很多的人建议用Octopress+Github,转而开始用Octopress搭建博客
 		
-		<a href="/blog/2013/09/27/webcolor-uicolor/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-26T15:39:29+08:00" data-updated="true" itemprop="datePublished">Sep 26<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/thread/'>Thread</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/26/ios-gcd-one/" itemprop="url">iOS多线程之GCD</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/images/2013/09/26/gcd.png" alt="image" /></p>
-
-<p><strong>引言</strong></p>
-
-<p>GCD（Grand Central Dispatch）是一套低层API，提供了一种新的方法来进行并发程序编写。允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行。GCD比之NSOpertionQueue更底层更高效，并且它不是Cocoa框架的一部分。</p>
-
-
-		
-		<a href="/blog/2013/09/26/ios-gcd-one/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-25T19:10:57+08:00" data-updated="true" itemprop="datePublished">Sep 25<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ioskai-fa-bi-ji/'>iOS开发笔记</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/25/ios-developerment-error/" itemprop="url">iOS开发过程中出现错误整理</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>1、No architectures to compile for (ONLY_ACTIVE_ARCH=YES, active arch=armv7s, VALID_ARCHS=armv7 armv6).</p>
-
-
-		
-		<a href="/blog/2013/09/25/ios-developerment-error/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-24T10:34:29+08:00" data-updated="true" itemprop="datePublished">Sep 24<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/thread/'>Thread</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/24/thread-overview/" itemprop="url">多线程总述</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/images/2013/09/26/multithreading.png" alt="image" /></p>
-
-<p><strong>引言</strong></p>
-
-<p>多线程是一个比较轻量级的方法来实现单个应用程序内多个代码执行路径。在系统级别内，程序并排执行，系统分配到每个程序的执行时间是基于该程序的所需时间和其他程序的所需时间来决定的。然而在每个应程序的内部，存在一个或多个执行线程，它同时或在一个几乎同时发生的方式里执行不同的任务。系统本身管理这些执行的线程，调度它们在可用的内核上运行，并在需要让其他线程执行的时候抢先打断它们。</p>
-
-
-		
-		<a href="/blog/2013/09/24/thread-overview/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-10T11:28:02+08:00" data-updated="true" itemprop="datePublished">Sep 10<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/mian-shi-zong-jie/'>面试总结</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/10/interview/" itemprop="url">面试中常遇到的几个问题</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/images/2013/09/10/interview.png" alt="image" /></p>
-
-<p>引言</p>
-
-<p>对了以技术出身的程序员来说，面试题的积累是非常有必要的。Abel在这整理几个iOS面试中常常会问到的几个问题。</p>
-
-
-		
-		<a href="/blog/2013/09/10/interview/" class="more-link">阅读全文 &rarr;</a>
+		<a href="/blog/2013/12/01/my-new-blog/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>
@@ -402,6 +550,8 @@
     
         <a href="/" class="prev">Prev</a>
     
+    
+        <a href="/blog/page/3/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>

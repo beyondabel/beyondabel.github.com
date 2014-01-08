@@ -1,0 +1,316 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS组件之UIWebView详解 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS组件之UIWebView详解 引言 在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。 目录 1 &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/05/uiwebview/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS组件之UIWebView详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+
+<p>在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。</p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+2、iOS5新增
+3、iOS6新增
+4、iOS7新增
+5、UIWebViewDelegate协议（可选）
+</code></pre>
+
+<p><strong>1、基本属性及方法</strong></p>
+
+<p>// 设置代理</p>
+
+<pre><code>id&lt;UIWebViewDelegate&gt; delegate;
+</code></pre>
+
+<p>//  加载一个url地址</p>
+
+<pre><code>- (void)loadRequest:(NSURLRequest *)request;
+</code></pre>
+
+<p>// 加载一个html的string</p>
+
+<pre><code>- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;
+</code></pre>
+
+<p>// 获取web的请求</p>
+
+<pre><code>NSURLRequest *request;
+</code></pre>
+
+<p>// 重新加载</p>
+
+<pre><code>- (void)reload; 
+</code></pre>
+
+<p>// 停止加载</p>
+
+<pre><code>- (void)stopLoading;
+</code></pre>
+
+<p>// 返回</p>
+
+<pre><code>- (void)goBack;
+</code></pre>
+
+<p>// 前进</p>
+
+<pre><code>- (void)goForward;
+</code></pre>
+
+<p>// 是否能返回(只读)</p>
+
+<pre><code>BOOL canGoBack;
+</code></pre>
+
+<p>// 是否能前进（只读)</p>
+
+<pre><code>BOOL canGoForward;
+</code></pre>
+
+<p>// 是否正在加载（只读）</p>
+
+<pre><code>BOOL loading;
+</code></pre>
+
+<p>// 添加javascript</p>
+
+<pre><code>- (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;
+</code></pre>
+
+<p>// 默认值为NO，用户不可以放大或缩小页面；如果设置为YES，页面可以通过放大缩小去适应，用户也可以通过手势来放大和缩小</p>
+
+<pre><code>BOOL scalesPageToFit;
+</code></pre>
+
+<p>// 如果设置为YES，用户必须明确的点击页面上的元素或者相关联的输入页面来显示键盘；如果设置为NO，一个元素的焦点事件导致输入视图的显示和自动关联这个元素。</p>
+
+<pre><code>BOOL detectsPhoneNumbers;
+</code></pre>
+
+<p>//  把网页上内容转换成可点击的链接类型</p>
+
+<pre><code>UIDataDetectorTypes dataDetectorTypes;
+</code></pre>
+
+<p>// 这个值决定了用内嵌HTML5播放视频还是用本地的全屏控制。为了内嵌视频播放，不仅仅需要在这个页面上设置这个属性，还必须的是在HTML中的video元素必须包含webkit-playsinline属性。(iPhone默认为NO, iPad默认为YES)</p>
+
+<pre><code>BOOL allowsInlineMediaPlayback;
+</code></pre>
+
+<p>// 在iPhone和iPad上默认使YES。这个值决定了HTML5视频可以自动播放还是需要用户去启动播放</p>
+
+<pre><code>BOOL mediaPlaybackRequiresUserAction; 
+</code></pre>
+
+<p><strong>2、iOS5新增</strong></p>
+
+<p>// 获取webView中的scrollView(只读)</p>
+
+<pre><code>UIScrollView *scrollView;
+</code></pre>
+
+<p>// 这个值决定了从这个页面是否可以Air Play(默认YES)</p>
+
+<pre><code>BOOL mediaPlaybackAllowsAirPlay; 
+</code></pre>
+
+<p><strong>3、iOS6新增</strong></p>
+
+<p>// 这个值决定了网页内容的渲染是否在把内容全部加载到内存中再去处理。如果设置为YES，只有网页内容加载到内存里了才会去渲染(默认值为NO)</p>
+
+<pre><code>BOOL suppressesIncrementalRendering; 
+</code></pre>
+
+<p>// 如果设置为YES，用户必须明确的点击页面上的元素或者相关联的输入页面来显示键盘；如果设置为NO，一个元素的焦点事件导致输入视图的显示和自动关联这个元素。(默认为YES)</p>
+
+<pre><code>BOOL keyboardDisplayRequiresUserAction;
+</code></pre>
+
+<p><strong>4、iOS7新增</strong></p>
+
+<p>// 随意翻阅模式</p>
+
+<pre><code>UIWebPaginationMode paginationMode;
+UIWebPaginationBreakingMode paginationBreakingMode;
+CGFloat pageLength;
+CGFloat gapBetweenPages;
+</code></pre>
+
+<p>当在原生应用中，使用 UIWebView 实现丰富内容时，或者对于原生 webapp，我们可以为了电子书阅读体验使用 Paginate （随意翻阅）特性，避免垂直滚动条（类似 Windows 8 应用体验）。如果应用显示动态内容，这一特性是完美的，我们不能预先优化分页。有不同的 Objective-C 属性配置分页过程。要启用它，需要这么做：</p>
+
+<pre><code>myWebView.paginationMode = UIWebPaginationModeLeftToRight;
+myWebView.paginationBreakingMode = UIWebPaginationBreakingModePage;
+myWebView.gapBetweenPages = 50; 
+</code></pre>
+
+<p>// 获取页码总数(只读)</p>
+
+<pre><code>NSUInteger pageCount;
+</code></pre>
+
+<p><strong>5、UIWebViewDelegate协议（可选）</strong></p>
+
+<p>//当网页视图被指示载入内容而得到通知。应当返回YES，这样会进行加载。</p>
+
+<pre><code>- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+</code></pre>
+
+<p>// 开始加载的时候执行该方法。</p>
+
+<pre><code>- (void)webViewDidStartLoad:(UIWebView *)webView;
+</code></pre>
+
+<p>// 加载完成的时候执行该方法。</p>
+
+<pre><code>- (void)webViewDidFinishLoad:(UIWebView *)webView;
+</code></pre>
+
+<p>// 加载出错的时候执行该方法。</p>
+
+<pre><code>- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>

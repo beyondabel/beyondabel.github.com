@@ -5,12 +5,13 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>iOS组件之UIPageControl详解 - Abel之家</title>
+	<title>iOS组件之UIImageView详解 - Abel之家</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS组件之UIPageControl详解 目录 1、基本属性及方法
-2、iOS6.0新增 1、基本属性及方法 // 指定页面个数（默认为0） NSInteger numberOfPages; // 当前选中的页面（默认为0，范围为0 ～ numberOfPages-1） NSInteger &hellip;">
+	<meta name="description" content="iOS组件之UIImageView详解 目录 1、基本属性
+2、动画图片相关
+3、iOS7新增 1、基本属性 // 初始化UIImageView展示的图片资源 - (id)initWithImage:(UIImage *)image; // 初始化UIImageView默认和选中时展示的图片资源 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +21,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/06/uipagecontrol/">
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/03/uiimageview/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -90,57 +91,89 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">iOS组件之UIPageControl详解</h1>
+	<h1 class="title" itemprop="name">iOS组件之UIImageView详解</h1>
 	<div class="entry-content" itemprop="articleBody"><p><strong>目录</strong></p>
 
-<pre><code>1、基本属性及方法
-2、iOS6.0新增
+<pre><code>1、基本属性
+2、动画图片相关
+3、iOS7新增
 </code></pre>
 
 <!--more-->
 
 
-<p><strong>1、基本属性及方法</strong></p>
+<p><strong>1、基本属性</strong></p>
 
-<p>// 指定页面个数（默认为0）</p>
+<p>// 初始化UIImageView展示的图片资源</p>
 
-<pre><code>NSInteger numberOfPages;
+<pre><code>- (id)initWithImage:(UIImage *)image;
 </code></pre>
 
-<p>// 当前选中的页面（默认为0，范围为0 ～ numberOfPages-1）</p>
+<p>// 初始化UIImageView默认和选中时展示的图片资源</p>
 
-<pre><code>NSInteger currentPage;
+<pre><code>- (id)initWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage;
 </code></pre>
 
-<p>// 如果在numberOfPages为1的情况下隐藏指示器，可以将hideForSinglePage的值设为YES。默认情况下，即使只有一个页面，指示器也会显示进来。</p>
+<p>// UIImageView的图片资源</p>
 
-<pre><code>BOOL hidesForSinglePage;
+<pre><code>UIImage *image;
 </code></pre>
 
-<p>// 如果你希望直到有时间执行完你的操作之后，才更新当前指示器当前指示页，可以将 defersCurrentPageDisPlay 设为YES。这样的话你必须调用控件的 updateCurentPageDisPlay 来更新当前页</p>
+<p>// UIImageView选中之后的图片资源</p>
 
-<pre><code>BOOL defersCurrentPageDisplay;
+<pre><code>UIImage *highlightedImage;
 </code></pre>
 
-<p>// 更新当前页</p>
+<p>// 是否允许用户交互 （默认为NO）</p>
 
-<pre><code>- (void)updateCurrentPageDisplay;
+<pre><code>BOOL userInteractionEnabled;
 </code></pre>
 
-<p>// 返回接受者的边界大小，与容纳被给的页面数有关</p>
+<p>// 是否选中 （默认为NO）</p>
 
-<pre><code>- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;
+<pre><code>BOOL highlighted;
 </code></pre>
 
-<p><strong>2、iOS6.0新增</strong>
-// 未选中的点的颜色</p>
+<p><strong>2、动画图片相关</strong></p>
 
-<pre><code>UIColor *pageIndicatorTintColor;
+<p>// UIImageView 动画播放的图片组资源（必须是UIImage,如果设置了单一的image，那么这个为nil）</p>
+
+<pre><code>NSArray *animationImages;
 </code></pre>
 
-<p>// 当前点颜色</p>
+<p>// 选中时UIImageView 动画播放的图片组资源（同上）</p>
 
-<pre><code>UIColor *currentPageIndicatorTintColor;
+<pre><code>NSArray *highlightedAnimationImages;
+</code></pre>
+
+<p>// 图片播放的时间间隔</p>
+
+<pre><code>NSTimeInterval animationDuration;
+</code></pre>
+
+<p>// 图片重复播放次数（默认为0，为表示一直重复播放）</p>
+
+<pre><code>NSInteger      animationRepeatCount;
+</code></pre>
+
+<p>// 播放图片</p>
+
+<pre><code>- (void)startAnimating;
+</code></pre>
+
+<p>// 停止播放</p>
+
+<pre><code>- (void)stopAnimating;
+</code></pre>
+
+<p>// 是否正在播放</p>
+
+<pre><code>- (BOOL)isAnimating;
+</code></pre>
+
+<p><strong>3、iOS7新增</strong></p>
+
+<pre><code>UIColor *tintColor;
 </code></pre>
 </div>
 

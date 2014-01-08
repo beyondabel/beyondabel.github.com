@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS常用设计模式 | Abel之家]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioschang-yong-she-ji-mo-shi/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-06T17:28:02+08:00</updated>
+  <updated>2014-01-08T10:19:00+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[iOS常用设计模式之委托模式]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/03/ios-proxymode/"/>
-    <updated>2014-01-03T19:20:57+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/03/ios-proxymode</id>
+    <link href="http://beyondabel.github.io/blog/2013/10/31/ios-proxymode/"/>
+    <updated>2013-10-31T19:20:57+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/10/31/ios-proxymode</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
 <p>在代理模式中，有两个对象参与处理同一个请求，接受请求的对象将请求委托给另一个对象来处理。</p>

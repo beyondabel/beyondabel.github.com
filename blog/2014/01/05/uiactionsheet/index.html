@@ -1,0 +1,264 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS组件之UIActionSheet详解 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS组件之UIActionSheet详解 引言 目录 // 初始化UIActionSheet上的button按钮 - (id)initWithTitle:(NSString *)title delegate:(id&lt;UIActionSheetDelegate&gt;)delegate &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/05/uiactionsheet/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS组件之UIActionSheet详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+
+<!--more-->
+
+
+<p>目录</p>
+
+<p>// 初始化UIActionSheet上的button按钮</p>
+
+<pre><code>- (id)initWithTitle:(NSString *)title delegate:(id&lt;UIActionSheetDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;
+</code></pre>
+
+<p>// 设置UIActionSheet代理</p>
+
+<pre><code>id&lt;UIActionSheetDelegate&gt; delegate;    // weak reference
+</code></pre>
+
+<p>// 设置UIActionSheet的title</p>
+
+<pre><code>NSString *title;
+</code></pre>
+
+<p>// 设置UIActionSheet的样式（默认为UIActionSheetStyleAutomatic）</p>
+
+<pre><code>UIActionSheetStyle actionSheetStyle;
+</code></pre>
+
+<p>// 通过按钮的title获取这个按钮在UIActionSheet上的下标</p>
+
+<pre><code>- (NSInteger)addButtonWithTitle:(NSString *)title;
+</code></pre>
+
+<p>// 通过下标获得按钮的title</p>
+
+<pre><code>- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
+</code></pre>
+
+<p>// 获取按钮的总个数(只读)</p>
+
+<pre><code>NSInteger numberOfButtons;
+</code></pre>
+
+<p>// 获取取消按钮的下标</p>
+
+<pre><code>NSInteger cancelButtonIndex;
+</code></pre>
+
+<p>// 红色按钮的下标（翻译成破坏性的，其实就是那个红色的按钮）</p>
+
+<pre><code>NSInteger destructiveButtonIndex;
+</code></pre>
+
+<p>// 获取第一个其他按钮的下标(只读)</p>
+
+<pre><code>NSInteger firstOtherButtonIndex;
+</code></pre>
+
+<p>// UIActionSheet是否可见（只读）</p>
+
+<pre><code>BOOL visible;
+</code></pre>
+
+<p>// show a sheet animated. you can specify either a toolbar, a tab bar, a bar butto item or a plain view. We do a special animation if the sheet rises from
+// a toolbar, tab bar or bar button item and we will automatically select the correct style based on the bar style. if not from a bar, we use
+// UIActionSheetStyleDefault if automatic style set
+// 如果要将ActonSheet 与工具栏或者标签栏对齐，可以使用showFromToolBar(showFromTabBar)</p>
+
+<pre><code>- (void)showFromToolbar:(UIToolbar *)view;
+- (void)showFromTabBar:(UITabBar *)view;
+</code></pre>
+
+<p>// showFromBarButtonItem，就是popover会指向个BarButtonItem。在iPhone上只能使用showInView，如果是universal app，要用些if来判断。用delegate来知道用户选择了什么</p>
+
+<pre><code>- (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
+</code></pre>
+
+<p>// showFromRect，在ipad上指定个矩形区域，它会在其上显示个popover</p>
+
+<pre><code>- (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;
+</code></pre>
+
+<p>// 显示在iphone的中间位置，它会从下往上滑动；在ipad上它会放在中间，所以在ipad上从不用showInView</p>
+
+<pre><code>- (void)showInView:(UIView *)view;
+</code></pre>
+
+<p>// hides alert sheet or popup. use this method when you need to explicitly dismiss the alert.
+// it does not need to be called if the user presses on a button</p>
+
+<pre><code>- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
+</code></pre>
+
+<p>UIActionSheetDelegate协议（可选）</p>
+
+<p>// 点击UIActionSheet会调用的函数，buttonIndex为所点击button在UIActionSheet的下标</p>
+
+<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+</code></pre>
+
+<p>// 点击取消按钮会调用的函数</p>
+
+<pre><code>- (void)actionSheetCancel:(UIActionSheet *)actionSheet;
+</code></pre>
+
+<p>// 将来显示ActionSheet</p>
+
+<pre><code>- (void)willPresentActionSheet:(UIActionSheet *)actionSheet;
+</code></pre>
+
+<p>// 显示ActionSheet</p>
+
+<pre><code>- (void)didPresentActionSheet:(UIActionSheet *)actionSheet;
+</code></pre>
+
+<p>// ActionSheet将要消失</p>
+
+<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex;
+</code></pre>
+
+<p>// ActionSheet消失</p>
+
+<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex;
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>

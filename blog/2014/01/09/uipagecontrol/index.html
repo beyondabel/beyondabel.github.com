@@ -5,12 +5,12 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>iOS组件之UIActivityIndicatorView详解 - Abel之家</title>
+	<title>iOS组件之UIPageControl详解 - Abel之家</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS组件之UIActivityIndicatorView详解 目录 1、UIActivityIndicatorView基本属性及方法
-2、iOS5.0新增 1、UIActivityIndicatorView基本属性及方法 // 初始化样式 - (id) &hellip;">
+	<meta name="description" content="iOS组件之UIPageControl详解 目录 1、基本属性及方法
+2、iOS6.0新增 1、基本属性及方法 // 指定页面个数（默认为0） NSInteger numberOfPages; // 当前选中的页面（默认为0，范围为0 ～ numberOfPages-1） NSInteger &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/06/uiactivityindicatorview/">
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/09/uipagecontrol/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -90,53 +90,57 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">iOS组件之UIActivityIndicatorView详解</h1>
+	<h1 class="title" itemprop="name">iOS组件之UIPageControl详解</h1>
 	<div class="entry-content" itemprop="articleBody"><p><strong>目录</strong></p>
 
-<pre><code>1、UIActivityIndicatorView基本属性及方法
-2、iOS5.0新增
+<pre><code>1、基本属性及方法
+2、iOS6.0新增
 </code></pre>
 
 <!--more-->
 
 
-<p><strong>1、UIActivityIndicatorView基本属性及方法</strong></p>
+<p><strong>1、基本属性及方法</strong></p>
 
-<p>// 初始化样式</p>
+<p>// 指定页面个数（默认为0）</p>
 
-<pre><code>- (id)initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyle)style;     // sizes the view according to the style
+<pre><code>NSInteger numberOfPages;
 </code></pre>
 
-<p>// 设置样式（默认为UIActivityIndicatorViewStyleWhite）</p>
+<p>// 当前选中的页面（默认为0，范围为0 ～ numberOfPages-1）</p>
 
-<pre><code>UIActivityIndicatorViewStyle activityIndicatorViewStyle;
+<pre><code>NSInteger currentPage;
 </code></pre>
 
-<p>// 停止时是否隐藏</p>
+<p>// 如果在numberOfPages为1的情况下隐藏指示器，可以将hideForSinglePage的值设为YES。默认情况下，即使只有一个页面，指示器也会显示进来。</p>
 
-<pre><code>BOOL hidesWhenStopped;
+<pre><code>BOOL hidesForSinglePage;
 </code></pre>
 
-<p>// 开始播放动画</p>
+<p>// 如果你希望直到有时间执行完你的操作之后，才更新当前指示器当前指示页，可以将 defersCurrentPageDisPlay 设为YES。这样的话你必须调用控件的 updateCurentPageDisPlay 来更新当前页</p>
 
-<pre><code>- (void)startAnimating;
+<pre><code>BOOL defersCurrentPageDisplay;
 </code></pre>
 
-<p>// 停止播放动画</p>
+<p>// 更新当前页</p>
 
-<pre><code>- (void)stopAnimating;
+<pre><code>- (void)updateCurrentPageDisplay;
 </code></pre>
 
-<p>// 是否正在播放动画</p>
+<p>// 返回接受者的边界大小，与容纳被给的页面数有关</p>
 
-<pre><code>- (BOOL)isAnimating;
+<pre><code>- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;
 </code></pre>
 
-<p><strong>2、iOS5.0新增</strong></p>
+<p><strong>2、iOS6.0新增</strong>
+// 未选中的点的颜色</p>
 
-<p>// 设置圈圈的颜色</p>
+<pre><code>UIColor *pageIndicatorTintColor;
+</code></pre>
 
-<pre><code>UIColor *color;
+<p>// 当前点颜色</p>
+
+<pre><code>UIColor *currentPageIndicatorTintColor;
 </code></pre>
 </div>
 

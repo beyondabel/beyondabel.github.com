@@ -1,0 +1,346 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS组件之UINavigaionBar详解 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS组件之UINavigaionBar详解 引言 目录 1、UINavigaionBar // 设置bar的样式 UIBarStyle barStyle; // 设置代理 id delegate; // 设置是否透明（在iOS6中默认为NO, &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/04/uinavigaionbar/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS组件之UINavigaionBar详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<p><strong>1、UINavigaionBar</strong></p>
+
+<p>// 设置bar的样式</p>
+
+<pre><code>UIBarStyle barStyle;
+</code></pre>
+
+<p>// 设置代理</p>
+
+<pre><code>id delegate;
+</code></pre>
+
+<p>// 设置是否透明（在iOS6中默认为NO,如果barStyle为UIBarStyleBlackTranslucent为YES）</p>
+
+<pre><code>BOOL translucent;
+</code></pre>
+
+<p>// Pushing a navigation item displays the item&rsquo;s title in the center of the navigation bar.
+// 方法将新的UINavigationItem 压入栈</p>
+
+<pre><code>- (void)pushNavigationItem:(UINavigationItem *)item animated:(BOOL)animated;
+</code></pre>
+
+<p>//  方法将顶部的UINavigationItem 推出栈</p>
+
+<pre><code>- (UINavigationItem *)popNavigationItemAnimated:(BOOL)animated; // Returns the item that was popped.
+</code></pre>
+
+<p>// 获取顶部的item（只读）</p>
+
+<pre><code>UINavigationItem *topItem;
+</code></pre>
+
+<p>// 获取返回的item</p>
+
+<pre><code>UINavigationItem *backItem;
+</code></pre>
+
+<p>// 设置items组</p>
+
+<pre><code>NSArray *items;
+- (void)setItems:(NSArray *)items animated:(BOOL)animated;
+</code></pre>
+
+<p>// 设置背景颜色</p>
+
+<pre><code>UIColor *tintColor;
+</code></pre>
+
+<p>// 设置背影颜色（iOS7.0新增）</p>
+
+<pre><code>UIColor *barTintColor;
+</code></pre>
+
+<p>iOS5新增</p>
+
+<p>//  根据屏幕状态设置背景图片</p>
+
+<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forBarMetrics:(UIBarMetrics)barMetrics;
+
+如果支持竖屏，那么应该设置UIBarMetricsDefault
+[navBar setBackgroundImage:[UIImage imageNamed:@"navBarBg.png"] forBarMetrics:UIBarMetricsDefault];
+
+如果支持横屏，那么应该设置UIBarMetricsLandscapePhone
+[navBar setBackgroundImage:[UIImage imageNamed:@"navBarBg.png"] forBarMetrics:UIBarMetricsLandscapePhone];
+</code></pre>
+
+<p>// 根据屏幕状态获取背景图片</p>
+
+<pre><code>- (UIImage *)backgroundImageForBarMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>// 对titleText设置字体属性</p>
+
+<pre><code>NSDictionary *titleTextAttributes;
+</code></pre>
+
+<p>// 根据屏幕状态设置标题的垂直偏移量</p>
+
+<pre><code>- (void)setTitleVerticalPositionAdjustment:(CGFloat)adjustment forBarMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>// 根据屏幕状态获得标题的垂直偏移量</p>
+
+<pre><code>- (CGFloat)titleVerticalPositionAdjustmentForBarMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>iOS6新增</p>
+
+<p>// 设置阴影图片</p>
+
+<pre><code> UIImage *shadowImage;
+</code></pre>
+
+<p>iOS7新增</p>
+
+<p>// iOS7下设置背景图片(iOS上默认是64，可以通过这个方法设置成44)。</p>
+
+<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>// 获取图片</p>
+
+<pre><code>- (UIImage *)backgroundImageForBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>// 如果想要用自己的图片替换V型，可以设置图片的backIndicatorImage backIndicatorTransitionMaskImage。</p>
+
+<pre><code>UIImage *backIndicatorImage;
+UIImage *backIndicatorTransitionMaskImage;
+
+如下代码所示：
+[[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"backBtton.png"]]; 
+[[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"backBtton.png"]]; 
+</code></pre>
+
+<p>UINavigationBarDelegate协议（可选）
+// 是否支持pushItem，如果返回NO就不能。</p>
+
+<pre><code>- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPushItem:(UINavigationItem *)item;
+</code></pre>
+
+<p>// pushItem时会调用的函数</p>
+
+<pre><code>- (void)navigationBar:(UINavigationBar *)navigationBar didPushItem:(UINavigationItem *)item;
+</code></pre>
+
+<p>// 是否支持popItem，如果返回NO就不能。</p>
+
+<pre><code>- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item;
+</code></pre>
+
+<p>// popItem时会调用的函数</p>
+
+<pre><code>- (void)navigationBar:(UINavigationBar *)navigationBar didPopItem:(UINavigationItem *)item;
+</code></pre>
+
+<p><strong>2、UINavigationItem </strong></p>
+
+<p>// 初始化item的title</p>
+
+<pre><code>- (id)initWithTitle:(NSString *)title;
+</code></pre>
+
+<p>// 设置item的title</p>
+
+<pre><code>NSString        *title; 
+</code></pre>
+
+<p>// 设置返回barButtonItem</p>
+
+<pre><code>UIBarButtonItem *backBarButtonItem;
+</code></pre>
+
+<p>// 设置titleView</p>
+
+<pre><code>UIView          *titleView;
+</code></pre>
+
+<p>// 一个显示在顶部导航栏的单行文本</p>
+
+<pre><code>NSString *prompt;    
+</code></pre>
+
+<p>// 是否隐藏返回按钮</p>
+
+<pre><code>BOOL hidesBackButton; 
+</code></pre>
+
+<p>// 隐藏返回按钮</p>
+
+<pre><code>- (void)setHidesBackButton:(BOOL)hidesBackButton animated:(BOOL)animated;
+</code></pre>
+
+<p>// 设置左边按钮</p>
+
+<pre><code>UIBarButtonItem *leftBarButtonItem;
+- (void)setLeftBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
+</code></pre>
+
+<p>// 设置右边按钮</p>
+
+<pre><code>UIBarButtonItem *rightBarButtonItem;
+- (void)setRightBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
+</code></pre>
+
+<p>iOS5新增</p>
+
+<pre><code>NSArray *leftBarButtonItems;
+NSArray *rightBarButtonItems;
+- (void)setLeftBarButtonItems:(NSArray *)items animated:(BOOL)animated; 
+- (void)setRightBarButtonItems:(NSArray *)items animated:(BOOL)animated;
+</code></pre>
+
+<p>// 当某个UIViewController自定义了LeftBarButtonItem(如：返回首页的Home按钮)，同时这个UIViewController存在被其他UIViewController，pushViewController(即：从其他试图控制器，跳转到自定义LeftBarButtonItem的试图控制器),这时如果没有在自定义LeftBarButtonItem设置UINavigationItem的属性leftItemsSupplementBackButton，那么系统会默认为NO，那麽其他控制器跳转到此控制器时，导航栏就只会展示你自定的LeftBarButtonItem，而不会显示后退按钮。但这样很不友好。如果想显示后退按钮，这在自定义LeftBarButtonItem时，设置UINavigationItem的属性leftItemsSupplementBackButton为YES即可。</p>
+
+<pre><code>BOOL leftItemsSupplementBackButton;
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>

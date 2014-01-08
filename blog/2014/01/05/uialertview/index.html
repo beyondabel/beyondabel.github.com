@@ -5,12 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>iOS组件之UIProgressView详解 - Abel之家</title>
+	<title>iOS组件之UIAlertView详解 - Abel之家</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS组件之UIProgressView详解 目录 1、基本属性及方法
-2、iOS5新增内容 1、基本属性及方法 // 初始化progressView的样式 - (id)initWithProgressViewStyle:(UIProgressViewStyle)style; // &hellip;">
+	<meta name="description" content="iOS组件之UIAlertView详解 // 初始化UIAlertView - (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id &lt;UIAlertViewDelegate&gt;) &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/06/uiprogressview/">
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/05/uialertview/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -90,58 +89,112 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">iOS组件之UIProgressView详解</h1>
-	<div class="entry-content" itemprop="articleBody"><p><strong>目录</strong></p>
+	<h1 class="title" itemprop="name">iOS组件之UIAlertView详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p>// 初始化UIAlertView</p>
 
-<pre><code>1、基本属性及方法
-2、iOS5新增内容
+<pre><code>- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id &lt;UIAlertViewDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;
 </code></pre>
 
-<!--more-->
+<p>// 设置代理</p>
 
-
-<p><strong>1、基本属性及方法</strong></p>
-
-<p>// 初始化progressView的样式</p>
-
-<pre><code>- (id)initWithProgressViewStyle:(UIProgressViewStyle)style; 
+<pre><code>id &lt;UIAlertViewDelegate&gt; delegate;
 </code></pre>
 
-<p>// progressView的样式（默认为UIProgressViewStyleDefault）</p>
+<p>// 设置title</p>
 
-<pre><code>UIProgressViewStyle progressViewStyle;
+<pre><code>NSString *title;
 </code></pre>
 
-<p>// 进度（范围为0-1）</p>
+<p>// 显示的消息文本文字</p>
 
-<pre><code>float progress; 
+<pre><code>NSString *message;
 </code></pre>
 
-<p><strong>2、iOS5新增内容</strong></p>
+<p>// 添加一个Button到AlertView并且指定按钮显示的文字，并且返回它的索引(从0开始，cancelButton的索引是0)</p>
 
-<p>// 进度填充部分的颜色(譬如进度到40%,那么40%部分的颜色就是这个属性)</p>
-
-<pre><code>UIColor* progressTintColor;
+<pre><code>- (NSInteger)addButtonWithTitle:(NSString *)title; 
 </code></pre>
 
-<p>// 未填充部分的颜色</p>
+<p>// 通过下标获取button的title</p>
 
-<pre><code>UIColor* trackTintColor ;
+<pre><code>- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
 </code></pre>
 
-<p>// 进度填充部分的图片，如progressTintColor</p>
+<p>// button的总数(只读)</p>
 
-<pre><code>UIImage* progressImage;
+<pre><code>NSInteger numberOfButtons;
 </code></pre>
 
-<p>// 未填充部分的图片，如trackTintColor</p>
+<p>// 取消按钮的下标</p>
 
-<pre><code>UIImage* trackImage;
+<pre><code>NSInteger cancelButtonIndex;
 </code></pre>
 
-<p>// 设置progress的进度</p>
+<p>// 第一个其他button的下标(只读)</p>
 
-<pre><code>- (void)setProgress:(float)progress animated:(BOOL)animated;
+<pre><code>NSInteger firstOtherButtonIndex;
+</code></pre>
+
+<p>// 是否显示了(只读)</p>
+
+<pre><code>BOOL visible;
+</code></pre>
+
+<p>// 动画显示alert.</p>
+
+<pre><code>- (void)show;
+</code></pre>
+
+<p>// 隐藏按下指定索引值的按钮之后，隐藏AlertView，并制定是否启动动画效果</p>
+
+<pre><code>- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
+</code></pre>
+
+<p>// 设置alertView样式（iOS5.0）</p>
+
+<pre><code>UIAlertViewStyle alertViewStyle;
+</code></pre>
+
+<p>// 返回指定索引值的TextField ，这个API仅存在于IOS5.0以上</p>
+
+<pre><code>- (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;
+</code></pre>
+
+<p>UIAlertViewDelegate协议（可选）</p>
+
+<p>// 当一个指定索引的按钮被点击的时候，回调此方法，buttonIndex是按钮的索引值，从0开始</p>
+
+<pre><code>- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+</code></pre>
+
+<p>// 当用户按下HOME键的时候，回调此方法，用户点击Cancel按钮的时候不会回调此方法</p>
+
+<pre><code>- (void)alertViewCancel:(UIAlertView *)alertView;
+</code></pre>
+
+<p>// 开始显示View的动画之前进行回调</p>
+
+<pre><code>- (void)willPresentAlertView:(UIAlertView *)alertView;  
+</code></pre>
+
+<p>// 显示动画完成之后进行回调</p>
+
+<pre><code>- (void)didPresentAlertView:(UIAlertView *)alertView;  
+</code></pre>
+
+<p>// 将要开始View隐藏动画的时候进行回调</p>
+
+<pre><code>- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex; 
+</code></pre>
+
+<p>// 当View的隐藏动画结束的时候进行回调</p>
+
+<pre><code>- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
+</code></pre>
+
+<p>// 编辑任何默认的字段添加的风格之后调用</p>
+
+<pre><code>- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
 </code></pre>
 </div>
 
