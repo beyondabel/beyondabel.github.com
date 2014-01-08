@@ -348,115 +348,11 @@ UISearchBar类实现一个文本字段控制基于文本的搜索，它是继承
 	</div>
 	<h1 class="title" itemprop="name"><a href="/blog/2014/01/05/uialertview/" itemprop="url">iOS组件之UIAlertView详解</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>// 初始化UIAlertView</p>
+		<p><strong>引言</strong></p>
 
-<pre><code>- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id &lt;UIAlertViewDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id &lt;UIAlertViewDelegate&gt; delegate;
-</code></pre>
-
-<p>// 设置title</p>
-
-<pre><code>NSString *title;
-</code></pre>
-
-<p>// 显示的消息文本文字</p>
-
-<pre><code>NSString *message;
-</code></pre>
-
-<p>// 添加一个Button到AlertView并且指定按钮显示的文字，并且返回它的索引(从0开始，cancelButton的索引是0)</p>
-
-<pre><code>- (NSInteger)addButtonWithTitle:(NSString *)title; 
-</code></pre>
-
-<p>// 通过下标获取button的title</p>
-
-<pre><code>- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// button的总数(只读)</p>
-
-<pre><code>NSInteger numberOfButtons;
-</code></pre>
-
-<p>// 取消按钮的下标</p>
-
-<pre><code>NSInteger cancelButtonIndex;
-</code></pre>
-
-<p>// 第一个其他button的下标(只读)</p>
-
-<pre><code>NSInteger firstOtherButtonIndex;
-</code></pre>
-
-<p>// 是否显示了(只读)</p>
-
-<pre><code>BOOL visible;
-</code></pre>
-
-<p>// 动画显示alert.</p>
-
-<pre><code>- (void)show;
-</code></pre>
-
-<p>// 隐藏按下指定索引值的按钮之后，隐藏AlertView，并制定是否启动动画效果</p>
-
-<pre><code>- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
-</code></pre>
-
-<p>// 设置alertView样式（iOS5.0）</p>
-
-<pre><code>UIAlertViewStyle alertViewStyle;
-</code></pre>
-
-<p>// 返回指定索引值的TextField ，这个API仅存在于IOS5.0以上</p>
-
-<pre><code>- (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;
-</code></pre>
-
-<p>UIAlertViewDelegate协议（可选）</p>
-
-<p>// 当一个指定索引的按钮被点击的时候，回调此方法，buttonIndex是按钮的索引值，从0开始</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 当用户按下HOME键的时候，回调此方法，用户点击Cancel按钮的时候不会回调此方法</p>
-
-<pre><code>- (void)alertViewCancel:(UIAlertView *)alertView;
-</code></pre>
-
-<p>// 开始显示View的动画之前进行回调</p>
-
-<pre><code>- (void)willPresentAlertView:(UIAlertView *)alertView;  
-</code></pre>
-
-<p>// 显示动画完成之后进行回调</p>
-
-<pre><code>- (void)didPresentAlertView:(UIAlertView *)alertView;  
-</code></pre>
-
-<p>// 将要开始View隐藏动画的时候进行回调</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex; 
-</code></pre>
-
-<p>// 当View的隐藏动画结束的时候进行回调</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 编辑任何默认的字段添加的风格之后调用</p>
-
-<pre><code>- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
-</code></pre>
 
 		
-		
+		<a href="/blog/2014/01/05/uialertview/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>
