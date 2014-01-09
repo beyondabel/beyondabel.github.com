@@ -1,0 +1,240 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS组件之UIControl详解 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS组件之UIControl详解 引言 UIControl的是控制对象，如传达用户意图的应用程序按钮和滑块的基类。你不能使用uicontrol的类直接实例化控件。相反，它定义了它的所有子类的通用接口和行为结构。 目录 1、基本属性及方法 1、基本属性及方法 // 控件默认是启用的。要禁用控件， &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/06/uicontrol/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/openSource">开源项目</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS组件之UIControl详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+
+<p>UIControl的是控制对象，如传达用户意图的应用程序按钮和滑块的基类。你不能使用uicontrol的类直接实例化控件。相反，它定义了它的所有子类的通用接口和行为结构。</p>
+
+<p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+</code></pre>
+
+<p><strong>1、基本属性及方法</strong></p>
+
+<p>// 控件默认是启用的。要禁用控件，可以将enabled属性设置为NO，这将导致控件忽略任何触摸事件。被禁用后，控件还可以用不同的方式显示自己，比如变成灰色不可用。虽然是由控件的子类完成的，这个属性却存在于UIControl中。</p>
+
+<pre><code>BOOL enabled;
+</code></pre>
+
+<p>// 当用户选中控件时，UIControl类会将其selected属性设置为YES。子类有时使用这个属性来让控件选择自身，或者来表现不同的行为方式。</p>
+
+<pre><code>BOOL selected;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>BOOL highlighted;
+</code></pre>
+
+<p>// 控件如何在垂直方向上布置自身的内容。默认是将内容顶端对其，对于文本字段，可能会改成UIControlContentVerticalAlignmentCenter。对于这个字段，可以使用下列诸值.</p>
+
+<pre><code>UIControlContentVerticalAlignment contentVerticalAlignment;    
+
+UIControlContentVerticalAlignmentCenter //居中
+UIControlContentVerticalAlignmentTop    //居顶
+UIControlContentVerticalAlignmentBottom // 居下
+UIControlContentVerticalAlignmentFill   
+</code></pre>
+
+<p>// 控件如何在水平方向上布置自身的内容</p>
+
+<pre><code>UIControlContentHorizontalAlignment contentHorizontalAlignment; 
+</code></pre>
+
+<p>// UIControl状态(只读)</p>
+
+<pre><code>UIControlState state;
+</code></pre>
+
+<p>// 只读</p>
+
+<pre><code>BOOL tracking;
+</code></pre>
+
+<p>// 是否touchInside（只读）</p>
+
+<pre><code>BOOL touchInside; 
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
+- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
+- (void)cancelTrackingWithEvent:(UIEvent *)event;   // event may be nil if cancelled for non-event reasons, e.g. removed from window
+</code></pre>
+
+<p>// 事件通知。UIControl类提供了一个标准机制，来进行事件登记和接收。这令你可以指定你的控件在发生特定事件时，通知代理类的一个方法。如果要注册一个事件，可以使用addTarget方法：</p>
+
+<pre><code>- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+</code></pre>
+
+<p>// 移除事件通知。要删除一个或多个事件的相应动作，可以使用UIControl类的removeTarget方法。使用nil值就可以将给定事件目标的所有动作删除</p>
+
+<pre><code>- (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+</code></pre>
+
+<p>// 取得关于一个控件所有指定动作的列表，可以使用allTargets方法。这个方法返回一个NSSet，其中包含事件的完整列表</p>
+
+<pre><code>- (NSSet*)allTargets;
+</code></pre>
+
+<p>// 获取关于一个控件所有事件的列表</p>
+
+<pre><code>- (UIControlEvents)allControlEvents;
+</code></pre>
+
+<p>// 获取针对某一特定事件目标的全部动作列表</p>
+
+<pre><code>- (NSArray *)actionsForTarget:(id)target forControlEvent:(UIControlEvents)controlEvent;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (void)sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event;
+</code></pre>
+
+<p>// 如果设计了一个自定义控件类，可以使用sendActionsForControlEvent方法，为基本的UIControl事件或自己的自定义事件发送通知。例如，如果你的控件值正在发生变化，就可以发送相应通知，通过控件的代码可以指定时间目标，这个通知将被传播到这些指定的目标。</p>
+
+<pre><code>- (void)sendActionsForControlEvents:(UIControlEvents)controlEvents;
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>

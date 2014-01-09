@@ -357,11 +357,143 @@
 	<div class="entry-content" itemprop="articleBody">
 		<p><strong>引言</strong></p>
 
-<p>UITableView简单来说是一个表视图，继承于UIScrollView，用于显示和编辑信息的分层列表。</p>
+<p>UITableView简单来说是一个表视图，继承于UIScrollView（有关UIScrollView请参照<a href="/blog/2014/01/05/uiscrollView/">《iOS组件之UIScrollView详解》</a>），用于显示和编辑信息的分层列表。</p>
 
 
 		
 		<a href="/blog/2014/01/07/uitableview/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-06T12:32:49+08:00" data-updated="true" itemprop="datePublished">Jan 6<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/01/06/uicontrol/" itemprop="url">iOS组件之UIControl详解</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><strong>引言</strong></p>
+
+<p>UIControl的是控制对象，如传达用户意图的应用程序按钮和滑块的基类。你不能使用uicontrol的类直接实例化控件。相反，它定义了它的所有子类的通用接口和行为结构。</p>
+
+<p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+</code></pre>
+
+<p><strong>1、基本属性及方法</strong></p>
+
+<p>// 控件默认是启用的。要禁用控件，可以将enabled属性设置为NO，这将导致控件忽略任何触摸事件。被禁用后，控件还可以用不同的方式显示自己，比如变成灰色不可用。虽然是由控件的子类完成的，这个属性却存在于UIControl中。</p>
+
+<pre><code>BOOL enabled;
+</code></pre>
+
+<p>// 当用户选中控件时，UIControl类会将其selected属性设置为YES。子类有时使用这个属性来让控件选择自身，或者来表现不同的行为方式。</p>
+
+<pre><code>BOOL selected;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>BOOL highlighted;
+</code></pre>
+
+<p>// 控件如何在垂直方向上布置自身的内容。默认是将内容顶端对其，对于文本字段，可能会改成UIControlContentVerticalAlignmentCenter。对于这个字段，可以使用下列诸值.</p>
+
+<pre><code>UIControlContentVerticalAlignment contentVerticalAlignment;    
+
+UIControlContentVerticalAlignmentCenter //居中
+UIControlContentVerticalAlignmentTop    //居顶
+UIControlContentVerticalAlignmentBottom // 居下
+UIControlContentVerticalAlignmentFill   
+</code></pre>
+
+<p>// 控件如何在水平方向上布置自身的内容</p>
+
+<pre><code>UIControlContentHorizontalAlignment contentHorizontalAlignment; 
+</code></pre>
+
+<p>// UIControl状态(只读)</p>
+
+<pre><code>UIControlState state;
+</code></pre>
+
+<p>// 只读</p>
+
+<pre><code>BOOL tracking;
+</code></pre>
+
+<p>// 是否touchInside（只读）</p>
+
+<pre><code>BOOL touchInside; 
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
+- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
+- (void)cancelTrackingWithEvent:(UIEvent *)event;   // event may be nil if cancelled for non-event reasons, e.g. removed from window
+</code></pre>
+
+<p>// 事件通知。UIControl类提供了一个标准机制，来进行事件登记和接收。这令你可以指定你的控件在发生特定事件时，通知代理类的一个方法。如果要注册一个事件，可以使用addTarget方法：</p>
+
+<pre><code>- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+</code></pre>
+
+<p>// 移除事件通知。要删除一个或多个事件的相应动作，可以使用UIControl类的removeTarget方法。使用nil值就可以将给定事件目标的所有动作删除</p>
+
+<pre><code>- (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+</code></pre>
+
+<p>// 取得关于一个控件所有指定动作的列表，可以使用allTargets方法。这个方法返回一个NSSet，其中包含事件的完整列表</p>
+
+<pre><code>- (NSSet*)allTargets;
+</code></pre>
+
+<p>// 获取关于一个控件所有事件的列表</p>
+
+<pre><code>- (UIControlEvents)allControlEvents;
+</code></pre>
+
+<p>// 获取针对某一特定事件目标的全部动作列表</p>
+
+<pre><code>- (NSArray *)actionsForTarget:(id)target forControlEvent:(UIControlEvents)controlEvent;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (void)sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event;
+</code></pre>
+
+<p>// 如果设计了一个自定义控件类，可以使用sendActionsForControlEvent方法，为基本的UIControl事件或自己的自定义事件发送通知。例如，如果你的控件值正在发生变化，就可以发送相应通知，通过控件的代码可以指定时间目标，这个通知将被传播到这些指定的目标。</p>
+
+<pre><code>- (void)sendActionsForControlEvents:(UIControlEvents)controlEvents;
+</code></pre>
+
+		
+		
 	</div>
 
 </article>
@@ -437,42 +569,6 @@ UISearchBar类实现一个文本字段控制基于文本的搜索，它是继承
 
 		
 		<a href="/blog/2014/01/05/uisearchbar/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-05T12:32:18+08:00" data-updated="true" itemprop="datePublished">Jan 5<span>th</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/01/05/uiscrollview/" itemprop="url">iOS组件之UIScrollView详解</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><strong>引言</strong></p>
-
-
-		
-		<a href="/blog/2014/01/05/uiscrollview/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>
