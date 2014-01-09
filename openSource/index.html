@@ -5,11 +5,12 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>禁止键盘弹出时UIWebView自动滑动 - Abel之家</title>
+	<title>开源项目 - Abel之家</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="禁止键盘弹出时UIWebView自动滑动 之前在做公司项目的时候，需要做一个页面编辑功能，当我们点击编辑器的时候，网页会自动的滑动，结果导致编辑器的fram发生变化。为了解决这个问题，我们需要去禁止webView的自动滑动， &hellip;">
+	<meta name="description" content="
+">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/2013/09/28/ios-webview-keybord/">
+	<link rel="canonical" href="http://beyondabel.github.io/openSource/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -89,22 +90,12 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">禁止键盘弹出时UIWebView自动滑动</h1>
-	<div class="entry-content" itemprop="articleBody"><p>之前在做公司项目的时候，需要做一个页面编辑功能，当我们点击编辑器的时候，网页会自动的滑动，结果导致编辑器的fram发生变化。为了解决这个问题，我们需要去禁止webView的自动滑动，我们只需要重写viewForZoomingInScrollView方法就可以了</p>
-
-<!--more-->
-
-
-<pre><code>webview.scrollView.delegate=self;
-
--(UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView 
-{
-    return nil;
-}
-</code></pre>
+				<div id="content" class="inner"><article class="page">
+    
+    <h1 class="title">开源项目</h1>
+    
+    <div class="entry-content">
 </div>
-
 </article>
 
 	<div class="share">
@@ -119,25 +110,6 @@
 
 
 
-
-
-<section>
-    <h1>Comments</h1>
-    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread"></div>
-<script type="text/javascript">
-    var duoshuoQuery = {short_name:"abel"};
-    (function() {
-     var ds = document.createElement('script');
-     ds.type = 'text/javascript';ds.async = true;
-     ds.src = 'http://static.duoshuo.com/embed.js';
-     ds.charset = 'UTF-8';
-     (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-     })();
-    </script>
-<!-- Duoshuo Comment END --></div>
-</section>
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>

@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>禁止键盘弹出时UIWebView自动滑动 - Abel之家</title>
+	<title>iOS组件之UISlider详解 - Abel之家</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="禁止键盘弹出时UIWebView自动滑动 之前在做公司项目的时候，需要做一个页面编辑功能，当我们点击编辑器的时候，网页会自动的滑动，结果导致编辑器的fram发生变化。为了解决这个问题，我们需要去禁止webView的自动滑动， &hellip;">
+	<meta name="description" content="iOS组件之UISlider详解 引言 目录 // 指定初始值 float value; // 指定可变最小值 float minimumValue; // 指定可变最大值 float maximumValue; 改变UISlider的外观 // 设置滑轮左边图片 UIImage * &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/2013/09/28/ios-webview-keybord/">
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/11/uislider/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -90,18 +90,119 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">禁止键盘弹出时UIWebView自动滑动</h1>
-	<div class="entry-content" itemprop="articleBody"><p>之前在做公司项目的时候，需要做一个页面编辑功能，当我们点击编辑器的时候，网页会自动的滑动，结果导致编辑器的fram发生变化。为了解决这个问题，我们需要去禁止webView的自动滑动，我们只需要重写viewForZoomingInScrollView方法就可以了</p>
+	<h1 class="title" itemprop="name">iOS组件之UISlider详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p>引言</p>
 
 <!--more-->
 
 
-<pre><code>webview.scrollView.delegate=self;
+<p>目录</p>
 
--(UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView 
-{
-    return nil;
-}
+<p>// 指定初始值</p>
+
+<pre><code>float value;
+</code></pre>
+
+<p>// 指定可变最小值</p>
+
+<pre><code>float minimumValue;
+</code></pre>
+
+<p>// 指定可变最大值</p>
+
+<pre><code>float maximumValue;
+</code></pre>
+
+<p><strong>改变UISlider的外观</strong></p>
+
+<p>//  设置滑轮左边图片</p>
+
+<pre><code>UIImage *minimumValueImage;
+</code></pre>
+
+<p>// 设置滑轮右边图片</p>
+
+<pre><code>UIImage *maximumValueImage;
+</code></pre>
+
+<p>//  （默认YES）</p>
+
+<pre><code>BOOL continuous;
+</code></pre>
+
+<p>//  滑轮左边颜色如果设置了左边的图片就不会显示（iOS 5.0）</p>
+
+<pre><code>UIColor *minimumTrackTintColor;
+</code></pre>
+
+<p>// 滑轮右边颜色如果设置了右边的图片就不会显示(iOS 5.0)</p>
+
+<pre><code>UIColor *maximumTrackTintColor;
+</code></pre>
+
+<p>// 设置了滑轮的颜色如果设置了滑轮的样式图片就不会显示(iOS 5.0)</p>
+
+<pre><code>UIColor *thumbTintColor;
+</code></pre>
+
+<p>// 动态设置滑动值</p>
+
+<pre><code>- (void)setValue:(float)value animated:(BOOL)animated;
+</code></pre>
+
+<p>// 定制自己的滑块图片</p>
+
+<pre><code>- (void)setThumbImage:(UIImage *)image forState:(UIControlState)state;
+</code></pre>
+
+<p>// 设置左边的图片</p>
+
+<pre><code>- (void)setMinimumTrackImage:(UIImage *)image forState:(UIControlState)state;
+</code></pre>
+
+<p>// 设置右边的图片</p>
+
+<pre><code>- (void)setMaximumTrackImage:(UIImage *)image forState:(UIControlState)state;
+</code></pre>
+
+<p>//  根据状态返回滑动图片</p>
+
+<pre><code>- (UIImage *)thumbImageForState:(UIControlState)state;
+</code></pre>
+
+<p>// 根据状态左边的图片</p>
+
+<pre><code>- (UIImage *)minimumTrackImageForState:(UIControlState)state;
+</code></pre>
+
+<p>// 根据状态右边的图片</p>
+
+<pre><code>- (UIImage *)maximumTrackImageForState:(UIControlState)state;
+</code></pre>
+
+<p>// 当前的滑动图片（只读）</p>
+
+<pre><code>UIImage* currentThumbImage;
+</code></pre>
+
+<p>// 当前左边的图片（只读）</p>
+
+<pre><code>UIImage* currentMinimumTrackImage;
+</code></pre>
+
+<p>// 当前右边的图片（只读）</p>
+
+<pre><code>UIImage* currentMaximumTrackImage;
+</code></pre>
+
+<p><strong>供子类重写的方法</strong></p>
+
+<p>// 以下四种方法用于子类覆盖,用来自定义thumb、track的CGRect</p>
+
+<pre><code>- (CGRect)minimumValueImageRectForBounds:(CGRect)bounds;
+- (CGRect)maximumValueImageRectForBounds:(CGRect)bounds;
+- (CGRect)trackRectForBounds:(CGRect)bounds;
+- (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value;
 </code></pre>
 </div>
 

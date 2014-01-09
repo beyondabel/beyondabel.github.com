@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>禁止键盘弹出时UIWebView自动滑动 - Abel之家</title>
+	<title>iOS组件之UIDatePicker详解 - Abel之家</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="禁止键盘弹出时UIWebView自动滑动 之前在做公司项目的时候，需要做一个页面编辑功能，当我们点击编辑器的时候，网页会自动的滑动，结果导致编辑器的fram发生变化。为了解决这个问题，我们需要去禁止webView的自动滑动， &hellip;">
+	<meta name="description" content="iOS组件之UIDatePicker详解 引言 目录 typedef enum { //根据区域设置,显示小时,分钟,并指定AM/PM(例如:6|53|PM) UIDatePickerModeTime, //根据区域设置,显示月,日,年(例如:November|15|2007) &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/2013/09/28/ios-webview-keybord/">
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/09/uidatepicker/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -90,18 +90,76 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">禁止键盘弹出时UIWebView自动滑动</h1>
-	<div class="entry-content" itemprop="articleBody"><p>之前在做公司项目的时候，需要做一个页面编辑功能，当我们点击编辑器的时候，网页会自动的滑动，结果导致编辑器的fram发生变化。为了解决这个问题，我们需要去禁止webView的自动滑动，我们只需要重写viewForZoomingInScrollView方法就可以了</p>
+	<h1 class="title" itemprop="name">iOS组件之UIDatePicker详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
 
 <!--more-->
 
 
-<pre><code>webview.scrollView.delegate=self;
+<p><strong>目录</strong></p>
 
--(UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView 
-{
-    return nil;
-}
+<pre><code>typedef enum {
+    //根据区域设置,显示小时,分钟,并指定AM/PM(例如:6|53|PM)
+    UIDatePickerModeTime,
+    //根据区域设置,显示月,日,年(例如:November|15|2007)
+    UIDatePickerModeDate, 
+    //根据区域设置,显示日期(星期,月,日),小时,分钟,并指定AM/PM(例如:Wed Nov 15|6|53|PM)
+    UIDatePickerModeDateAndTime,
+    //显示小时,分钟(例如:1|53)  
+    UIDatePickerModeCountDownTimer
+} UIDatePickerMode;
+</code></pre>
+
+<p>// 设置UIDatePicker的显示模式(默认为UIDatePickerModeDateAndTime)</p>
+
+<pre><code>UIDatePickerMode datePickerMode; 
+</code></pre>
+
+<p>//设置为语言显示</p>
+
+<pre><code>NSLocale   *locale;   
+</code></pre>
+
+<p>// 设置日历</p>
+
+<pre><code>NSCalendar *calendar;
+</code></pre>
+
+<p>// 设置时区</p>
+
+<pre><code>NSTimeZone *timeZone; 
+</code></pre>
+
+<p>// 设置当前显示时间</p>
+
+<pre><code>NSDate *date;
+</code></pre>
+
+<p>//如果animated为YES,时间轮会自动显示新的时间</p>
+
+<pre><code>- (void)setDate:(NSDate *)date animated:(BOOL)animated;        
+</code></pre>
+
+<p>// 设置显示最小时间</p>
+
+<pre><code>NSDate *minimumDate;
+</code></pre>
+
+<p>// 设置显示最大时间（此处为当前时间）</p>
+
+<pre><code>NSDate *maximumDate;
+</code></pre>
+
+<p>//用于UIDatePickerModeCountDownTimer,否则忽略.默认为0.0.最大限制为23:59 (86,399秒)</p>
+
+<pre><code>NSTimeInterval countDownDuration;
+</code></pre>
+
+<p>//设置分钟之间的间隔.间隔必须均匀的分为60.默认为1.最小为1,最大为30</p>
+
+<pre><code>NSInteger      minuteInterval;
+
+ // if animated is YES, animate the wheels of time to display the new date
 </code></pre>
 </div>
 

@@ -1,0 +1,295 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>iOS组件之UISegmentedControl详解 - Abel之家</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="iOS组件之UISegmentedControl详解 引言 目录 // 初始化UISegmentedControl（items可以是NSString类型或者UIImages） - (id)initWithItems:(NSArray *)items; //设置样式 （该样式只在ios2.0~7. &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel之家" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://beyondabel.github.io/blog/2014/01/10/uisegmentedcontrol/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel之家</a></h1>
+  
+    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/openSource">开源项目</a></li>
+  <li><a href="/about">关于</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">iOS组件之UISegmentedControl详解</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<p>// 初始化UISegmentedControl（items可以是NSString类型或者UIImages）</p>
+
+<pre><code>- (id)initWithItems:(NSArray *)items;
+</code></pre>
+
+<p>//设置样式 （该样式只在ios2.0~7.0有效果）</p>
+
+<pre><code>UISegmentedControlStyle segmentedControlStyle;
+</code></pre>
+
+<p>//设置在点击后是否恢复原样（默认是NO）</p>
+
+<pre><code>BOOL momentary;
+</code></pre>
+
+<p>// 设置总选项数</p>
+
+<pre><code>NSUInteger numberOfSegments;
+</code></pre>
+
+<p>//是否根据segment的内容改变segment的宽度 (只使用ios5.0，默认为NO)</p>
+
+<pre><code>BOOL apportionsSegmentWidthsByContent;
+</code></pre>
+
+<p>//在指定的索引插入一个选项并设置题目</p>
+
+<pre><code>- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)segment animated:(BOOL)animated;
+</code></pre>
+
+<p>//在指定的索引插入一个选项并设置图片</p>
+
+<pre><code>- (void)insertSegmentWithImage:(UIImage *)image  atIndex:(NSUInteger)segment animated:(BOOL)animated;
+</code></pre>
+
+<p>//移除指定索引的选项</p>
+
+<pre><code>- (void)removeSegmentAtIndex:(NSUInteger)segment animated:(BOOL)animated;
+</code></pre>
+
+<p>//移除所有的选项</p>
+
+<pre><code>- (void)removeAllSegments;
+</code></pre>
+
+<p>//设置指定索引题目</p>
+
+<pre><code>- (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//获取指定索引选项的标题</p>
+
+<pre><code>- (NSString *)titleForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置指定索引的图片</p>
+
+<pre><code>- (void)setImage:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//获取指定索引选项的图片</p>
+
+<pre><code>- (UIImage *)imageForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置指定索引选项的宽度（默认是0）</p>
+
+<pre><code>- (void)setWidth:(CGFloat)width forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//获取指定索引选项的宽度</p>
+
+<pre><code>- (CGFloat)widthForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置选项中图片等的左上角的位置</p>
+
+<pre><code>- (void)setContentOffset:(CGSize)offset forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//获取选项中图片等的左上角的位置</p>
+
+<pre><code>- (CGSize)contentOffsetForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置指定索引选项不可选</p>
+
+<pre><code>- (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//判断指定索引选项是否可选</p>
+
+<pre><code>- (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置默认选项索引</p>
+
+<pre><code>NSInteger selectedSegmentIndex; 
+</code></pre>
+
+<p>//设置UISegmentedControl的颜色</p>
+
+<pre><code>UIColor *tintColor; 
+</code></pre>
+
+<p><strong>iOS 5.0新增</strong></p>
+
+<p>//设置在某个状态下的背景图片</p>
+
+<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>//获取在某个状态下的背景图片</p>
+
+<pre><code>- (UIImage *)backgroundImageForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics   
+</code></pre>
+
+<p>//设置分割线背景图片</p>
+
+<pre><code>- (void)setDividerImage:(UIImage *)dividerImage forLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMetCT
+</code></pre>
+
+<p>//获取分割线背景图片</p>
+
+<pre><code>- (UIImage *)dividerImageForLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMeE 
+</code></pre>
+
+<p>//设置文字显示样式</p>
+
+<pre><code>- (void)setTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state;
+</code></pre>
+
+<p>//获取文字显示样式</p>
+
+<pre><code>- (NSDictionary *)titleTextAttributesForState:(UIControlState)state;
+</code></pre>
+
+<p>//设置选项中内容的调整位置</p>
+
+<pre><code>- (void)setContentPositionAdjustment:(UIOffset)adjustment forSegmentType:(UISegmentedControlSegment)leftCenterRightOrAlone barMetrics:(UIBarMetrics)barMetrics; 
+</code></pre>
+
+<p>//获取选项中内容的调整位置</p>
+
+<pre><code>- (UIOffset)contentPositionAdjustmentForSegmentType:(UISegmentedControlSegment)leftCenterRightOrAlone barMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+		</div>
+	</div>
+</body>
+</html>

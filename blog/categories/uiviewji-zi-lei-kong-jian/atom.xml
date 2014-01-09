@@ -4,7 +4,7 @@
   <title><![CDATA[Category: UIView及子类控件 | Abel之家]]></title>
   <link href="http://beyondabel.github.io/blog/categories/uiviewji-zi-lei-kong-jian/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-08T10:23:59+08:00</updated>
+  <updated>2014-01-09T11:34:42+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -18,15 +18,19 @@
     <link href="http://beyondabel.github.io/blog/2014/01/11/uiswitch/"/>
     <updated>2014-01-11T12:34:31+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/11/uiswitch</id>
-    <content type="html"><![CDATA[<p>// 开关是否打开</p>
+    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<p>// 开关是否打开</p>
 
 <pre><code>BOOL on;
 </code></pre>
 
 <p>// 这个frame会被忽略，他会强制设置大小</p>
-
-<!--more-->
-
 
 <pre><code>- (id)initWithFrame:(CGRect)frame;
 </code></pre>
@@ -62,6 +66,288 @@
 <p>// 开关关闭时自定义图片</p>
 
 <pre><code>UIImage *offImage;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UISlider详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/11/uislider/"/>
+    <updated>2014-01-11T12:34:24+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/11/uislider</id>
+    <content type="html"><![CDATA[<p>引言</p>
+
+<!--more-->
+
+
+<p>目录</p>
+
+<p>// 指定初始值</p>
+
+<pre><code>float value;
+</code></pre>
+
+<p>// 指定可变最小值</p>
+
+<pre><code>float minimumValue;
+</code></pre>
+
+<p>// 指定可变最大值</p>
+
+<pre><code>float maximumValue;
+</code></pre>
+
+<p><strong>改变UISlider的外观</strong></p>
+
+<p>//  设置滑轮左边图片</p>
+
+<pre><code>UIImage *minimumValueImage;
+</code></pre>
+
+<p>// 设置滑轮右边图片</p>
+
+<pre><code>UIImage *maximumValueImage;
+</code></pre>
+
+<p>//  （默认YES）</p>
+
+<pre><code>BOOL continuous;
+</code></pre>
+
+<p>//  滑轮左边颜色如果设置了左边的图片就不会显示（iOS 5.0）</p>
+
+<pre><code>UIColor *minimumTrackTintColor;
+</code></pre>
+
+<p>// 滑轮右边颜色如果设置了右边的图片就不会显示(iOS 5.0)</p>
+
+<pre><code>UIColor *maximumTrackTintColor;
+</code></pre>
+
+<p>// 设置了滑轮的颜色如果设置了滑轮的样式图片就不会显示(iOS 5.0)</p>
+
+<pre><code>UIColor *thumbTintColor;
+</code></pre>
+
+<p>// 动态设置滑动值</p>
+
+<pre><code>- (void)setValue:(float)value animated:(BOOL)animated;
+</code></pre>
+
+<p>// 定制自己的滑块图片</p>
+
+<pre><code>- (void)setThumbImage:(UIImage *)image forState:(UIControlState)state;
+</code></pre>
+
+<p>// 设置左边的图片</p>
+
+<pre><code>- (void)setMinimumTrackImage:(UIImage *)image forState:(UIControlState)state;
+</code></pre>
+
+<p>// 设置右边的图片</p>
+
+<pre><code>- (void)setMaximumTrackImage:(UIImage *)image forState:(UIControlState)state;
+</code></pre>
+
+<p>//  根据状态返回滑动图片</p>
+
+<pre><code>- (UIImage *)thumbImageForState:(UIControlState)state;
+</code></pre>
+
+<p>// 根据状态左边的图片</p>
+
+<pre><code>- (UIImage *)minimumTrackImageForState:(UIControlState)state;
+</code></pre>
+
+<p>// 根据状态右边的图片</p>
+
+<pre><code>- (UIImage *)maximumTrackImageForState:(UIControlState)state;
+</code></pre>
+
+<p>// 当前的滑动图片（只读）</p>
+
+<pre><code>UIImage* currentThumbImage;
+</code></pre>
+
+<p>// 当前左边的图片（只读）</p>
+
+<pre><code>UIImage* currentMinimumTrackImage;
+</code></pre>
+
+<p>// 当前右边的图片（只读）</p>
+
+<pre><code>UIImage* currentMaximumTrackImage;
+</code></pre>
+
+<p><strong>供子类重写的方法</strong></p>
+
+<p>// 以下四种方法用于子类覆盖,用来自定义thumb、track的CGRect</p>
+
+<pre><code>- (CGRect)minimumValueImageRectForBounds:(CGRect)bounds;
+- (CGRect)maximumValueImageRectForBounds:(CGRect)bounds;
+- (CGRect)trackRectForBounds:(CGRect)bounds;
+- (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UISegmentedControl详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/10/uisegmentedcontrol/"/>
+    <updated>2014-01-10T12:34:00+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/10/uisegmentedcontrol</id>
+    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<p>// 初始化UISegmentedControl（items可以是NSString类型或者UIImages）</p>
+
+<pre><code>- (id)initWithItems:(NSArray *)items;
+</code></pre>
+
+<p>//设置样式 （该样式只在ios2.0~7.0有效果）</p>
+
+<pre><code>UISegmentedControlStyle segmentedControlStyle;
+</code></pre>
+
+<p>//设置在点击后是否恢复原样（默认是NO）</p>
+
+<pre><code>BOOL momentary;
+</code></pre>
+
+<p>// 设置总选项数</p>
+
+<pre><code>NSUInteger numberOfSegments;
+</code></pre>
+
+<p>//是否根据segment的内容改变segment的宽度 (只使用ios5.0，默认为NO)</p>
+
+<pre><code>BOOL apportionsSegmentWidthsByContent;
+</code></pre>
+
+<p>//在指定的索引插入一个选项并设置题目</p>
+
+<pre><code>- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)segment animated:(BOOL)animated;
+</code></pre>
+
+<p>//在指定的索引插入一个选项并设置图片</p>
+
+<pre><code>- (void)insertSegmentWithImage:(UIImage *)image  atIndex:(NSUInteger)segment animated:(BOOL)animated;
+</code></pre>
+
+<p>//移除指定索引的选项</p>
+
+<pre><code>- (void)removeSegmentAtIndex:(NSUInteger)segment animated:(BOOL)animated;
+</code></pre>
+
+<p>//移除所有的选项</p>
+
+<pre><code>- (void)removeAllSegments;
+</code></pre>
+
+<p>//设置指定索引题目</p>
+
+<pre><code>- (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//获取指定索引选项的标题</p>
+
+<pre><code>- (NSString *)titleForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置指定索引的图片</p>
+
+<pre><code>- (void)setImage:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//获取指定索引选项的图片</p>
+
+<pre><code>- (UIImage *)imageForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置指定索引选项的宽度（默认是0）</p>
+
+<pre><code>- (void)setWidth:(CGFloat)width forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//获取指定索引选项的宽度</p>
+
+<pre><code>- (CGFloat)widthForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置选项中图片等的左上角的位置</p>
+
+<pre><code>- (void)setContentOffset:(CGSize)offset forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//获取选项中图片等的左上角的位置</p>
+
+<pre><code>- (CGSize)contentOffsetForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置指定索引选项不可选</p>
+
+<pre><code>- (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//判断指定索引选项是否可选</p>
+
+<pre><code>- (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment;
+</code></pre>
+
+<p>//设置默认选项索引</p>
+
+<pre><code>NSInteger selectedSegmentIndex; 
+</code></pre>
+
+<p>//设置UISegmentedControl的颜色</p>
+
+<pre><code>UIColor *tintColor; 
+</code></pre>
+
+<p><strong>iOS 5.0新增</strong></p>
+
+<p>//设置在某个状态下的背景图片</p>
+
+<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
+</code></pre>
+
+<p>//获取在某个状态下的背景图片</p>
+
+<pre><code>- (UIImage *)backgroundImageForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics   
+</code></pre>
+
+<p>//设置分割线背景图片</p>
+
+<pre><code>- (void)setDividerImage:(UIImage *)dividerImage forLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMetCT
+</code></pre>
+
+<p>//获取分割线背景图片</p>
+
+<pre><code>- (UIImage *)dividerImageForLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMeE 
+</code></pre>
+
+<p>//设置文字显示样式</p>
+
+<pre><code>- (void)setTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state;
+</code></pre>
+
+<p>//获取文字显示样式</p>
+
+<pre><code>- (NSDictionary *)titleTextAttributesForState:(UIControlState)state;
+</code></pre>
+
+<p>//设置选项中内容的调整位置</p>
+
+<pre><code>- (void)setContentPositionAdjustment:(UIOffset)adjustment forSegmentType:(UISegmentedControlSegment)leftCenterRightOrAlone barMetrics:(UIBarMetrics)barMetrics; 
+</code></pre>
+
+<p>//获取选项中内容的调整位置</p>
+
+<pre><code>- (UIOffset)contentPositionAdjustmentForSegmentType:(UISegmentedControlSegment)leftCenterRightOrAlone barMetrics:(UIBarMetrics)barMetrics;
 </code></pre>
 ]]></content>
   </entry>
@@ -126,1054 +412,79 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[iOS组件之UITableView详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/07/uitableview/"/>
-    <updated>2014-01-07T12:33:02+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/07/uitableview</id>
+    <title type="html"><![CDATA[iOS组件之UIDatePicker详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/09/uidatepicker/"/>
+    <updated>2014-01-09T12:33:27+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/09/uidatepicker</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
-<p>UITableView简单来说是一个表视图，继承于UIScrollView，用于显示和编辑信息的分层列表。</p>
-
 <!--more-->
 
 
 <p><strong>目录</strong></p>
 
-<pre><code>1、tableView的基本属性及方法
-2、访问tableView的画图区
-3、访问cells和sections
-4、滚动tableView
-5、插入、删除、移动行和sections
-6、管理和编辑cell
-7、管理sections
-8、配置
-9、iOS5.0新增
-10、iOS6.0新增
-11、iOS7.0
-12、UITableViewDataSource协议
-    12.1必须实现
-    12.2可选
-        12.2.1编辑模式
-    12.2.2数据操作  
-13、UITableViewDelegate协议（可选）
-    13.1定制化
-    13.2iOS6新增
-    13.3可变高度支持
-    13.4iOS7.0新增
-    13.5header 和 footer Section 信息
-    13.6附属公开的接口
-    13.7选择
-    13.8编辑
-    13.9移动
-    13.10缩格
-    13.11复制/粘贴
+<pre><code>typedef enum {
+    //根据区域设置,显示小时,分钟,并指定AM/PM(例如:6|53|PM)
+    UIDatePickerModeTime,
+    //根据区域设置,显示月,日,年(例如:November|15|2007)
+    UIDatePickerModeDate, 
+    //根据区域设置,显示日期(星期,月,日),小时,分钟,并指定AM/PM(例如:Wed Nov 15|6|53|PM)
+    UIDatePickerModeDateAndTime,
+    //显示小时,分钟(例如:1|53)  
+    UIDatePickerModeCountDownTimer
+} UIDatePickerMode;
 </code></pre>
 
-<p><strong>1、tableView的基本属性及方法</strong></p>
+<p>// 设置UIDatePicker的显示模式(默认为UIDatePickerModeDateAndTime)</p>
 
-<p>// 初始化</p>
-
-<pre><code>- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
-</code></pre>
-
-<p>// 设置tableView的样式（只读）</p>
-
-<pre><code>UITableViewStyle style;
-</code></pre>
-
-<p>// 设置数据资源代理</p>
-
-<pre><code>id &lt;UITableViewDataSource&gt; dataSource;
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id &lt;UITableViewDelegate&gt; delegate;
-</code></pre>
-
-<p>// 设置每个row的高度，这个高度将被当成默认高度</p>
-
-<pre><code>CGFloat rowHeight;
-</code></pre>
-
-<p>// 设置sectionHeader高度，这个高度将被当成默认高度</p>
-
-<pre><code>CGFloat sectionHeaderHeight;   
-</code></pre>
-
-<p>// 设置sectionFooter高度，这个高度将被当成默认高度</p>
-
-<pre><code>CGFloat sectionFooterHeight;   
-</code></pre>
-
-<p>//  设置tableView的背景view</p>
-
-<pre><code>UIView *backgroundView;
-</code></pre>
-
-<p>// 刷新tableView</p>
-
-<pre><code>- (void)reloadData;
-</code></pre>
-
-<p>// 刷新tableView中的section</p>
-
-<pre><code>- (void)reloadSectionIndexTitles;
-</code></pre>
-
-<p>// sections的数量</p>
-
-<pre><code>- (NSInteger)numberOfSections;
-</code></pre>
-
-<p>// 下标为section中的row数量</p>
-
-<pre><code>- (NSInteger)numberOfRowsInSection:(NSInteger)section;
-</code></pre>
-
-<p><strong>2、访问tableView的画图区</strong></p>
-
-<p>// 返回指定section的矩形</p>
-
-<pre><code>- (CGRect)rectForSection:(NSInteger)section; 
-</code></pre>
-
-<p>// 返回indexPath指定行的矩形</p>
-
-<pre><code>- (CGRect)rectForHeaderInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 返回section的footer矩形</p>
-
-<pre><code>- (CGRect)rectForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 返回section的header矩形</p>
-
-<pre><code>- (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p><strong>3、访问cells和sections</strong></p>
-
-<p>// 通过cell得到这个cell在tableView的位置</p>
-
-<pre><code>- (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell;
-</code></pre>
-
-<p>// 根据一个几何点返回indexPath,如果超过边界返回nil</p>
-
-<pre><code>- (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point;
-</code></pre>
-
-<p>// 根据一个几何的矩形返回矩形所覆盖的行,返回是一个indexPath数组</p>
-
-<pre><code>- (NSArray *)indexPathsForRowsInRect:(CGRect)rect;         
-</code></pre>
-
-<p>//  根据IndexPath返回cell</p>
-
-<pre><code>- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;            
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (NSArray *)visibleCells;
-- (NSArray *)indexPathsForVisibleRows;
-</code></pre>
-
-<p><strong>4、滚动tableView</strong></p>
-
-<p>// 滚动到指定位置</p>
-
-<pre><code>- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
-</code></pre>
-
-<p>//  同上</p>
-
-<pre><code>- (void)scrollToNearestSelectedRowAtScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
-</code></pre>
-
-<p><strong>5、插入、删除、移动行和sections</strong></p>
-
-<p>// 和endUpdates一起用，让插入、删除、选择操作同时动画，没用过</p>
-
-<pre><code>- (void)beginUpdates;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)endUpdates;
-</code></pre>
-
-<p>//根据indexPath数组插入行</p>
-
-<pre><code>- (void)insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//根据indexPath数组删除行</p>
-
-<pre><code>- (void)deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//移动一行到另一行</p>
-
-<pre><code>- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//插入sections</p>
-
-<pre><code>- (void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//删除sections</p>
-
-<pre><code>- (void)deleteRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//移动section</p>
-
-<pre><code>- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p><strong>6、管理和编辑cell</strong></p>
-
-<p>// YES进入编辑模式，tableview cell会出现插入、删除、重排序的控件</p>
-
-<pre><code>BOOL editing;
-</code></pre>
-
-<p>// 设置进入退出编辑模式</p>
-
-<pre><code>- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
-</code></pre>
-
-<p><strong>7、管理sections</strong></p>
-
-<p>//是否允许用户选取一行</p>
-
-<pre><code>BOOL allowsSelection;
-</code></pre>
-
-<p>//返回选定行的indexPath,单行</p>
-
-<pre><code>- (NSIndexPath *)indexPathForSelectedRow;
-</code></pre>
-
-<p>// 根据indexPath选择一行</p>
-
-<pre><code>- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
-</code></pre>
-
-<p>// 根据indexPath取消选择这一行</p>
-
-<pre><code>- (void)deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
-</code></pre>
-
-<p><strong>8、配置</strong></p>
-
-<p>// 指定当tableView中多少行的时候开始显示IndexList，默认的设置是NSIntegerMax，即默认是不显示indexList的</p>
-
-<pre><code>NSInteger sectionIndexMinimumDisplayRowCount;
-</code></pre>
-
-<p>// 分隔线的样式(默认为UITableViewCellSeparatorStyleSingleLine)</p>
-
-<pre><code>UITableViewCellSeparatorStyle separatorStyle;
-</code></pre>
-
-<p>// cell之间的分割线</p>
-
-<pre><code>UIColor *separatorColor;              
-</code></pre>
-
-<p>// 设置headerView</p>
-
-<pre><code>UIView *tableHeaderView;                            
-</code></pre>
-
-<p>// 设置footerView</p>
-
-<pre><code>UIView *tableFooterView;                            
-</code></pre>
-
-<p>// 必须要实现的方法，与tableView同生同死</p>
-
-<pre><code>- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;  
-</code></pre>
-
-<p><strong>9、iOS5.0新增</strong></p>
-
-<p>// 移动section</p>
-
-<pre><code>- (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection;
-</code></pre>
-
-<p>// 移动一行到另一行</p>
-
-<pre><code>- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
-</code></pre>
-
-<p>// 返回选定行的indexPath数组，多行</p>
-
-<pre><code>- (NSArray *)indexPathsForSelectedRows;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)registerNib:(UINib *)nib forCellReuseIdentifier:(NSString *)identifier;
-</code></pre>
-
-<p>//  编辑模式时是否可选取一行</p>
-
-<pre><code>BOOL allowsSelectionDuringEditing;
-</code></pre>
-
-<p>//  是否选取多行，缺省为NO(iOS 5.0)</p>
-
-<pre><code>BOOL allowsMultipleSelection;
-</code></pre>
-
-<p>//  编辑模式时可否选取多行</p>
-
-<pre><code>BOOL allowsMultipleSelectionDuringEditing;
-</code></pre>
-
-<p><strong>10、iOS6.0新增</strong></p>
-
-<p>// 我想在numberOfRowsInSection方法内获取该section的header View。须要在使用之前用 tableView 的 registerNib:forHeaderFooterViewReuseIdentifier:  或 registerClass:forHeaderFooterViewReuseIdentifier:。</p>
-
-<pre><code>- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section;
-</code></pre>
-
-<p>// 我想在numberOfRowsInSection方法内获取该section的footer View。须要在使用之前用 tableView 的 registerNib:forHeaderFooterViewReuseIdentifier:  或 registerClass:forHeaderFooterViewReuseIdentifier:。</p>
-
-<pre><code>- (UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section;
-</code></pre>
-
-<p>// 设置索引号颜色</p>
-
-<pre><code>UIColor *sectionIndexColor;
-</code></pre>
-
-<p>// 设置索引号背景颜色</p>
-
-<pre><code>UIColor *sectionIndexTrackingBackgroundColor;
-</code></pre>
-
-<p>// 注册（没有测试有什么用)</p>
-
-<pre><code>- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
-- (void)registerNib:(UINib *)nib forHeaderFooterViewReuseIdentifier:(NSString *)identifier; 
-- (void)registerClass:(Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier;
-- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
-- (id)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;
-</code></pre>
-
-<p><strong>11、iOS7.0</strong></p>
-
-<p>// 预设SectionFooter的高度</p>
-
-<pre><code>CGFloat estimatedSectionFooterHeight;
-UIEdgeInsets separatorInset;
-UIColor *sectionIndexBackgroundColor;
-</code></pre>
-
-<p>// 预设row的高度</p>
-
-<pre><code>CGFloat estimatedRowHeight;     
-</code></pre>
-
-<p>// 预设SectionHeader的高度</p>
-
-<pre><code>CGFloat estimatedSectionHeaderHeight; 
-</code></pre>
-
-<p><strong>12、UITableViewDataSource协议</strong></p>
-
-<p><strong>12.1必须实现</strong>
-// 返回每个section中row的数量</p>
-
-<pre><code>- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 返回每个UITableViewCell</p>
-
-<pre><code>- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p><strong>12.2可选</strong></p>
-
-<p>// 返回section的个数</p>
-
-<pre><code>- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;              
-</code></pre>
-
-<p>//  section headerView的title文本内容</p>
-
-<pre><code>- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section; 
-</code></pre>
-
-<p>// section footerView的title文本内容</p>
-
-<pre><code>- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<p><strong>12.2.1编辑模式</strong></p>
-
-<p>// 设置可编辑</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p><strong>12.2.1.1移动</strong></p>
-
-<p>// 设置是否可移动</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 设置索引号</p>
-
-<pre><code>- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-</code></pre>
-
-<p>// 点击索引触发</p>
-
-<pre><code>- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index;
-</code></pre>
-
-<p><strong>12.2.2数据操作</strong></p>
-
-<p>// 插入/删除指定数据</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 重新排序/移动数据操作</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
-</code></pre>
-
-<p><strong>13、UITableViewDelegate协议（可选）</strong></p>
-
-<p><strong>13.1定制化</strong></p>
-
-<p>// cell将要显示的时候被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p><strong>13.2iOS6新增</strong></p>
-
-<p>// HeaderView将要显示的时候被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section;
-</code></pre>
-
-<p>// FooterView将要显示的时候被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section;
-</code></pre>
-
-<p>// cell结束显示时被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
-</code></pre>
-
-<p>// HeaderView结束显示时被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section;
-</code></pre>
-
-<p>// FooterView结束显示时被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section;
-</code></pre>
-
-<p><strong>13.3可变高度支持</strong></p>
-
-<p>// 根据indexPath返回row的高度</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 根据indexPath返回HeaderView的高度</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 根据indexPath返回FooterView的高度</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<p><strong>13.4iOS7.0新增</strong></p>
-
-<p>// 代理函数或者设置estimatedRowHeight属性值，提供一个预估高度值，对于可变高度的cell的表格视图可改进性能</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 代理函数或者设置estimatedRowHeight属性值，提供一个预估高度值，对于可变高度的Header的表格视图可改进性能</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 代理函数或者设置estimatedRowHeight属性值，提供一个预估高度值，对于可变高度的Footer的表格视图可改进性能</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<p><strong>13.5header 和 footer Section 信息</strong></p>
-
-<p>// 根据section创建header section</p>
-
-<pre><code>- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 根据section创建footer section</p>
-
-<pre><code>- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<p><strong>13.6附属公开的接口</strong></p>
-
-<p>// 回调设置辅助按钮被点击后的事件</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p><strong>13.7选择</strong></p>
-
-<p>// 回调设置某行是否当被点击后处于高亮状态</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
-</code></pre>
-
-<p>// 回调当某行处于高亮状态时的行为</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
-</code></pre>
-
-<p>// 回调当某行失去高亮状态时的行为</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
+<pre><code>UIDatePickerMode datePickerMode; 
 </code></pre>
 
-<p>// 回调某行将要被选中的行为</p>
+<p>//设置为语言显示</p>
 
-<pre><code>- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+<pre><code>NSLocale   *locale;   
 </code></pre>
 
-<p>// 回调某行将要被取消选中的行为</p>
+<p>// 设置日历</p>
 
-<pre><code>- (NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath;
+<pre><code>NSCalendar *calendar;
 </code></pre>
 
-<p>// 回调某行已经被选中点击的行为</p>
+<p>// 设置时区</p>
 
-<pre><code>- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+<pre><code>NSTimeZone *timeZone; 
 </code></pre>
 
-<p>// 回调某行已经取消选中的行为</p>
+<p>// 设置当前显示时间</p>
 
-<pre><code>- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath;
+<pre><code>NSDate *date;
 </code></pre>
 
-<p><strong>13.8编辑</strong></p>
+<p>//如果animated为YES,时间轮会自动显示新的时间</p>
 
-<p>// 回调设置某行进入了哪种编辑模式</p>
-
-<pre><code>- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 回调设置某行进入删除模式的删除按钮名字</p>
-
-<pre><code>- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 是否允许对row进行编辑</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 开始编辑row时触发</p>
-
-<pre><code>- (void)tableView:(UITableView*)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 结束编辑row时触发</p>
-
-<pre><code>- (void)tableView:(UITableView*)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p><strong>13.9移动</strong></p>
-
-<p>// 移动Row时会把触发，在交换Row位置的时候，必须同时交换DataSource中数据的位置。</p>
-
-<pre><code>- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath;               
-</code></pre>
-
-<p><strong>13.10缩格</strong></p>
-
-<p>// 设置内容缩进</p>
-
-<pre><code>- (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p><strong>13.11复制/粘贴</strong></p>
-
-<p>// 回调设置某行被长按是否出现菜单栏</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 回调设置菜单栏是否显示哪些菜单栏选项</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender;
-</code></pre>
-
-<p>// 回调点击菜单栏选项触发的事件</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIWebView详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/05/uiwebview/"/>
-    <updated>2014-01-05T12:32:39+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/05/uiwebview</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、基本属性及方法
-2、iOS5新增
-3、iOS6新增
-4、iOS7新增
-5、UIWebViewDelegate协议（可选）
-</code></pre>
-
-<p><strong>1、基本属性及方法</strong></p>
-
-<p>// 设置代理</p>
-
-<pre><code>id&lt;UIWebViewDelegate&gt; delegate;
-</code></pre>
-
-<p>//  加载一个url地址</p>
-
-<pre><code>- (void)loadRequest:(NSURLRequest *)request;
-</code></pre>
-
-<p>// 加载一个html的string</p>
-
-<pre><code>- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;
-</code></pre>
-
-<p>// 获取web的请求</p>
-
-<pre><code>NSURLRequest *request;
-</code></pre>
-
-<p>// 重新加载</p>
-
-<pre><code>- (void)reload; 
-</code></pre>
-
-<p>// 停止加载</p>
-
-<pre><code>- (void)stopLoading;
-</code></pre>
-
-<p>// 返回</p>
-
-<pre><code>- (void)goBack;
-</code></pre>
-
-<p>// 前进</p>
-
-<pre><code>- (void)goForward;
-</code></pre>
-
-<p>// 是否能返回(只读)</p>
-
-<pre><code>BOOL canGoBack;
-</code></pre>
-
-<p>// 是否能前进（只读)</p>
-
-<pre><code>BOOL canGoForward;
-</code></pre>
-
-<p>// 是否正在加载（只读）</p>
-
-<pre><code>BOOL loading;
-</code></pre>
-
-<p>// 添加javascript</p>
-
-<pre><code>- (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;
-</code></pre>
-
-<p>// 默认值为NO，用户不可以放大或缩小页面；如果设置为YES，页面可以通过放大缩小去适应，用户也可以通过手势来放大和缩小</p>
-
-<pre><code>BOOL scalesPageToFit;
-</code></pre>
-
-<p>// 如果设置为YES，用户必须明确的点击页面上的元素或者相关联的输入页面来显示键盘；如果设置为NO，一个元素的焦点事件导致输入视图的显示和自动关联这个元素。</p>
-
-<pre><code>BOOL detectsPhoneNumbers;
-</code></pre>
-
-<p>//  把网页上内容转换成可点击的链接类型</p>
-
-<pre><code>UIDataDetectorTypes dataDetectorTypes;
-</code></pre>
-
-<p>// 这个值决定了用内嵌HTML5播放视频还是用本地的全屏控制。为了内嵌视频播放，不仅仅需要在这个页面上设置这个属性，还必须的是在HTML中的video元素必须包含webkit-playsinline属性。(iPhone默认为NO, iPad默认为YES)</p>
-
-<pre><code>BOOL allowsInlineMediaPlayback;
-</code></pre>
-
-<p>// 在iPhone和iPad上默认使YES。这个值决定了HTML5视频可以自动播放还是需要用户去启动播放</p>
-
-<pre><code>BOOL mediaPlaybackRequiresUserAction; 
-</code></pre>
-
-<p><strong>2、iOS5新增</strong></p>
-
-<p>// 获取webView中的scrollView(只读)</p>
-
-<pre><code>UIScrollView *scrollView;
-</code></pre>
-
-<p>// 这个值决定了从这个页面是否可以Air Play(默认YES)</p>
-
-<pre><code>BOOL mediaPlaybackAllowsAirPlay; 
-</code></pre>
-
-<p><strong>3、iOS6新增</strong></p>
-
-<p>// 这个值决定了网页内容的渲染是否在把内容全部加载到内存中再去处理。如果设置为YES，只有网页内容加载到内存里了才会去渲染(默认值为NO)</p>
-
-<pre><code>BOOL suppressesIncrementalRendering; 
-</code></pre>
-
-<p>// 如果设置为YES，用户必须明确的点击页面上的元素或者相关联的输入页面来显示键盘；如果设置为NO，一个元素的焦点事件导致输入视图的显示和自动关联这个元素。(默认为YES)</p>
-
-<pre><code>BOOL keyboardDisplayRequiresUserAction;
-</code></pre>
-
-<p><strong>4、iOS7新增</strong></p>
-
-<p>// 随意翻阅模式</p>
-
-<pre><code>UIWebPaginationMode paginationMode;
-UIWebPaginationBreakingMode paginationBreakingMode;
-CGFloat pageLength;
-CGFloat gapBetweenPages;
-</code></pre>
-
-<p>当在原生应用中，使用 UIWebView 实现丰富内容时，或者对于原生 webapp，我们可以为了电子书阅读体验使用 Paginate （随意翻阅）特性，避免垂直滚动条（类似 Windows 8 应用体验）。如果应用显示动态内容，这一特性是完美的，我们不能预先优化分页。有不同的 Objective-C 属性配置分页过程。要启用它，需要这么做：</p>
-
-<pre><code>myWebView.paginationMode = UIWebPaginationModeLeftToRight;
-myWebView.paginationBreakingMode = UIWebPaginationBreakingModePage;
-myWebView.gapBetweenPages = 50; 
-</code></pre>
-
-<p>// 获取页码总数(只读)</p>
-
-<pre><code>NSUInteger pageCount;
-</code></pre>
-
-<p><strong>5、UIWebViewDelegate协议（可选）</strong></p>
-
-<p>//当网页视图被指示载入内容而得到通知。应当返回YES，这样会进行加载。</p>
-
-<pre><code>- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
-</code></pre>
-
-<p>// 开始加载的时候执行该方法。</p>
-
-<pre><code>- (void)webViewDidStartLoad:(UIWebView *)webView;
-</code></pre>
-
-<p>// 加载完成的时候执行该方法。</p>
-
-<pre><code>- (void)webViewDidFinishLoad:(UIWebView *)webView;
-</code></pre>
-
-<p>// 加载出错的时候执行该方法。</p>
-
-<pre><code>- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UISearchBar详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/05/uisearchbar/"/>
-    <updated>2014-01-05T12:32:30+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/05/uisearchbar</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong>
-UISearchBar类实现一个文本字段控制基于文本的搜索，它是继承于UIView(有关UIView的介绍请到《视图鼻祖之UIView详解》)。控制输入文字，一个搜索按钮，书签按钮和取消按钮提供了一个文本字段。该对象的UISearchBar实际上并不执行任何搜查。您可以使用委托符合UISearchBarDelegate协议对象，实现这些输入文字和点击按钮的事件。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、基本属性和方法
-2、iOS5新增
-3、iOS7新增
-4、UISearchBarDelegate协议（可选）
-</code></pre>
-
-<p><strong>1、基本属性和方法</strong></p>
-
-<p>// 设置控件样式（默认UIBarStyleDefault）</p>
-
-<pre><code>UIBarStyle              barStyle;              
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id&lt;UISearchBarDelegate&gt; delegate;              
-</code></pre>
-
-<p>// 控件上面显示的文字</p>
-
-<pre><code>NSString               *text;                  
-</code></pre>
-
-<p>// 显示在顶部的单行文字，通常作为一个提示行</p>
-
-<pre><code>NSString               *prompt;                
-</code></pre>
-
-<p>// 半透明的提示文字，输入搜索内容会消失</p>
-
-<pre><code>NSString               *placeholder;           
-</code></pre>
-
-<p>// 是否在控件的右端显示一个书的按钮（没有文字的时候）</p>
-
-<pre><code>BOOL                    showsBookmarkButton;   
-</code></pre>
-
-<p>// 是否显示cancel按钮</p>
-
-<pre><code>BOOL                    showsCancelButton; 
-- (void)setShowsCancelButton:(BOOL)showsCancelButton animated:(BOOL)animated;    
-</code></pre>
-
-<p>// 是否在控件的右端显示搜索结果按钮（没有文字的时候）</p>
-
-<pre><code>BOOL                    showsSearchResultsButton; 
-</code></pre>
-
-<p>// 搜索结果按钮是否被选中</p>
-
-<pre><code>BOOL searchResultsButtonSelected; 
-</code></pre>
-
-<p>// bar的颜色(具有渐变效果)</p>
-
-<pre><code>UIColor *tintColor;
-UIColor *barTintColor(iOS7.0);
-
-UISearchBarStyle searchBarStyle (iOS7.0);
-</code></pre>
-
-<p> // 指定控件是否会有透明效果</p>
-
-<pre><code>BOOL translucent;
-</code></pre>
-
-<p>// 设置在什么情况下自动大写（默认UITextAutocapitalizationTypeNone）</p>
-
-<pre><code>UITextAutocapitalizationType autocapitalizationType;  
-</code></pre>
-
-<p>// 对于文本对象自动校正风格 （默认UITextAutocorrectionTypeDefault）</p>
-
-<pre><code>UITextAutocorrectionType     autocorrectionType;      
-</code></pre>
-
-<p>//  （默认UITextSpellCheckingTypeDefault）</p>
-
-<pre><code>UITextSpellCheckingType      spellCheckingType;       
-</code></pre>
-
-<p>// 键盘样式 （默认UIKeyboardTypeDefault）</p>
-
-<pre><code>UIKeyboardType               keyboardType;            
-</code></pre>
-
-<p>// 搜索栏下部的选择栏，数组里面的内容是按钮的标题</p>
-
-<pre><code>NSArray   *scopeButtonTitles;
-</code></pre>
-
-<p>// 搜索栏下部的选择栏按钮的个数</p>
-
-<pre><code>NSInteger  selectedScopeButtonIndex; 
-</code></pre>
-
-<p>// 控制搜索栏下部的选择栏是否显示出来</p>
-
-<pre><code>BOOL       showsScopeBar; 
-</code></pre>
-
-<p>// 提供一个遮盖视图</p>
-
-<pre><code>UIView *inputAccessoryView;
-</code></pre>
-
-<p><strong>2、iOS5新增</strong></p>
-
-<p>// 设置背景图片</p>
-
-<pre><code>UIImage *backgroundImage;
-</code></pre>
-
-<p>// 设置scope的背景颜色</p>
-
-<pre><code>UIImage *scopeBarBackgroundImage;
-
-
-- (void)setSearchFieldBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state;
-- (UIImage *)searchFieldBackgroundImageForState:(UIControlState)state;
-</code></pre>
-
-<p>// 设置某个状态下search的ico图片</p>
-
-<pre><code>- (void)setImage:(UIImage *)iconImage forSearchBarIcon:(UISearchBarIcon)icon state:(UIControlState)state;
-</code></pre>
-
-<p>// 获取某个状态下的ico图片</p>
-
-<pre><code>- (UIImage *)imageForSearchBarIcon:(UISearchBarIcon)icon state:(UIControlState)state;
-</code></pre>
-
-<p>// 设置某个状态下scopeBarButton的背景图片</p>
-
-<pre><code>- (void)setScopeBarButtonBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state; 
-</code></pre>
-
-<p>// 获取某个状态下scopeBarButton的背景图片</p>
-
-<pre><code>- (UIImage *)scopeBarButtonBackgroundImageForState:(UIControlState)state;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)setScopeBarButtonDividerImage:(UIImage *)dividerImage forLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState;
-- (UIImage *)scopeBarButtonDividerImageForLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)setScopeBarButtonTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state;
-- (NSDictionary *)scopeBarButtonTitleTextAttributesForState:(UIControlState)state;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>UIOffset searchFieldBackgroundPositionAdjustment;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>UIOffset searchTextPositionAdjustment;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)setPositionAdjustment:(UIOffset)adjustment forSearchBarIcon:(UISearchBarIcon)icon;
-- (UIOffset)positionAdjustmentForSearchBarIcon:(UISearchBarIcon)icon;
-</code></pre>
-
-<p><strong>3、iOS7新增</strong></p>
-
-<p>//</p>
-
-<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;  
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (UIImage *)backgroundImageForBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p><strong>4、UISearchBarDelegate协议（可选）</strong></p>
-
-<p>// 是否允许编辑，如果返回为NO则不能成为第一响应者</p>
-
-<pre><code>- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar;                      
+<pre><code>- (void)setDate:(NSDate *)date animated:(BOOL)animated;        
 </code></pre>
 
-<p>// 开始编辑</p>
+<p>// 设置显示最小时间</p>
 
-<pre><code>- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar;                     
+<pre><code>NSDate *minimumDate;
 </code></pre>
 
-<p>// 是否允许结束编辑</p>
+<p>// 设置显示最大时间（此处为当前时间）</p>
 
-<pre><code>- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar;                        
+<pre><code>NSDate *maximumDate;
 </code></pre>
 
-<p>// 结束编辑</p>
+<p>//用于UIDatePickerModeCountDownTimer,否则忽略.默认为0.0.最大限制为23:59 (86,399秒)</p>
 
-<pre><code>- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar;                       
+<pre><code>NSTimeInterval countDownDuration;
 </code></pre>
 
-<p>// 文本内容改变时调用</p>
-
-<pre><code>- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;   
-</code></pre>
-
-<p>// 如果允许继续输入，那么返回YES，否则返回NO。（可以对字数进行限制）</p>
-
-<pre><code>- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; 
-</code></pre>
-
-<p>// 当搜索按钮被点击的时候</p>
-
-<pre><code>- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;                     
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar;                   
-</code></pre>
-
-<p>// cancel按钮点击时调用</p>
-
-<pre><code>- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar;                    
-</code></pre>
-
-<p>// ResultsList按钮被点击时调用</p>
-
-<pre><code>- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar; 
-</code></pre>
+<p>//设置分钟之间的间隔.间隔必须均匀的分为60.默认为1.最小为1,最大为30</p>
 
-<p>// 还有一个很重要的事情，设了按钮就要给他们安排功能。所以说，我们要实现这个代理UISearchBarDelegate里的这个方法searchBar:selectedScopeButtonIndexDidChange:告诉表格，你选择的范围是啥。</p>
+<pre><code>NSInteger      minuteInterval;
 
-<pre><code>- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope;
+ // if animated is YES, animate the wheels of time to display the new date
 </code></pre>
 ]]></content>
   </entry>

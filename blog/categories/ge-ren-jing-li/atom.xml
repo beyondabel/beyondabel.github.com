@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 个人经历 | Abel之家]]></title>
+  <link href="http://beyondabel.github.io/blog/categories/ge-ren-jing-li/atom.xml" rel="self"/>
+  <link href="http://beyondabel.github.io/"/>
+  <updated>2014-01-09T11:34:42+08:00</updated>
+  <id>http://beyondabel.github.io/</id>
+  <author>
+    <name><![CDATA[Abel]]></name>
+    <email><![CDATA[abel_tu@163.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[博客搬家到Octopress]]></title>
+    <link href="http://beyondabel.github.io/blog/2013/12/01/my-new-blog/"/>
+    <updated>2013-12-01T23:37:45+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2013/12/01/my-new-blog</id>
+    <content type="html"><![CDATA[<p>我是一个非常喜欢折腾的程序猿，之前我一直在CSDN上写博文，但由于一些种种的原因，后来放弃了CSDN,之后一直都有搭建个人站点的想法,在网上搜索了如何搭建个人站点,网上有很多的人建议用Octopress+Github,据说Octopress是一个面向黑客和开发者的博客,转而开始用Octopress搭建博客，经常一个月的折腾终于把博客从CSDN搬到Octopress。</p>
+
+<!--more-->
+
+
+<p><strong>为什么要用Octopress?</strong></p>
+
+<p>我一直在寻找一个可以自己搭建一个免费的博客平台，刚好Octpress符合我的需求。相对于CSDN来说，Octopress有以下优点：</p>
+
+<pre><code>1、Octopress是一个开源的博客，它可以自己定制化修改。
+2、界面非常清晰简洁
+3、它是一个静态的网页框架，加载速度更快
+4、它可以离线编辑文本
+5、可以免费部署到github上
+6、博客使用git进行版本控制
+7、可以自定义自己的博客风格
+</code></pre>
+
+<p>如果想使用Octopress+Github搭建博客，将会经历如下步骤：</p>
+
+<p>1.首先，注册一个github账号。</p>
+
+<p>2.配置环境</p>
+
+<p>3.下载Octopress包</p>
+
+<p>4.配置Octopress</p>
+
+<p>5.绑定Github账号</p>
+
+<p>6.把Octopress提交到Github</p>
+
+<p>如果想用域名可以访问的话，还需要经历如下的步骤：</p>
+
+<p>7.域名注册</p>
+
+<p>8.购买虚拟主机</p>
+
+<p>9.域名与虚拟主机中的IP进行绑定。</p>
+]]></content>
+  </entry>
+  
+</feed>
