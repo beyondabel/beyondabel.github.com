@@ -9,7 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS组件之UISegmentedControl详解 引言 目录 // 初始化UISegmentedControl（items可以是NSString类型或者UIImages） - (id)initWithItems:(NSArray *)items; //设置样式 （该样式只在ios2.0~7. &hellip;">
+	<meta name="description" content="iOS组件之UISegmentedControl详解 引言 UISegmentedControl对象是一个水平控制使多个区段，每个区段用作离散的按钮。分段控件提供了一次小型的手段组合在一起的一些控制。 UISegmentedControl继承于UIControl（有关UIControl请参照《 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,10 +93,20 @@
 	<h1 class="title" itemprop="name">iOS组件之UISegmentedControl详解</h1>
 	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
 
+<p>UISegmentedControl对象是一个水平控制使多个区段，每个区段用作离散的按钮。分段控件提供了一次小型的手段组合在一起的一些控制。</p>
+
+<p>UISegmentedControl继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）.</p>
+
 <!--more-->
 
 
 <p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+2、iOS 5.0新增
+</code></pre>
+
+<p><strong>1、基本属性及方法</strong></p>
 
 <p>// 初始化UISegmentedControl（items可以是NSString类型或者UIImages）</p>
 
@@ -203,7 +213,7 @@
 <pre><code>UIColor *tintColor; 
 </code></pre>
 
-<p><strong>iOS 5.0新增</strong></p>
+<p><strong>2、iOS 5.0新增</strong></p>
 
 <p>//设置在某个状态下的背景图片</p>
 

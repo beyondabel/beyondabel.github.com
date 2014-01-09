@@ -9,8 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS组件之UIPageControl详解 目录 1、基本属性及方法
-2、iOS6.0新增 1、基本属性及方法 // 指定页面个数（默认为0） NSInteger numberOfPages; // 当前选中的页面（默认为0，范围为0 ～ numberOfPages-1） NSInteger &hellip;">
+	<meta name="description" content="iOS组件之UIPageControl详解 引言 UIPageControl继承于UIControl（有关UIControl请参照《iOS组件之UIControl详解》）。您可以使用UIPageControl类来创建和管理页面控件。一个页面控件显示一个水平一系列的点， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,14 +91,20 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<h1 class="title" itemprop="name">iOS组件之UIPageControl详解</h1>
-	<div class="entry-content" itemprop="articleBody"><p><strong>目录</strong></p>
+	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+
+<p>UIPageControl继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。您可以使用UIPageControl类来创建和管理页面控件。一个页面控件显示一个水平一系列的点，每个对应一个页面应用程序的文档（或其他数据模型实体）中。当前浏览的页面是由一个白色的圆点表示。</p>
+
+<p>当用户点击一个页面控件移动到下一页或上一页，控制处理由委托发送UIControlEventValueChanged事件。然后委托可以评估当前属性来确定要显示的页面。网页控制在任何一个方向前进只有一个页面。</p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
 
 <pre><code>1、基本属性及方法
 2、iOS6.0新增
 </code></pre>
-
-<!--more-->
-
 
 <p><strong>1、基本属性及方法</strong></p>
 
