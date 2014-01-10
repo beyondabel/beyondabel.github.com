@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-09T23:39:55+08:00</updated>
+  <updated>2014-01-10T14:39:30+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -1332,7 +1332,10 @@ UIColor *sectionIndexBackgroundColor;
     <id>http://beyondabel.github.io/blog/2014/01/06/uicontrol</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
-<p>UIControl的是控制对象，如传达用户意图的应用程序按钮和滑块的基类。你不能使用uicontrol的类直接实例化控件。相反，它定义了它的所有子类的通用接口和行为结构。</p>
+<p>UIControl的是控制对象,继承于UIView（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>），如传达用户意图的应用程序按钮和滑块的基类。你不能使用uicontrol的类直接实例化控件。相反，它定义了它的所有子类的通用接口和行为结构。</p>
+
+<!--more-->
+
 
 <p><strong>目录</strong></p>
 
