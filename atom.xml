@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-12T16:56:43+08:00</updated>
+  <updated>2014-01-12T20:38:24+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -1441,7 +1441,7 @@ UIControlContentVerticalAlignmentFill
     <id>http://beyondabel.github.io/blog/2014/01/05/uiwebview</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
-<p>UIWebView是继承于UIView(有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>),在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。</p>
+<p>UIWebView是继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>),在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。</p>
 
 <!--more-->
 
@@ -2574,10 +2574,17 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
     <id>http://beyondabel.github.io/blog/2014/01/04/uinavigaionbar</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
+<p>在UINavigationBar的类提供了用于导航的分层内容的控制,UINavigaionBar继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>。这是一间酒吧，通常显示在屏幕的顶部，包含按钮画面的层次结构中导航。主要属性是一个左（后）按钮，一个中心的标题，和一个可选的右按钮。可以使用一个导航栏作为一个独立的对象，或与导航控制器对象来使用。</p>
+
 <!--more-->
 
 
 <p><strong>目录</strong></p>
+
+<pre><code>1、UINavigaionBar
+2、UINavigationItem
+3、iOS5新增
+</code></pre>
 
 <p><strong>1、UINavigaionBar</strong></p>
 
@@ -2716,7 +2723,7 @@ UIImage *backIndicatorTransitionMaskImage;
 <pre><code>- (void)navigationBar:(UINavigationBar *)navigationBar didPopItem:(UINavigationItem *)item;
 </code></pre>
 
-<p><strong>2、UINavigationItem </strong></p>
+<p><strong>2、UINavigationItem</strong></p>
 
 <p>// 初始化item的title</p>
 
@@ -2765,7 +2772,7 @@ UIImage *backIndicatorTransitionMaskImage;
 - (void)setRightBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
 </code></pre>
 
-<p>iOS5新增</p>
+<p><strong>3、iOS5新增</strong></p>
 
 <pre><code>NSArray *leftBarButtonItems;
 NSArray *rightBarButtonItems;
@@ -2786,6 +2793,14 @@ NSArray *rightBarButtonItems;
     <updated>2014-01-03T12:31:14+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/03/uitoolbar</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
+
+<p>UIToolBar是显示一个或多个按钮，称为工具栏项的控件，继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>。工具栏瞬间突出或挖掘时，不改变项目的外观。</p>
+
+<p>要创建工具栏项，使用的UIBarButtonItem类。到工具栏项添加到工具栏，使用setItems ：动画：方法。</p>
+
+<p>代表项目的正常和高亮状态工具栏图像从你设置使用继承的图像属性从UIBarItem类的形象派生。在iOS系统7.0 ，图像是彩色的工具栏的tintColor。</p>
+
+<p>如果您需要单选按钮式控制，使用UITabBar类而不是UIToolbar。</p>
 
 <!--more-->
 
@@ -2871,7 +2886,7 @@ NSArray *rightBarButtonItems;
     <id>http://beyondabel.github.io/blog/2014/01/03/uitabbar</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
-<p>UITabBar作为一个标签栏控制，它本身继承于UIView,也就是说UITabBar本身是一个视图控件。</p>
+<p>UITabBar作为一个标签栏控制，它继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>,也就是说UITabBar本身是一个视图控件。</p>
 
 <!--more-->
 
@@ -2984,15 +2999,19 @@ BOOL translucent;
     <link href="http://beyondabel.github.io/blog/2014/01/03/uiimageview/"/>
     <updated>2014-01-03T12:30:58+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/03/uiimageview</id>
-    <content type="html"><![CDATA[<p><strong>目录</strong></p>
+    <content type="html"><![CDATA[<p><strong>引导</strong></p>
+
+<p>图像视图对象提供了用于显示一个单一的图像或动画的一系列图像的基于视图的容器。对于图像动画， UIImageView类提供控件设置动画的持续时间和频率。UIImageView继承于UIView（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>）。</p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
 
 <pre><code>1、基本属性
 2、动画图片相关
 3、iOS7新增
 </code></pre>
-
-<!--more-->
-
 
 <p><strong>1、基本属性</strong></p>
 
@@ -3075,14 +3094,20 @@ BOOL translucent;
     <link href="http://beyondabel.github.io/blog/2014/01/03/uiactivityindicatorview/"/>
     <updated>2014-01-03T12:30:48+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/03/uiactivityindicatorview</id>
-    <content type="html"><![CDATA[<p><strong>目录</strong></p>
+    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+
+<p>使用的活动指示器，以显示该任务正在进行中。活动指示器显示为一个“齿轮” ，要么是旋转或停止。UIActivityIndicatorView继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>.</p>
+
+<p>您可以控制​​当一个活动指示灯动画通过调用startAnimating和stopAnimating方法。要自动隐藏活动指示灯，当动画停止，设置hidesWhenStopped属性为YES 。</p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
 
 <pre><code>1、UIActivityIndicatorView基本属性及方法
 2、iOS5.0新增
 </code></pre>
-
-<!--more-->
-
 
 <p><strong>1、UIActivityIndicatorView基本属性及方法</strong></p>
 
@@ -3130,14 +3155,18 @@ BOOL translucent;
     <link href="http://beyondabel.github.io/blog/2014/01/02/uiprogressview/"/>
     <updated>2014-01-02T12:28:03+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/02/uiprogressview</id>
-    <content type="html"><![CDATA[<p><strong>目录</strong></p>
+    <content type="html"><![CDATA[<p><strong>引导</strong></p>
+
+<p>该UIPickerView的类实现的对象，显示一个或多个值的集合。用户通过旋转轮选择值，这样的值所需的行对齐选择指标。UIProgressView是继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>)。</p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
 
 <pre><code>1、基本属性及方法
 2、iOS5新增内容
 </code></pre>
-
-<!--more-->
-
 
 <p><strong>1、基本属性及方法</strong></p>
 

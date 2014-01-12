@@ -9,7 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS组件之UINavigaionBar详解 引言 目录 1、UINavigaionBar // 设置bar的样式 UIBarStyle barStyle; // 设置代理 id delegate; // 设置是否透明（在iOS6中默认为NO, &hellip;">
+	<meta name="description" content="iOS组件之UINavigaionBar详解 引言 在UINavigationBar的类提供了用于导航的分层内容的控制,UINavigaionBar继承于UIView(有关UIView请参照《iOS组件之UIView详解》。这是一间酒吧，通常显示在屏幕的顶部，包含按钮画面的层次结构中导航。 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,10 +93,17 @@
 	<h1 class="title" itemprop="name">iOS组件之UINavigaionBar详解</h1>
 	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
 
+<p>在UINavigationBar的类提供了用于导航的分层内容的控制,UINavigaionBar继承于UIView(有关UIView请参照<a href="/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>。这是一间酒吧，通常显示在屏幕的顶部，包含按钮画面的层次结构中导航。主要属性是一个左（后）按钮，一个中心的标题，和一个可选的右按钮。可以使用一个导航栏作为一个独立的对象，或与导航控制器对象来使用。</p>
+
 <!--more-->
 
 
 <p><strong>目录</strong></p>
+
+<pre><code>1、UINavigaionBar
+2、UINavigationItem
+3、iOS5新增
+</code></pre>
 
 <p><strong>1、UINavigaionBar</strong></p>
 
@@ -235,7 +242,7 @@ UIImage *backIndicatorTransitionMaskImage;
 <pre><code>- (void)navigationBar:(UINavigationBar *)navigationBar didPopItem:(UINavigationItem *)item;
 </code></pre>
 
-<p><strong>2、UINavigationItem </strong></p>
+<p><strong>2、UINavigationItem</strong></p>
 
 <p>// 初始化item的title</p>
 
@@ -284,7 +291,7 @@ UIImage *backIndicatorTransitionMaskImage;
 - (void)setRightBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
 </code></pre>
 
-<p>iOS5新增</p>
+<p><strong>3、iOS5新增</strong></p>
 
 <pre><code>NSArray *leftBarButtonItems;
 NSArray *rightBarButtonItems;
