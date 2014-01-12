@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-10T14:39:30+08:00</updated>
+  <updated>2014-01-12T16:56:43+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -531,7 +531,7 @@
     <id>http://beyondabel.github.io/blog/2014/01/08/uibutton</id>
     <content type="html"><![CDATA[<p>引言</p>
 
-<p>UIButton的类是一个UIControl子类，它实现了在触摸屏上的按钮。触摸一个按钮拦截事件和动作消息发送到目标对象时，它的挖掘。设定的目标和行动方法都继承自UIControl。这个类提供了方法来设置标题，图像，按钮等外观属性。通过使用set方法，你可以指定一个不同的外观为每个按钮状态。</p>
+<p>UIButton的类是一个UIControl子类（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>），它实现了在触摸屏上的按钮。触摸一个按钮拦截事件和动作消息发送到目标对象时，它的挖掘。设定的目标和行动方法都继承自UIControl。这个类提供了方法来设置标题，图像，按钮等外观属性。通过使用set方法，你可以指定一个不同的外观为每个按钮状态。</p>
 
 <!--more-->
 
@@ -1441,7 +1441,7 @@ UIControlContentVerticalAlignmentFill
     <id>http://beyondabel.github.io/blog/2014/01/05/uiwebview</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
-<p>在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。</p>
+<p>UIWebView是继承于UIView(有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>),在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。</p>
 
 <!--more-->
 
@@ -1623,7 +1623,7 @@ myWebView.gapBetweenPages = 50;
     <updated>2014-01-05T12:32:30+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/05/uisearchbar</id>
     <content type="html"><![CDATA[<p><strong>引言</strong>
-UISearchBar类实现一个文本字段控制基于文本的搜索，它是继承于UIView(有关UIView的介绍请到《视图鼻祖之UIView详解》)。控制输入文字，一个搜索按钮，书签按钮和取消按钮提供了一个文本字段。该对象的UISearchBar实际上并不执行任何搜查。您可以使用委托符合UISearchBarDelegate协议对象，实现这些输入文字和点击按钮的事件。</p>
+UISearchBar类实现一个文本字段控制基于文本的搜索，它是继承于UIView(有关UIView的介绍请到<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>)。控制输入文字，一个搜索按钮，书签按钮和取消按钮提供了一个文本字段。该对象的UISearchBar实际上并不执行任何搜查。您可以使用委托符合UISearchBarDelegate协议对象，实现这些输入文字和点击按钮的事件。</p>
 
 <!--more-->
 
@@ -1879,8 +1879,22 @@ UISearchBarStyle searchBarStyle (iOS7.0);
     <id>http://beyondabel.github.io/blog/2014/01/05/uiscrollview</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
+<p>UIScrollView控制继承于UIView(有关UIView的介绍请到<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>),该UIScrollView的类提供了用于显示的内容比应用程序的窗口的大小支持。它使用户能够通过使刷卡手势内容中滚动，并从内容部分通过使捏的手势和背部放大。</p>
+
+<p>UIScrollView的是几个UIKit类包括的UITableView和UITextView中的超类。</p>
+
+<p>一个UIScrollView对象（或者，简单地说，一个滚动视图）的核心概念是，它是一个视图，其起源是可调过的内容视图。它剪辑的内容，它的框架，这通常（但不一定）恰逢该应用程序的主窗口。滚动视图跟踪手指的变动，并相应调整原点。这正显示出它的内容“，通过”滚动视图的视图绘制的基础上，新的原点，它被固定在内容视图的偏移部分本身。滚动视图本身没有绘制，除了显示垂直和水平滚动的指标。滚动视图必须知道的内容视图的大小，所以它知道何时停止滚动，默认情况下，它“反弹”回来时，滚动超出了内容的范围。</p>
+
 <!--more-->
 
+
+<p>用于管理内容的绘制有关的对象显示在一个滚动视图应该瓦片的内容的子视图，以便没有视图超过屏幕的大小。当用户在滚动滚动视图，这个对象应该添加和删除子视图是必要的。</p>
+
+<p>由于滚动视图没有滚动条，它必须知道是否触摸信号的意图与滚动意图在内容跟踪一个子视图。做出此决定，它暂时拦截触摸按下事件通过启动一个定时器，并在定时器触发之前，看是否触摸手指做任何运动。如果定时器触发无位置显著的变化，滚动视图将跟踪事件的内容视图的感动子视图。然后，如果用户在定时器期满前拉着自己的手指远远不够，滚动视图将取消任何跟踪的子视图，并进行滚动本身。子类可以重写touchesShouldBegin ： withEvent：方法inContentView ：,pagingEnabled和touchesShouldCancelInContentView ：方法（这是由滚动视图调用）来影响滚动视图如何处理滚动手势。</p>
+
+<p>滚动视图还处理缩放和平移的内容。当用户使一个夹在或向外挤压手势，滚动视图调整偏移量和内容的标度。当手势结束，管理内容视图中的对象应该要更新的内容为必要的子视图。 （请注意，手势可以结束和手指仍可能下跌。 ）虽然手势正在进行中，滚动视图不发送任何跟踪调用子视图。</p>
+
+<p>该UIScrollView的类可以有必须采取UIScrollViewDelegate协议的委托。对于缩放和平移工作，委托必须实现viewForZoomingInScrollView ：和scrollViewDidEndZooming ： withView ： atScale ： ，此外，最大（ maximumZoomScale ）和最小（ minimumZoomScale ）变焦倍数必须是不同的。</p>
 
 <p><strong>目录</strong></p>
 
@@ -2135,6 +2149,10 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
     <id>http://beyondabel.github.io/blog/2014/01/05/uialertview</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
+<p>使用UIAlertView类显示一个警告信息给用户。警报视图的功能类似，但不同的外观在一个动作片（ UIActionSheet的一个实例）。UIAlertView继承于UIView(有关UIView的介绍请到<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>)。</p>
+
+<p>使用定义的属性和方法在这个类来设置标题，消息和警报视图的委托和配置按钮。你必须设置一个委托，如果你添加自定义按钮。委托应符合UIAlertViewDelegate协议。使用show方法来显示一个警报视图，一旦它被配置。</p>
+
 <!--more-->
 
 
@@ -2256,10 +2274,12 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
     <id>http://beyondabel.github.io/blog/2014/01/05/uiactionsheet</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
+<p>UIActionSheet继承于UIView（有关UIView的介绍请到<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>）。使用UIActionSheet类有一组关于如何进行给定任务的备选方案呈现给用户。也可以使用动作表，以提示用户进行确认，有潜在危险的动作。动作片包含一个可选的标题和一个或多个按钮，其中每一个对应于要采取的动作。</p>
+
 <!--more-->
 
 
-<p>目录</p>
+<p><strong>目录</strong></p>
 
 <p>// 初始化UIActionSheet上的button按钮</p>
 
@@ -2387,10 +2407,19 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
     <id>http://beyondabel.github.io/blog/2014/01/04/uitableviewcell</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
+<p>UITableViewCell继承于UIView（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>）,UITableViewCell类定义出现在UITableView中对象的单元格的属性和行为。这个类包含的属性和设置和管理的单元格内容和背景（包括文字，图片，和自定义视图） ，管理小区选择并高亮显示状态，管理配套的看法，以及发起的单元格内容的编辑方法。</p>
+
+<p>当创建单元格，你可以自己自定义它们，或者使用几个预定义样式之一。预定义的单元格样式是最简单的选择。与预定义样式，单元格提供标签和图像子视图的位置和造型是固定的。所有您需要做的是提供文本和图像内容进入那些固定的看法。要使用单元格与预定义的风格，采用了initWithStyle初始化： reuseIdentifier ：方法或将单元配置与风格在Xcode 。要设置单元格的文本和图像，使用为textLabel ， detailTextLabel和ImageView的属性。</p>
+
 <!--more-->
 
 
 <p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+</code></pre>
+
+<p><strong>1、基本属性及方法</strong></p>
 
 <p>// 初始化方法</p>
 

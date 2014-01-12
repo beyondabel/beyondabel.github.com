@@ -9,7 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS组件之UIScrollView详解 引言 目录 // 监控目前滚动的位置(默认CGPointZero) CGPoint contentOffset; - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL) &hellip;">
+	<meta name="description" content="iOS组件之UIScrollView详解 引言 UIScrollView控制继承于UIView(有关UIView的介绍请到《iOS组件之UIView详解》),该UIScrollView的类提供了用于显示的内容比应用程序的窗口的大小支持。它使用户能够通过使刷卡手势内容中滚动， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,8 +93,22 @@
 	<h1 class="title" itemprop="name">iOS组件之UIScrollView详解</h1>
 	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
 
+<p>UIScrollView控制继承于UIView(有关UIView的介绍请到<a href="/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>),该UIScrollView的类提供了用于显示的内容比应用程序的窗口的大小支持。它使用户能够通过使刷卡手势内容中滚动，并从内容部分通过使捏的手势和背部放大。</p>
+
+<p>UIScrollView的是几个UIKit类包括的UITableView和UITextView中的超类。</p>
+
+<p>一个UIScrollView对象（或者，简单地说，一个滚动视图）的核心概念是，它是一个视图，其起源是可调过的内容视图。它剪辑的内容，它的框架，这通常（但不一定）恰逢该应用程序的主窗口。滚动视图跟踪手指的变动，并相应调整原点。这正显示出它的内容“，通过”滚动视图的视图绘制的基础上，新的原点，它被固定在内容视图的偏移部分本身。滚动视图本身没有绘制，除了显示垂直和水平滚动的指标。滚动视图必须知道的内容视图的大小，所以它知道何时停止滚动，默认情况下，它“反弹”回来时，滚动超出了内容的范围。</p>
+
 <!--more-->
 
+
+<p>用于管理内容的绘制有关的对象显示在一个滚动视图应该瓦片的内容的子视图，以便没有视图超过屏幕的大小。当用户在滚动滚动视图，这个对象应该添加和删除子视图是必要的。</p>
+
+<p>由于滚动视图没有滚动条，它必须知道是否触摸信号的意图与滚动意图在内容跟踪一个子视图。做出此决定，它暂时拦截触摸按下事件通过启动一个定时器，并在定时器触发之前，看是否触摸手指做任何运动。如果定时器触发无位置显著的变化，滚动视图将跟踪事件的内容视图的感动子视图。然后，如果用户在定时器期满前拉着自己的手指远远不够，滚动视图将取消任何跟踪的子视图，并进行滚动本身。子类可以重写touchesShouldBegin ： withEvent：方法inContentView ：,pagingEnabled和touchesShouldCancelInContentView ：方法（这是由滚动视图调用）来影响滚动视图如何处理滚动手势。</p>
+
+<p>滚动视图还处理缩放和平移的内容。当用户使一个夹在或向外挤压手势，滚动视图调整偏移量和内容的标度。当手势结束，管理内容视图中的对象应该要更新的内容为必要的子视图。 （请注意，手势可以结束和手指仍可能下跌。 ）虽然手势正在进行中，滚动视图不发送任何跟踪调用子视图。</p>
+
+<p>该UIScrollView的类可以有必须采取UIScrollViewDelegate协议的委托。对于缩放和平移工作，委托必须实现viewForZoomingInScrollView ：和scrollViewDidEndZooming ： withView ： atScale ： ，此外，最大（ maximumZoomScale ）和最小（ minimumZoomScale ）变焦倍数必须是不同的。</p>
 
 <p><strong>目录</strong></p>
 

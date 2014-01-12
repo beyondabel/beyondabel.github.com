@@ -9,7 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS组件之UITableViewCell详解 引言 目录 // 初始化方法 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier; // &hellip;">
+	<meta name="description" content="iOS组件之UITableViewCell详解 引言 UITableViewCell继承于UIView（有关UIControl请参照《iOS组件之UIView详解》）,UITableViewCell类定义出现在UITableView中对象的单元格的属性和行为。 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,10 +93,19 @@
 	<h1 class="title" itemprop="name">iOS组件之UITableViewCell详解</h1>
 	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
 
+<p>UITableViewCell继承于UIView（有关UIControl请参照<a href="/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>）,UITableViewCell类定义出现在UITableView中对象的单元格的属性和行为。这个类包含的属性和设置和管理的单元格内容和背景（包括文字，图片，和自定义视图） ，管理小区选择并高亮显示状态，管理配套的看法，以及发起的单元格内容的编辑方法。</p>
+
+<p>当创建单元格，你可以自己自定义它们，或者使用几个预定义样式之一。预定义的单元格样式是最简单的选择。与预定义样式，单元格提供标签和图像子视图的位置和造型是固定的。所有您需要做的是提供文本和图像内容进入那些固定的看法。要使用单元格与预定义的风格，采用了initWithStyle初始化： reuseIdentifier ：方法或将单元配置与风格在Xcode 。要设置单元格的文本和图像，使用为textLabel ， detailTextLabel和ImageView的属性。</p>
+
 <!--more-->
 
 
 <p><strong>目录</strong></p>
+
+<pre><code>1、基本属性及方法
+</code></pre>
+
+<p><strong>1、基本属性及方法</strong></p>
 
 <p>// 初始化方法</p>
 

@@ -131,42 +131,99 @@
 
 <p><strong>2、UIView的基本属性</strong></p>
 
-<pre><code>BOOL userInteractionEnabled;  // UIView是否接受events事件，默认为YES
-NSInteger tag;                // 用于做标识所用，默认为0
-CALayer  *layer;              // Core Animation layer有关，在常用方法中再详细讲解
+<p>// UIView是否接受events事件，默认为YES</p>
 
-CGRect            frame;    // UIView在父视图中的位置
+<pre><code>BOOL userInteractionEnabled; 
+</code></pre>
 
-CGRect            bounds;  // UIView相对自己的位置
-CGPoint           center;      // UIView的中心点. animatable
-CGAffineTransform transform;   // 线性代数里面讲的矩阵变换，这个是恒等变换,一般用来旋转，缩放
-CGFloat contentScaleFactor;修改contentScaleFactor可以让UIView的渲染精度提高，这样即使在CGAffineTransform放大之后仍然能保持锐利。
+<p>// 用于做标识所用，默认为0</p>
 
-BOOL multipleTouchEnabled;   // 是否允许多点触摸
-BOOL       exclusiveTouch;         // default is NO
-UIColor   backgroundColor;  // UIView的背影颜色
-BOOL hidden;  // UIView是否隐藏
-CGFloat  alpha; // 为0时完全透明，为1时完全不透明。
+<pre><code>NSInteger tag;        
+</code></pre>
 
-BOOL clipsToBounds; //在类的层次结构中，如果clipsTobounds设为YES,超出superView的部分subview就不会显示，否则会做显示， 默认情况下是NO。
+<p>// Core Animation layer有关，在常用方法中再详细讲解</p>
 
-BOOL opaque;   //这是一个优化属性，如果该值为YES, 那么绘图在绘制该视图的时候把整个视图当作不透明对待。这样，绘图系统在执行绘图过程中会优化一些操作并提升系统性能；如果是设置为NO, 绘图系统将其和其他内容平等对待，不去做优化操作。为了性能方面的考量，默认被置为YES(意味着‘优化’)。
+<pre><code>CALayer  *layer;    
+</code></pre>
+
+<p>// UIView在父视图中的位置</p>
+
+<pre><code>CGRect            frame;    
+</code></pre>
+
+<p>// UIView相对自己的位置</p>
+
+<pre><code>CGRect            bounds;
+</code></pre>
+
+<p>// UIView的中心点. animatable</p>
+
+<pre><code>CGPoint           center; 
+</code></pre>
+
+<p>// 线性代数里面讲的矩阵变换，这个是恒等变换,一般用来旋转，缩放</p>
+
+<pre><code>CGAffineTransform transform;
+</code></pre>
+
+<p>// 修改contentScaleFactor可以让UIView的渲染精度提高，这样即使在CGAffineTransform放大之后仍然能保持锐利。</p>
+
+<pre><code>CGFloat contentScaleFactor;
+</code></pre>
+
+<p>// 是否允许多点触摸</p>
+
+<pre><code>BOOL multipleTouchEnabled;   
+</code></pre>
+
+<p>// default is NO</p>
+
+<pre><code>BOOL       exclusiveTouch;         
+</code></pre>
+
+<p>// UIView的背影颜色</p>
+
+<pre><code>UIColor   backgroundColor;  
+</code></pre>
+
+<p>// UIView是否隐藏</p>
+
+<pre><code>BOOL hidden;  
+</code></pre>
+
+<p>// 为0时完全透明，为1时完全不透明。</p>
+
+<pre><code>CGFloat  alpha; 
+</code></pre>
+
+<p> //在类的层次结构中，如果clipsTobounds设为YES,超出superView的部分subview就不会显示，否则会做显示， 默认情况下是NO。</p>
+
+<pre><code>BOOL clipsToBounds;
+</code></pre>
+
+<p>//这是一个优化属性，如果该值为YES, 那么绘图在绘制该视图的时候把整个视图当作不透明对待。这样，绘图系统在执行绘图过程中会优化一些操作并提升系统性能；如果是设置为NO, 绘图系统将其和其他内容平等对待，不去做优化操作。为了性能方面的考量，默认被置为YES(意味着‘优化’)。</p>
+
+<pre><code>BOOL opaque;   
 
 UIView  *superview;// 父视图
 NSArray *subviews;// 子视图
 </code></pre>
 
-<p>注：*frame和center都是相对于父视图的，bounds是相对于自身的。当view完全透明和隐藏时不能响应事件。</p>
+<p>注：frame和center都是相对于父视图的，bounds是相对于自身的。当view完全透明和隐藏时不能响应事件。</p>
 
-<p>*opaque和alpha 是有关系的。 一个不透明视图需要整个边界里面的内容都是不透明的。基于这个原因，opaque设置为YES，要求对应的alpha必须为1.0。如果一个UIView实例opaque被设置为YES, 而同时它又没有完全填充它的边界(bounds),或者它包含了整个或部分的透明的内容视图，那么将会导致未知的结果。
+<p>opaque和alpha 是有关系的。 一个不透明视图需要整个边界里面的内容都是不透明的。基于这个原因，opaque设置为YES，要求对应的alpha必须为1.0。如果一个UIView实例opaque被设置为YES, 而同时它又没有完全填充它的边界(bounds),或者它包含了整个或部分的透明的内容视图，那么将会导致未知的结果。
 因此，如果视图部分或全部支持透明，那么你必须把opaque这个值设置为NO.</p>
 
 <p><strong>3、几何方法类</strong></p>
 
-<pre><code>// hitTest主要用途是用来寻找那个视图是被触摸了
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event;   
-// 如果我们不想让某个视图响应事件，让此方法返回NO就行了。默认为YES
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event;
+<p>// hitTest主要用途是用来寻找那个视图是被触摸了</p>
+
+<pre><code>- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event;   
+</code></pre>
+
+<p>// 如果我们不想让某个视图响应事件，让此方法返回NO就行了。默认为YES</p>
+
+<pre><code>- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event;
 </code></pre>
 
 <p>举个例子，建立一个TestView里面重载hitTest和pointInside方法：</p>
@@ -197,15 +254,24 @@ NSArray *subviews;// 子视图
 
 <p>这里注意[super hitTest:point withEvent:event];必须要包括，否则hitTest无法调用父类的方法，这样就没法 使用PointInside:withEvent:进行判断，那么就没法进行子视图的遍历。当去掉这个语句的时候，触摸事件就不可能进到子视图中了，除非你在方法中直接返回子视图的对象。这样你在调试的过程中就会发现，每次你点击一个view都会先进入到这个view的父视图中的hitTest方法，然后 调用super的hitTest方法之后就会查找pointInside是否返回YES如果是，则就把消息传递个子视图处理，子视图用同样的方法递归查找 自己的子视图。所以从这里调试分析看，hitTest方法这种递归调用的方式就一目了然了。</p>
 
-<pre><code>// 将像素point由point所在视图转换到目标视图view中，返回在目标视图view中的像素值
-- (CGPoint)convertPoint:(CGPoint)point toView:(UIView *)view;
-// 将像素point从view中转换到当前视图中，返回在当前视图中的像素值
-- (CGPoint)convertPoint:(CGPoint)point fromView:(UIView *)view;
+<p>// 将像素point由point所在视图转换到目标视图view中，返回在目标视图view中的像素值</p>
 
-// 将rect由rect所在视图转换到目标视图view中，返回在目标视图view中的rect
-- (CGRect)convertRect:(CGRect)rect toView:(UIView *)view;
-// 将rect从view中转换到当前视图中，返回在当前视图中的rect
-- (CGRect)convertRect:(CGRect)rect fromView:(UIView *)view;
+<pre><code>- (CGPoint)convertPoint:(CGPoint)point toView:(UIView *)view;
+</code></pre>
+
+<p>// 将像素point从view中转换到当前视图中，返回在当前视图中的像素值</p>
+
+<pre><code>- (CGPoint)convertPoint:(CGPoint)point fromView:(UIView *)view;
+</code></pre>
+
+<p>// 将rect由rect所在视图转换到目标视图view中，返回在目标视图view中的rect</p>
+
+<pre><code>- (CGRect)convertRect:(CGRect)rect toView:(UIView *)view;
+</code></pre>
+
+<p>// 将rect从view中转换到当前视图中，返回在当前视图中的rect</p>
+
+<pre><code>- (CGRect)convertRect:(CGRect)rect fromView:(UIView *)view;
 </code></pre>
 
 <p><strong>4、控制级别类</strong></p>
@@ -228,136 +294,216 @@ NSArray *subviews;// 子视图
 <p>注：1、addSubview:和insertSubview: atIndex:的区别：</p>
 
 <pre><code>  [view addSubView:oneView] == [view insertSubview:oneView atIndex:view.subviews.cout];
+</code></pre>
 
-// 将view显示在最前面（要将一个view显示在最前面，只要调用其父视图的bringSubviewToFront：方法）
-- (void)bringSubviewToFront:(UIView *)view;
-// 将view推送到背后
-- (void)sendSubviewToBack:(UIView *)view;
-// 当加入视图完成后调用  
-- (void)didAddSubview:(UIView *)subview;
-// 将移除子视图会调用
-- (void)willRemoveSubview:(UIView *)subview;
+<p>// 将view显示在最前面（要将一个view显示在最前面，只要调用其父视图的bringSubviewToFront：方法）</p>
 
-// 通知即将移动到新的父视图中
-- (void)willMoveToSuperview:(UIView *)newSuperview;
-// 通知已经到新父视图
-- (void)didMoveToSuperview;
-// 通知即将已移动到新的窗口
-- (void)willMoveToWindow:(UIWindow *)newWindow;
-// 通知已经移动新的窗口
-- (void)didMoveToWindow;
+<pre><code>- (void)bringSubviewToFront:(UIView *)view;
+</code></pre>
 
-// 判断一个视图是否在父视图层中
-- (BOOL)isDescendantOfView:(UIView *)view;  // returns YES for self.
-// 获取标记的子视图
-- (UIView *)viewWithTag:(NSInteger)tag;     // recursive search. includes self
+<p>// 将view推送到背后</p>
 
-// Allows you to perform layout before the drawing cycle happens. -layoutIfNeeded forces layout early
-// 标记为需要重新布局，异步调用layoutIfNeeded刷新布局，不立即刷新，
-// 但layoutSubviews一定会被调用
-- (void)setNeedsLayout;
-// 如果有需要刷新的标记，立即调用layoutSubviews进行布局
-//（如果没有标记，不会调用layoutSubviews）
-- (void)layoutIfNeeded;
+<pre><code>- (void)sendSubviewToBack:(UIView *)view;
+</code></pre>
 
-// 重新布局
-- (void)layoutSubviews; 
+<p>// 当加入视图完成后调用</p>
+
+<pre><code>- (void)didAddSubview:(UIView *)subview;
+</code></pre>
+
+<p>// 将移除子视图会调用</p>
+
+<pre><code>- (void)willRemoveSubview:(UIView *)subview;
+</code></pre>
+
+<p>// 通知即将移动到新的父视图中</p>
+
+<pre><code>- (void)willMoveToSuperview:(UIView *)newSuperview;
+</code></pre>
+
+<p>// 通知已经到新父视图</p>
+
+<pre><code>- (void)didMoveToSuperview;
+</code></pre>
+
+<p>// 通知即将已移动到新的窗口</p>
+
+<pre><code>- (void)willMoveToWindow:(UIWindow *)newWindow;
+</code></pre>
+
+<p>// 通知已经移动新的窗口</p>
+
+<pre><code>- (void)didMoveToWindow;
+</code></pre>
+
+<p>// 判断一个视图是否在父视图层中</p>
+
+<pre><code>- (BOOL)isDescendantOfView:(UIView *)view;
+</code></pre>
+
+<p>// 获取标记的子视图</p>
+
+<pre><code>- (UIView *)viewWithTag:(NSInteger)tag;     
+</code></pre>
+
+<p>// 标记为需要重新布局，异步调用layoutIfNeeded刷新布局，不立即刷新，但layoutSubviews一定会被调用</p>
+
+<pre><code>- (void)setNeedsLayout;
+</code></pre>
+
+<p>// 如果有需要刷新的标记，立即调用layoutSubviews进行布局（如果没有标记，不会调用layoutSubviews）</p>
+
+<pre><code>- (void)layoutIfNeeded;
+</code></pre>
+
+<p>// 重新布局</p>
+
+<pre><code>- (void)layoutSubviews; 
 </code></pre>
 
 <p><strong>5、渲染类</strong></p>
 
-<pre><code>// 重写此方法，执行重绘
-- (void)drawRect:(CGRect)rect;
+<p>// 重写此方法，执行重绘</p>
 
-// 标记为需要重绘，异步调用drawRect
-- (void)setNeedsDisplay;
-// 标记为需要局部重绘
-- (void)setNeedsDisplayInRect:(CGRect)rect;
+<pre><code>- (void)drawRect:(CGRect)rect;
+</code></pre>
+
+<p>// 标记为需要重绘，异步调用drawRect</p>
+
+<pre><code>- (void)setNeedsDisplay;
+</code></pre>
+
+<p>// 标记为需要局部重绘</p>
+
+<pre><code>- (void)setNeedsDisplayInRect:(CGRect)rect;
 </code></pre>
 
 <p>注：drawRect是对receiver的重绘。setNeedDisplay在receiver标上一个需要被重新绘图的标记，在下一个draw周期自动重绘，iphone device的刷新频率是60hz，也就是1/60秒后重绘</p>
 
 <p><strong>6、动画类</strong></p>
 
-<pre><code>// 开始一个动画
-+ (void)beginAnimations:(NSString *)animationID context:(void *)context; 
-// 执行动画,类似数据库的事务处理
-+ (void)commitAnimations; 
-// 设置动画代理，默认为nil
-+ (void)setAnimationDelegate:(id)delegate; 
+<p>// 开始一个动画</p>
 
-// 当动画执行开始时，执行selector方法，默认为NULL
-+ (void)setAnimationWillStartSelector:(SEL)selector;
-// 当动画执行结束时，执行selector方法
-+ (void)setAnimationDidStopSelector:(SEL)selector; 
+<pre><code>+ (void)beginAnimations:(NSString *)animationID context:(void *)context; 
+</code></pre>
 
-// 设置动画时间，时间参数为double类型，默认0.2
-+ (void)setAnimationDuration:(NSTimeInterval)duration;
-// 设置动画延迟时间
-+ (void)setAnimationDelay:(NSTimeInterval)delay;  
-// 设置在动画块内部动画内部动画属性改变的开始时间
-+ (void)setAnimationStartDate:(NSDate *)startDate;
-// 设置动画的旋转曲度变化，默认为UIViewAnimationCurveEaseInOut
-//值定义在UIViewAnimationCurve结构体中。
-//typedef NS_ENUM(NSInteger, UIViewAnimationCurve) { //动画曲线
-    // slow at beginning and end 缓慢开始，中间加速，然后减速到结束
-//  UIViewAnimationCurveEaseInOut,   
-    // slow at beginning  缓慢开始，加速到结束     
-//  UIViewAnimationCurveEaseIn,    
-    // slow at end  加速开始，加速到结束        
-//  UIViewAnimationCurveEaseOut, 
+<p>// 执行动画,类似数据库的事务处理</p>
+
+<pre><code>+ (void)commitAnimations; 
+</code></pre>
+
+<p>// 设置动画代理，默认为nil</p>
+
+<pre><code>+ (void)setAnimationDelegate:(id)delegate; 
+</code></pre>
+
+<p>// 当动画执行开始时，执行selector方法，默认为NULL</p>
+
+<pre><code>+ (void)setAnimationWillStartSelector:(SEL)selector;
+</code></pre>
+
+<p>// 当动画执行结束时，执行selector方法</p>
+
+<pre><code>+ (void)setAnimationDidStopSelector:(SEL)selector; 
+</code></pre>
+
+<p>// 设置动画时间，时间参数为double类型，默认0.2</p>
+
+<pre><code>+ (void)setAnimationDuration:(NSTimeInterval)duration;
+</code></pre>
+
+<p>// 设置动画延迟时间</p>
+
+<pre><code>+ (void)setAnimationDelay:(NSTimeInterval)delay;  
+</code></pre>
+
+<p>// 设置在动画块内部动画内部动画属性改变的开始时间</p>
+
+<pre><code>+ (void)setAnimationStartDate:(NSDate *)startDate;
+</code></pre>
+
+<p>// 设置动画的旋转曲度变化，默认为UIViewAnimationCurveEaseInOut.值定义在UIViewAnimationCurve结构体中。</p>
+
+<pre><code>typedef NS_ENUM(NSInteger, UIViewAnimationCurve) { //动画曲线
+    // 缓慢开始，中间加速，然后减速到结束
+    UIViewAnimationCurveEaseInOut,   
+    // 缓慢开始，加速到结束     
+    UIViewAnimationCurveEaseIn,    
+    // 加速开始，加速到结束        
+    UIViewAnimationCurveEaseOut, 
     //正常速度          
-//  UIViewAnimationCurveLinear  
-//};
+    UIViewAnimationCurveLinear  
+};
 + (void)setAnimationCurve:(UIViewAnimationCurve)curve; 
+</code></pre>
 
-// 设置动画在动画模块中的重复次数
-+ (void)setAnimationRepeatCount:(float)repeatCount;                 
-// 设置动画块中的动画效果是否自动重复播放
-+ (void)setAnimationRepeatAutoreverses:(BOOL)repeatAutoreverses;    
-// 设置动画是否从当前状态开始播放，默认为NO. 
-+ (void)setAnimationBeginsFromCurrentState:(BOOL)fromCurrentState;  
+<p>// 设置动画在动画模块中的重复次数</p>
 
-// 在动画设置过渡效果
-+ (void)setAnimationTransition:(UIViewAnimationTransition)transition forView:(UIView *)view cache:(BOOL)cache;
+<pre><code>+ (void)setAnimationRepeatCount:(float)repeatCount;                 
+</code></pre>
 
-transition
-把一个过渡效果应用到视图中。值定义在UIViewAnimationTransition结构体中。
-typedef NS_ENUM(NSInteger, UIViewAnimationTransition) {
+<p>// 设置动画块中的动画效果是否自动重复播放</p>
+
+<pre><code>+ (void)setAnimationRepeatAutoreverses:(BOOL)repeatAutoreverses;    
+</code></pre>
+
+<p>// 设置动画是否从当前状态开始播放，默认为NO.</p>
+
+<pre><code>+ (void)setAnimationBeginsFromCurrentState:(BOOL)fromCurrentState;  
+</code></pre>
+
+<p>// 在动画设置过渡效果</p>
+
+<pre><code>+ (void)setAnimationTransition:(UIViewAnimationTransition)transition forView:(UIView *)view cache:(BOOL)cache;
+</code></pre>
+
+<p>transition把一个过渡效果应用到视图中。值定义在UIViewAnimationTransition结构体中。</p>
+
+<pre><code>typedef NS_ENUM(NSInteger, UIViewAnimationTransition) {
     UIViewAnimationTransitionNone, 没有过渡
     UIViewAnimationTransitionFlipFromLeft,  翻转视图从左到右
     UIViewAnimationTransitionFlipFromRight, 翻转视图从右到左
     UIViewAnimationTransitionCurlUp, 从上卷动
     UIViewAnimationTransitionCurlDown, 从下卷动
 };
-view
-    需要过渡的视图对象。
+</code></pre>
 
-cache
-如果是YES，那么在开始和结束图片视图渲染一次并在动画中创建帧；否则，视图将会在每一帧都渲染。例如缓存，你不需要在视图转变中不停的更新，你只需要等到转换完成再去更新视图。
-1、开始一个动画块。
+<p>view:需要过渡的视图对象。</p>
+
+<p>cache:如果是YES，那么在开始和结束图片视图渲染一次并在动画中创建帧；否则，视图将会在每一帧都渲染。例如缓存，你不需要在视图转变中不停的更新，你只需要等到转换完成再去更新视图。</p>
+
+<pre><code>1、开始一个动画块。
 2、在容器视图中设置转换。
 3、在容器视图中移除子视图。
 4、在容器视图中添加子视图。
 5、结束动画块。
+</code></pre>
 
-// 设置是否开启动画，默认YES,开启
-+ (void)setAnimationsEnabled:(BOOL)enabled;
-// 验证动画是否开启，YES开启，NO关闭
-+ (BOOL)areAnimationsEnabled;               
-// iOS7之后替代 setAnimationsEnabled
-+ (void)performWithoutAnimation:(void (^)(void))actionsWithoutAnimation;
+<p>// 设置是否开启动画，默认YES,开启</p>
 
-// iOS4.0之后
-+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion;
+<pre><code>+ (void)setAnimationsEnabled:(BOOL)enabled;
+</code></pre>
 
-动画效果处理块，多参数
+<p>// 验证动画是否开启，YES开启，NO关闭</p>
+
+<pre><code>+ (BOOL)areAnimationsEnabled;               
+</code></pre>
+
+<p>// iOS7之后替代 setAnimationsEnabled</p>
+
+<pre><code>+ (void)performWithoutAnimation:(void (^)(void))actionsWithoutAnimation;
+</code></pre>
+
+<p>// iOS4.0之后,动画效果处理块</p>
+
+<pre><code>+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion;
 </code></pre>
 
 <p>(NSTimeInterval)duration :动画时间</p>
 
-<p>(NSTimeInterval)delay:延迟时间
-(UIViewAnimationOptions)options 动画参数</p>
+<p>(NSTimeInterval)delay:延迟时间</p>
+
+<p>(UIViewAnimationOptions)options 动画参数</p>
 
 <pre><code>typedef NS_OPTIONS(NSUInteger, UIViewAnimationOptions) {
     UIViewAnimationOptionLayoutSubviews            = 1 &lt;&lt;  0,
@@ -460,10 +606,11 @@ cache
 
 <p><strong>7、手势类</strong></p>
 
-<p>// 手势识别器（iOS3.2）
-@property(nonatomic,copy) NSArray *gestureRecognizers;</p>
+<p>// 手势识别器（iOS3.2）</p>
 
-<pre><code>UIKit 中UIGestureRecognizer类的子类系列如下：
+<pre><code>NSArray *gestureRecognizers;
+
+UIKit 中UIGestureRecognizer类的子类系列如下：
 UITapGestureRecognizer – “轻击”手势。可以配置为“单击”和“连击”的识别。
 UIPinchGestureRecognizer –“捏合”手势。该手势通常用于缩放视图或改变可视组件的大小。
 UIPanGestureRecognizer – “平移”手势。识别拖拽或移动动作。
@@ -487,22 +634,11 @@ UILongPressGestureRecognizer – “长按”手势。使用1指或多指触摸�
 <pre><code>- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer;
 </code></pre>
 
-<p><strong>8、移动效果类</strong></p>
+<p><strong>8、移动效果类(iOS7.0)</strong></p>
 
-<ul>
-<li>(void)addMotionEffect:(UIMotionEffect *)effect NS_AVAILABLE_IOS(7_0);</li>
-</ul>
-
-
-<p>/*! Stops applying <code>effect</code> to the receiver. Any affected presentation values will animate to</p>
-
-<pre><code>their post-removal values using the present UIView animation context. */
+<pre><code>- (void)addMotionEffect:(UIMotionEffect *)effect;
+- (void)removeMotionEffect:(UIMotionEffect *)effect;
 </code></pre>
-
-<ul>
-<li>(void)removeMotionEffect:(UIMotionEffect *)effect NS_AVAILABLE_IOS(7_0);</li>
-</ul>
-
 
 <p><strong>9、基于布局约束类(iOS6.0)</strong></p>
 
