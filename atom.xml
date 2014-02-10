@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-02-10T23:10:05+08:00</updated>
+  <updated>2014-02-10T23:32:42+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -14,11 +14,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA[ABELWebImage]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/02/10/abelwebimage/"/>
-    <updated>2014-02-10T23:04:45+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/02/10/abelwebimage</id>
-    <content type="html"><![CDATA[<p>ABELWebImageKit托管在github上：<a href="https://github.com/beyondabel/ABELWebImage">https://github.com/beyondabel/ABELWebImage</a></p>
+    <title type="html"><![CDATA[ABELWebImageKit使用介绍]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/02/10/abelwebimagekit/"/>
+    <updated>2014-02-10T20:30:17+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/02/10/abelwebimagekit</id>
+    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+
+<p>ABELWebImageKit托管在github上：<a href="https://github.com/beyondabel/ABELWebImage">https://github.com/beyondabel/ABELWebImage</a></p>
 
 <!--more-->
 
@@ -28,14 +30,29 @@
 <pre><code>1、ABELWebImageKit介绍
 2、ABELWebImageKit库结构的简单分析
 3、ABELWebImageKit库的图片管理
-4、ABELWebImageKit库使用的简单举例 **1、ABELWebImageKit介绍**
+4、ABELWebImageKit库使用的简单举例
 </code></pre>
 
-<p>这个库提供一个ABELImageView类以支持加载来自网络的远程图片。具有缓存管理、异步下载、同一个URL下载次数控制和优化等特征。将ABELWebImageKit类库添加入工程时，一定注意需要添加ImageIO.framework。UIImage+Tools依赖这个framework。<strong>2、ABELWebImageKit库结构的简单分析</strong>ABELImageView：ABELImageView继承于UIImageView的，它主要用于加载来自网络的远程图片。其中avater用于区别是否为头像图片（默认非头像）。
-ABELWebImageCacheManager：ABELWebImageCacheManager是一个单例，对图片进行管理的中转站，读取图片（向下层读取Cache或者读取网络），实现ABELWebImageCache和ABELWebImageRequest的回调。
-ABELWebImageCache：根据URL的MD5摘要对图片进行存储和读取（实现存在内存中或者存在硬盘上两种实现）     实现图片和内存清理工作。ABELWebImageRequest：根据URL向网络读取数据<strong>3、ABELWebImageKit库的图片管理</strong>
-ABELWebImageCache分两个部分，一个是内存层面的，一个是硬盘层面的。
-内存层面的相当是个缓存器，以Key-Value的形式存储图片。当内存不够的时候会清除所有缓存图片。用搜索文件系统的方式做管理，文件替换方式是以时间为单位，剔除时间大于一周的图片文件。当ABELWebImageCacheManager向ABELWebImageCache要资源时，先搜索内存层面的数据，如果有直接返回，没有的话去访问磁盘，将图片从磁盘读取出来，然后做Decoder，将图片对象放到内存层面做备份，再返回调用层。<strong>4、ABELWebImageKit库使用的简单举例</strong></p>
+<p><strong>1、ABELWebImageKit介绍</strong></p>
+
+<p>这个库提供一个ABELImageView类以支持加载来自网络的远程图片。具有缓存管理、异步下载、同一个URL下载次数控制和优化等特征。将ABELWebImageKit类库添加入工程时，一定注意需要添加ImageIO.framework。UIImage+Tools依赖这个framework。</p>
+
+<p><strong>2、ABELWebImageKit库结构的简单分析</strong></p>
+
+<p>ABELImageView：ABELImageView继承于UIImageView的，它主要用于加载来自网络的远程图片。其中avater用于区别是否为头像图片（默认非头像）。</p>
+
+<p>ABELWebImageCacheManager：ABELWebImageCacheManager是一个单例，对图片进行管理的中转站，读取图片（向下层读取Cache或者读取网络），实现ABELWebImageCache和ABELWebImageRequest的回调。</p>
+
+<p>ABELWebImageCache：根据URL的MD5摘要对图片进行存储和读取（实现存在内存中或者存在硬盘上两种实现）     实现图片和内存清理工作。
+ABELWebImageRequest：根据URL向网络读取数据</p>
+
+<p><strong>3、ABELWebImageKit库的图片管理</strong></p>
+
+<p>ABELWebImageCache分两个部分，一个是内存层面的，一个是硬盘层面的。</p>
+
+<p>内存层面的相当是个缓存器，以Key-Value的形式存储图片。当内存不够的时候会清除所有缓存图片。用搜索文件系统的方式做管理，文件替换方式是以时间为单位，剔除时间大于一周的图片文件。当ABELWebImageCacheManager向ABELWebImageCache要资源时，先搜索内存层面的数据，如果有直接返回，没有的话去访问磁盘，将图片从磁盘读取出来，然后做Decoder，将图片对象放到内存层面做备份，再返回调用层。</p>
+
+<p><strong>4、ABELWebImageKit库使用的简单举例</strong></p>
 
 <pre><code>self.avatarImageView = [[ABELImageView alloc] init];
 // 设置avatar为YES为显示圆形头像图片，否则为普通的图片
@@ -44,15 +61,6 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 [self.avatarImageView setImageWithURL:[NSURL URLWithString:URLString]]
 [self.contentView addSubview:self.avatarImageView];
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ABELWebImageKit使用介绍]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/02/10/abelwebimagekit/"/>
-    <updated>2014-02-10T20:30:17+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/02/10/abelwebimagekit</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
@@ -3128,6 +3136,67 @@ BOOL translucent;
 <p><strong>3、iOS7新增</strong></p>
 
 <pre><code>UIColor *tintColor;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UIActivityIndicatorView详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/03/uiactivityindicatorview/"/>
+    <updated>2014-01-03T12:30:48+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/03/uiactivityindicatorview</id>
+    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+
+<p>使用的活动指示器，以显示该任务正在进行中。活动指示器显示为一个“齿轮” ，要么是旋转或停止。UIActivityIndicatorView继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>.</p>
+
+<p>您可以控制​​当一个活动指示灯动画通过调用startAnimating和stopAnimating方法。要自动隐藏活动指示灯，当动画停止，设置hidesWhenStopped属性为YES 。</p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<pre><code>1、UIActivityIndicatorView基本属性及方法
+2、iOS5.0新增
+</code></pre>
+
+<p><strong>1、UIActivityIndicatorView基本属性及方法</strong></p>
+
+<p>// 初始化样式</p>
+
+<pre><code>- (id)initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyle)style;
+</code></pre>
+
+<p>// 设置样式（默认为UIActivityIndicatorViewStyleWhite）</p>
+
+<pre><code>UIActivityIndicatorViewStyle activityIndicatorViewStyle;
+</code></pre>
+
+<p>// 停止时是否隐藏</p>
+
+<pre><code>BOOL hidesWhenStopped;
+</code></pre>
+
+<p>// 开始播放动画</p>
+
+<pre><code>- (void)startAnimating;
+</code></pre>
+
+<p>// 停止播放动画</p>
+
+<pre><code>- (void)stopAnimating;
+</code></pre>
+
+<p>// 是否正在播放动画</p>
+
+<pre><code>- (BOOL)isAnimating;
+</code></pre>
+
+<p><strong>2、iOS5.0新增</strong></p>
+
+<p>// 设置圈圈的颜色</p>
+
+<pre><code>UIColor *color;
 </code></pre>
 ]]></content>
   </entry>
