@@ -9,8 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Feb 10th, 2014 ABELWebImageKit使用介绍 ABELWebImageKit托管在github上：https://github.com/beyondabel/ABELWebImage 目录 1、ABELWebImageKit介绍
-2、 &hellip;">
+	<meta name="description" content="Feb 10th, 2014 ABELWebImage ABELWebImageKit托管在github上：https://github.com/beyondabel/ABELWebImage 阅读全文 &rarr; Feb 10th, 2014 ABELWebImageKit使用介绍 Jan &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,6 +107,38 @@
   
 
 
+<time datetime="2014-02-10T23:04:45+08:00" data-updated="true" itemprop="datePublished">Feb 10<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/02/10/abelwebimage/" itemprop="url">ABELWebImage</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>ABELWebImageKit托管在github上：<a href="https://github.com/beyondabel/ABELWebImage">https://github.com/beyondabel/ABELWebImage</a></p>
+
+
+		
+		<a href="/blog/2014/02/10/abelwebimage/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
 <time datetime="2014-02-10T20:30:17+08:00" data-updated="true" itemprop="datePublished">Feb 10<span>th</span>, 2014</time></div>
 		<div class="tags">
 
@@ -116,29 +147,7 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="/blog/2014/02/10/abelwebimagekit/" itemprop="url">ABELWebImageKit使用介绍</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>ABELWebImageKit托管在github上：<a href="https://github.com/beyondabel/ABELWebImage">https://github.com/beyondabel/ABELWebImage</a></p>
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、ABELWebImageKit介绍
-2、ABELWebImageKit库结构的简单分析
-3、ABELWebImageKit库的图片管理
-4、ABELWebImageKit库使用的简单举例 &lt;!--more--&gt;**1、ABELWebImageKit介绍**
-</code></pre>
-
-<p>这个库提供一个ABELImageView类以支持加载来自网络的远程图片。具有缓存管理、异步下载、同一个URL下载次数控制和优化等特征。将ABELWebImageKit类库添加入工程时，一定注意需要添加ImageIO.framework。UIImage+Tools依赖这个framework。<strong>2、ABELWebImageKit库结构的简单分析</strong>ABELImageView：ABELImageView继承于UIImageView的，它主要用于加载来自网络的远程图片。其中avater用于区别是否为头像图片（默认非头像）。
-ABELWebImageCacheManager：ABELWebImageCacheManager是一个单例，对图片进行管理的中转站，读取图片（向下层读取Cache或者读取网络），实现ABELWebImageCache和ABELWebImageRequest的回调。
-ABELWebImageCache：根据URL的MD5摘要对图片进行存储和读取（实现存在内存中或者存在硬盘上两种实现）     实现图片和内存清理工作。ABELWebImageRequest：根据URL向网络读取数据<strong>3、ABELWebImageKit库的图片管理</strong>
-ABELWebImageCache分两个部分，一个是内存层面的，一个是硬盘层面的。
-内存层面的相当是个缓存器，以Key-Value的形式存储图片。当内存不够的时候会清除所有缓存图片。用搜索文件系统的方式做管理，文件替换方式是以时间为单位，剔除时间大于一周的图片文件。当ABELWebImageCacheManager向ABELWebImageCache要资源时，先搜索内存层面的数据，如果有直接返回，没有的话去访问磁盘，将图片从磁盘读取出来，然后做Decoder，将图片对象放到内存层面做备份，再返回调用层。<strong>4、ABELWebImageKit库使用的简单举例</strong></p>
-
-<pre><code>self.avatarImageView = [[ABELImageView alloc] init];
-// 设置avatar为YES为显示圆形头像图片，否则为普通的图片
-self.avatarImageView.avatar = YES;
-self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
-[self.avatarImageView setImageWithURL:[NSURL URLWithString:URLString]]
-[self.contentView addSubview:self.avatarImageView];
-</code></pre>
+		
 
 		
 		
@@ -454,44 +463,6 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 
 		
 		<a href="/blog/2014/01/06/uicontrol/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-05T12:32:39+08:00" data-updated="true" itemprop="datePublished">Jan 5<span>th</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/01/05/uiwebview/" itemprop="url">iOS组件之UIWebView详解</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><strong>引言</strong></p>
-
-<p>UIWebView是继承于UIView(有关UIView请参照<a href="/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>),在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。</p>
-
-
-		
-		<a href="/blog/2014/01/05/uiwebview/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>
