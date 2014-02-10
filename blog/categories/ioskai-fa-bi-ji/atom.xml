@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS开发笔记 | Abel之家]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioskai-fa-bi-ji/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-12T20:38:24+08:00</updated>
+  <updated>2014-02-10T22:39:30+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -256,12 +256,20 @@ M/D/YYYY H:MM     12/7/1958 20:50
 
 <p>今天上午开完会，一回来真机调试就报 No architectures to compile for (ONLY_ACTIVE_ARCH=YES, active arch=armv7s, VALID_ARCHS=armv7 armv6)错误。虚拟机没事，一旦用真机就报这个错误，开始以为是我安装几个软件之后，安装不成功，系统问题。然后就是重装系统，都不成功。最终解决办法：</p>
 
-<p>1.把Build Active Architecture Only 下面的Debug 设为NO release 设置为YES
-2.Valid Architectures 设置为 armv7 armv6 就OK 了。</p>
+<pre><code>1.把Build Active Architecture Only 下面的Debug 设为NO release 设置为YES
+2.Valid Architectures 设置为 armv7 armv6 就OK 了。
+</code></pre>
 
-<p>1.Xcode编译出现错误如下：CodeSign error: code signing is required for product type &lsquo;Application&rsquo; in SDK &lsquo;iOS 5.0&rsquo;
-解决方法如下：
-选择工程－>Build Settings &ndash;> Code Signing &ndash;> Code Signing Identity &ndash;> Debug &ndash;> Any ios SDK 将选项改为：iPhone Developer</p>
+<p>2、Xcode编译出现错误如下：CodeSign error: code signing is required for product type &lsquo;Application&rsquo; in SDK &lsquo;iOS 5.0&rsquo;
+解决方法如下：</p>
+
+<pre><code>选择工程－&gt;Build Settings -&gt; Code Signing -&gt; Code Signing Identity -&gt; Debug -&gt; Any ios SDK 将选项改为：iPhone Developer
+</code></pre>
+
+<p>3、While reading /Users/abel/.……..png pngcrush caught libpng error:   Not a PNG filCould not find file: /Users/abel/Library/Developer/Xcode/.…..Default.pngCommand /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/copypng emitted errors but did not return a nonzero exit code to indicate failure</p>
+
+<pre><code>报这个错误是因为我把一张本身为jpg的图片的名字修改成png后缀了。
+</code></pre>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-01-12T20:38:24+08:00</updated>
+  <updated>2014-02-10T22:39:30+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ABELWebImageKit使用介绍]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/02/10/abelwebimagekit/"/>
+    <updated>2014-02-10T20:30:17+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/02/10/abelwebimagekit</id>
+    <content type="html"><![CDATA[<p>ABELWebImageKit托管在github上：<a href="https://github.com/beyondabel/ABELWebImage">https://github.com/beyondabel/ABELWebImage</a></p>
+
+<p><strong>目录</strong></p>
+
+<pre><code>1、ABELWebImageKit介绍
+2、ABELWebImageKit库结构的简单分析
+3、ABELWebImageKit库的图片管理
+4、ABELWebImageKit库使用的简单举例 **1、ABELWebImageKit介绍**
+</code></pre>
+
+<p>这个库提供一个ABELImageView类以支持加载来自网络的远程图片。具有缓存管理、异步下载、同一个URL下载次数控制和优化等特征。将ABELWebImageKit类库添加入工程时，一定注意需要添加ImageIO.framework。UIImage+Tools依赖这个framework。<strong>2、ABELWebImageKit库结构的简单分析</strong>ABELImageView：ABELImageView继承于UIImageView的，它主要用于加载来自网络的远程图片。其中avater用于区别是否为头像图片（默认非头像）。
+ABELWebImageCacheManager：ABELWebImageCacheManager是一个单例，对图片进行管理的中转站，读取图片（向下层读取Cache或者读取网络），实现ABELWebImageCache和ABELWebImageRequest的回调。
+ABELWebImageCache：根据URL的MD5摘要对图片进行存储和读取（实现存在内存中或者存在硬盘上两种实现）     实现图片和内存清理工作。ABELWebImageRequest：根据URL向网络读取数据<strong>3、ABELWebImageKit库的图片管理</strong>
+ABELWebImageCache分两个部分，一个是内存层面的，一个是硬盘层面的。
+内存层面的相当是个缓存器，以Key-Value的形式存储图片。当内存不够的时候会清除所有缓存图片。用搜索文件系统的方式做管理，文件替换方式是以时间为单位，剔除时间大于一周的图片文件。当ABELWebImageCacheManager向ABELWebImageCache要资源时，先搜索内存层面的数据，如果有直接返回，没有的话去访问磁盘，将图片从磁盘读取出来，然后做Decoder，将图片对象放到内存层面做备份，再返回调用层。<strong>4、ABELWebImageKit库使用的简单举例</strong></p>
+
+<pre><code>self.avatarImageView = [[ABELImageView alloc] init];
+// 设置avatar为YES为显示圆形头像图片，否则为普通的图片
+self.avatarImageView.avatar = YES;
+self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
+[self.avatarImageView setImageWithURL:[NSURL URLWithString:URLString]]
+[self.contentView addSubview:self.avatarImageView];
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS组件之UISwitch详解]]></title>
@@ -3146,70 +3177,6 @@ BOOL translucent;
 <p>// 设置圈圈的颜色</p>
 
 <pre><code>UIColor *color;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIProgressView详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/02/uiprogressview/"/>
-    <updated>2014-01-02T12:28:03+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/02/uiprogressview</id>
-    <content type="html"><![CDATA[<p><strong>引导</strong></p>
-
-<p>该UIPickerView的类实现的对象，显示一个或多个值的集合。用户通过旋转轮选择值，这样的值所需的行对齐选择指标。UIProgressView是继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>)。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、基本属性及方法
-2、iOS5新增内容
-</code></pre>
-
-<p><strong>1、基本属性及方法</strong></p>
-
-<p>// 初始化progressView的样式</p>
-
-<pre><code>- (id)initWithProgressViewStyle:(UIProgressViewStyle)style; 
-</code></pre>
-
-<p>// progressView的样式（默认为UIProgressViewStyleDefault）</p>
-
-<pre><code>UIProgressViewStyle progressViewStyle;
-</code></pre>
-
-<p>// 进度（范围为0-1）</p>
-
-<pre><code>float progress; 
-</code></pre>
-
-<p><strong>2、iOS5新增内容</strong></p>
-
-<p>// 进度填充部分的颜色(譬如进度到40%,那么40%部分的颜色就是这个属性)</p>
-
-<pre><code>UIColor* progressTintColor;
-</code></pre>
-
-<p>// 未填充部分的颜色</p>
-
-<pre><code>UIColor* trackTintColor ;
-</code></pre>
-
-<p>// 进度填充部分的图片，如progressTintColor</p>
-
-<pre><code>UIImage* progressImage;
-</code></pre>
-
-<p>// 未填充部分的图片，如trackTintColor</p>
-
-<pre><code>UIImage* trackImage;
-</code></pre>
-
-<p>// 设置progress的进度</p>
-
-<pre><code>- (void)setProgress:(float)progress animated:(BOOL)animated;
 </code></pre>
 ]]></content>
   </entry>
