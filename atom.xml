@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-02-10T23:32:42+08:00</updated>
+  <updated>2014-02-11T23:40:39+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,144 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS安全攻防（一）：Hack必备的命令与工具]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools/"/>
+    <updated>2014-02-11T23:32:27+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools</id>
+    <content type="html"><![CDATA[<p>Hack必备的命令与工具</p>
+
+<p>你的应用正在被其他对手反向工程、跟踪和操作！你的应用是否依旧裸奔豪不防御？
+郑重声明一下，懂得如何攻击才会懂得如何防御，一切都是为了之后的防御作准备。废话少说，进入正题。
+今天总结一下为hack而做的准备工作。</p>
+
+<!--more-->
+
+
+<p>常用的命令和工具</p>
+
+<pre><code>ps           ——显示进程状态，CPU使用率，内存使用情况等
+sysctl       ——检查设定Kernel配置
+netstat     ——显示网络连接，路由表，接口状态等
+route        ——路由修改
+renice       ——调整程序运行的优先级
+ifconfig    ——查看网络配置
+tcpdump   ——截获分析网络数据包
+lsof           ——列出当前系统打开的文件列表，别忘记一切皆文件，包括网络连接、硬件等
+otool ①     ——查看程序依赖哪些动态库信息，反编代码段……等等等等
+nm ②        ——显示符号表
+ldid ③      ——签名工具
+gdb          ——调试工具
+patch       ——补丁工具
+SSH         ——远程控制
+</code></pre>
+
+<p>备注：</p>
+
+<p>① otool，可查看可执行程序都链接了那些库：</p>
+
+<pre><code>   otool  -L WQAlbum 
+</code></pre>
+
+<p>可以得到：</p>
+
+<pre><code>WQAlbum:
+    /System/Library/Frameworks/StoreKit.framework/StoreKit (compatibility version 1.0.0, current version 1.0.0)
+    /System/Library/Frameworks/AdSupport.framework/AdSupport (compatibility version 1.0.0, current version 1.0.0)
+    /usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.5)
+    /System/Library/Frameworks//MediaPlayer.framework/MediaPlayer (compatibility version 1.0.0, current version 1.0.0)
+    /System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices (compatibility version 1.0.0, current version 40.0.0)
+    /System/Library/Frameworks/CoreMedia.framework/CoreMedia (compatibility version 1.0.0, current version 1.0.0)
+    ……
+</code></pre>
+
+<p>可以反编译WQAlbum的<strong>TEXT</strong>段内容, 截前10行：</p>
+
+<pre><code>otool -tV WQAlbum |head -n 10 
+</code></pre>
+
+<p>可以得到：</p>
+
+<pre><code>WQAlbum:
+(__TEXT,__text) section
+start:
+00002de0    pushl   $0x00
+00002de2    movl    %esp,%ebp
+00002de4    andl    $0xf0,%esp
+00002de7    subl    $0x10,%esp
+00002dea    movl    0x04(%ebp),%ebx
+……
+</code></pre>
+
+<p>② nm，显示程序符号表，用我自己的应用程序私人相册现身说法一下：
+nm -g WQAlbum  （ -g 代表 global）</p>
+
+<p>可以得到：</p>
+
+<pre><code>001e5eec S _OBJC_IVAR_$_WQPhotoViewController.albumObject
+001e5efc S _OBJC_IVAR_$_WQPhotoViewController.int_current
+001e5f00 S _OBJC_IVAR_$_WQPhotoViewController.int_total
+</code></pre>
+
+<p>其中，WQPhotoViewController为类名，albumObject为该类的成员</p>
+
+<p>③ ldid，是iPhoneOS.platform提供的签名工具，我们自己编译的程序需要签上名才能跑在iPhone/iPad上，使用方法</p>
+
+<pre><code>export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate
+ldid -S helloworld 
+</code></pre>
+
+<p>编译Hello world</p>
+
+<p>1.首先找到编译器：</p>
+
+<p>arm-apple-darwin10-llvm-gcc-4.2 就是了。
+为了方便起见，可以在.bashrc或者profile 配置下环境变量，方便编译。</p>
+
+<p>2.找到SDK</p>
+
+<p>编译我们自己的程序的时候需要指定该目录下的SDK。</p>
+
+<p>3.来个经典Hello world ：</p>
+
+<pre><code>#include &lt;stdio.h&gt;                                                                                             
+int main(){  
+   printf("Hello world !!!\n");  
+   return 0;  
+}  
+</code></pre>
+
+<p>4.编译</p>
+
+<p>其中 -isysroot用来指定build时的SDK</p>
+
+<p>5.校验</p>
+
+<p>file查看一下类型，没问题。</p>
+
+<p>6.SCP给iPhone、iPad</p>
+
+<p>前提是，设备已经越狱并且安装了SSH,且必须在同一网段。</p>
+
+<pre><code>$scp helloworld root@x.x.x.x:hello world
+</code></pre>
+
+<p>7.登录设备签名</p>
+
+<pre><code>$ssh -l root x.x.x.x
+#ldid -S helloworld
+</code></pre>
+
+<p>8.执行程序</p>
+
+<pre><code>#./helloworld
+Hello world !!!
+</code></pre>
+
+<p>运行成功，这就完成了最简单的手动执行自己的应用程序。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ABELWebImageKit使用介绍]]></title>
@@ -3136,67 +3274,6 @@ BOOL translucent;
 <p><strong>3、iOS7新增</strong></p>
 
 <pre><code>UIColor *tintColor;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIActivityIndicatorView详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/03/uiactivityindicatorview/"/>
-    <updated>2014-01-03T12:30:48+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/03/uiactivityindicatorview</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>使用的活动指示器，以显示该任务正在进行中。活动指示器显示为一个“齿轮” ，要么是旋转或停止。UIActivityIndicatorView继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>.</p>
-
-<p>您可以控制​​当一个活动指示灯动画通过调用startAnimating和stopAnimating方法。要自动隐藏活动指示灯，当动画停止，设置hidesWhenStopped属性为YES 。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、UIActivityIndicatorView基本属性及方法
-2、iOS5.0新增
-</code></pre>
-
-<p><strong>1、UIActivityIndicatorView基本属性及方法</strong></p>
-
-<p>// 初始化样式</p>
-
-<pre><code>- (id)initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyle)style;
-</code></pre>
-
-<p>// 设置样式（默认为UIActivityIndicatorViewStyleWhite）</p>
-
-<pre><code>UIActivityIndicatorViewStyle activityIndicatorViewStyle;
-</code></pre>
-
-<p>// 停止时是否隐藏</p>
-
-<pre><code>BOOL hidesWhenStopped;
-</code></pre>
-
-<p>// 开始播放动画</p>
-
-<pre><code>- (void)startAnimating;
-</code></pre>
-
-<p>// 停止播放动画</p>
-
-<pre><code>- (void)stopAnimating;
-</code></pre>
-
-<p>// 是否正在播放动画</p>
-
-<pre><code>- (BOOL)isAnimating;
-</code></pre>
-
-<p><strong>2、iOS5.0新增</strong></p>
-
-<p>// 设置圈圈的颜色</p>
-
-<pre><code>UIColor *color;
 </code></pre>
 ]]></content>
   </entry>
