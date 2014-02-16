@@ -4,7 +4,7 @@
   <title><![CDATA[Abel之家]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-02-16T16:09:37+08:00</updated>
+  <updated>2014-02-16T16:16:52+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -77,60 +77,57 @@ int resut = hbFunction(10);   // 函数调用
 
 <p>主动调用一下：</p>
 
-<ul>
-<li><p>(void)someMethod
+<pre><code>- (void)someMethod
 {
-  BoolBlock ablock = ^(BOOL bValue) {
-      NSLog(@&ldquo;Bool block!&rdquo;);
-  };</p>
+    BoolBlock ablock = ^(BOOL bValue) {
+        NSLog(@"Bool block!");
+    };
 
-<p>  ablock();
+    ablock();
 }
-作为参数返回：</p></li>
-</ul>
-
-
-<p>typedef void (^BoolBlock)(BOOL);
-&ndash; (BoolBlock)foo()
-{</p>
-
-<pre><code>BoolBlock ablock = ^(BOOL bValue) {
-    NSLog(@"Bool block!");
-};
-return [[ablock copy] autorelease];//一定要copy，将其复制到堆上，更详细的原理，将在后续章节讲解
 </code></pre>
 
-<p>}
-类的一个成员：</p>
+<p>作为参数返回：</p>
 
-<p>@interface OBJ1 : NSObject
+<pre><code>typedef void (^BoolBlock)(BOOL);
+- (BoolBlock)foo()
+{
+    BoolBlock ablock = ^(BOOL bValue) {
+        NSLog(@"Bool block!");
+    };
+    return [[ablock copy] autorelease];//一定要copy，将其复制到堆上，更详细的原理，将在后续章节讲解
+}
+</code></pre>
+
+<p>类的一个成员：</p>
+
+<pre><code>@interface OBJ1 : NSObject
 @property (nonatomic, copy)BoolBlock block;//理由同上啊，同学们
-@end</p>
+@end
 
-<p>OBJ1 *obj1 = &hellip;
-obj1.block = ^(BOOL bValue) {</p>
-
-<pre><code>    NSLog(@"Bool block!");
+OBJ1 *obj1 = ...
+obj1.block = ^(BOOL bValue) {
+    NSLog(@"Bool block!");
 };
 </code></pre>
 
 <p>其他函数的参数：</p>
 
-<ul>
-<li>(void)foo(BoolBlock block)
+<pre><code>- (void)foo(BoolBlock block)
 {
-  if (block) {
-      block();
-  }
+    if (block) {
+        block();
+    }
 }
-甚至其他block的参数：</li>
-</ul>
+</code></pre>
 
+<p>甚至其他block的参数：</p>
 
-<p>BoolBlock bBlock = ^(BOOL bV){if(Bv){/<em>do some thing</em>/}};
-HugeBlock hBlock = ^(BoolBlock bB) {bB();};</p>
+<pre><code>BoolBlock bBlock = ^(BOOL bV){if(Bv){/*do some thing*/}};
+HugeBlock hBlock = ^(BoolBlock bB) {bB();};
 
-<p>hBolck(bBlock);</p>
+hBolck(bBlock); 
+</code></pre>
 
 <p><strong>二、Block内存管理与其他特性</strong></p>
 
