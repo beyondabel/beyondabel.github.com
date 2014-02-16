@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS安全攻防 | Abel之家]]></title>
   <link href="http://beyondabel.github.io/blog/categories/iosan-quan-gong-fang/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-02-13T09:57:04+08:00</updated>
+  <updated>2014-02-16T16:09:37+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -18,7 +18,7 @@
     <link href="http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools/"/>
     <updated>2014-02-11T23:32:27+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools</id>
-    <content type="html"><![CDATA[<p>Hack必备的命令与工具</p>
+    <content type="html"><![CDATA[<p><strong>Hack必备的命令与工具</strong></p>
 
 <p>你的应用正在被其他对手反向工程、跟踪和操作！你的应用是否依旧裸奔豪不防御？
 郑重声明一下，懂得如何攻击才会懂得如何防御，一切都是为了之后的防御作准备。废话少说，进入正题。
@@ -27,20 +27,20 @@
 <!--more-->
 
 
-<p>常用的命令和工具</p>
+<p><strong>常用的命令和工具</strong></p>
 
 <pre><code>ps           ——显示进程状态，CPU使用率，内存使用情况等
 sysctl       ——检查设定Kernel配置
-netstat     ——显示网络连接，路由表，接口状态等
+netstat      ——显示网络连接，路由表，接口状态等
 route        ——路由修改
 renice       ——调整程序运行的优先级
-ifconfig    ——查看网络配置
-tcpdump   ——截获分析网络数据包
-lsof           ——列出当前系统打开的文件列表，别忘记一切皆文件，包括网络连接、硬件等
+ifconfig     ——查看网络配置
+tcpdump      ——截获分析网络数据包
+lsof         ——列出当前系统打开的文件列表，别忘记一切皆文件，包括网络连接、硬件等
 otool ①     ——查看程序依赖哪些动态库信息，反编代码段……等等等等
 nm ②        ——显示符号表
 ldid ③      ——签名工具
-gdb          ——调试工具
+gdb         ——调试工具
 patch       ——补丁工具
 SSH         ——远程控制
 </code></pre>
@@ -102,16 +102,16 @@ ldid -S helloworld
 
 <p>编译Hello world</p>
 
-<p>1.首先找到编译器：</p>
+<p><strong>1.首先找到编译器：</strong></p>
 
 <p>arm-apple-darwin10-llvm-gcc-4.2 就是了。
 为了方便起见，可以在.bashrc或者profile 配置下环境变量，方便编译。</p>
 
-<p>2.找到SDK</p>
+<p><strong>2.找到SDK</strong></p>
 
 <p>编译我们自己的程序的时候需要指定该目录下的SDK。</p>
 
-<p>3.来个经典Hello world ：</p>
+<p><strong>3.来个经典Hello world ：</strong></p>
 
 <pre><code>#include &lt;stdio.h&gt;                                                                                             
 int main(){  
@@ -120,28 +120,28 @@ int main(){
 }  
 </code></pre>
 
-<p>4.编译</p>
+<p><strong>4.编译</strong></p>
 
 <p>其中 -isysroot用来指定build时的SDK</p>
 
-<p>5.校验</p>
+<p><strong>5.校验</strong></p>
 
 <p>file查看一下类型，没问题。</p>
 
-<p>6.SCP给iPhone、iPad</p>
+<p><strong>6.SCP给iPhone、iPad</strong></p>
 
 <p>前提是，设备已经越狱并且安装了SSH,且必须在同一网段。</p>
 
 <pre><code>$scp helloworld root@x.x.x.x:hello world
 </code></pre>
 
-<p>7.登录设备签名</p>
+<p><strong>7.登录设备签名</strong></p>
 
 <pre><code>$ssh -l root x.x.x.x
 #ldid -S helloworld
 </code></pre>
 
-<p>8.执行程序</p>
+<p><strong>8.执行程序</strong></p>
 
 <pre><code>#./helloworld
 Hello world !!!
