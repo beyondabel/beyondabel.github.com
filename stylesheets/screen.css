@@ -2150,3 +2150,95 @@ a:hover {
     }
 }
 
+#sub-nav .social a.email{
+    background:url('/images/social/email.png?1388072801') center no-repeat #050505;
+    border:1px solid #050505
+    }
+#sub-nav .social a.email:hover{
+    border:1px solid #000
+}
+#sub-nav .social a.facebook{
+    background:url('/images/social/facebook.png?1388072801') center no-repeat #3b5998;
+    border:1px solid #3B5998
+}
+
+#sub-nav .social a.facebook:hover{
+    border:1px solid #2d4373
+}
+
+#sub-nav .social a.google{
+    background:url('/images/social/google.png?1388072801') center no-repeat #c83d20;
+    border:1px solid #C83D20
+}
+
+#sub-nav .social a.google:hover{
+    border:1px solid #9c3019
+}
+
+#sub-nav .social a.twitter{
+    background:url('/images/social/twitter.png?1388072801') center no-repeat #55cff8;
+    border:1px solid #55CFF8
+}
+
+#sub-nav .social a.twitter:hover{
+    border:1px solid #24c1f6
+}
+#sub-nav .social a.github{
+    background:url('/images/social/github.png?1388072801') center no-repeat #afb6ca;
+    border:1px solid #afb6ca
+}
+#sub-nav .social a.github:hover{
+    border:1px solid #909ab6
+}
+#sub-nav .social a.coderwall{
+    background:url('/images/social/coderwall.png?1388072801') center no-repeat #3e8dcc;
+    border:1px solid #3E8DCC
+}
+#sub-nav .social a.coderwall:hover{
+    border:1px solid #2d73aa
+}
+#sub-nav .social a.stackoverflow{
+    background:url('/images/social/stackoverflow.png?1388072801') center no-repeat #ef7522;
+    border:1px solid #EF7522
+}
+#sub-nav .social a.stackoverflow:hover{
+    border:1px solid #CC7A00
+}
+#sub-nav .social a.linkedin{
+    background:url('/images/social/linkedin.png?1388072801') center no-repeat #005a87;
+    border:1px solid #005A87
+}
+#sub-nav .social a.pinterest{
+    background:url('/images/social/pinterest.png?1388072801') center no-repeat #be4037;
+    border:1px solid #be4037
+}
+#sub-nav .social a.pinterest:hover{
+    border:1px solid #96332c
+}
+#sub-nav .social a.delicious{
+    background:url('/images/social/delicious.png?1388072801') center no-repeat #3271cb;
+    border:1px solid #3271cb
+}
+#sub-nav .social a.delicious:hover{
+    border:1px solid #285aa2
+}
+#sub-nav .social a.pinboard{
+    background:url('/images/social/pinboard.png?1388072801') center no-repeat #0066c8;
+    border:1px solid #3a729f
+}
+#sub-nav .social a.pinboard:hover{border:1px solid #0052cc}
+#sub-nav .social a.douban{
+    background:url('/images/social/douban.png?1388072801') center no-repeat #008024;
+    border:1px solid #008024
+}
+#sub-nav .social a.douban:hover{
+    border:1px solid #004d16
+}
+#sub-nav .social a.rss{
+    background:url('/images/social/rss.png?1388072801') center no-repeat #ef7522;
+    border:1px solid #EF7522
+}
+#sub-nav .social a.rss:hover{
+    border:1px solid #cf5d0f
+}
+

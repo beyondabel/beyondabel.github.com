@@ -48,7 +48,7 @@
 <hgroup>
   <h1><a href="/">Abel's Den</a></h1>
   
-    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+    <p class="subtitle">天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</p>
   
 </hgroup>
 
@@ -91,7 +91,7 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<h1 class="title" itemprop="name">iOS组件之UIPageControl详解</h1>
-	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+	<div class="entry-content" itemprop="articleBody"><h3>引言</h3>
 
 <p>UIPageControl继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。您可以使用UIPageControl类来创建和管理页面控件。一个页面控件显示一个水平一系列的点，每个对应一个页面应用程序的文档（或其他数据模型实体）中。当前浏览的页面是由一个白色的圆点表示。</p>
 
@@ -100,13 +100,12 @@
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
-<pre><code>1、基本属性及方法
-2、iOS6.0新增
-</code></pre>
+<p>&mdash;-1、基本属性及方法
+2、iOS6.0新增</p>
 
-<p><strong>1、基本属性及方法</strong></p>
+<h3>1、基本属性及方法</h3>
 
 <p>// 指定页面个数（默认为0）</p>
 
@@ -138,8 +137,9 @@
 <pre><code>- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;
 </code></pre>
 
-<p><strong>2、iOS6.0新增</strong>
-// 未选中的点的颜色</p>
+<h3>2、iOS6.0新增</h3>
+
+<p>// 未选中的点的颜色</p>
 
 <pre><code>UIColor *pageIndicatorTintColor;
 </code></pre>

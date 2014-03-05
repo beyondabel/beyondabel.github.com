@@ -9,7 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Feb 16th, 2014 iOS开发知识积累 NSObjective-C之id/NSObject/id区别 概述 阅读全文 &rarr; Feb 15th, 2014 iOS开发知识积累 Objective C之Block教程 引言 Block是C级别的语法和运行时特性。 &hellip;">
+	<meta name="description" content="Mar 5th, 2014 iOS开发知识积累 ARC vs MRC，这不是一个编程习惯问题 引言 虽然距离WWDC2011和iOS5已经过去3年多时间了，但之前我一直没有去研究过ARC，一个是因为觉得ARC非常简单，到时什么时候想使用ARC时再转向ARC，第二个是担心内存管理不受自己控制（好吧 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -48,7 +48,7 @@
 <hgroup>
   <h1><a href="/">Abel's Den</a></h1>
   
-    <h2>天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</h2>
+    <p class="subtitle">天行健，君子以自强不息.<br>地势坤，君子以厚德载物.</p>
   
 </hgroup>
 
@@ -91,6 +91,44 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-05T10:21:40+08:00" data-updated="true" itemprop="datePublished">Mar 5<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ioskai-fa-zhi-shi-ji-lei/'>iOS开发知识积累</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/03/05/mrc-arc/" itemprop="url">ARC vs MRC，这不是一个编程习惯问题</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h3>引言</h3>
+
+<p>虽然距离WWDC2011和iOS5已经过去3年多时间了，但之前我一直没有去研究过ARC，一个是因为觉得ARC非常简单，到时什么时候想使用ARC时再转向ARC，第二个是担心内存管理不受自己控制（好吧，从现在来看是我对ARC机制了解不足而已），第三，我觉得使用MRC更能体现一个码农对内存管理的理解，第四，我是一个追求技术不“追赶时髦”的码农。说了这么多的原因，其实是想说作为一个最需要“追求时髦”的职业，我这样的心态是错误的。写这篇文章的目的是希望和我一同处于对 MAC &amp;　ARC迷茫的人的一个参考吧！</p>
+
+
+		
+		<a href="/blog/2014/03/05/mrc-arc/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -387,7 +425,7 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="/blog/2014/01/09/uipagecontrol/" itemprop="url">iOS组件之UIPageControl详解</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p><strong>引言</strong></p>
+		<h3>引言</h3>
 
 <p>UIPageControl继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。您可以使用UIPageControl类来创建和管理页面控件。一个页面控件显示一个水平一系列的点，每个对应一个页面应用程序的文档（或其他数据模型实体）中。当前浏览的页面是由一个白色的圆点表示。</p>
 
@@ -438,44 +476,6 @@
 
 		
 		<a href="/blog/2014/01/09/uidatepicker/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-08T12:33:18+08:00" data-updated="true" itemprop="datePublished">Jan 8<span>th</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/uiviewji-zi-lei-kong-jian/'>UIView及子类控件</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/01/08/uibutton/" itemprop="url">iOS组件之UIButton详解</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>引言</p>
-
-<p>UIButton的类是一个UIControl子类（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>），它实现了在触摸屏上的按钮。触摸一个按钮拦截事件和动作消息发送到目标对象时，它的挖掘。设定的目标和行动方法都继承自UIControl。这个类提供了方法来设置标题，图像，按钮等外观属性。通过使用set方法，你可以指定一个不同的外观为每个按钮状态。</p>
-
-
-		
-		<a href="/blog/2014/01/08/uibutton/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>

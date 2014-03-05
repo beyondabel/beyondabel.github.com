@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-01T15:10:00+08:00</updated>
+  <updated>2014-03-05T12:26:45+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,133 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ARC VS MRC，这不是一个编程习惯问题]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/03/05/mrc-arc/"/>
+    <updated>2014-03-05T10:21:40+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/03/05/mrc-arc</id>
+    <content type="html"><![CDATA[<h3>引言</h3>
+
+<p>虽然距离WWDC2011和iOS5已经过去3年多时间了，但之前我一直没有去研究过ARC，一个是因为觉得ARC非常简单，到时什么时候想使用ARC时再转向ARC，第二个是担心内存管理不受自己控制（好吧，从现在来看是我对ARC机制了解不足而已），第三，我觉得使用MRC更能体现一个码农对内存管理的理解，第四，我是一个追求技术不“追赶时髦”的码农。说了这么多的原因，其实是想说作为一个最需要“追求时髦”的职业，我这样的心态是错误的。写这篇文章的目的是希望和我一同处于对 MAC &amp;　ARC迷茫的人的一个参考吧！</p>
+
+<!--more-->
+
+
+<h3>目录</h3>
+
+<ul>
+<li>1、 什么是ARC</li>
+<li>2、 ARC工作原理</li>
+<li>3、 MRC的代价</li>
+<li>4、 ARC &amp; MAC 在大量数据下的测试</li>
+<li>5、 总结</li>
+</ul>
+
+
+<h4>1、什么是ARC</h4>
+
+<p>什么是ARC，google一下，你会发现有太多太多对ARC非常非常详细的讲解。对于有C++背景的人来说，ARC的本质从某种角度上来说类似 C++ 的智能指针，区别就是ARC更智能简单，而且会加速程序，而不是像智能指针那样会一定程度上减慢程序运行。对于纯ObjC背景的人来说，ARC相当于编译器自动帮你填写了 retain, release。但是，远远不是这么简单。</p>
+
+<p>首先ARC不会真的填写<code>retain/release</code>，<code>retain/release</code> 是 ObjC的消息，ARC会直接调用runtime的C函数，这会快很多。另外对于MRC中恶心的 <code>return [[[XXX alloc] init] autorelease]</code> ，ARC不但可以简化其写法，还可以让它更快，原因就在于它可以消除不必要的“入池”操作，详见objc_retainAutoreleasedReturnValue.</p>
+
+<p>基于上面两点，ARC会让所有涉及到内存的操作变快。</p>
+
+<p>ARC虽然会让单位内存操作变快，甚至会智能的取消某些<code>retain/release</code>，但是毕竟ARC不是人脑，如果一个人完全清晰的掌握某个对象的生命周期，那么他完全可以只retain一次，然后在最后不需要的时候release掉，所以MRC可以在这种情况下比ARC快。至于具体应用到项目中的数据，可以参考 <a href="http://www.learn-cocos2d.com/2013/12/performance-comparison-cocos2diphone-v2-v3-sparrow-arc-mrc/">http://www.learn-cocos2d.com/2013/12/performance-comparison-cocos2diphone-v2-v3-sparrow-arc-mrc/</a>  。其中有快有慢。</p>
+
+<h4>2、 ARC工作原理</h4>
+
+<p>手动内存管理的机理大家应该已经非常清楚了，简单来说，只要遵循以下三点就可以在手动内存管理中避免绝大部分的麻烦：</p>
+
+<p>如果需要持有一个对象，那么对其发送retain 如果之后不再使用该对象，那么需要对其发送release（或者autorealse） 每一次对retain,alloc或者new的调用，需要对应一次release或autorealse调用</p>
+
+<p>初学者可能仅仅只是知道这些规则，但是在实际使用时难免犯错。但是当开发者经常使用手动引用计数 Manual Referecen Counting(MRC)的话，这些规则将逐渐变为本能。你会发现少一个release的代码怎么看怎么别扭，从而减少或者杜绝内存管理的错误。可以说MRC的规则非常简单，但是同时也非常容易出错。往往很小的错误就将引起crash或者OOM之类的严重问题。</p>
+
+<p>在MRC的年代里，为了避免不小心忘写release，Xcode提供了一个很实用的小工具来帮助可能存在的代码问题(Xcode3里默认快捷键Shift+A？不记得了)，可以指出潜在的内存泄露或者过多释放。而ARC在此基础上更进一步：ARC是Objective-C编译器的特性，而不是运行时特性或者垃圾回收机制，ARC所做的只不过是在代码编译时为你自动在合适的位置插入release或autorelease，就如同之前MRC时你所做的那样。因此，至少在效率上ARC机制是不会比MRC弱的，而因为可以在最合适的地方完成引用计数的维护，以及部分优化，使用ARC甚至能比MRC取得更高的运行效率。</p>
+
+<h4>3、MRC的代价</h4>
+
+<p>代码有好多代价，最简单直白的代价是编写时的代价，然后更重大的代价则是维护的代价。</p>
+
+<p>编写的代价：
+每个人的脑力都是有限的，而在编程的时候往往需要全心专注，这说明编程本身就耗费了100%的脑力。基于这个出发点，那么如果一个人在每写100行代码里面10行都是内存维护相关的代码时，他分配给其他的东西（程序结构，API设计，业务逻辑）肯定会减少，除非他愿意花更多的时间来写这个东西（加班）。注意，内存维护的10行代码并非简单地事情，要把他们搞正确，一个合格的MRC程序员肯定会前后审阅自己的代码好几遍。</p>
+
+<p>维护的代价：
+代码的本质是动态的，它会随着时间不停的改变自己，所以代码不但需要运行时健壮，同时还需要重构健壮，即你能安全的重构一段代码，而不是重构之后错误百出。这个举个常见例子：</p>
+
+<p>在MRC下，有一个函数，在运行中间会 return 掉，那么所有合格的MRC程序员必然会记得在return之前把 alloc 的对象逐个 release 掉，咱不讨论在MRC下如果多几个中途return会让代码多么难写（这是编写代价），假设写好了，程序OK，没bug。然后某天重构了，把 return 提前了，然后由于位置提前，需要release的对象变成了另外一些，这会造成相当多的重构bug。另外一个例子，假设这个MRC程序员采用了极端的 retain/release 优化，那么在重构时必然要全面审视新的代码下面原来的优化是否安全，代价很高。那如果这些代码要交给别人重构呢？</p>
+
+<p>维护代价的另一面是阅读时的代价。代码的价值是给人（别人或者自己）读，一行代码敲下去，可能要被读10遍，20遍。设想一下阅读到处穿插 <code>retain/ release</code> 的代码 vs 阅读清晰的业务逻辑的代码的容易程度对比。</p>
+
+<h4>4、 ARC &amp; MAC 在大量数据下的测试</h4>
+
+<p>下面举一个例子，同样的代码，只是在「ARC」与「MRC」的情況下编译执行， 但是二者所需要的时间是相差数倍的！</p>
+
+<pre><code>int n = 600000, m = 10000000;
+arr = [NSMutableArray new];
+for (int i = 0; i &lt; n; i++) {
+    [arr addObject:[NSNumber numberWithInt:1]];
+}
+
+CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+
+id obj = nil;
+for (int j = 0; j &lt; m; j++) {
+    obj = [arr objectAtIndex:n - 1];
+}
+
+CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
+
+NSLog(@"end:%lf, start:%lf, diff:%lf", end, start, end - start);
+
+[arr release]; // -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行
+</code></pre>
+
+<p>执行结果：</p>
+
+<pre><code>MRC:  end:358178433.846184, start:358178433.753032, diff:0.093152
+ARC:    end:358178929.480108, start:358178928.841418, diff:0.638690
+</code></pre>
+
+<p>可以看出「MRC」的版本比「ARC」的版本快了近7倍！</p>
+
+<p>但实际上程序是慢在哪呢？ &ndash;> 慢在 obj = [arr objectAtIndex:n &ndash; 1]; 这个地方， XCode 在 Compile 的时候，帮我們加上了类似下面的代码，</p>
+
+<pre><code>obj = [[arr objectAtIndex:n - 1] retain];
+[obj autorelease];
+</code></pre>
+
+<p>如果把「MRC」的版本修改为上述的代码，
+则执行結果：</p>
+
+<pre><code>MRC:  end:358179022.496308, start:358179021.894909, diff:0.601399
+</code></pre>
+
+<p>是不是就变慢了！
+因此，XCode 在 Compile 的时候，我想它对代码的记忆管理是采取较保守的态度， 如此看來，iOS 5 预设 property 为 strong 也就不意外了！</p>
+
+<p>那么上面所举的例子要怎么解決呢？ &ndash;> 我们可以透过 Toll-Free Bridged Types 来解決！ 来看一下，我们将 ARC 的版本的代码改成下面这个样子： 將NSArray改成使用CFArrayRef， 这是 Foundation class &ndash;> Core Foundation type 的转换， 这样的转换是 Toll-Free 的！</p>
+
+<pre><code>__unsafe_unretained id obj;
+for (int j = 0; j &lt; m; j++){
+  obj = (__bridge __unsafe_unretained id)CFArrayGetValueAtIndex((__bridge CFArrayRef)arr, n - 1);
+}
+</code></pre>
+
+<p>如果把「ARC」的版本修改为上述的代码，
+则执行结果：</p>
+
+<pre><code>MRC:  end:358179460.237259, start:358179460.004701, diff:0.232558
+</code></pre>
+
+<p>是不是就变快了！(但还沒有办法跟原本的「MRC」版本一样快！)
+所以其实写程序的時候要多想一下有沒有其它作法， 因为不同的写法虽然可能是相同結果， 但所需要的时间是不同的， 在使用 ARC 時， 如果能清楚的知道自己所创建的物件是被 retain 的状态， 那么在传递的过程中就可以视需求决定接收此物件是要 retain 或只是 assign， 这样可以让 XCode 在 Compile 的时候， 依照我们給它的指示去产生记忆体管理的代码， 避免不必要或多余的效能损失！</p>
+
+<h4>5、 总结</h4>
+
+<p>ARC相对于MRC他的运行效率确实会慢一些，但他的优势也是十分明显的。ARC只是为了提高您的工作效率，而不是一个神奇而没有缺点的一项技术。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[NSObjective-C之id/NSObject/id<NSObject>区别]]></title>
@@ -1262,7 +1389,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
     <link href="http://beyondabel.github.io/blog/2014/01/09/uipagecontrol/"/>
     <updated>2014-01-09T12:33:46+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/09/uipagecontrol</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UIPageControl继承于UIControl（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。您可以使用UIPageControl类来创建和管理页面控件。一个页面控件显示一个水平一系列的点，每个对应一个页面应用程序的文档（或其他数据模型实体）中。当前浏览的页面是由一个白色的圆点表示。</p>
 
@@ -1271,13 +1398,12 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
-<pre><code>1、基本属性及方法
-2、iOS6.0新增
-</code></pre>
+<p>&mdash;-1、基本属性及方法
+2、iOS6.0新增</p>
 
-<p><strong>1、基本属性及方法</strong></p>
+<h3>1、基本属性及方法</h3>
 
 <p>// 指定页面个数（默认为0）</p>
 
@@ -1309,8 +1435,9 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;
 </code></pre>
 
-<p><strong>2、iOS6.0新增</strong>
-// 未选中的点的颜色</p>
+<h3>2、iOS6.0新增</h3>
+
+<p>// 未选中的点的颜色</p>
 
 <pre><code>UIColor *pageIndicatorTintColor;
 </code></pre>
@@ -3662,98 +3789,6 @@ NSArray *rightBarButtonItems;
 
 <pre><code>BOOL leftItemsSupplementBackButton;
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIToolBar详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/03/uitoolbar/"/>
-    <updated>2014-01-03T12:31:14+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/03/uitoolbar</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>UIToolBar是显示一个或多个按钮，称为工具栏项的控件，继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>。工具栏瞬间突出或挖掘时，不改变项目的外观。</p>
-
-<p>要创建工具栏项，使用的UIBarButtonItem类。到工具栏项添加到工具栏，使用setItems ：动画：方法。</p>
-
-<p>代表项目的正常和高亮状态工具栏图像从你设置使用继承的图像属性从UIBarItem类的形象派生。在iOS系统7.0 ，图像是彩色的工具栏的tintColor。</p>
-
-<p>如果您需要单选按钮式控制，使用UITabBar类而不是UIToolbar。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、UIToolBar的基本属性及方法
-2、iOS5.0新增
-3、iOS6.0新增
-4、iOS7.0新增
-5、UIToolbar协议
-</code></pre>
-
-<p><strong>1、UIToolBar的基本属性及方法</strong></p>
-
-<p>// UIToolBar的样式 （默认为blue）</p>
-
-<pre><code>UIBarStyle barStyle;
-</code></pre>
-
-<p>// 设置tooBar的选项</p>
-
-<pre><code>NSArray   *items;
-</code></pre>
-
-<p>// 设置上面的一层view是否半透明</p>
-
-<pre><code>BOOL translucent;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)setItems:(NSArray *)items animated:(BOOL)animated;
-</code></pre>
-
-<p>// 背景颜色</p>
-
-<pre><code>UIColor *tintColor;
-</code></pre>
-
-<p>2、iOS5.0新增</p>
-
-<p>// 背景图片设置</p>
-
-<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forToolbarPosition:(UIBarPosition)topOrBottom barMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (UIImage *)backgroundImageForToolbarPosition:(UIBarPosition)topOrBottom barMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p>3、iOS6.0新增</p>
-
-<p>// 设置ToolBar上边沿的阴影</p>
-
-<pre><code>- (void)setShadowImage:(UIImage *)shadowImage forToolbarPosition:(UIBarPosition)topOrBottom;
-- (UIImage *)shadowImageForToolbarPosition:(UIBarPosition)topOrBottom;
-</code></pre>
-
-<p>4、iOS7.0新增</p>
-
-<p>// 设置背景颜色</p>
-
-<pre><code>UIColor *barTintColor;
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id&lt;UIToolbarDelegate&gt; delegate;
-</code></pre>
-
-<p><strong>5、UIToolbar协议</strong></p>
-
-<p>目前还没有协议</p>
 ]]></content>
   </entry>
   
