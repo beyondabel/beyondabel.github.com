@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-06T12:18:01+08:00</updated>
+  <updated>2014-03-06T15:58:23+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -56,7 +56,7 @@
 
 <p>初学者可能仅仅只是知道这些规则，但是在实际使用时难免犯错。但是当开发者经常使用手动引用计数 MRC 的话，这些规则将逐渐变为本能。你会发现少一个release的代码怎么看怎么别扭，从而减少或者杜绝内存管理的错误。可以说MRC的规则非常简单，但是同时也非常容易出错。往往很小的错误就将引起crash或者内存溢出之类的严重问题。</p>
 
-<p>在MRC的年代里，为了避免不小心忘写release，Xcode提供了一个很实用的小工具来帮助可能存在的代码问题(Xcode3里默认快捷键Shift+A？不记得了)，可以指出潜在的内存泄露或者过多释放。而ARC在此基础上更进一步：ARC是Objective-C编译器的特性，而不是运行时特性或者垃圾回收机制，ARC所做的只不过是在代码编译时为你自动在合适的位置插入release或autorelease，就如同之前MRC时你所做的那样。因此，至少在效率上ARC机制是不会比MRC弱的，而因为可以在最合适的地方完成引用计数的维护，以及部分优化，使用ARC甚至能比MRC取得更高的运行效率。</p>
+<p>在MRC的年代里，为了避免不小心忘写release，Xcode提供了一个很实用的小工具来帮助可能存在的代码问题(Xcode里默认快捷键command+B)，可以指出潜在的内存泄露或者过多释放。而ARC在此基础上更进一步：ARC是Objective-C编译器的特性，而不是运行时特性或者垃圾回收机制，ARC所做的只不过是在代码编译时为你自动在合适的位置插入release或autorelease，就如同之前MRC时你所做的那样。</p>
 
 <h4>3、MRC的代价</h4>
 
@@ -260,9 +260,10 @@ CFRelease(s2);
 <li><p>对<code>strong</code>，<code>weak</code>，<code>assign</code>，<code>copy</code>，<code>__weak</code>，<code>__strong</code>，<code>__autorelease</code>，<code>@autorelease{}</code>等的使用需要学习一下（特别注意一下<code>__weak</code>, <code>__strong</code>, <code>__autorelease</code>应该写在指针后边，变量名前面，否则不是正确写法，只是编译器会做一些处理）。</p></li>
 <li><p>重写dealloc方法不调用[super dealloc]方法。</p></li>
 <li><p>第三方库不支持arc，要將每个相关文件设置-fno-objc-arc。</p></li>
-<li><p>arc对core foundation无效，需要自己控制内存，包括释放，并且需要cast的时候要用<strong>bridge，</strong>bridge_retain，__bridge_transfer等修饰来控制对应内存。</p></li>
+<li><p>arc对core foundation无效，需要自己控制内存，包括释放，并且需要cast的时候要用 <code>__bridge</code>，<code>__bridge_retain</code>，<code>__bridge_transfer</code>等修饰来控制对应内存。</p></li>
 <li><p>arc和block的时候需要注意循环引用的问题。</p></li>
-<li><p>还有和C混用的时候需要注意，先將对象赋nil再free掉相关内存。避免使用C的memcpy和realloc函数等等。</p></li>
+<li><p>还有和C混用的时候需要注意，先將对象赋nil再free掉相关内存。避免使用 C 的 memcpy 和 realloc 函数等等。</p></li>
+<li>在dealloc中把成员变量置nil</li>
 </ul>
 
 
