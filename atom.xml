@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-05T13:50:14+08:00</updated>
+  <updated>2014-03-06T12:18:01+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -32,7 +32,9 @@
 <li>2、 ARC工作原理</li>
 <li>3、 MRC的代价</li>
 <li>4、 ARC &amp; MAC 在大量数据下的测试</li>
-<li>5、 总结</li>
+<li>5、 CF与Objective-C在ARC下的内存管理</li>
+<li>6、 使用ARC注意事项</li>
+<li>7、 总结</li>
 </ul>
 
 
@@ -52,7 +54,7 @@
 
 <p>如果需要持有一个对象，那么对其发送retain 如果之后不再使用该对象，那么需要对其发送release（或者autorealse） 每一次对retain,alloc或者new的调用，需要对应一次release或autorealse调用</p>
 
-<p>初学者可能仅仅只是知道这些规则，但是在实际使用时难免犯错。但是当开发者经常使用手动引用计数 Manual Referecen Counting(MRC)的话，这些规则将逐渐变为本能。你会发现少一个release的代码怎么看怎么别扭，从而减少或者杜绝内存管理的错误。可以说MRC的规则非常简单，但是同时也非常容易出错。往往很小的错误就将引起crash或者OOM之类的严重问题。</p>
+<p>初学者可能仅仅只是知道这些规则，但是在实际使用时难免犯错。但是当开发者经常使用手动引用计数 MRC 的话，这些规则将逐渐变为本能。你会发现少一个release的代码怎么看怎么别扭，从而减少或者杜绝内存管理的错误。可以说MRC的规则非常简单，但是同时也非常容易出错。往往很小的错误就将引起crash或者内存溢出之类的严重问题。</p>
 
 <p>在MRC的年代里，为了避免不小心忘写release，Xcode提供了一个很实用的小工具来帮助可能存在的代码问题(Xcode3里默认快捷键Shift+A？不记得了)，可以指出潜在的内存泄露或者过多释放。而ARC在此基础上更进一步：ARC是Objective-C编译器的特性，而不是运行时特性或者垃圾回收机制，ARC所做的只不过是在代码编译时为你自动在合适的位置插入release或autorelease，就如同之前MRC时你所做的那样。因此，至少在效率上ARC机制是不会比MRC弱的，而因为可以在最合适的地方完成引用计数的维护，以及部分优化，使用ARC甚至能比MRC取得更高的运行效率。</p>
 
@@ -134,7 +136,137 @@ for (int j = 0; j &lt; m; j++){
 <p>是不是就变快了！(但还沒有办法跟原本的「MRC」版本一样快！)
 所以其实写程序的時候要多想一下有沒有其它作法， 因为不同的写法虽然可能是相同結果， 但所需要的时间是不同的， 在使用 ARC 時， 如果能清楚的知道自己所创建的物件是被 retain 的状态， 那么在传递的过程中就可以视需求决定接收此物件是要 retain 或只是 assign， 这样可以让 XCode 在 Compile 的时候， 依照我们給它的指示去产生记忆体管理的代码， 避免不必要或多余的效能损失！</p>
 
-<h4>5、 总结</h4>
+<h4>5、 CF与Objective-C在ARC下的内存管理</h4>
+
+<p>在cocoa application的应用中，我们有时会使用Core Foundation(CF),我们经常会在Objective-C和CF之间进行转化。系统使用arc的状态下，编译器不能自动管理CF的内存，这时候你必须使用CFRetain和CFRelease来进行CF的内存的管理。</p>
+
+<p>具体的CF内存管理规则见： Memory Management Programming Guide for Core Foundation</p>
+
+<p>在OC和FC之间进行转化的时候，主要是对象的归属问题。共有两种方式：</p>
+
+<p>1、使用宏，可以标识归属者从OC到CF，还是从CF到OC。</p>
+
+<pre><code>NS_INLINE CFTypeRef CFBridgingRetain(id X) { 
+    return (__bridge_retain CFTypeRef)X; 
+} 
+
+NS_INLINE id CFBridgingRelease(CFTypeRef X) { 
+    return (__bridge_transfer id)X; 
+}
+</code></pre>
+
+<p>2、使用转化符,如：<code>__bridge</code>，<code>__bridge_transfer</code>，<code>__bridge_retained</code></p>
+
+<pre><code>id my_id; 
+CFStringRef my_cfref; 
+… 
+NSString   *a = (__bridge NSString*)my_cfref;     // Noop cast. 
+CFStringRef b = (__bridge CFStringRef)my_id;      // Noop cast. 
+… 
+NSString   *c = (__bridge_transfer NSString*)my_cfref; // -1 on the CFRef 
+CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
+</code></pre>
+
+<p>下面以详细的例子来介绍一下OC和CF在arc下内存管理的详细写法.下面以CFURLCreateStringByAddingPercentEscapes()函数为例说一下在ARC下的写法和非ARC下的写法。</p>
+
+<p>非ARC模式下的写法：</p>
+
+<pre><code>#pragma mark – View lifecycle 
+- (void)viewDidLoad { 
+    [super viewDidLoad]; 
+    NSLog(@"=%@", [self escape:@"wangjun"]); 
+} 
+-(NSString *)escape:(NSString *)text { 
+    return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text, NULL, CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));; 
+}
+</code></pre>
+
+<p>使用instruments检测，没有内存泄漏。</p>
+
+<p>下面把上面工程改为arc模式。</p>
+
+<p>可以看到xcode自动把上面函数转化为：</p>
+
+<pre><code>#pragma mark – View lifecycle 
+- (void)viewDidLoad { 
+    [super viewDidLoad]; 
+    NSLog(@"=%@", [self escape:@"wangjun"]); 
+} 
+-(NSString *)escape:(NSString *)text { 
+    return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text,NULL,CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+}
+</code></pre>
+
+<p>在arc中，CF和OC之间的转化桥梁是 __bridge，有两种方式：</p>
+
+<ul>
+<li>__bridge_transfer  ARC接管管理内存</li>
+<li>__bridge_retained  ARC释放内存管理</li>
+</ul>
+
+
+<p>上面的方法是从CF转化为OC NSString对象，使用的__bridge_transfer ，对象所有者发生转变，由CF到OC，最后由ARC接管内存管理。运行上面的代码，用instruments检测，是没有内存泄漏的。</p>
+
+<p>上面代码等同于：</p>
+
+<pre><code>- (NSString *)escape:(NSString *)text { 
+    return CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)text,NULL,CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
+}
+</code></pre>
+
+<p>如果将上述代码改为：</p>
+
+<pre><code>-(NSString *)escape:(NSString *)text { 
+    return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text, NULL, CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));; 
+}
+</code></pre>
+
+<p>编译也会成功，但是这时候用instruments检测，可以发现内存泄漏：</p>
+
+<p>由于CF转化完OC，没有自己释放内存，同时也没有把内存管理交给ARC，所以出现内存泄漏。由于__bridge只是同一个对象的引用，内存的所有权没有发生变化。</p>
+
+<p>下面在说一下oc到CF的转化，需要把OC的内存管理权释放掉。</p>
+
+<pre><code>NSString *s1 = [[NSString alloc] initWithFormat:@"Hello, %@!", name]; 
+CFStringRef s2 = (__bridge_retained CFStringRef)s1; 
+// do something with s2 // . . . 
+CFRelease(s2);
+</code></pre>
+
+<p>最后由CF进行内存释放。</p>
+
+<p>上面代码等同于：</p>
+
+<pre><code>CFStringRef s2 = CFBridgingRetain(s1); 
+// . . . 
+CFRelease(s2);
+</code></pre>
+
+<p>下面总结一下我们使用ARC情况下。oc和CF互相转化的原则：</p>
+
+<ul>
+<li>CF转化为OC时，并且对象的所有者发生改变，则使用<code>CFBridgingRelease()</code>或<code>__bridge_transfer</code> 。</li>
+<li>OC转化为CF时，并且对象的所有者发生改变，则使用<code>CFBridgingRetain()</code>或<code>__bridge_retained</code></li>
+</ul>
+
+
+<p>当一个类型转化到另一种类型时，但是对象所有者没有发生改变，则使用__bridge.</p>
+
+<h4>6、 使用ARC注意事项</h4>
+
+<ul>
+<li>属性命名不能用new开头</li>
+<li>不再使用<code>retain</code>， <code>relase</code>， <code>autorelease</code>。</li>
+<li><p>对<code>strong</code>，<code>weak</code>，<code>assign</code>，<code>copy</code>，<code>__weak</code>，<code>__strong</code>，<code>__autorelease</code>，<code>@autorelease{}</code>等的使用需要学习一下（特别注意一下<code>__weak</code>, <code>__strong</code>, <code>__autorelease</code>应该写在指针后边，变量名前面，否则不是正确写法，只是编译器会做一些处理）。</p></li>
+<li><p>重写dealloc方法不调用[super dealloc]方法。</p></li>
+<li><p>第三方库不支持arc，要將每个相关文件设置-fno-objc-arc。</p></li>
+<li><p>arc对core foundation无效，需要自己控制内存，包括释放，并且需要cast的时候要用<strong>bridge，</strong>bridge_retain，__bridge_transfer等修饰来控制对应内存。</p></li>
+<li><p>arc和block的时候需要注意循环引用的问题。</p></li>
+<li><p>还有和C混用的时候需要注意，先將对象赋nil再free掉相关内存。避免使用C的memcpy和realloc函数等等。</p></li>
+</ul>
+
+
+<h4>7、 总结</h4>
 
 <p>ARC相对于MRC他的运行效率确实会慢一些，但他的优势也是十分明显的。ARC只是为了提高您的工作效率，而不是一个神奇而没有缺点的一项技术。</p>
 ]]></content>
