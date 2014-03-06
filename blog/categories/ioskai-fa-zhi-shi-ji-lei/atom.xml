@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS开发知识积累 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioskai-fa-zhi-shi-ji-lei/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-06T15:58:23+08:00</updated>
+  <updated>2014-03-06T18:49:45+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -18,7 +18,9 @@
     <link href="http://beyondabel.github.io/blog/2014/03/05/mrc-arc/"/>
     <updated>2014-03-05T10:21:40+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/03/05/mrc-arc</id>
-    <content type="html"><![CDATA[<h3>引言</h3>
+    <content type="html"><![CDATA[<p><img src="/images/2014/03/05/arcvsmrc.png" alt="image" /></p>
+
+<h3>引言</h3>
 
 <p>虽然距离WWDC2011和iOS5已经过去3年多时间了，但之前我一直没有去研究过ARC，一个是因为觉得ARC非常简单，到时什么时候想使用ARC时再转向ARC，第二个是担心内存管理不受自己控制（好吧，从现在来看是我对ARC机制了解不足而已），第三，我觉得使用MRC更能体现一个码农对内存管理的理解，第四，我是一个追求技术不“追赶时髦”的码农。说了这么多的原因，其实是想说作为一个最需要“追求时髦”的职业，我这样的心态是错误的。写这篇文章的目的是希望和我一同处于对 MAC &amp;　ARC迷茫的人的一个参考吧！</p>
 
@@ -257,7 +259,7 @@ CFRelease(s2);
 <ul>
 <li>属性命名不能用new开头</li>
 <li>不再使用<code>retain</code>， <code>relase</code>， <code>autorelease</code>。</li>
-<li><p>对<code>strong</code>，<code>weak</code>，<code>assign</code>，<code>copy</code>，<code>__weak</code>，<code>__strong</code>，<code>__autorelease</code>，<code>@autorelease{}</code>等的使用需要学习一下（特别注意一下<code>__weak</code>, <code>__strong</code>, <code>__autorelease</code>应该写在指针后边，变量名前面，否则不是正确写法，只是编译器会做一些处理）。</p></li>
+<li><p>对<code>strong</code>,<code>weak</code>,<code>assign</code>,<code>copy</code>,<code>__weak</code>，<code>__strong</code>，<code>__autorelease</code>，<code>@autorelease{}</code>等的使用需要学习一下（特别注意一下<code>__weak</code>, <code>__strong</code>, <code>__autorelease</code>应该写在指针后边，变量名前面，否则不是正确写法，只是编译器会做一些处理）。</p></li>
 <li><p>重写dealloc方法不调用[super dealloc]方法。</p></li>
 <li><p>第三方库不支持arc，要將每个相关文件设置-fno-objc-arc。</p></li>
 <li><p>arc对core foundation无效，需要自己控制内存，包括释放，并且需要cast的时候要用 <code>__bridge</code>，<code>__bridge_retain</code>，<code>__bridge_transfer</code>等修饰来控制对应内存。</p></li>
