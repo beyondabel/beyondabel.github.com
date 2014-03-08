@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 个人经历 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ge-ren-jing-li/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-08T10:26:59+08:00</updated>
+  <updated>2014-03-08T23:59:20+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -27,14 +27,16 @@
 
 <p>我一直在寻找一个可以自己搭建一个免费的博客平台，刚好Octpress符合我的需求。相对于CSDN来说，Octopress有以下优点：</p>
 
-<pre><code>1、Octopress是一个开源的博客，它可以自己定制化修改。
-2、界面非常清晰简洁
-3、它是一个静态的网页框架，加载速度更快
-4、它可以离线编辑文本
-5、可以免费部署到github上
-6、博客使用git进行版本控制
-7、可以自定义自己的博客风格
-</code></pre>
+<ul>
+<li>1、Octopress是一个开源的博客，它可以自己定制化修改。</li>
+<li>2、界面非常清晰简洁</li>
+<li>3、它是一个静态的网页框架，加载速度更快</li>
+<li>4、它可以离线编辑文本</li>
+<li>5、可以免费部署到github上</li>
+<li>6、博客使用git进行版本控制</li>
+<li>7、可以自定义自己的博客风格</li>
+</ul>
+
 
 <p>如果想使用Octopress+Github搭建博客，将会经历如下步骤：</p>
 

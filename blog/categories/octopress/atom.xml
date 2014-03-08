@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-08T10:26:59+08:00</updated>
+  <updated>2014-03-08T23:59:20+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -20,22 +20,24 @@
     <id>http://beyondabel.github.io/blog/2013/12/26/octopress</id>
     <content type="html"><![CDATA[<p><img src="/images/2013/12/26/OctopressAndGithub.png" alt="image" /></p>
 
-<p><strong>引言</strong></p>
+<h3>引言</h3>
 
 <p><a href="http://http://octopress.org/">Octopress</a>是利用<a href="http://http://github.com/mojombo/jekyll">Jekyll</a>博客引擎开发的一个博客系统，生成的静态页面能够很好的在<em>github page</em>上展现。号称是hacker专属的一个博客系统(A blogging framework for hackers.)<!--more--></p>
 
 <p>从自己开始使用Octopress搭建博客到正在写博客，中间差不多花了我三个星期，在这三个星期中，我走了很多的弯路，使用Octopress搭建博客的错误我相信我已经遇到80～90%了，所以想写一篇使用Octopress在Github上怎么搭建博客，一来为了与其他人分享，令想利用Octopress搭建博客的人少走一些弯路，另一方面也是自己对这方面的知识一个积累，首先我说一下我的在mac系统环境下搭建的，本文需要读者熟悉一些shell命令，并掌握基本的git操作。</p>
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
-<pre><code>1、搭建环境
-2、安装Octopress
-3、配置Octopress
-4、将博客部署到GitHub上
-5、开始写博客
-</code></pre>
+<ul>
+<li>1、搭建环境</li>
+<li>2、安装Octopress</li>
+<li>3、配置Octopress</li>
+<li>4、将博客部署到GitHub上</li>
+<li>5、开始写博客</li>
+</ul>
 
-<p><strong>1、搭建环境</strong></p>
+
+<h4>1、搭建环境</h4>
 
 <p>Octopress需要Ruby环境，RVM(Ruby Version Manager)负责安装和管理Ruby的环境。所以我们先在终端输入如下命令，来安装RVM：</p>
 
@@ -62,7 +64,7 @@
 
 <p>在安装Octopress时还需要make命令，所以还会用到command_line_tools，所以还需要下载Xcode，打开Xcode,到Xcode->preferences->Downloads，里面有一个command_line_tools点击下载。</p>
 
-<p>2、安装Octopress</p>
+<h4>2、安装Octopress</h4>
 
 <p>在安装Octopress之前，请确保你的电脑上已经安装有git了，在终端输入git &mdash;version，如果安装了可以看到电脑中的git版本(一般情况下，mac系统现在都已经自带git了)，如果没有显示相关内容，请先安装git。</p>
 
@@ -89,7 +91,7 @@
 
 <p>参考： <code>Octopress Setup</code></p>
 
-<p><strong>3、配置Octopress</strong></p>
+<h4>3、配置Octopress</h4>
 
 <p><code>Octopress</code>的作者已经尽量让配置简化了。大多数情况下只需要配置<code>_config.yml</code>和<code>Rakefile</code>文件即可。其中Rakefile是跟博客部署相关，一般情况下并不需要修改这个文件，除非使用了<code>rsync</code>。</p>
 
@@ -107,7 +109,7 @@ description:             #网站的描述，出现在HTML页面中的 meta 中�
 
 <p>更多内容，请看这里的内容：<a href="http://octopress.org/docs/configuring/">Configuring Octopress</a></p>
 
-<p><strong>4、将博客部署到GitHub上</strong></p>
+<h4>4、将博客部署到GitHub上</h4>
 
 <p><code>Github</code>的<code>Page service</code>可以免费托管博客，并且还可以自定义域名。</p>
 
@@ -135,7 +137,7 @@ description:             #网站的描述，出现在HTML页面中的 meta 中�
 
 <p>如果本地访问时出现了404错误，请关注一下你生成的文件是否直接在public目录下，如果不在，请修改一下<code>config.rb</code>文件，使<code>http_path = "/"</code>。如果访问<code>http://username.github.com</code>上出现了404错误，看一下你的<code>repositories</code>是否有内容，如果有，请你再次确认你的<code>repositories</code>的名称是否是<code>username.github.io</code>,如果不是，那么请用<code>http://username.github.io/[your repositories name]</code>，如果还是不行，请关注一下，你的账号是否使用邮箱激活了，如果没有，请先激活，然后删除这个<code>repositories</code>重新再来。</p>
 
-<p><strong>5、开始写博客</strong></p>
+<h3>5、开始写博客</h3>
 
 <p><code>Octopress</code>为我们提供了一些task来创建博文和页面。博文必须存储在<code>source/_posts</code>目录下，并且需要按照Jekyll的命名规范对文章进行命名：<code>YYYY-MM-DD-post-title.markdown</code>。文章的名字会被当做url的一部分，而其中的日期用于对博文的区分和排序。</p>
 

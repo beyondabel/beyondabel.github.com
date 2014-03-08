@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS常用设计模式 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioschang-yong-she-ji-mo-shi/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-08T10:26:59+08:00</updated>
+  <updated>2014-03-08T23:59:20+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -18,26 +18,29 @@
     <link href="http://beyondabel.github.io/blog/2013/10/31/ios-proxymode/"/>
     <updated>2013-10-31T19:20:57+08:00</updated>
     <id>http://beyondabel.github.io/blog/2013/10/31/ios-proxymode</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>在代理模式中，有两个对象参与处理同一个请求，接受请求的对象将请求委托给另一个对象来处理。</p>
-
-<p>目录</p>
-
-<pre><code>1、什么是代理模式
-2、使用代理模式的优点
-3、什么时候使用代理模式
-4、代理模式一般涉及到的角色
-5、Objective-C的代理模式实现
-</code></pre>
 
 <!--more-->
 
 
-<p><strong>1、什么是代理模式</strong>
-对其他对象提供一种代理以控制对这个对象的访问。</p>
+<h3>目录</h3>
 
-<p><strong>2、使用代理模式的优点</strong></p>
+<ul>
+<li>1、什么是代理模式</li>
+<li>2、使用代理模式的优点</li>
+<li>3、什么时候使用代理模式</li>
+<li>4、代理模式一般涉及到的角色</li>
+<li>5、Objective-C的代理模式实现</li>
+</ul>
+
+
+<h3>1、什么是代理模式</h3>
+
+<p>对其他对象提供一种代理以控制对这个对象的访问。</p>
+
+<h3>2、使用代理模式的优点</h3>
 
 <pre><code>(1)职责清晰：真实的角色就是实现实际的业务逻辑，不用关心其他非本职责的事务，
             通过后期的代理完成一件完成事务，附带的结果就是编程简洁清晰。
@@ -45,11 +48,11 @@
 (3)高扩展性
 </code></pre>
 
-<p><strong>3、什么时候使用代理模式</strong></p>
+<h3>3、什么时候使用代理模式</h3>
 
 <p>在对已有的方法进行使用的时候出现需要对原有方法进行改进或者修改，这时候有两种改进选择：修改原有方法来适应现在的使用方式，或者使用一个“第三者”方法来调用原有的方法并且对方法产生的结果进行一定的控制。第一种方法是明显违背了“对扩展开放、对修改关闭”（开闭原则），而且在原来方法中作修改可能使得原来类的功能变得模糊和多元化（就像现在企业多元化一样），而使用第二种方式可以将功能划分的更加清晰，有助于后面的维护。所以在一定程度上第二种方式是一个比较好的选择！</p>
 
-<p><strong>4、代理模式一般涉及到的角色</strong></p>
+<h3>4、代理模式一般涉及到的角色</h3>
 
 <p>抽象角色：声明真实对象和代理对象的共同接口；</p>
 
@@ -57,7 +60,7 @@
 
 <p>真实角色：代理角色所代表的真实对象，是我们最终要引用的对象。</p>
 
-<p><strong>5、Objective-C的代理模式实现</strong></p>
+<h3>5、Objective-C的代理模式实现</h3>
 
 <p>现在借助主人和仆人的角色来讲解代理模式。我们想象一下，主人想喝水，需要去买水，但主人不知道怎么去买水，那他叫仆人去帮他买水，仆人听到命令就去买水，仆人买完水再交给主人，这个时候主人就有水喝了。</p>
 
@@ -146,33 +149,35 @@
     <id>http://beyondabel.github.io/blog/2013/10/30/singleton</id>
     <content type="html"><![CDATA[<p><img src="/images/2013/10/30/singleton.png" alt="image" /></p>
 
-<p><strong>引言</strong></p>
+<h3>引言</h3>
 
 <p>在很多时间，singleton定义为“有且仅有一个元素的集合”，所以不管那个对象到底有多大，每次我们拿这个对象时都是同一个。在什么情况下会需要单例以及单例在Objective-C中如何实现呢？本节Abel将与您一起探讨一些有关singleton的知识。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
-<pre><code>1、什么是单例模式
-2、什么时候用单例模式
-3、Objective-C中单例模式的实现
-4、线程安全
-5、总结
-</code></pre>
+<ul>
+<li>1、什么是单例模式</li>
+<li>2、什么时候用单例模式</li>
+<li>3、Objective-C中单例模式的实现</li>
+<li>4、线程安全</li>
+<li>5、总结</li>
+</ul>
 
-<p><strong>1、什么是单例模式</strong></p>
+
+<h3>1、什么是单例模式</h3>
 
 <p>单例模式几乎是设计模式中最简单的了。这一模式的意图是使得类的一个对象成为系统中唯一的实例。要实例这一点，可以从客户端对其进行实例化开始。因此需要用一种只允许生成对象类的唯一实例的机制，“阻止”所有想要生成对象的访问。我们可以用工厂方法来限制实例化过程。这个方法应该是一个静态的方法（类方法），因为让类的实例去生成另一个唯一实例毫无意义。</p>
 
-<p><strong>2、什么时候使用单例模式</strong></p>
+<h3>2、什么时候使用单例模式</h3>
 
 <pre><code>1、类只能有一个实例，而且必须从一个为人熟知的访问点对其访问。
 2、这个唯一的实例只能通过子类化进行扩展，而且扩展的对象不会破坏客户端代码。
 </code></pre>
 
-<p><strong>3、Objective-C中单例模式的实现</strong></p>
+<h3>3、Objective-C中单例模式的实现</h3>
 
 <p>在《设计模式》一书中的原始示例中，单例模式的C++例子如下所求：</p>
 
@@ -265,11 +270,11 @@ static Singleton * sharedSingleton = nil;
 
 <p>也许你注意到了，我重载了<code>allocWithZone:</code>，保持了从<code>sharedInstance</code>方法返回的单例对象，使用者哪怕使用<code>alloc</code>时也会返回唯一的实例（<code>alloc</code>方法中会先调用<code>allocWithZone:</code>创建对象）。而<code>retain</code>等内存管理的函数也被重载了，这样实现了合适的内存管理原则。</p>
 
-<p><strong>4、线程安全</strong></p>
+<h3>4、线程安全</h3>
 
 <p>如果单例对象要由多个线程访问，那么使它的线程安全至关重要。例子中的Singleton类只能胜任一般用途。要让它线程安全，需要在sharedSingleton静态实例的nil检查周围加入一些@synchronized()程序块或者NSLock实例。如果有其他的属性需要保护，也可以把它们声明为atomic型。</p>
 
-<p><strong>5、总结</strong></p>
+<h3>5、总结</h3>
 
 <p>到此，单例模式的讲解就到些结束了。不管在哪个平台开发，单例模式都极为常用。如果单例模式还有不懂的地方，可以给我留言。</p>
 ]]></content>

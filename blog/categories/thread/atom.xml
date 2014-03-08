@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Thread | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/thread/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-08T10:26:59+08:00</updated>
+  <updated>2014-03-08T23:59:20+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -20,7 +20,7 @@
     <id>http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one</id>
     <content type="html"><![CDATA[<p><img src="/images/2013/09/26/gcd.png" alt="image" /></p>
 
-<p><strong>引言</strong></p>
+<h3>引言</h3>
 
 <p>GCD（Grand Central Dispatch）是一套低层API，提供了一种新的方法来进行并发程序编写。允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行。GCD比之NSOpertionQueue更底层更高效，并且它不是Cocoa框架的一部分。</p>
 
@@ -29,7 +29,7 @@
 
 <p>GCD的API很大程度上基于block，当然，GCD也可以脱离block来使用，比如使用传统c机制提供函数指针和上下文指针。实践证明，当配合block使用时，GCD非常简单易用且能发挥其最大能力。</p>
 
-<p>GCD相比传统多线程编程的优势：</p>
+<h4>1、GCD相比传统多线程编程的优势：</h4>
 
 <p>从使用来看: GCD比之thread跟简单易用。由于GCD基于work unit而非像thread那样基于运算，所以GCD可以控制诸如等待任务结束、监视文件描述符、周期执行代码以及工作挂起等任务。基于block的血统导致它能极为简单得在不同代码作用域之间传递上下文。</p>
 
@@ -41,7 +41,7 @@
 
 <p>GCD的基本概念就是dispatch queue。dispatch queue是一个对象，它可以接受任务，并将任务以先到先执行的顺序来执行。dispatch queue可以是并发的或串行的。并发任务会像NSOperationQueue那样基于系统负载来合适地并发进行，串行队列同一时间只执行单一任务。</p>
 
-<p>GCD中有三种队列类型：</p>
+<h4>2、GCD中有三种队列类型：</h4>
 
 <p>main queue: 与主线程功能相同。实际上，提交至main queue的任务会在主线程中执行。main queue可以调用dispatch_get_main_queue()来获得。因为main queue是与主线程相关的，所以这是一个串行队列。</p>
 

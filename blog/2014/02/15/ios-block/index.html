@@ -9,7 +9,8 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Objective C之Block教程 引言 Block是C级别的语法和运行时特性。Block比较类似C函数，但是Block比之C函数，其灵活性体现在栈内存、堆内存的引用，我们甚至可以将一个Block作为参数传给其他的函数或者Block。 目录 一、Block的基本介绍 1、什么是Block 2 &hellip;">
+	<meta name="description" content="Objective C之Block教程 引言 Block是C级别的语法和运行时特性。Block比较类似C函数，但是Block比之C函数，其灵活性体现在栈内存、堆内存的引用，我们甚至可以将一个Block作为参数传给其他的函数或者Block。 目录 一、Block的基本介绍 1、什么是Block
+2 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,27 +92,38 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<h1 class="title" itemprop="name">Objective C之Block教程</h1>
-	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+	<div class="entry-content" itemprop="articleBody"><h3>引言</h3>
 
 <p>Block是C级别的语法和运行时特性。Block比较类似C函数，但是Block比之C函数，其灵活性体现在栈内存、堆内存的引用，我们甚至可以将一个Block作为参数传给其他的函数或者Block。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
-<pre><code>一、Block的基本介绍
-    1、什么是Block
-    2、Block和C语言函数指针和什么区别
-    3、如何调用Block
-二、Block内存管理与其他特性
-    1、Block放在哪里
-    2、Block引用的变量在哪里
-三、Block揭开神秘面纱
-</code></pre>
+<ul>
+<li>一、Block的基本介绍
 
-<p><strong>一、Block的基本介绍</strong>
-1、什么是Block</p>
+<ul>
+<li>1、什么是Block</li>
+<li>2、Block和C语言函数指针和什么区别</li>
+<li>3、如何调用Block</li>
+</ul>
+</li>
+<li>二、Block内存管理与其他特性
+
+<ul>
+<li>1、Block放在哪里</li>
+<li>2、Block引用的变量在哪里</li>
+</ul>
+</li>
+<li>三、Block揭开神秘面纱</li>
+</ul>
+
+
+<h4>一、Block的基本介绍</h4>
+
+<h5>1、什么是Block</h5>
 
 <p>Block是一个C Level的语法以及运行时的一个特性，和标准C中的函数（函数指针）类似，但是其运行需要编译器和运行时支持，从iOS4.0开始就很好的支持Block了。广泛用于两个对象之前的回调函数。</p>
 
@@ -122,7 +134,7 @@
 
 <p>其中int为block的返回类型，hbFunction为block名称，a为参数。</p>
 
-<p>2、Block和C语言函数指针和什么区别</p>
+<h5>2、Block和C语言函数指针和什么区别</h5>
 
 <p>首先我们来看看C函数指针：</p>
 
@@ -146,7 +158,7 @@ int resut = hbFunction(10);   // 函数调用
 <pre><code>typedef int (^SumBlock)(int a,int b);   
 </code></pre>
 
-<p>3、如何调用Blocks</p>
+<h5>3、如何调用Blocks</h5>
 
 <p>主动调用一下：</p>
 
@@ -202,11 +214,11 @@ HugeBlock hBlock = ^(BoolBlock bB) {bB();};
 hBolck(bBlock); 
 </code></pre>
 
-<p><strong>二、Block内存管理与其他特性</strong></p>
+<h4>二、Block内存管理与其他特性</h4>
 
-<p><strong>1、Block放在哪里</strong></p>
+<h5>1、Block放在哪里</h5>
 
-<p>1.1栈和堆</p>
+<h6>1.1栈和堆</h6>
 
 <p>以下情况中的block位于堆中：</p>
 
@@ -229,7 +241,7 @@ hBolck(bBlock);
 }
 </code></pre>
 
-<p>1.2全局</p>
+<h6>1.2全局</h6>
 
 <p>以下情况中的block位于全局区：</p>
 
@@ -247,9 +259,9 @@ void foo()
 
 <p>需要注意的是，这里复制过后的block依旧位于全局区，实际上，复制操作是直接返回了原block对象。</p>
 
-<p><strong>2、Block引用的变量在哪里</strong></p>
+<h5>2、Block引用的变量在哪里</h5>
 
-<p>1.全局区</p>
+<h6>1.全局区</h6>
 
 <p>全局区的变量存储位置与block无关：</p>
 
@@ -265,7 +277,7 @@ void foo()
 
 <p>注意，static变量是不允许添加__block标记的</p>
 
-<p>2.堆栈</p>
+<h6>2.堆栈</h6>
 
 <pre><code>void foo()
 {
@@ -284,9 +296,9 @@ void foo()
 }
 </code></pre>
 
-<p><strong>三、Block揭开神秘面纱</strong></p>
+<h4>三、Block揭开神秘面纱</h4>
 
-<p><strong>1、Block到底是什么</strong></p>
+<h5>1、Block到底是什么</h5>
 
 <p>我们使用clang的rewrite-objc命令来获取转码后的代码。</p>
 
@@ -360,20 +372,23 @@ int main()
 <pre><code>__main_block_impl_0的意思是main函数中的第0个block的implementation，这就是这个block的主体了。
 </code></pre>
 
-<p> 这个结构体的构造函数的参数：</p>
+<p>这个结构体的构造函数的参数：</p>
 
-<p>1、block实际执行代码所在的函数的指针，当block真正被执行时，实际上是调用了这个函数，其命名也是类似的方式。</p>
+<ul>
+<li><p>1、block实际执行代码所在的函数的指针，当block真正被执行时，实际上是调用了这个函数，其命名也是类似的方式。</p></li>
+<li><p>2、block的描述结构体，注意这个结构体声明结束时就创建了一个唯一的desc，这个desc包含了block的大小，以及复制和析构block时需要额外调用的函数。</p></li>
+<li><p>3、接下来是block所引用到的变量们</p></li>
+<li><p>4、最后是一个标记值，内部实现需要用到的。（我用计算器看了一下，570425344这个值等于1&lt;&lt;29，即BLOCK_HAS_DESCRIPTOR这个枚举值）</p></li>
+</ul>
 
-<p>2、block的描述结构体，注意这个结构体声明结束时就创建了一个唯一的desc，这个desc包含了block的大小，以及复制和析构block时需要额外调用的函数。</p>
-
-<p>3、接下来是block所引用到的变量们</p>
-
-<p>4、最后是一个标记值，内部实现需要用到的。（我用计算器看了一下，570425344这个值等于1&lt;&lt;29，即BLOCK_HAS_DESCRIPTOR这个枚举值）</p>
 
 <p>所以，我们可以看到：</p>
 
-<p>1、为什么上一篇我们说j已经不是原来的j了，因为j是作为参数传入了block的构造函数，进行了值复制。
-2、带有__block标记的变量会被取地址来传入构造函数，为修改其值奠定了基础</p>
+<ul>
+<li>1、为什么上一篇我们说j已经不是原来的j了，因为j是作为参数传入了block的构造函数，进行了值复制。</li>
+<li>2、带有__block标记的变量会被取地址来传入构造函数，为修改其值奠定了基础</li>
+</ul>
+
 
 <p>接下来是block执行函数<code>__main_block_func_0</code>:</p>
 
@@ -390,7 +405,7 @@ int main()
 
 <p>至此，一个block所有的部件我们都看齐全了，一个主体，一个真正的执行代码函数，一个描述信息(可能包含两个辅助函数)。</p>
 
-<p>2、构造一个block</p>
+<h5>2、构造一个block</h5>
 
 <p>我们进入main函数：</p>
 
@@ -399,7 +414,7 @@ int main()
 
 <p>所以构造一个block就是创建了<code>__main_block_impl_0</code> 这个c++类的实例。</p>
 
-<p>3、调用一个block</p>
+<h5>3、调用一个block</h5>
 
 <p>调用一个block的写法很简单，与调用c语言函数的语法一样：</p>
 
@@ -415,7 +430,7 @@ int main()
 
 <p>即调用了前述的函数__main_block_func_0</p>
 
-<p>4、objective-c类成员函数中的block</p>
+<h5>4、objective-c类成员函数中的block</h5>
 
 <p>源码如下：</p>
 
@@ -495,7 +510,7 @@ __block __Block_byref_bSelf_0 bSelf = {(void*)0,(__Block_byref_bSelf_0 *)&amp;bS
 也就是说，在 __block bSelf 被复制至heap上时，系统会发现有辅助函数，而辅助函数调用后，并不retain或者copy 其结构体内的bSelf。
 这样就避免了循环retain。</p>
 
-<p><strong>2、内存管理的真面目</strong></p>
+<h4>2、内存管理的真面目</h4>
 
 <p>objc层面如何区分不同内存区的block</p>
 
@@ -529,11 +544,11 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 
 <p>在栈上创建的block，其isa指针是_NSConcreteStackBlock。</p>
 
-<p>2.全局区</p>
+<h5>2.全局区</h5>
 
 <p>在全局区创建的block，其比较类似，其构造函数会将isa指针赋值为_NSConcreteGlobalBlock。</p>
 
-<p>3.堆</p>
+<h5>3.堆</h5>
 
 <p>我们无法直接创建堆上的block，堆上的block需要从stack block拷贝得来，在runtime.c中的_Block_copy_internal函数中，有这样几行：</p>
 
@@ -549,7 +564,7 @@ if (!isGC) {
 
 <p>可以看到，栈block复制得来的新block，其isa指针会被赋值为_NSConcreteMallocBlock</p>
 
-<p>4.其余的isa类型</p>
+<h5>4.其余的isa类型</h5>
 
 <pre><code>BLOCK_EXPORT void * _NSConcreteAutoBlock[32];
 BLOCK_EXPORT void * _NSConcreteFinalizingBlock[32];
