@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-06T18:49:45+08:00</updated>
+  <updated>2014-03-08T10:26:59+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -276,9 +276,9 @@ CFRelease(s2);
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[NSObjective-C之id/NSObject/id<NSObject>区别]]></title>
+    <title type="html"><![CDATA[Ios Nsobject Id Difference]]></title>
     <link href="http://beyondabel.github.io/blog/2014/02/16/ios-nsobject-id-difference/"/>
-    <updated>2014-02-16T16:23:26+08:00</updated>
+    <updated>2014-02-16T00:00:00+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/02/16/ios-nsobject-id-difference</id>
     <content type="html"><![CDATA[<p><strong>概述</strong></p>
 
