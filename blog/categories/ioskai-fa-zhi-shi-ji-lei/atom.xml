@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS开发知识积累 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioskai-fa-zhi-shi-ji-lei/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-08T23:59:20+08:00</updated>
+  <updated>2014-03-09T10:19:58+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -276,13 +276,13 @@ CFRelease(s2);
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[NSObjective-C之id/NSObject/id<NSObject>区别]]></title>
+    <title type="html"><![CDATA[NSObjective-C之id/NSObject/id&lt;NSObject>区别]]></title>
     <link href="http://beyondabel.github.io/blog/2014/02/16/ios-nsobject-id-difference/"/>
     <updated>2014-02-16T16:23:26+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/02/16/ios-nsobject-id-difference</id>
     <content type="html"><![CDATA[<h3>概述</h3>
 
-<p>我们在iOS开发过程中，经常会碰到id、NSObject、id<NSObject>，但我们也经常会混淆这三种申明（我之前也不是很留意这个），现在Abel带你一起去看看他们的真实面目。</p>
+<p>我们在iOS开发过程中，经常会碰到id、NSObject、id&lt; NSObject>，但我们也经常会混淆这三种申明（我之前也不是很留意这个），现在Abel带你一起去看看他们的真实面目。</p>
 
 <!--more-->
 
@@ -292,7 +292,7 @@ CFRelease(s2);
 <ul>
 <li>1、 id</li>
 <li>2、 NSObject *</li>
-<li>3、 id<NSObject></li>
+<li>3、 id&lt;NSObject></li>
 <li>4、 如何选择你要用的类型</li>
 <li>5、 补充说明</li>
 </ul>
@@ -310,15 +310,15 @@ CFRelease(s2);
 
 <p>因此，申明一个通用的NSObject对象指针和你在其它语言里做的类似，像java，但其它语言有一定的限制，没有像Objective-C这样灵活。并不是所有的Foundation/Cocoa对象都继承息NSObject，比如NSProxy就不从NSObject继承，所以你无法使用NSObject＊指向这个对象，即使NSProxy对象有release和retain这样的通用方法。为了解决这个问题，这时候，你就需要一个指向拥有NSObject方法对象的指针，这就是第3种申明的使用情景。</p>
 
-<h4>3、 id<NSObject></h4>
+<h4>3、 id&lt;NSObject></h4>
 
-<p>id<NSObject>告诉编译器，你不关心对象是什么类型，但它必须遵守NSObject协议(protocol)，编译器就能保证所有赋值给id<NSObject>类型的对象都遵守NSObject协议(protocol)。这样的指针可以指向任何NSObject对象，因为NSObject对象遵守NSObject协议(protocol)，而且，它也可以用来保存NSProxy对象，因为它也遵守NSObject协议(protocol)。这是非常强大，方便且灵活，你不用关心对象是什么类型，而只关心它实现了哪些方法。</p>
+<p>id&lt;NSObject>告诉编译器，你不关心对象是什么类型，但它必须遵守NSObject协议(protocol)，编译器就能保证所有赋值给id&lt;NSObject>类型的对象都遵守NSObject协议(protocol)。这样的指针可以指向任何NSObject对象，因为NSObject对象遵守NSObject协议(protocol)，而且，它也可以用来保存NSProxy对象，因为它也遵守NSObject协议(protocol)。这是非常强大，方便且灵活，你不用关心对象是什么类型，而只关心它实现了哪些方法。</p>
 
 <h4>4、 如何选择你要用的类型</h4>
 
 <p>如果你不需要任何的类型检查，使用id，它经常作为返回类型，也经常用于申明代理(delegate)类型。因为代理类型通常在运行时，才会检查是否实现了那些方法。</p>
 
-<p>如果真的需要编译器检查，那你就考虑使用第2种或者第3种。很少看到NSObject＊能正常运行，但id<NSObject>无法正常运行的。使用协议(protocol)的优点是，它能指向NSProxy对象，而更常用的情况是，你只想知道某个对象遵守了哪个协议，而不用关心它是什么类型。</p>
+<p>如果真的需要编译器检查，那你就考虑使用第2种或者第3种。很少看到NSObject＊能正常运行，但id&lt;NSObject>无法正常运行的。使用协议(protocol)的优点是，它能指向NSProxy对象，而更常用的情况是，你只想知道某个对象遵守了哪个协议，而不用关心它是什么类型。</p>
 
 <h4>4、补充说明</h4>
 
