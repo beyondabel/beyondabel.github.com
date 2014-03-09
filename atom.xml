@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-09T10:19:58+08:00</updated>
+  <updated>2014-03-09T10:32:57+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -320,7 +320,7 @@ CFRelease(s2);
 
 <p>如果真的需要编译器检查，那你就考虑使用第2种或者第3种。很少看到NSObject＊能正常运行，但id&lt;NSObject>无法正常运行的。使用协议(protocol)的优点是，它能指向NSProxy对象，而更常用的情况是，你只想知道某个对象遵守了哪个协议，而不用关心它是什么类型。</p>
 
-<h4>4、补充说明</h4>
+<h4>5、补充说明</h4>
 
 <ul>
 <li>id 还可以表示基础类型，但是不能表示float，double类型</li>
