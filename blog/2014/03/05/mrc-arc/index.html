@@ -117,7 +117,7 @@
 
 <p>什么是ARC，google一下，你会发现有太多太多对ARC非常非常详细的讲解。对于有C++背景的人来说，ARC的本质从某种角度上来说类似 C++ 的智能指针，区别就是ARC更智能简单，而且会加速程序，而不是像智能指针那样会一定程度上减慢程序运行。对于纯ObjC背景的人来说，ARC相当于编译器自动帮你填写了 retain, release。但是，远远不是这么简单。</p>
 
-<p>首先ARC不会真的填写<code>retain/release</code>，<code>retain/release</code> 是 ObjC的消息，ARC会直接调用runtime的C函数，这会快很多。另外对于MRC中恶心的 <code>return [[[XXX alloc] init] autorelease]</code> ，ARC不但可以简化其写法，还可以让它更快，原因就在于它可以消除不必要的“入池”操作，详见objc_retainAutoreleasedReturnValue.</p>
+<p>首先ARC不会真的填写<code>retain/release</code>，<code>retain/release</code> 是 ObjC的消息，ARC会直接调用runtime的C函数，这会快很多。另外对于MRC中恶心的 <code>return [[[XXX alloc] init] autorelease]</code> ，ARC不但可以简化其写法，还可以让它更快，原因就在于它可以消除不必要的“入池”操作（<code>autorelease</code>是放到了自动释放池），详见objc_retainAutoreleasedReturnValue.</p>
 
 <p>基于上面两点，ARC会让所有涉及到内存的操作变快。</p>
 
@@ -344,7 +344,7 @@ CFRelease(s2);
 
 <h4>7、 总结</h4>
 
-<p>ARC相对于MRC他的运行效率确实会慢一些，但他的优势也是十分明显的。ARC只是为了提高您的工作效率，而不是一个神奇而没有缺点的一项技术。</p>
+<p>ARC相对于MRC时弱引用时运行效率确实会慢一些，但他在<code>[[[XXX alloc] init] autorelease]</code>时ARC不但可以简化其写法，还可以让它更快的处理，减少不必要的入池操作，而且他的优势也是十分明显的。ARC只是为了提高您的工作效率，而不是一个神奇而没有缺点的一项技术。</p>
 </div>
 
 </article>
