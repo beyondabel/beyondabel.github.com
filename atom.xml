@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-10T10:35:10+08:00</updated>
+  <updated>2014-04-07T23:44:45+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Unity3D安装及破解教程]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/04/07/unity3dinstall/"/>
+    <updated>2014-04-07T17:41:20+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/04/07/unity3dinstall</id>
+    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2014/04/07/unity3dInstall.png" alt="image" /></p>
+
+<h3>引言</h3>
+
+<p>Unity是由Unity Technologies开发的一个让玩家轻松创建诸如三维视频游戏、建筑可视化、实时三维动画等类型互动内容的多平台的综合型游戏开发工具，是一个全面整合的专业游戏引擎。Unity类似于Director,Blender game engine, Virtools 或 Torque Game Builder等利用交互的图型化开发环境为首要方式的软件其编辑器运行在Windows 和Mac OS X下，可发布游戏至Windows、Mac、Wii、iPhone、Windows phone 8和Android平台。也可以利用Unity web player插件发布网页游戏，支持Mac 和Windows的网页浏览。它的网页播放器也被Mac widgets所支持。</p>
+
+<!--more-->
+
+
+<p>最近由于工作需要，涉及了Unity3D开发，作为一个Unity3D开发小白，把自己开发过程记录下来是非常有必要的，一个是以后再次涉及有笔记可看，同时也是方便其他朋友学习。</p>
+
+<h3>目录</h3>
+
+<ul>
+<li>1、Unity3D下载及安装</li>
+<li>2、Unity3D破解</li>
+</ul>
+
+
+<h3>1、Unity3D下载及安装</h3>
+
+<p>Unity3D安装包可以到官网下载也可以点击 <a href="http://pan.baidu.com/s/1pJ4Tdmr">http://pan.baidu.com/s/1pJ4Tdmr</a> 下载。下载完之后按正常软件安装即可，这里就不做过多讲解。</p>
+
+<h3>2、Unity3D破解</h3>
+
+<p>如果你资金充足的话，建议还是去购买正版。如果是练手开发当然就没必须去购买了。</p>
+
+<p>1、安装unity
+2、在finder里找到unity，右键显示包内容，进入Contents/MacOS,找到Unity文件，一会我们要替换它（如果不放心可以县备份一下里面的Unity 文件）
+<img src="http://beyondabel.github.io/images/2014/04/07/1.png" alt="image" />
+3、打开破解文件，用破解文件里的Unity 文件替换MacOS里的Unity文件
+4、运行unity，点最右边的Manuak Activation按钮，然后选择load License找到破解文件里的Unity_v4.x.ulf，选择，成功后会提示载入成功</p>
+
+<p><img src="http://beyondabel.github.io/images/2014/04/07/2.png" alt="image" /></p>
+
+<p><img src="http://beyondabel.github.io/images/2014/04/07/3.png" alt="image" /></p>
+
+<p><img src="http://beyondabel.github.io/images/2014/04/07/4.png" alt="image" />
+破解成功的标志：
+1、运行Unity后没有其他乱七八糟的提示。
+2、点击状态栏的Unity，破解不成功的话有些选项是灰色不可点击的，例如About Unity&hellip;等</p>
+
+<p><img src="http://beyondabel.github.io/images/2014/04/07/5.png" alt="image" />
+3、点击About Unity&hellip;后会出现各种pro
+<img src="http://beyondabel.github.io/images/2014/04/07/6.png" alt="image" /></p>
+
+<p>这就说明你已经破解成功了</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ARC VS MRC，这不是一个编程习惯问题]]></title>
@@ -999,7 +1054,7 @@ __block __Block_byref_bSelf_0 bSelf = {(void*)0,(__Block_byref_bSelf_0 *)&amp;bS
     <link href="http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools/"/>
     <updated>2014-02-11T23:32:27+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools</id>
-    <content type="html"><![CDATA[<p><strong>Hack必备的命令与工具</strong></p>
+    <content type="html"><![CDATA[<h3>Hack必备的命令与工具</h3>
 
 <p>你的应用正在被其他对手反向工程、跟踪和操作！你的应用是否依旧裸奔豪不防御？
 郑重声明一下，懂得如何攻击才会懂得如何防御，一切都是为了之后的防御作准备。废话少说，进入正题。
@@ -1008,7 +1063,7 @@ __block __Block_byref_bSelf_0 bSelf = {(void*)0,(__Block_byref_bSelf_0 *)&amp;bS
 <!--more-->
 
 
-<p><strong>常用的命令和工具</strong></p>
+<h3>常用的命令和工具</h3>
 
 <pre><code>ps           ——显示进程状态，CPU使用率，内存使用情况等
 sysctl       ——检查设定Kernel配置
@@ -1083,16 +1138,16 @@ ldid -S helloworld
 
 <p>编译Hello world</p>
 
-<p><strong>1.首先找到编译器：</strong></p>
+<h4>1.首先找到编译器：</h4>
 
 <p>arm-apple-darwin10-llvm-gcc-4.2 就是了。
 为了方便起见，可以在.bashrc或者profile 配置下环境变量，方便编译。</p>
 
-<p><strong>2.找到SDK</strong></p>
+<h4>2.找到SDK</h4>
 
 <p>编译我们自己的程序的时候需要指定该目录下的SDK。</p>
 
-<p><strong>3.来个经典Hello world ：</strong></p>
+<h4>3.来个经典Hello world ：</h4>
 
 <pre><code>#include &lt;stdio.h&gt;                                                                                             
 int main(){  
@@ -1101,28 +1156,28 @@ int main(){
 }  
 </code></pre>
 
-<p><strong>4.编译</strong></p>
+<h4>4.编译</h4>
 
 <p>其中 -isysroot用来指定build时的SDK</p>
 
-<p><strong>5.校验</strong></p>
+<h4>5.校验</h4>
 
 <p>file查看一下类型，没问题。</p>
 
-<p><strong>6.SCP给iPhone、iPad</strong></p>
+<h4>6.SCP给iPhone、iPad</h4>
 
 <p>前提是，设备已经越狱并且安装了SSH,且必须在同一网段。</p>
 
 <pre><code>$scp helloworld root@x.x.x.x:hello world
 </code></pre>
 
-<p><strong>7.登录设备签名</strong></p>
+<h4>7.登录设备签名</h4>
 
 <pre><code>$ssh -l root x.x.x.x
 #ldid -S helloworld
 </code></pre>
 
-<p><strong>8.执行程序</strong></p>
+<h4>8.执行程序</h4>
 
 <pre><code>#./helloworld
 Hello world !!!
@@ -1137,14 +1192,14 @@ Hello world !!!
     <link href="http://beyondabel.github.io/blog/2014/02/10/abelwebimagekit/"/>
     <updated>2014-02-10T20:30:17+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/02/10/abelwebimagekit</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>ABELWebImageKit托管在github上：<a href="https://github.com/beyondabel/ABELWebImage">https://github.com/beyondabel/ABELWebImage</a></p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、ABELWebImageKit介绍
 2、ABELWebImageKit库结构的简单分析
@@ -1152,11 +1207,11 @@ Hello world !!!
 4、ABELWebImageKit库使用的简单举例
 </code></pre>
 
-<p><strong>1、ABELWebImageKit介绍</strong></p>
+<h3>1、ABELWebImageKit介绍</h3>
 
 <p>这个库提供一个ABELImageView类以支持加载来自网络的远程图片。具有缓存管理、异步下载、同一个URL下载次数控制和优化等特征。将ABELWebImageKit类库添加入工程时，一定注意需要添加ImageIO.framework。UIImage+Tools依赖这个framework。</p>
 
-<p><strong>2、ABELWebImageKit库结构的简单分析</strong></p>
+<h3>2、ABELWebImageKit库结构的简单分析</h3>
 
 <p>ABELImageView：ABELImageView继承于UIImageView的，它主要用于加载来自网络的远程图片。其中avater用于区别是否为头像图片（默认非头像）。</p>
 
@@ -1165,13 +1220,13 @@ Hello world !!!
 <p>ABELWebImageCache：根据URL的MD5摘要对图片进行存储和读取（实现存在内存中或者存在硬盘上两种实现）     实现图片和内存清理工作。
 ABELWebImageRequest：根据URL向网络读取数据</p>
 
-<p><strong>3、ABELWebImageKit库的图片管理</strong></p>
+<h3>3、ABELWebImageKit库的图片管理</h3>
 
 <p>ABELWebImageCache分两个部分，一个是内存层面的，一个是硬盘层面的。</p>
 
 <p>内存层面的相当是个缓存器，以Key-Value的形式存储图片。当内存不够的时候会清除所有缓存图片。用搜索文件系统的方式做管理，文件替换方式是以时间为单位，剔除时间大于一周的图片文件。当ABELWebImageCacheManager向ABELWebImageCache要资源时，先搜索内存层面的数据，如果有直接返回，没有的话去访问磁盘，将图片从磁盘读取出来，然后做Decoder，将图片对象放到内存层面做备份，再返回调用层。</p>
 
-<p><strong>4、ABELWebImageKit库使用的简单举例</strong></p>
+<h3>4、ABELWebImageKit库使用的简单举例</h3>
 
 <pre><code>self.avatarImageView = [[ABELImageView alloc] init];
 // 设置avatar为YES为显示圆形头像图片，否则为普通的图片
@@ -1188,22 +1243,23 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
     <link href="http://beyondabel.github.io/blog/2014/01/11/uiswitch/"/>
     <updated>2014-01-11T12:34:31+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/11/uiswitch</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UISwitch继承于UIControl（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）,您可以使用UISwitch类来创建和管理使用开/关按钮。例如，在对选项，如飞行模式和蓝牙设置应用程序。这些对象被称为交换机。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、基本属性及方法
 2、iOS5新增
 3、iOS6新增
 </code></pre>
 
-<p><strong>1、基本属性及方法</strong>
-// 开关是否打开</p>
+<h3>1、基本属性及方法</h3>
+
+<p>// 开关是否打开</p>
 
 <pre><code>BOOL on;
 </code></pre>
@@ -1218,15 +1274,16 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (void)setOn:(BOOL)on animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>2、iOS5新增</strong></p>
+<h3>2、iOS5新增</h3>
 
 <p>// 开关打开时颜色</p>
 
 <pre><code>UIColor *onTintColor;
 </code></pre>
 
-<p><strong>3、iOS6新增</strong>
-// 背影颜色</p>
+<h3>3、iOS6新增</h3>
+
+<p>// 背影颜色</p>
 
 <pre><code>UIColor *tintColor;
 </code></pre>
@@ -1253,21 +1310,21 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
     <link href="http://beyondabel.github.io/blog/2014/01/11/uislider/"/>
     <updated>2014-01-11T12:34:24+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/11/uislider</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UISlider继承于UIControl（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。UISlider对象是用来从一个连续的数值范围内选择单个值的可视化控制。滑块总是显示为水平条形图。一个指标，注意到滑块的当前值，并且可以由用户进行移动来改变该设置。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、设置初始值
 2、改变UISlider的外观
 3、供子类重写的方法
 </code></pre>
 
-<p><strong>1、设置初始值</strong></p>
+<h3>1、设置初始值</h3>
 
 <p>// 指定初始值</p>
 
@@ -1284,7 +1341,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>float maximumValue;
 </code></pre>
 
-<p><strong>2、改变UISlider的外观</strong></p>
+<h3>2、改变UISlider的外观</h3>
 
 <p>//  设置滑轮左边图片</p>
 
@@ -1366,7 +1423,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>UIImage* currentMaximumTrackImage;
 </code></pre>
 
-<p><strong>3、供子类重写的方法</strong></p>
+<h3>3、供子类重写的方法</h3>
 
 <p>// 以下四种方法用于子类覆盖,用来自定义thumb、track的CGRect</p>
 
@@ -1374,6 +1431,227 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 - (CGRect)maximumValueImageRectForBounds:(CGRect)bounds;
 - (CGRect)trackRectForBounds:(CGRect)bounds;
 - (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UITextField详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/10/uitextfield/"/>
+    <updated>2014-01-10T12:34:12+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/10/uitextfield</id>
+    <content type="html"><![CDATA[<h3>引言</h3>
+
+<p>UITextField对象是显示可编辑的文本，当用户按下键盘上的return按钮发送一个动作消息到目标对象,UITextField继承于UIControl（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。</p>
+
+<p>除了其基本的文本编辑行为，UITextField类还提供了清除当前文本内置按钮等一些功能。</p>
+
+<!--more-->
+
+
+<h3>目录</h3>
+
+<pre><code>1、基本属性及方法
+2、重写方法实现定制化UITextfiled
+3、第一响应设置
+4、UIView的UITextField的扩展属性
+5、UITextFieldDelegate代理协议（可选）
+</code></pre>
+
+<h3>1、基本属性及方法</h3>
+
+<p>// 设置文本内容</p>
+
+<pre><code>NSString               *text;                 
+</code></pre>
+
+<p>// 设置文本显示属性（iOS6.0）</p>
+
+<pre><code>NSAttributedString     *attributedText;
+</code></pre>
+
+<p>// 设置字体颜色</p>
+
+<pre><code>UIColor                *textColor;            
+</code></pre>
+
+<p>// 设置字体</p>
+
+<pre><code>UIFont                 *font;                 
+</code></pre>
+
+<p>// 内容的对齐方式（默认为NSLeftTextAlignment）</p>
+
+<pre><code>NSTextAlignment         textAlignment;        
+</code></pre>
+
+<p>// 设置边框样式，只有设置了才会显示边框样式</p>
+
+<pre><code>UITextBorderStyle       borderStyle;          
+</code></pre>
+
+<p>// 设置文本的显示属性（iOS7.0）</p>
+
+<pre><code>NSDictionary           *defaultTextAttributes; 
+</code></pre>
+
+<p>// 当输入框没有内容时，水印提示</p>
+
+<pre><code>NSString               *placeholder;          
+</code></pre>
+
+<p>// （iOS 6.0）</p>
+
+<pre><code>NSAttributedString     *attributedPlaceholder;
+</code></pre>
+
+<p>// 再次编辑就清空(默认为NO)</p>
+
+<pre><code>BOOL                    clearsOnBeginEditing;
+</code></pre>
+
+<p>// 设置为YES时文本会自动缩小以适应文本窗口大小.默认是保持原来大小,而让长文本滚动　</p>
+
+<pre><code>BOOL                    adjustsFontSizeToFitWidth; 
+</code></pre>
+
+<p>// 设置自动缩小显示的最小字体大小</p>
+
+<pre><code>CGFloat                 minimumFontSize;      
+</code></pre>
+
+<p>// 设置代理</p>
+
+<pre><code>id&lt;UITextFieldDelegate&gt; delegate; 
+</code></pre>
+
+<p>// 设置背景图片</p>
+
+<pre><code>UIImage                *background;
+</code></pre>
+
+<p>// 设置背景</p>
+
+<pre><code>UIImage                *disabledBackground;
+</code></pre>
+
+<p>// 是否正在编辑(只读)</p>
+
+<pre><code>BOOL editing;
+</code></pre>
+
+<p>// （iOS 6.0）</p>
+
+<pre><code>BOOL allowsEditingTextAttributes;
+</code></pre>
+
+<p>// （iOS 6.0）</p>
+
+<pre><code>NSDictionary *typingAttributes;
+</code></pre>
+
+<p>// 输入框中是否有个叉号，在什么时候显示，用于一次性删除输入框中的内容</p>
+
+<pre><code>UITextFieldViewMode  clearButtonMode;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>UIView              *leftView;
+UITextFieldViewMode  leftViewMode;
+
+UIView              *rightView;
+UITextFieldViewMode  rightViewMode;
+</code></pre>
+
+<h3>2、重写方法实现定制化UITextfiled</h3>
+
+<p>//重写来重置边缘区域</p>
+
+<pre><code>- (CGRect)borderRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>// 重写来重置文字区域</p>
+
+<pre><code>- (CGRect)textRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>// 重写来重置占位符区域</p>
+
+<pre><code>- (CGRect)placeholderRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>// 重写来重置编辑区域</p>
+
+<pre><code>- (CGRect)editingRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>// 重写来重置clearButton位置,改变size可能导致button的图片失真</p>
+
+<pre><code>- (CGRect)clearButtonRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (CGRect)leftViewRectForBounds:(CGRect)bounds;
+- (CGRect)rightViewRectForBounds:(CGRect)bounds;
+
+- (void)drawTextInRect:(CGRect)rect;
+- (void)drawPlaceholderInRect:(CGRect)rect;
+</code></pre>
+
+<h3>3、第一响应设置</h3>
+
+<pre><code>UIView *inputView;             
+UIView *inputAccessoryView;
+
+BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
+</code></pre>
+
+<h3>4、UIView的UITextField的扩展属性</h3>
+
+<pre><code>- (BOOL)endEditing:(BOOL)force;
+</code></pre>
+
+<h3>5、UITextFieldDelegate代理协议（可选）</h3>
+
+<p>// 返回一个BOOL值，指定是否循序文本字段开始编辑　</p>
+
+<pre><code>- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;        
+</code></pre>
+
+<p>// 开始编辑时触发，文本字段将成为first responder</p>
+
+<pre><code>- (void)textFieldDidBeginEditing:(UITextField *)textField;
+</code></pre>
+
+<p>//返回BOOL值，指定是否允许文本字段结束编辑，当编辑结束，文本字段会让出first responder　要想在用户结束编辑时阻止文本字段消失，可以返回NO.这对一些文本字段必须始终保持活跃状态的程序很有用，比如即时消息</p>
+
+<pre><code>- (BOOL)textFieldShouldEndEditing:(UITextField *)textField;
+</code></pre>
+
+<p>// 结束编辑</p>
+
+<pre><code>- (void)textFieldDidEndEditing:(UITextField *)textField; 
+</code></pre>
+
+<p>//当用户使用自动更正功能，把输入的文字修改为推荐的文字时，就会调用这个方法。　
+//这对于想要加入撤销选项的应用程序特别有用　
+//可以跟踪字段内所做的最后一次修改，也可以对所有编辑做日志记录,用作审计用途。　　
+//要防止文字被改变可以返回NO　
+//这个方法的参数中有一个NSRange对象，指明了被改变文字的位置，建议修改的文本也在其中</p>
+
+<pre><code>- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string; 
+</code></pre>
+
+<p>//返回一个BOOL值指明是否允许根据用户请求清除内容.可以设置在特定条件下才允许清除内容</p>
+
+<pre><code>- (BOOL)textFieldShouldClear:(UITextField *)textField; 
+</code></pre>
+
+<p>//返回一个BOOL值，指明是否允许在按下回车键时结束编辑　</p>
+
+<pre><code>- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 </code></pre>
 ]]></content>
   </entry>
@@ -1619,7 +1897,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
     <link href="http://beyondabel.github.io/blog/2014/01/09/uidatepicker/"/>
     <updated>2014-01-09T12:33:27+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/09/uidatepicker</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>该的UIDatePicker类实现使用多个车轮转动，以允许用户选择日期和时间的对象。UIDatePicker iPhone的例子是定时器和时钟应用程序的闹钟（设置闹钟）窗格。您也可以使用日期选择器作为一个倒数计时器。</p>
 
@@ -1885,14 +2163,14 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
     <link href="http://beyondabel.github.io/blog/2014/01/07/uitableview/"/>
     <updated>2014-01-07T12:33:02+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/07/uitableview</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UITableView简单来说是一个表视图，继承于UIScrollView（有关UIScrollView请参照<a href="http://beyondabel.github.io/blog/2014/01/05/uiscrollView/">《iOS组件之UIScrollView详解》</a>），用于显示和编辑信息的分层列表。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、tableView的基本属性及方法
 2、访问tableView的画图区
@@ -1924,7 +2202,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
     13.11复制/粘贴
 </code></pre>
 
-<p><strong>1、tableView的基本属性及方法</strong></p>
+<h3>1、tableView的基本属性及方法</h3>
 
 <p>// 初始化</p>
 
@@ -1986,7 +2264,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (NSInteger)numberOfRowsInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>2、访问tableView的画图区</strong></p>
+<h3>2、访问tableView的画图区</h3>
 
 <p>// 返回指定section的矩形</p>
 
@@ -2008,7 +2286,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>3、访问cells和sections</strong></p>
+<h3>3、访问cells和sections</h3>
 
 <p>// 通过cell得到这个cell在tableView的位置</p>
 
@@ -2036,7 +2314,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 - (NSArray *)indexPathsForVisibleRows;
 </code></pre>
 
-<p><strong>4、滚动tableView</strong></p>
+<h3>4、滚动tableView</h3>
 
 <p>// 滚动到指定位置</p>
 
@@ -2048,7 +2326,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (void)scrollToNearestSelectedRowAtScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>5、插入、删除、移动行和sections</strong></p>
+<h3>5、插入、删除、移动行和sections</h3>
 
 <p>// 和endUpdates一起用，让插入、删除、选择操作同时动画，没用过</p>
 
@@ -2090,7 +2368,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
 </code></pre>
 
-<p><strong>6、管理和编辑cell</strong></p>
+<h3>6、管理和编辑cell</h3>
 
 <p>// YES进入编辑模式，tableview cell会出现插入、删除、重排序的控件</p>
 
@@ -2102,7 +2380,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>7、管理sections</strong></p>
+<h3>7、管理sections</h3>
 
 <p>//是否允许用户选取一行</p>
 
@@ -2124,7 +2402,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (void)deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>8、配置</strong></p>
+<h3>8、配置</h3>
 
 <p>// 指定当tableView中多少行的时候开始显示IndexList，默认的设置是NSIntegerMax，即默认是不显示indexList的</p>
 
@@ -2156,7 +2434,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;  
 </code></pre>
 
-<p><strong>9、iOS5.0新增</strong></p>
+<h3>9、iOS5.0新增</h3>
 
 <p>// 移动section</p>
 
@@ -2193,7 +2471,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 <pre><code>BOOL allowsMultipleSelectionDuringEditing;
 </code></pre>
 
-<p><strong>10、iOS6.0新增</strong></p>
+<h3>10、iOS6.0新增</h3>
 
 <p>// 我想在numberOfRowsInSection方法内获取该section的header View。须要在使用之前用 tableView 的 registerNib:forHeaderFooterViewReuseIdentifier:  或 registerClass:forHeaderFooterViewReuseIdentifier:。</p>
 
@@ -2224,7 +2502,7 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 - (id)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;
 </code></pre>
 
-<p><strong>11、iOS7.0</strong></p>
+<h3>11、iOS7.0</h3>
 
 <p>// 预设SectionFooter的高度</p>
 
@@ -2243,10 +2521,11 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>CGFloat estimatedSectionHeaderHeight; 
 </code></pre>
 
-<p><strong>12、UITableViewDataSource协议</strong></p>
+<h3>12、UITableViewDataSource协议</h3>
 
-<p><strong>12.1必须实现</strong>
-// 返回每个section中row的数量</p>
+<h4>12.1必须实现</h4>
+
+<p>// 返回每个section中row的数量</p>
 
 <pre><code>- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 </code></pre>
@@ -2256,7 +2535,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>12.2可选</strong></p>
+<h4>12.2可选</h4>
 
 <p>// 返回section的个数</p>
 
@@ -2273,14 +2552,14 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>12.2.1编辑模式</strong></p>
+<h5>12.2.1 编辑模式</h5>
 
 <p>// 设置可编辑</p>
 
 <pre><code>- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>12.2.1.1移动</strong></p>
+<h6>12.2.1.1 移动</h6>
 
 <p>// 设置是否可移动</p>
 
@@ -2297,7 +2576,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index;
 </code></pre>
 
-<p><strong>12.2.2数据操作</strong></p>
+<h6>12.2.2 数据操作</h6>
 
 <p>// 插入/删除指定数据</p>
 
@@ -2309,16 +2588,16 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
 </code></pre>
 
-<p><strong>13、UITableViewDelegate协议（可选）</strong></p>
+<h3>13、UITableViewDelegate协议（可选）</h3>
 
-<p><strong>13.1定制化</strong></p>
+<h4>13.1定制化</h4>
 
 <p>// cell将要显示的时候被调用</p>
 
 <pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.2iOS6新增</strong></p>
+<h4>13.2iOS6新增</h4>
 
 <p>// HeaderView将要显示的时候被调用</p>
 
@@ -2345,7 +2624,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>13.3可变高度支持</strong></p>
+<h4>13.3可变高度支持</h4>
 
 <p>// 根据indexPath返回row的高度</p>
 
@@ -2362,7 +2641,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>13.4iOS7.0新增</strong></p>
+<h4>13.4iOS7.0新增</h4>
 
 <p>// 代理函数或者设置estimatedRowHeight属性值，提供一个预估高度值，对于可变高度的cell的表格视图可改进性能</p>
 
@@ -2379,7 +2658,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>13.5header 和 footer Section 信息</strong></p>
+<h4>13.5 header 和 footer Section 信息</h4>
 
 <p>// 根据section创建header section</p>
 
@@ -2391,14 +2670,14 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>13.6附属公开的接口</strong></p>
+<h4>13.6 附属公开的接口</h4>
 
 <p>// 回调设置辅助按钮被点击后的事件</p>
 
 <pre><code>- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.7选择</strong></p>
+<h4>13.7 选择</h4>
 
 <p>// 回调设置某行是否当被点击后处于高亮状态</p>
 
@@ -2435,7 +2714,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.8编辑</strong></p>
+<h4>13.8 编辑</h4>
 
 <p>// 回调设置某行进入了哪种编辑模式</p>
 
@@ -2462,21 +2741,21 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (void)tableView:(UITableView*)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.9移动</strong></p>
+<h4>13.9 移动</h4>
 
 <p>// 移动Row时会把触发，在交换Row位置的时候，必须同时交换DataSource中数据的位置。</p>
 
 <pre><code>- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath;               
 </code></pre>
 
-<p><strong>13.10缩格</strong></p>
+<h4>13.10 缩格</h4>
 
 <p>// 设置内容缩进</p>
 
 <pre><code>- (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.11复制/粘贴</strong></p>
+<h4>13.11 复制/粘贴</h4>
 
 <p>// 回调设置某行被长按是否出现菜单栏</p>
 
@@ -3566,393 +3845,6 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
 <p>// ActionSheet消失</p>
 
 <pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UITableViewCell详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/04/uitableviewcell/"/>
-    <updated>2014-01-04T12:31:43+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/04/uitableviewcell</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>UITableViewCell继承于UIView（有关UIControl请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>）,UITableViewCell类定义出现在UITableView中对象的单元格的属性和行为。这个类包含的属性和设置和管理的单元格内容和背景（包括文字，图片，和自定义视图） ，管理小区选择并高亮显示状态，管理配套的看法，以及发起的单元格内容的编辑方法。</p>
-
-<p>当创建单元格，你可以自己自定义它们，或者使用几个预定义样式之一。预定义的单元格样式是最简单的选择。与预定义样式，单元格提供标签和图像子视图的位置和造型是固定的。所有您需要做的是提供文本和图像内容进入那些固定的看法。要使用单元格与预定义的风格，采用了initWithStyle初始化： reuseIdentifier ：方法或将单元配置与风格在Xcode 。要设置单元格的文本和图像，使用为textLabel ， detailTextLabel和ImageView的属性。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、基本属性及方法
-</code></pre>
-
-<p><strong>1、基本属性及方法</strong></p>
-
-<p>// 初始化方法</p>
-
-<pre><code>- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-</code></pre>
-
-<p>// cell上默认图片显示view，（默认为nil,当需要的时候才会被创建）</p>
-
-<pre><code>UIImageView *imageView;
-</code></pre>
-
-<p>// cell上默认的UILabel(默认为nil，当需要的时候才会被创建)</p>
-
-<pre><code>UILabel     *textLabel;
-</code></pre>
-
-<p>//  cell简介（默认为nil，如果当前的style支持的话需要时将会被创建）</p>
-
-<pre><code>UILabel     *detailTextLabel;
-</code></pre>
-
-<p>// 与cell自带的删除按钮平级的view</p>
-
-<pre><code>UIView *contentView;
-</code></pre>
-
-<p>// 背景view</p>
-
-<pre><code>UIView *backgroundView;
-</code></pre>
-
-<p>// 多选时的背景view</p>
-
-<pre><code>UIView *multipleSelectionBackgroundView;
-</code></pre>
-
-<p>// cell的标识符</p>
-
-<pre><code>NSString *reuseIdentifier;
-</code></pre>
-
-<p>//  重用cell时会调用这个函数</p>
-
-<pre><code>- (void)prepareForReuse; 
-</code></pre>
-
-<p>// 选中时的cell样式（默认为UITableViewCellSelectionStyleBlue）</p>
-
-<pre><code>UITableViewCellSelectionStyle   selectionStyle; 
-</code></pre>
-
-<p>// 是否选中</p>
-
-<pre><code>BOOL         selected; 
-</code></pre>
-
-<p>// 是否高亮</p>
-
-<pre><code>BOOL      highlighted;
-</code></pre>
-
-<p>// 设置cell为选中状态</p>
-
-<pre><code>- (void)setSelected:(BOOL)selected animated:(BOOL)animated;                  
-</code></pre>
-
-<p>// 设置为高亮状态</p>
-
-<pre><code>- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated;
-</code></pre>
-
-<p>// 设置cell的编辑样式</p>
-
-<pre><code>UITableViewCellEditingStyle editingStyle;
-</code></pre>
-
-<p>// showsReorderControl = YES时Cell显示移动按钮（默认为NO）</p>
-
-<pre><code>BOOL showsReorderControl;        // default is NO
-</code></pre>
-
-<p>// 没有出现delete控件和行头控件，可cell的宽度还是变了，有没有办法使cell在edit模式下，宽度不改变</p>
-
-<pre><code>BOOL shouldIndentWhileEditing;
-</code></pre>
-
-<p>// 设置cell的样式</p>
-
-<pre><code>UITableViewCellAccessoryType accessoryType;
-</code></pre>
-
-<p>UITableViewCellAccessoryNone;//cell没有任何的样式</p>
-
-<p>UITableViewCellAccessoryDisclosureIndicator;//cell的右边有一个小箭头，距离右边有十几像素；</p>
-
-<p>UITableViewCellAccessoryDetailDisclosureButton;//cell右边有一个蓝色的圆形button；</p>
-
-<p>UITableViewCellAccessoryCheckmark;//cell右边的形状是对号；</p>
-
-<p>// 除此上面之外，如果你想使用自定义附件按钮的其他样式，必需使用UITableView的accessoryView属性</p>
-
-<pre><code>UIView *accessoryView;
-</code></pre>
-
-<p>// 设置当cell进入编辑模式时的辅助按钮样式</p>
-
-<pre><code>UITableViewCellAccessoryType editingAccessoryType;
-</code></pre>
-
-<p>// 自定义cell进入编辑模式后辅助按钮</p>
-
-<pre><code>UIView *editingAccessoryView;       
-</code></pre>
-
-<p>// 获取cell的缩进级别</p>
-
-<pre><code>NSInteger indentationLevel;           
-</code></pre>
-
-<p>// 获取cell的缩进宽度</p>
-
-<pre><code>CGFloat indentationWidth;
-</code></pre>
-
-<p>// 设置是否处于编辑模式</p>
-
-<pre><code>BOOL           editing;
-</code></pre>
-
-<p>// 设置编辑模式</p>
-
-<pre><code>- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
-</code></pre>
-
-<p>// 当前是否显示delete按钮</p>
-
-<pre><code>BOOL showingDeleteConfirmation;  // currently showing "Delete" button
-</code></pre>
-
-<p>// 这两个方法应该在子类中覆写，当前Cell的状态发生改变的时刻就会触发这些方法，可以在这些方法中进行一些额外的操作。（例如：cell被点击以后就会进入UITableViewCellStateShowingDeleteConfirmationMask 状态）</p>
-
-<pre><code>- (void)willTransitionToState:(UITableViewCellStateMask)state;
-- (void)didTransitionToState:(UITableViewCellStateMask)state;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UINavigaionBar详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/04/uinavigaionbar/"/>
-    <updated>2014-01-04T12:31:24+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/04/uinavigaionbar</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>在UINavigationBar的类提供了用于导航的分层内容的控制,UINavigaionBar继承于UIView(有关UIView请参照<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>。这是一间酒吧，通常显示在屏幕的顶部，包含按钮画面的层次结构中导航。主要属性是一个左（后）按钮，一个中心的标题，和一个可选的右按钮。可以使用一个导航栏作为一个独立的对象，或与导航控制器对象来使用。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、UINavigaionBar
-2、UINavigationItem
-3、iOS5新增
-</code></pre>
-
-<p><strong>1、UINavigaionBar</strong></p>
-
-<p>// 设置bar的样式</p>
-
-<pre><code>UIBarStyle barStyle;
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id delegate;
-</code></pre>
-
-<p>// 设置是否透明（在iOS6中默认为NO,如果barStyle为UIBarStyleBlackTranslucent为YES）</p>
-
-<pre><code>BOOL translucent;
-</code></pre>
-
-<p>// Pushing a navigation item displays the item&rsquo;s title in the center of the navigation bar.
-// 方法将新的UINavigationItem 压入栈</p>
-
-<pre><code>- (void)pushNavigationItem:(UINavigationItem *)item animated:(BOOL)animated;
-</code></pre>
-
-<p>//  方法将顶部的UINavigationItem 推出栈</p>
-
-<pre><code>- (UINavigationItem *)popNavigationItemAnimated:(BOOL)animated; // Returns the item that was popped.
-</code></pre>
-
-<p>// 获取顶部的item（只读）</p>
-
-<pre><code>UINavigationItem *topItem;
-</code></pre>
-
-<p>// 获取返回的item</p>
-
-<pre><code>UINavigationItem *backItem;
-</code></pre>
-
-<p>// 设置items组</p>
-
-<pre><code>NSArray *items;
-- (void)setItems:(NSArray *)items animated:(BOOL)animated;
-</code></pre>
-
-<p>// 设置背景颜色</p>
-
-<pre><code>UIColor *tintColor;
-</code></pre>
-
-<p>// 设置背影颜色（iOS7.0新增）</p>
-
-<pre><code>UIColor *barTintColor;
-</code></pre>
-
-<p>iOS5新增</p>
-
-<p>//  根据屏幕状态设置背景图片</p>
-
-<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forBarMetrics:(UIBarMetrics)barMetrics;
-
-如果支持竖屏，那么应该设置UIBarMetricsDefault
-[navBar setBackgroundImage:[UIImage imageNamed:@"navBarBg.png"] forBarMetrics:UIBarMetricsDefault];
-
-如果支持横屏，那么应该设置UIBarMetricsLandscapePhone
-[navBar setBackgroundImage:[UIImage imageNamed:@"navBarBg.png"] forBarMetrics:UIBarMetricsLandscapePhone];
-</code></pre>
-
-<p>// 根据屏幕状态获取背景图片</p>
-
-<pre><code>- (UIImage *)backgroundImageForBarMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p>// 对titleText设置字体属性</p>
-
-<pre><code>NSDictionary *titleTextAttributes;
-</code></pre>
-
-<p>// 根据屏幕状态设置标题的垂直偏移量</p>
-
-<pre><code>- (void)setTitleVerticalPositionAdjustment:(CGFloat)adjustment forBarMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p>// 根据屏幕状态获得标题的垂直偏移量</p>
-
-<pre><code>- (CGFloat)titleVerticalPositionAdjustmentForBarMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p>iOS6新增</p>
-
-<p>// 设置阴影图片</p>
-
-<pre><code> UIImage *shadowImage;
-</code></pre>
-
-<p>iOS7新增</p>
-
-<p>// iOS7下设置背景图片(iOS上默认是64，可以通过这个方法设置成44)。</p>
-
-<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p>// 获取图片</p>
-
-<pre><code>- (UIImage *)backgroundImageForBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p>// 如果想要用自己的图片替换V型，可以设置图片的backIndicatorImage backIndicatorTransitionMaskImage。</p>
-
-<pre><code>UIImage *backIndicatorImage;
-UIImage *backIndicatorTransitionMaskImage;
-
-如下代码所示：
-[[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"backBtton.png"]]; 
-[[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"backBtton.png"]]; 
-</code></pre>
-
-<p>UINavigationBarDelegate协议（可选）
-// 是否支持pushItem，如果返回NO就不能。</p>
-
-<pre><code>- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPushItem:(UINavigationItem *)item;
-</code></pre>
-
-<p>// pushItem时会调用的函数</p>
-
-<pre><code>- (void)navigationBar:(UINavigationBar *)navigationBar didPushItem:(UINavigationItem *)item;
-</code></pre>
-
-<p>// 是否支持popItem，如果返回NO就不能。</p>
-
-<pre><code>- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item;
-</code></pre>
-
-<p>// popItem时会调用的函数</p>
-
-<pre><code>- (void)navigationBar:(UINavigationBar *)navigationBar didPopItem:(UINavigationItem *)item;
-</code></pre>
-
-<p><strong>2、UINavigationItem</strong></p>
-
-<p>// 初始化item的title</p>
-
-<pre><code>- (id)initWithTitle:(NSString *)title;
-</code></pre>
-
-<p>// 设置item的title</p>
-
-<pre><code>NSString        *title; 
-</code></pre>
-
-<p>// 设置返回barButtonItem</p>
-
-<pre><code>UIBarButtonItem *backBarButtonItem;
-</code></pre>
-
-<p>// 设置titleView</p>
-
-<pre><code>UIView          *titleView;
-</code></pre>
-
-<p>// 一个显示在顶部导航栏的单行文本</p>
-
-<pre><code>NSString *prompt;    
-</code></pre>
-
-<p>// 是否隐藏返回按钮</p>
-
-<pre><code>BOOL hidesBackButton; 
-</code></pre>
-
-<p>// 隐藏返回按钮</p>
-
-<pre><code>- (void)setHidesBackButton:(BOOL)hidesBackButton animated:(BOOL)animated;
-</code></pre>
-
-<p>// 设置左边按钮</p>
-
-<pre><code>UIBarButtonItem *leftBarButtonItem;
-- (void)setLeftBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
-</code></pre>
-
-<p>// 设置右边按钮</p>
-
-<pre><code>UIBarButtonItem *rightBarButtonItem;
-- (void)setRightBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
-</code></pre>
-
-<p><strong>3、iOS5新增</strong></p>
-
-<pre><code>NSArray *leftBarButtonItems;
-NSArray *rightBarButtonItems;
-- (void)setLeftBarButtonItems:(NSArray *)items animated:(BOOL)animated; 
-- (void)setRightBarButtonItems:(NSArray *)items animated:(BOOL)animated;
-</code></pre>
-
-<p>// 当某个UIViewController自定义了LeftBarButtonItem(如：返回首页的Home按钮)，同时这个UIViewController存在被其他UIViewController，pushViewController(即：从其他试图控制器，跳转到自定义LeftBarButtonItem的试图控制器),这时如果没有在自定义LeftBarButtonItem设置UINavigationItem的属性leftItemsSupplementBackButton，那么系统会默认为NO，那麽其他控制器跳转到此控制器时，导航栏就只会展示你自定的LeftBarButtonItem，而不会显示后退按钮。但这样很不友好。如果想显示后退按钮，这在自定义LeftBarButtonItem时，设置UINavigationItem的属性leftItemsSupplementBackButton为YES即可。</p>
-
-<pre><code>BOOL leftItemsSupplementBackButton;
 </code></pre>
 ]]></content>
   </entry>

@@ -92,14 +92,14 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<h1 class="title" itemprop="name">iOS组件之UITableView详解</h1>
-	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+	<div class="entry-content" itemprop="articleBody"><h3>引言</h3>
 
 <p>UITableView简单来说是一个表视图，继承于UIScrollView（有关UIScrollView请参照<a href="/blog/2014/01/05/uiscrollView/">《iOS组件之UIScrollView详解》</a>），用于显示和编辑信息的分层列表。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、tableView的基本属性及方法
 2、访问tableView的画图区
@@ -131,7 +131,7 @@
     13.11复制/粘贴
 </code></pre>
 
-<p><strong>1、tableView的基本属性及方法</strong></p>
+<h3>1、tableView的基本属性及方法</h3>
 
 <p>// 初始化</p>
 
@@ -193,7 +193,7 @@
 <pre><code>- (NSInteger)numberOfRowsInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>2、访问tableView的画图区</strong></p>
+<h3>2、访问tableView的画图区</h3>
 
 <p>// 返回指定section的矩形</p>
 
@@ -215,7 +215,7 @@
 <pre><code>- (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>3、访问cells和sections</strong></p>
+<h3>3、访问cells和sections</h3>
 
 <p>// 通过cell得到这个cell在tableView的位置</p>
 
@@ -243,7 +243,7 @@
 - (NSArray *)indexPathsForVisibleRows;
 </code></pre>
 
-<p><strong>4、滚动tableView</strong></p>
+<h3>4、滚动tableView</h3>
 
 <p>// 滚动到指定位置</p>
 
@@ -255,7 +255,7 @@
 <pre><code>- (void)scrollToNearestSelectedRowAtScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>5、插入、删除、移动行和sections</strong></p>
+<h3>5、插入、删除、移动行和sections</h3>
 
 <p>// 和endUpdates一起用，让插入、删除、选择操作同时动画，没用过</p>
 
@@ -297,7 +297,7 @@
 <pre><code>- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
 </code></pre>
 
-<p><strong>6、管理和编辑cell</strong></p>
+<h3>6、管理和编辑cell</h3>
 
 <p>// YES进入编辑模式，tableview cell会出现插入、删除、重排序的控件</p>
 
@@ -309,7 +309,7 @@
 <pre><code>- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>7、管理sections</strong></p>
+<h3>7、管理sections</h3>
 
 <p>//是否允许用户选取一行</p>
 
@@ -331,7 +331,7 @@
 <pre><code>- (void)deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>8、配置</strong></p>
+<h3>8、配置</h3>
 
 <p>// 指定当tableView中多少行的时候开始显示IndexList，默认的设置是NSIntegerMax，即默认是不显示indexList的</p>
 
@@ -363,7 +363,7 @@
 <pre><code>- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;  
 </code></pre>
 
-<p><strong>9、iOS5.0新增</strong></p>
+<h3>9、iOS5.0新增</h3>
 
 <p>// 移动section</p>
 
@@ -400,7 +400,7 @@
 <pre><code>BOOL allowsMultipleSelectionDuringEditing;
 </code></pre>
 
-<p><strong>10、iOS6.0新增</strong></p>
+<h3>10、iOS6.0新增</h3>
 
 <p>// 我想在numberOfRowsInSection方法内获取该section的header View。须要在使用之前用 tableView 的 registerNib:forHeaderFooterViewReuseIdentifier:  或 registerClass:forHeaderFooterViewReuseIdentifier:。</p>
 
@@ -431,7 +431,7 @@
 - (id)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;
 </code></pre>
 
-<p><strong>11、iOS7.0</strong></p>
+<h3>11、iOS7.0</h3>
 
 <p>// 预设SectionFooter的高度</p>
 
@@ -450,10 +450,11 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>CGFloat estimatedSectionHeaderHeight; 
 </code></pre>
 
-<p><strong>12、UITableViewDataSource协议</strong></p>
+<h3>12、UITableViewDataSource协议</h3>
 
-<p><strong>12.1必须实现</strong>
-// 返回每个section中row的数量</p>
+<h4>12.1必须实现</h4>
+
+<p>// 返回每个section中row的数量</p>
 
 <pre><code>- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 </code></pre>
@@ -463,7 +464,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>12.2可选</strong></p>
+<h4>12.2可选</h4>
 
 <p>// 返回section的个数</p>
 
@@ -480,14 +481,14 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>12.2.1编辑模式</strong></p>
+<h5>12.2.1 编辑模式</h5>
 
 <p>// 设置可编辑</p>
 
 <pre><code>- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>12.2.1.1移动</strong></p>
+<h6>12.2.1.1 移动</h6>
 
 <p>// 设置是否可移动</p>
 
@@ -504,7 +505,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index;
 </code></pre>
 
-<p><strong>12.2.2数据操作</strong></p>
+<h6>12.2.2 数据操作</h6>
 
 <p>// 插入/删除指定数据</p>
 
@@ -516,16 +517,16 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
 </code></pre>
 
-<p><strong>13、UITableViewDelegate协议（可选）</strong></p>
+<h3>13、UITableViewDelegate协议（可选）</h3>
 
-<p><strong>13.1定制化</strong></p>
+<h4>13.1定制化</h4>
 
 <p>// cell将要显示的时候被调用</p>
 
 <pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.2iOS6新增</strong></p>
+<h4>13.2iOS6新增</h4>
 
 <p>// HeaderView将要显示的时候被调用</p>
 
@@ -552,7 +553,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>13.3可变高度支持</strong></p>
+<h4>13.3可变高度支持</h4>
 
 <p>// 根据indexPath返回row的高度</p>
 
@@ -569,7 +570,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>13.4iOS7.0新增</strong></p>
+<h4>13.4iOS7.0新增</h4>
 
 <p>// 代理函数或者设置estimatedRowHeight属性值，提供一个预估高度值，对于可变高度的cell的表格视图可改进性能</p>
 
@@ -586,7 +587,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>13.5header 和 footer Section 信息</strong></p>
+<h4>13.5 header 和 footer Section 信息</h4>
 
 <p>// 根据section创建header section</p>
 
@@ -598,14 +599,14 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section;
 </code></pre>
 
-<p><strong>13.6附属公开的接口</strong></p>
+<h4>13.6 附属公开的接口</h4>
 
 <p>// 回调设置辅助按钮被点击后的事件</p>
 
 <pre><code>- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.7选择</strong></p>
+<h4>13.7 选择</h4>
 
 <p>// 回调设置某行是否当被点击后处于高亮状态</p>
 
@@ -642,7 +643,7 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.8编辑</strong></p>
+<h4>13.8 编辑</h4>
 
 <p>// 回调设置某行进入了哪种编辑模式</p>
 
@@ -669,21 +670,21 @@ UIColor *sectionIndexBackgroundColor;
 <pre><code>- (void)tableView:(UITableView*)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.9移动</strong></p>
+<h4>13.9 移动</h4>
 
 <p>// 移动Row时会把触发，在交换Row位置的时候，必须同时交换DataSource中数据的位置。</p>
 
 <pre><code>- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath;               
 </code></pre>
 
-<p><strong>13.10缩格</strong></p>
+<h4>13.10 缩格</h4>
 
 <p>// 设置内容缩进</p>
 
 <pre><code>- (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath;
 </code></pre>
 
-<p><strong>13.11复制/粘贴</strong></p>
+<h4>13.11 复制/粘贴</h4>
 
 <p>// 回调设置某行被长按是否出现菜单栏</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: UIView及子类控件 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/uiviewji-zi-lei-kong-jian/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-10T10:35:10+08:00</updated>
+  <updated>2014-04-07T23:44:45+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -18,22 +18,23 @@
     <link href="http://beyondabel.github.io/blog/2014/01/11/uiswitch/"/>
     <updated>2014-01-11T12:34:31+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/11/uiswitch</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UISwitch继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）,您可以使用UISwitch类来创建和管理使用开/关按钮。例如，在对选项，如飞行模式和蓝牙设置应用程序。这些对象被称为交换机。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、基本属性及方法
 2、iOS5新增
 3、iOS6新增
 </code></pre>
 
-<p><strong>1、基本属性及方法</strong>
-// 开关是否打开</p>
+<h3>1、基本属性及方法</h3>
+
+<p>// 开关是否打开</p>
 
 <pre><code>BOOL on;
 </code></pre>
@@ -48,15 +49,16 @@
 <pre><code>- (void)setOn:(BOOL)on animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>2、iOS5新增</strong></p>
+<h3>2、iOS5新增</h3>
 
 <p>// 开关打开时颜色</p>
 
 <pre><code>UIColor *onTintColor;
 </code></pre>
 
-<p><strong>3、iOS6新增</strong>
-// 背影颜色</p>
+<h3>3、iOS6新增</h3>
+
+<p>// 背影颜色</p>
 
 <pre><code>UIColor *tintColor;
 </code></pre>
@@ -83,21 +85,21 @@
     <link href="http://beyondabel.github.io/blog/2014/01/11/uislider/"/>
     <updated>2014-01-11T12:34:24+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/01/11/uislider</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+    <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UISlider继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。UISlider对象是用来从一个连续的数值范围内选择单个值的可视化控制。滑块总是显示为水平条形图。一个指标，注意到滑块的当前值，并且可以由用户进行移动来改变该设置。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、设置初始值
 2、改变UISlider的外观
 3、供子类重写的方法
 </code></pre>
 
-<p><strong>1、设置初始值</strong></p>
+<h3>1、设置初始值</h3>
 
 <p>// 指定初始值</p>
 
@@ -114,7 +116,7 @@
 <pre><code>float maximumValue;
 </code></pre>
 
-<p><strong>2、改变UISlider的外观</strong></p>
+<h3>2、改变UISlider的外观</h3>
 
 <p>//  设置滑轮左边图片</p>
 
@@ -196,7 +198,7 @@
 <pre><code>UIImage* currentMaximumTrackImage;
 </code></pre>
 
-<p><strong>3、供子类重写的方法</strong></p>
+<h3>3、供子类重写的方法</h3>
 
 <p>// 以下四种方法用于子类覆盖,用来自定义thumb、track的CGRect</p>
 
@@ -204,6 +206,227 @@
 - (CGRect)maximumValueImageRectForBounds:(CGRect)bounds;
 - (CGRect)trackRectForBounds:(CGRect)bounds;
 - (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UITextField详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/10/uitextfield/"/>
+    <updated>2014-01-10T12:34:12+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/10/uitextfield</id>
+    <content type="html"><![CDATA[<h3>引言</h3>
+
+<p>UITextField对象是显示可编辑的文本，当用户按下键盘上的return按钮发送一个动作消息到目标对象,UITextField继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。</p>
+
+<p>除了其基本的文本编辑行为，UITextField类还提供了清除当前文本内置按钮等一些功能。</p>
+
+<!--more-->
+
+
+<h3>目录</h3>
+
+<pre><code>1、基本属性及方法
+2、重写方法实现定制化UITextfiled
+3、第一响应设置
+4、UIView的UITextField的扩展属性
+5、UITextFieldDelegate代理协议（可选）
+</code></pre>
+
+<h3>1、基本属性及方法</h3>
+
+<p>// 设置文本内容</p>
+
+<pre><code>NSString               *text;                 
+</code></pre>
+
+<p>// 设置文本显示属性（iOS6.0）</p>
+
+<pre><code>NSAttributedString     *attributedText;
+</code></pre>
+
+<p>// 设置字体颜色</p>
+
+<pre><code>UIColor                *textColor;            
+</code></pre>
+
+<p>// 设置字体</p>
+
+<pre><code>UIFont                 *font;                 
+</code></pre>
+
+<p>// 内容的对齐方式（默认为NSLeftTextAlignment）</p>
+
+<pre><code>NSTextAlignment         textAlignment;        
+</code></pre>
+
+<p>// 设置边框样式，只有设置了才会显示边框样式</p>
+
+<pre><code>UITextBorderStyle       borderStyle;          
+</code></pre>
+
+<p>// 设置文本的显示属性（iOS7.0）</p>
+
+<pre><code>NSDictionary           *defaultTextAttributes; 
+</code></pre>
+
+<p>// 当输入框没有内容时，水印提示</p>
+
+<pre><code>NSString               *placeholder;          
+</code></pre>
+
+<p>// （iOS 6.0）</p>
+
+<pre><code>NSAttributedString     *attributedPlaceholder;
+</code></pre>
+
+<p>// 再次编辑就清空(默认为NO)</p>
+
+<pre><code>BOOL                    clearsOnBeginEditing;
+</code></pre>
+
+<p>// 设置为YES时文本会自动缩小以适应文本窗口大小.默认是保持原来大小,而让长文本滚动　</p>
+
+<pre><code>BOOL                    adjustsFontSizeToFitWidth; 
+</code></pre>
+
+<p>// 设置自动缩小显示的最小字体大小</p>
+
+<pre><code>CGFloat                 minimumFontSize;      
+</code></pre>
+
+<p>// 设置代理</p>
+
+<pre><code>id&lt;UITextFieldDelegate&gt; delegate; 
+</code></pre>
+
+<p>// 设置背景图片</p>
+
+<pre><code>UIImage                *background;
+</code></pre>
+
+<p>// 设置背景</p>
+
+<pre><code>UIImage                *disabledBackground;
+</code></pre>
+
+<p>// 是否正在编辑(只读)</p>
+
+<pre><code>BOOL editing;
+</code></pre>
+
+<p>// （iOS 6.0）</p>
+
+<pre><code>BOOL allowsEditingTextAttributes;
+</code></pre>
+
+<p>// （iOS 6.0）</p>
+
+<pre><code>NSDictionary *typingAttributes;
+</code></pre>
+
+<p>// 输入框中是否有个叉号，在什么时候显示，用于一次性删除输入框中的内容</p>
+
+<pre><code>UITextFieldViewMode  clearButtonMode;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>UIView              *leftView;
+UITextFieldViewMode  leftViewMode;
+
+UIView              *rightView;
+UITextFieldViewMode  rightViewMode;
+</code></pre>
+
+<h3>2、重写方法实现定制化UITextfiled</h3>
+
+<p>//重写来重置边缘区域</p>
+
+<pre><code>- (CGRect)borderRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>// 重写来重置文字区域</p>
+
+<pre><code>- (CGRect)textRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>// 重写来重置占位符区域</p>
+
+<pre><code>- (CGRect)placeholderRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>// 重写来重置编辑区域</p>
+
+<pre><code>- (CGRect)editingRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>// 重写来重置clearButton位置,改变size可能导致button的图片失真</p>
+
+<pre><code>- (CGRect)clearButtonRectForBounds:(CGRect)bounds;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (CGRect)leftViewRectForBounds:(CGRect)bounds;
+- (CGRect)rightViewRectForBounds:(CGRect)bounds;
+
+- (void)drawTextInRect:(CGRect)rect;
+- (void)drawPlaceholderInRect:(CGRect)rect;
+</code></pre>
+
+<h3>3、第一响应设置</h3>
+
+<pre><code>UIView *inputView;             
+UIView *inputAccessoryView;
+
+BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
+</code></pre>
+
+<h3>4、UIView的UITextField的扩展属性</h3>
+
+<pre><code>- (BOOL)endEditing:(BOOL)force;
+</code></pre>
+
+<h3>5、UITextFieldDelegate代理协议（可选）</h3>
+
+<p>// 返回一个BOOL值，指定是否循序文本字段开始编辑　</p>
+
+<pre><code>- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;        
+</code></pre>
+
+<p>// 开始编辑时触发，文本字段将成为first responder</p>
+
+<pre><code>- (void)textFieldDidBeginEditing:(UITextField *)textField;
+</code></pre>
+
+<p>//返回BOOL值，指定是否允许文本字段结束编辑，当编辑结束，文本字段会让出first responder　要想在用户结束编辑时阻止文本字段消失，可以返回NO.这对一些文本字段必须始终保持活跃状态的程序很有用，比如即时消息</p>
+
+<pre><code>- (BOOL)textFieldShouldEndEditing:(UITextField *)textField;
+</code></pre>
+
+<p>// 结束编辑</p>
+
+<pre><code>- (void)textFieldDidEndEditing:(UITextField *)textField; 
+</code></pre>
+
+<p>//当用户使用自动更正功能，把输入的文字修改为推荐的文字时，就会调用这个方法。　
+//这对于想要加入撤销选项的应用程序特别有用　
+//可以跟踪字段内所做的最后一次修改，也可以对所有编辑做日志记录,用作审计用途。　　
+//要防止文字被改变可以返回NO　
+//这个方法的参数中有一个NSRange对象，指明了被改变文字的位置，建议修改的文本也在其中</p>
+
+<pre><code>- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string; 
+</code></pre>
+
+<p>//返回一个BOOL值指明是否允许根据用户请求清除内容.可以设置在特定条件下才允许清除内容</p>
+
+<pre><code>- (BOOL)textFieldShouldClear:(UITextField *)textField; 
+</code></pre>
+
+<p>//返回一个BOOL值，指明是否允许在按下回车键时结束编辑　</p>
+
+<pre><code>- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 </code></pre>
 ]]></content>
   </entry>
@@ -440,86 +663,6 @@
 <p>// 当前点颜色</p>
 
 <pre><code>UIColor *currentPageIndicatorTintColor;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIDatePicker详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/09/uidatepicker/"/>
-    <updated>2014-01-09T12:33:27+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/09/uidatepicker</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>该的UIDatePicker类实现使用多个车轮转动，以允许用户选择日期和时间的对象。UIDatePicker iPhone的例子是定时器和时钟应用程序的闹钟（设置闹钟）窗格。您也可以使用日期选择器作为一个倒数计时器。</p>
-
-<p>如果配置正确，一个的UIDatePicker对象发送一个动作消息，当一个用户完成旋转的轮子之一更改日期或时间，相关的控制事件是UIControlEventValueChanged 。一个的UIDatePicker对象呈现倒数计时，但没有实现它，应用程序必须设立的NSTimer对象，并为他们倒计数更新秒。</p>
-
-<p>UIDatePicker不是从UIPickerView的继承，而是继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。，但它管理的自定义选择器视图对象作为一个子视图。</p>
-
-<!--more-->
-
-
-<pre><code>typedef enum {
-    //根据区域设置,显示小时,分钟,并指定AM/PM(例如:6|53|PM)
-    UIDatePickerModeTime,
-    //根据区域设置,显示月,日,年(例如:November|15|2007)
-    UIDatePickerModeDate, 
-    //根据区域设置,显示日期(星期,月,日),小时,分钟,并指定AM/PM(例如:Wed Nov 15|6|53|PM)
-    UIDatePickerModeDateAndTime,
-    //显示小时,分钟(例如:1|53)  
-    UIDatePickerModeCountDownTimer
-} UIDatePickerMode;
-</code></pre>
-
-<p>// 设置UIDatePicker的显示模式(默认为UIDatePickerModeDateAndTime)</p>
-
-<pre><code>UIDatePickerMode datePickerMode; 
-</code></pre>
-
-<p>//设置为语言显示</p>
-
-<pre><code>NSLocale   *locale;   
-</code></pre>
-
-<p>// 设置日历</p>
-
-<pre><code>NSCalendar *calendar;
-</code></pre>
-
-<p>// 设置时区</p>
-
-<pre><code>NSTimeZone *timeZone; 
-</code></pre>
-
-<p>// 设置当前显示时间</p>
-
-<pre><code>NSDate *date;
-</code></pre>
-
-<p>//如果animated为YES,时间轮会自动显示新的时间</p>
-
-<pre><code>- (void)setDate:(NSDate *)date animated:(BOOL)animated;        
-</code></pre>
-
-<p>// 设置显示最小时间</p>
-
-<pre><code>NSDate *minimumDate;
-</code></pre>
-
-<p>// 设置显示最大时间（此处为当前时间）</p>
-
-<pre><code>NSDate *maximumDate;
-</code></pre>
-
-<p>//用于UIDatePickerModeCountDownTimer,否则忽略.默认为0.0.最大限制为23:59 (86,399秒)</p>
-
-<pre><code>NSTimeInterval countDownDuration;
-</code></pre>
-
-<p>//设置分钟之间的间隔.间隔必须均匀的分为60.默认为1.最小为1,最大为30</p>
-
-<pre><code>NSInteger      minuteInterval;
 </code></pre>
 ]]></content>
   </entry>

@@ -91,21 +91,21 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<h1 class="title" itemprop="name">iOS组件之UISlider详解</h1>
-	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+	<div class="entry-content" itemprop="articleBody"><h3>引言</h3>
 
 <p>UISlider继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。UISlider对象是用来从一个连续的数值范围内选择单个值的可视化控制。滑块总是显示为水平条形图。一个指标，注意到滑块的当前值，并且可以由用户进行移动来改变该设置。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、设置初始值
 2、改变UISlider的外观
 3、供子类重写的方法
 </code></pre>
 
-<p><strong>1、设置初始值</strong></p>
+<h3>1、设置初始值</h3>
 
 <p>// 指定初始值</p>
 
@@ -122,7 +122,7 @@
 <pre><code>float maximumValue;
 </code></pre>
 
-<p><strong>2、改变UISlider的外观</strong></p>
+<h3>2、改变UISlider的外观</h3>
 
 <p>//  设置滑轮左边图片</p>
 
@@ -204,7 +204,7 @@
 <pre><code>UIImage* currentMaximumTrackImage;
 </code></pre>
 
-<p><strong>3、供子类重写的方法</strong></p>
+<h3>3、供子类重写的方法</h3>
 
 <p>// 以下四种方法用于子类覆盖,用来自定义thumb、track的CGRect</p>
 

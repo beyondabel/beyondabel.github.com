@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS安全攻防 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/iosan-quan-gong-fang/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-03-10T10:35:10+08:00</updated>
+  <updated>2014-04-07T23:44:45+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -18,7 +18,7 @@
     <link href="http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools/"/>
     <updated>2014-02-11T23:32:27+08:00</updated>
     <id>http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools</id>
-    <content type="html"><![CDATA[<p><strong>Hack必备的命令与工具</strong></p>
+    <content type="html"><![CDATA[<h3>Hack必备的命令与工具</h3>
 
 <p>你的应用正在被其他对手反向工程、跟踪和操作！你的应用是否依旧裸奔豪不防御？
 郑重声明一下，懂得如何攻击才会懂得如何防御，一切都是为了之后的防御作准备。废话少说，进入正题。
@@ -27,7 +27,7 @@
 <!--more-->
 
 
-<p><strong>常用的命令和工具</strong></p>
+<h3>常用的命令和工具</h3>
 
 <pre><code>ps           ——显示进程状态，CPU使用率，内存使用情况等
 sysctl       ——检查设定Kernel配置
@@ -102,16 +102,16 @@ ldid -S helloworld
 
 <p>编译Hello world</p>
 
-<p><strong>1.首先找到编译器：</strong></p>
+<h4>1.首先找到编译器：</h4>
 
 <p>arm-apple-darwin10-llvm-gcc-4.2 就是了。
 为了方便起见，可以在.bashrc或者profile 配置下环境变量，方便编译。</p>
 
-<p><strong>2.找到SDK</strong></p>
+<h4>2.找到SDK</h4>
 
 <p>编译我们自己的程序的时候需要指定该目录下的SDK。</p>
 
-<p><strong>3.来个经典Hello world ：</strong></p>
+<h4>3.来个经典Hello world ：</h4>
 
 <pre><code>#include &lt;stdio.h&gt;                                                                                             
 int main(){  
@@ -120,28 +120,28 @@ int main(){
 }  
 </code></pre>
 
-<p><strong>4.编译</strong></p>
+<h4>4.编译</h4>
 
 <p>其中 -isysroot用来指定build时的SDK</p>
 
-<p><strong>5.校验</strong></p>
+<h4>5.校验</h4>
 
 <p>file查看一下类型，没问题。</p>
 
-<p><strong>6.SCP给iPhone、iPad</strong></p>
+<h4>6.SCP给iPhone、iPad</h4>
 
 <p>前提是，设备已经越狱并且安装了SSH,且必须在同一网段。</p>
 
 <pre><code>$scp helloworld root@x.x.x.x:hello world
 </code></pre>
 
-<p><strong>7.登录设备签名</strong></p>
+<h4>7.登录设备签名</h4>
 
 <pre><code>$ssh -l root x.x.x.x
 #ldid -S helloworld
 </code></pre>
 
-<p><strong>8.执行程序</strong></p>
+<h4>8.执行程序</h4>
 
 <pre><code>#./helloworld
 Hello world !!!

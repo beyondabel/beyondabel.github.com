@@ -91,22 +91,23 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<h1 class="title" itemprop="name">iOS组件之UISwitch详解</h1>
-	<div class="entry-content" itemprop="articleBody"><p><strong>引言</strong></p>
+	<div class="entry-content" itemprop="articleBody"><h3>引言</h3>
 
 <p>UISwitch继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）,您可以使用UISwitch类来创建和管理使用开/关按钮。例如，在对选项，如飞行模式和蓝牙设置应用程序。这些对象被称为交换机。</p>
 
 <!--more-->
 
 
-<p><strong>目录</strong></p>
+<h3>目录</h3>
 
 <pre><code>1、基本属性及方法
 2、iOS5新增
 3、iOS6新增
 </code></pre>
 
-<p><strong>1、基本属性及方法</strong>
-// 开关是否打开</p>
+<h3>1、基本属性及方法</h3>
+
+<p>// 开关是否打开</p>
 
 <pre><code>BOOL on;
 </code></pre>
@@ -121,15 +122,16 @@
 <pre><code>- (void)setOn:(BOOL)on animated:(BOOL)animated;
 </code></pre>
 
-<p><strong>2、iOS5新增</strong></p>
+<h3>2、iOS5新增</h3>
 
 <p>// 开关打开时颜色</p>
 
 <pre><code>UIColor *onTintColor;
 </code></pre>
 
-<p><strong>3、iOS6新增</strong>
-// 背影颜色</p>
+<h3>3、iOS6新增</h3>
+
+<p>// 背影颜色</p>
 
 <pre><code>UIColor *tintColor;
 </code></pre>
