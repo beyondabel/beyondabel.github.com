@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-04-08T09:46:39+08:00</updated>
+  <updated>2014-04-08T11:20:28+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -45,24 +45,39 @@
 
 <p>如果你资金充足的话，建议还是去购买正版。如果是练手开发当然就没必须去购买了。</p>
 
-<p>1、安装unity
-2、在finder里找到unity，右键显示包内容，进入Contents/MacOS,找到Unity文件，一会我们要替换它（如果不放心可以县备份一下里面的Unity 文件）
-<img src="http://beyondabel.github.io/images/2014/04/07/1.png" alt="image" />
-3、打开破解文件，用破解文件里的Unity 文件替换MacOS里的Unity文件
-4、运行unity，点最右边的Manuak Activation按钮，然后选择load License找到破解文件里的Unity_v4.x.ulf，选择，成功后会提示载入成功</p>
+<ul>
+<li>1、下载Unity3D破解文件（这里给一个下载地址：<a href="http://pan.baidu.com/s/1gdoUvbt%EF%BC%89">http://pan.baidu.com/s/1gdoUvbt%EF%BC%89</a></li>
+<li>2、在finder里找到unity，右键显示包内容，进入Contents/MacOS,找到Unity文件，一会我们要替换它（如果不放心可以县备份一下里面的Unity 文件）</li>
+</ul>
+
+
+<p><img src="http://beyondabel.github.io/images/2014/04/07/1.png" alt="image" /></p>
+
+<ul>
+<li>3、打开破解文件，用破解文件里的Unity 文件替换MacOS里的Unity文件</li>
+<li>4、运行unity，点最右边的Manuak Activation按钮，然后选择load License找到破解文件里的Unity_v4.x.ulf，选择，成功后会提示载入成功</li>
+</ul>
+
 
 <p><img src="http://beyondabel.github.io/images/2014/04/07/2.png" alt="image" /></p>
 
 <p><img src="http://beyondabel.github.io/images/2014/04/07/3.png" alt="image" /></p>
 
-<p><img src="http://beyondabel.github.io/images/2014/04/07/4.png" alt="image" />
-破解成功的标志：
-1、运行Unity后没有其他乱七八糟的提示。
-2、点击状态栏的Unity，破解不成功的话有些选项是灰色不可点击的，例如About Unity&hellip;等</p>
+<p><img src="http://beyondabel.github.io/images/2014/04/07/4.png" alt="image" /></p>
 
-<p><img src="http://beyondabel.github.io/images/2014/04/07/5.png" alt="image" />
-3、点击About Unity&hellip;后会出现各种pro
-<img src="http://beyondabel.github.io/images/2014/04/07/6.png" alt="image" /></p>
+<p>破解成功的标志：</p>
+
+<ul>
+<li>1、运行Unity后没有其他乱七八糟的提示。</li>
+<li>2、点击状态栏的Unity，破解不成功的话有些选项是灰色不可点击的，例如About Unity&hellip;等</li>
+</ul>
+
+
+<p><img src="http://beyondabel.github.io/images/2014/04/07/5.png" alt="image" /></p>
+
+<h2>&ndash; 3、点击About Unity&hellip;后会出现各种pro</h2>
+
+<p><img src="http://beyondabel.github.io/images/2014/04/07/6.png" alt="image" /></p>
 
 <p>这就说明你已经破解成功了</p>
 ]]></content>
