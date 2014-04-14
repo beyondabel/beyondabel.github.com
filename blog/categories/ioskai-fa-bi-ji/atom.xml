@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS开发笔记 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioskai-fa-bi-ji/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-04-08T11:20:28+08:00</updated>
+  <updated>2014-04-14T23:54:49+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -285,6 +285,32 @@ M/D/YYYY H:MM     12/7/1958 20:50
 <h4>3、While reading /Users/abel/.……..png pngcrush caught libpng error:   Not a PNG filCould not find file: /Users/abel/Library/Developer/Xcode/.…..Default.pngCommand /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/copypng emitted errors but did not return a nonzero exit code to indicate failure</h4>
 
 <pre><code>报这个错误是因为我把一张本身为jpg的图片的名字修改成png后缀了。
+
+
+將 Xcode 升级到最新的 5.1，在使用AFNetworking时遇到了 property synthesis 相关的 error，错误信息如下：
+</code></pre>
+
+<h4>4、Auto property synthesis will not synthesize property &lsquo;request&rsquo; because it is &lsquo;readwrite&rsquo; but it will be synthesized &lsquo;readonly&rsquo; via another property</h4>
+
+<pre><code>Auto property synthesis will not synthesize property 'response' because it is 'readwrite' but it will be synthesized 'readonly' via another property
+</code></pre>
+
+<p>在AFHTTPRequestOperation中定义了：</p>
+
+<pre><code>@property (readwrite, nonatomic, strong) NSURLRequest *request;
+@property (readwrite, nonatomic, strong) NSHTTPURLResponse *response;
+</code></pre>
+
+<p>就是这样的代码，会让 <code>request property</code> 出现 warning。原因是因为 compiler 读取 sub-class 時，会发现 request 明明应该是個 readonly property（super-class 讲的），但你却要将它设为 readwriteproperty，所以 compiler 不知道该怎么 auto synthesis。</p>
+
+<p>但你知道 super-class 的实现，也会将这个 property 改成 readwrite，因此你在 sub-class 的实现里这样子写是不会有问题的。可是 compiler 不知道啊，這要怎么办呢？</p>
+
+<p>你要告诉 compiler，要它不用担心。那要怎么告诉 compiler 呢？你需要的是 @dynamic，它是一种给 compiler 的「承诺」，承诺它「虽然你现在不知道该怎么办，但是在 runtime 的时候你就会知道了」。所以只要把代码改成以下这样就可以了：</p>
+
+<pre><code>@implementation AFHTTPRequestOperation
+@dynamic response;
+@dynamic request;
+@end
 </code></pre>
 ]]></content>
   </entry>
