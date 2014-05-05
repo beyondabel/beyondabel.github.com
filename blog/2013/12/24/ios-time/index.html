@@ -9,8 +9,20 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="iOS时间相关各种技巧 一、通过自带的日历得到年月日、时间、以及星期 NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-NSDate *now; &hellip;">
+	<meta name="description" content="iOS时间相关各种技巧 一、通过自带的日历得到年月日、时间、以及星期 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,105 +109,189 @@ NSDate *now; &hellip;">
 <!--more-->
 
 
-<pre><code>NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-NSDate *now;
-NSDateComponents *comps = [[NSDateComponents alloc] init];
-NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | 
-                                     NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-now=[NSDate date];
-comps = [calendar components:unitFlags fromDate:now];
-week = [comps weekday];    
-month = [comps month];
-day = [comps day];
-hour = [comps hour];
-min = [comps minute];
-sec = [comps second];
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSCalendar</span> <span class="o">*</span><span class="n">calendar</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSCalendar</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithCalendarIdentifier:</span><span class="n">NSGregorianCalendar</span><span class="p">];</span>
+</span><span class='line'><span class="n">NSDate</span> <span class="o">*</span><span class="n">now</span><span class="p">;</span>
+</span><span class='line'><span class="n">NSDateComponents</span> <span class="o">*</span><span class="n">comps</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateComponents</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'><span class="n">NSInteger</span> <span class="n">unitFlags</span> <span class="o">=</span> <span class="n">NSYearCalendarUnit</span> <span class="o">|</span> <span class="n">NSMonthCalendarUnit</span> <span class="o">|</span> <span class="n">NSDayCalendarUnit</span> <span class="o">|</span> <span class="n">NSWeekdayCalendarUnit</span> <span class="o">|</span>
+</span><span class='line'>                                     <span class="n">NSHourCalendarUnit</span> <span class="o">|</span> <span class="n">NSMinuteCalendarUnit</span> <span class="o">|</span> <span class="n">NSSecondCalendarUnit</span><span class="p">;</span>
+</span><span class='line'><span class="n">now</span><span class="o">=</span><span class="p">[</span><span class="n">NSDate</span> <span class="n">date</span><span class="p">];</span>
+</span><span class='line'><span class="n">comps</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">components:</span><span class="n">unitFlags</span> <span class="nl">fromDate:</span><span class="n">now</span><span class="p">];</span>
+</span><span class='line'><span class="n">week</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">weekday</span><span class="p">];</span>
+</span><span class='line'><span class="n">month</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">month</span><span class="p">];</span>
+</span><span class='line'><span class="n">day</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">day</span><span class="p">];</span>
+</span><span class='line'><span class="n">hour</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">hour</span><span class="p">];</span>
+</span><span class='line'><span class="n">min</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">minute</span><span class="p">];</span>
+</span><span class='line'><span class="n">sec</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">second</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><strong>二、世界标准时间UTC /GMT 转为当前系统时区对应的时间</strong></p>
 
-<pre><code>- (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
-{
-    //设置源日期时区
-    NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];//或GMT
-    //设置转换后的目标日期时区
-    NSTimeZone* destinationTimeZone = [NSTimeZone localTimeZone];
-    //得到源日期与世界标准时间的偏移量
-    NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:anyDate];
-    //目标日期与本地时区的偏移量
-    NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:anyDate];
-    //得到时间偏移量的差值
-    NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
-    //转为现在时间
-    NSDate* destinationDateNow = [[[NSDate alloc] initWithTimeInterval:interval sinceDate:anyDate] autorelease];
-    return destinationDateNow;
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nf">getNowDateFromatAnDate:</span><span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nv">anyDate</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="c1">//设置源日期时区</span>
+</span><span class='line'>  <span class="n">NSTimeZone</span><span class="o">*</span> <span class="n">sourceTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSTimeZone</span> <span class="nl">timeZoneWithAbbreviation:</span><span class="s">@&quot;UTC&quot;</span><span class="p">];</span><span class="c1">//或GMT</span>
+</span><span class='line'>  <span class="c1">//设置转换后的目标日期时区</span>
+</span><span class='line'>  <span class="n">NSTimeZone</span><span class="o">*</span> <span class="n">destinationTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSTimeZone</span> <span class="n">localTimeZone</span><span class="p">];</span>
+</span><span class='line'>  <span class="c1">//得到源日期与世界标准时间的偏移量</span>
+</span><span class='line'>  <span class="n">NSInteger</span> <span class="n">sourceGMTOffset</span> <span class="o">=</span> <span class="p">[</span><span class="n">sourceTimeZone</span> <span class="nl">secondsFromGMTForDate:</span><span class="n">anyDate</span><span class="p">];</span>
+</span><span class='line'>  <span class="c1">//目标日期与本地时区的偏移量</span>
+</span><span class='line'>  <span class="n">NSInteger</span> <span class="n">destinationGMTOffset</span> <span class="o">=</span> <span class="p">[</span><span class="n">destinationTimeZone</span> <span class="nl">secondsFromGMTForDate:</span><span class="n">anyDate</span><span class="p">];</span>
+</span><span class='line'>  <span class="c1">//得到时间偏移量的差值</span>
+</span><span class='line'>  <span class="n">NSTimeInterval</span> <span class="n">interval</span> <span class="o">=</span> <span class="n">destinationGMTOffset</span> <span class="o">-</span> <span class="n">sourceGMTOffset</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">//转为现在时间</span>
+</span><span class='line'>  <span class="n">NSDate</span><span class="o">*</span> <span class="n">destinationDateNow</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">NSDate</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTimeInterval:</span><span class="n">interval</span> <span class="nl">sinceDate:</span><span class="n">anyDate</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">destinationDateNow</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><strong>三、NSString格式转化为NSDate</strong></p>
 
-<pre><code>- (NSDate *)stringToDate:(NSString *)strdate
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatteralloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];// NSString的时间格式
-    NSDate *retdate = [dateFormatter dateFromString:strdate];
-    [dateFormatter release];
-    return retdate;
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nf">stringToDate:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">strdate</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatteralloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span><span class="c1">// NSString的时间格式</span>
+</span><span class='line'>  <span class="n">NSDate</span> <span class="o">*</span><span class="n">retdate</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString:</span><span class="n">strdate</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">release</span><span class="p">];</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">retdate</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><strong>四、NSDate转化为NSString</strong></p>
 
-<pre><code>- (NSString *)dateToString:(NSDate *)date
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatteralloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString *strDate = [dateFormatter stringFromDate:date];
-    [dateFormatter release];
-    return strDate;
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">dateToString:</span><span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nv">date</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatteralloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">strDate</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate:</span><span class="n">date</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">release</span><span class="p">];</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">strDate</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><strong>五、将本地日期字符串转为UTC日期字符串</strong></p>
 
-<pre><code>//本地日期格式:2013-08-03 12:53:51
-//可自行指定输入输出格式
--(NSString *)getUTCFormateLocalDate:(NSString *)localDate
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //输入格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">//本地日期格式:2013-08-03 12:53:51</span>
+</span><span class='line'><span class="c1">//可自行指定输入输出格式</span>
+</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">getUTCFormateLocalDate:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">localDate</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="c1">//输入格式</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">NSDate</span> <span class="o">*</span><span class="n">dateFormatted</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString:</span><span class="n">localDate</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSTimeZone</span> <span class="o">*</span><span class="n">timeZone</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSTimeZone</span> <span class="nl">timeZoneWithName:</span><span class="s">@&quot;UTC&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setTimeZone:</span><span class="n">timeZone</span><span class="p">];</span>
+</span><span class='line'>  <span class="c1">//输出格式</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">dateString</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate:</span><span class="n">dateFormatted</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">release</span><span class="p">];</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">dateString</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    NSDate *dateFormatted = [dateFormatter dateFromString:localDate];
-    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-    [dateFormatter setTimeZone:timeZone];
-    //输出格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-    NSString *dateString = [dateFormatter stringFromDate:dateFormatted];
-    [dateFormatter release];
-    return dateString;
-}
-</code></pre>
 
 <p><strong>六、将UTC日期字符串转为本地时间字符串</strong></p>
 
-<pre><code>//输入的UTC日期格式2013-08-03T04:53:51+0000
--(NSString *)getLocalDateFormateUTCDate:(NSString *)utcDate
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //输入格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZ"];
-    NSTimeZone *localTimeZone = [NSTimeZone localTimeZone];
-    [dateFormatter setTimeZone:localTimeZone];
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">//输入的UTC日期格式2013-08-03T04:53:51+0000</span>
+</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">getLocalDateFormateUTCDate:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">utcDate</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="c1">//输入格式</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSTimeZone</span> <span class="o">*</span><span class="n">localTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSTimeZone</span> <span class="n">localTimeZone</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setTimeZone:</span><span class="n">localTimeZone</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">NSDate</span> <span class="o">*</span><span class="n">dateFormatted</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString:</span><span class="n">utcDate</span><span class="p">];</span>
+</span><span class='line'>  <span class="c1">//输出格式</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">dateString</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate:</span><span class="n">dateFormatted</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">release</span><span class="p">];</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">dateString</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    NSDate *dateFormatted = [dateFormatter dateFromString:utcDate];
-    //输出格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:dateFormatted];
-    [dateFormatter release];
-    return dateString;
-}
-</code></pre>
 
 <p><strong>七、iOS开发之格式化日期时间</strong></p>
 

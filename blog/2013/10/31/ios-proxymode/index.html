@@ -145,77 +145,138 @@
 
 <p>新建一个Servant协议类</p>
 
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-@protocol ServantProtocol &lt;NSObject&gt;
-- (void) finishedBuyWater;
-- (void) finishedBuyWaterError;
-@end
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#import &lt;Foundation/Foundation.h&gt;</span>
+</span><span class='line'><span class="k">@protocol</span> <span class="nc">ServantProtocol</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">finishedBuyWater</span><span class="p">;</span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWaterError</span><span class="p">;</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-新建一个仆人Servant类，.h文件如下：
+<p></p>
 
-#import &lt;Foundation/Foundation.h&gt;
-#import "ServantProtocol.h"
+<p>新建一个仆人Servant类，.h文件如下：</p>
 
-@interface Servant : NSObject
-@property (nonatomic,assign) id&lt;ServantProtocol&gt; delegate;
-- (void) buyWater;
-@end
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'> <span class="err">#</span><span class="n">import</span> <span class="o">&lt;</span><span class="n">Foundation</span><span class="o">/</span><span class="n">Foundation</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="err">#</span><span class="n">import</span> <span class="s">&quot;ServantProtocol.h&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">@interface</span> <span class="nc">Servant</span> : <span class="nc">NSObject</span>
+</span><span class='line'>  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">assign</span><span class="p">)</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">ServantProtocol</span><span class="o">&gt;</span> <span class="n">delegate</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">buyWater</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>.m文件如下：</p>
 
-<pre><code>#import "Servant.h"
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#import &quot;Servant.h&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@implementation</span> <span class="nc">Servant</span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">buyWater:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">money</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">money</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">delegate</span> <span class="n">finishedBuyWater</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class='line'>      <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">delegate</span> <span class="n">finishedBuyWaterError</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-@implementation Servant
-- (void) buyWater:(NSInteger)money
-{
-    if (money &gt; 2) {
-        [self.delegate finishedBuyWater];
-    }else{
-        [self.delegate finishedBuyWaterError];
-    }
-}
-@end
-</code></pre>
 
 <p>新建一个Master类，.h文件如下：</p>
 
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-#import "ServantProtocol.h"
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#import &lt;Foundation/Foundation.h&gt;</span>
+</span><span class='line'><span class="cp">#import &quot;ServantProtocol.h&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@interface</span> <span class="nc">Master</span> : <span class="nc">NSObject</span><span class="o">&lt;</span><span class="n">ServantProtocol</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">drinkWater</span><span class="p">;</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-@interface Master : NSObject&lt;ServantProtocol&gt;
-- (void) drinkWater;
-@end
-</code></pre>
 
 <p>.m文件如下：</p>
 
-<pre><code>#import "Master.h"
-#import "Servant.h"
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#import &quot;Master.h&quot;</span>
+</span><span class='line'><span class="cp">#import &quot;Servant.h&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@implementation</span> <span class="nc">Master</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">drinkWater</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">Servant</span> <span class="o">*</span> <span class="n">servant</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Servant</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">servant</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">// 命令仆人去买水</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">servant</span> <span class="n">buyWater</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#pragma mark - ServantProtocol</span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWater</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;完成买水&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWaterError</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;买水出错&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-@implementation Master
-
-- (void) drinkWater
-{
-    Servant * servant = [[Servant alloc] init];
-    servant.delegate = self;
-    // 命令仆人去买水
-    [servant buyWater];
-}
-
-#pragma mark - ServantProtocol
-- (void) finishedBuyWater
-{
-    NSLog(@"完成买水");
-}
-
-- (void) finishedBuyWaterError
-{
-    NSLog(@"买水出错");
-}
-@end
-</code></pre>
 </div>
 
 </article>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS常用设计模式 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioschang-yong-she-ji-mo-shi/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-04-14T23:54:49+08:00</updated>
+  <updated>2014-05-05T15:03:32+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -66,18 +66,23 @@
 
 <p>现在我们用Objective-C来实现这个过程</p>
 
-<p>新建一个Servant协议类</p>
+<p>新建一个Servant协议类
+```objc</p>
 
 <pre><code>#import &lt;Foundation/Foundation.h&gt;
 @protocol ServantProtocol &lt;NSObject&gt;
 - (void) finishedBuyWater;
 - (void) finishedBuyWaterError;
 @end
+</code></pre>
 
+<p>```</p>
 
-新建一个仆人Servant类，.h文件如下：
+<p>新建一个仆人Servant类，.h文件如下：</p>
 
-#import &lt;Foundation/Foundation.h&gt;
+<p>```objc</p>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
 #import "ServantProtocol.h"
 
 @interface Servant : NSObject
@@ -86,7 +91,10 @@
 @end
 </code></pre>
 
-<p>.m文件如下：</p>
+<p>```</p>
+
+<p>.m文件如下：
+```objc</p>
 
 <pre><code>#import "Servant.h"
 
@@ -102,7 +110,10 @@
 @end
 </code></pre>
 
-<p>新建一个Master类，.h文件如下：</p>
+<p>```</p>
+
+<p>新建一个Master类，.h文件如下：
+```objc</p>
 
 <pre><code>#import &lt;Foundation/Foundation.h&gt;
 #import "ServantProtocol.h"
@@ -112,7 +123,9 @@
 @end
 </code></pre>
 
-<p>.m文件如下：</p>
+<p><code>
+.m文件如下：
+</code>objc</p>
 
 <pre><code>#import "Master.h"
 #import "Servant.h"
@@ -139,6 +152,8 @@
 }
 @end
 </code></pre>
+
+<p>```</p>
 ]]></content>
   </entry>
   
@@ -179,7 +194,8 @@
 
 <h3>3、Objective-C中单例模式的实现</h3>
 
-<p>在《设计模式》一书中的原始示例中，单例模式的C++例子如下所求：</p>
+<p>在《设计模式》一书中的原始示例中，单例模式的C++例子如下所求：
+```objc</p>
 
 <pre><code>class Singleton
 {
@@ -201,16 +217,20 @@ Singleton *Singleton::Instance()
 }
 </code></pre>
 
-<p>知道C++语言的人都能看出来，在上面的C++代码Instance()方法中，检查静态的_instance实例变量，看它是否为0，如果是，会生成一个新的Singleton对象，然后将实例返回，现在我们把它改造成Objective-C版。</p>
+<p>```
+知道C++语言的人都能看出来，在上面的C++代码Instance()方法中，检查静态的_instance实例变量，看它是否为0，如果是，会生成一个新的Singleton对象，然后将实例返回，现在我们把它改造成Objective-C版。</p>
 
-<p>那么用Objective-C如何实现单例模式呢？下面我们来新建一个Singleton类，在Singleton.h中实现如下</p>
+<p>那么用Objective-C如何实现单例模式呢？下面我们来新建一个Singleton类，在Singleton.h中实现如下
+```objc</p>
 
 <pre><code>@interface Singleton : NSObject 
 + (Singleton *) sharedInstance;
 @end 
 </code></pre>
 
-<p>在Singleton.m</p>
+<p><code>
+在Singleton.m
+</code>objc</p>
 
 <pre><code>@implementation Singleton 
 static Singleton * sharedSingleton = nil;
@@ -224,13 +244,15 @@ static Singleton * sharedSingleton = nil;
 @end 
 </code></pre>
 
-<p>按照C++改造成Objective-C就完成了。如果真是这样的话，那么单例模式真的是太简单了，但实际上，需要克服一些障碍，才能让单例模式更可靠，可以真正放心地应用于程序中。如果需要实现一个“严格”的单例模式，还需要面对两个主要的障碍。</p>
+<p>```
+按照C++改造成Objective-C就完成了。如果真是这样的话，那么单例模式真的是太简单了，但实际上，需要克服一些障碍，才能让单例模式更可靠，可以真正放心地应用于程序中。如果需要实现一个“严格”的单例模式，还需要面对两个主要的障碍。</p>
 
 <pre><code>发起调用的对象不能以其他分配方式实例化对象。否则，就有可能创建多个单例实例。
 对单例对象实例化的限制应该与引用计数内存模型共存。
 </code></pre>
 
-<p>下面我对<code>Singleton.m</code>的进行改进</p>
+<p>下面我对<code>Singleton.m</code>的进行改进
+```objc</p>
 
 <pre><code>@implementation Singleton  
  static Singleton * sharedSingleton = nil;  
@@ -268,7 +290,8 @@ static Singleton * sharedSingleton = nil;
 @end 
 </code></pre>
 
-<p>也许你注意到了，我重载了<code>allocWithZone:</code>，保持了从<code>sharedInstance</code>方法返回的单例对象，使用者哪怕使用<code>alloc</code>时也会返回唯一的实例（<code>alloc</code>方法中会先调用<code>allocWithZone:</code>创建对象）。而<code>retain</code>等内存管理的函数也被重载了，这样实现了合适的内存管理原则。</p>
+<p><code>
+也许你注意到了，我重载了</code>allocWithZone:<code>``，保持了从</code>sharedInstance<code>方法返回的单例对象，使用者哪怕使用</code>alloc<code>时也会返回唯一的实例（</code>alloc<code>方法中会先调用</code>allocWithZone:<code>创建对象）。而</code>retain`等内存管理的函数也被重载了，这样实现了合适的内存管理原则。</p>
 
 <h3>4、线程安全</h3>
 

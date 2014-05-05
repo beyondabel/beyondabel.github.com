@@ -100,7 +100,7 @@
 <!--more-->
 
 
-<h4>1、#import与#include的区别，以及@class</h4>
+<h3>1、#import与#include的区别，以及@class</h3>
 
 <ul>
 <li>1.import会包含这个类的所有信息，包括实体变量和方法，而@class只是告诉编译器，其后面声明的名称是类的名称，至于这些类是如何定义的，暂时不用考虑，后面会再告诉你。</li>
@@ -117,7 +117,7 @@
 
 <p><code>#import</code>处理了重复引用的问题，还有一个用法会引起编译错误的就是在ClassA中<code>#import ClassB</code> 在ClassB中#import ClassA（交叉编译）那么在编译的时候也会出现未知错误。</p>
 
-<h4>2、堆和栈的区别?定义一个变量时，这个变量是在堆上还是在栈上？什么时候这个变量的内存会被释放？</h4>
+<h3>2、堆和栈的区别?定义一个变量时，这个变量是在堆上还是在栈上？什么时候这个变量的内存会被释放？</h3>
 
 <p>预备知识—程序的内存分配</p>
 
@@ -134,22 +134,40 @@
 
 <p>例子程序，这是一个前辈写的，非常详细</p>
 
-<pre><code>//main.cpp 
-int a = 0; 全局初始化区 
-char *p1; 全局未初始化区 
-main() 
-{ 
-    int b; 栈 
-    char s[] = "abc"; 栈 
-    char *p2; 栈 
-    char *p3 = "123456"; 123456\0在常量区，p3在栈上。 
-    static int c =0； 全局（静态）初始化区 
-    p1 = (char *)malloc(10); 
-    p2 = (char *)malloc(20); 
-    分配得来得10和20字节的区域就在堆区。 
-    strcpy(p1, "123456"); 123456\0放在常量区，编译器可能会将它与p3所指向的"123456" 优化成一个地方。 
-} 
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">//main.cpp </span>
+</span><span class='line'><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="err">全局初始化区</span>
+</span><span class='line'><span class="kt">char</span> <span class="o">*</span><span class="n">p1</span><span class="p">;</span> <span class="err">全局未初始化区</span>
+</span><span class='line'><span class="n">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">b</span><span class="p">;</span> <span class="err">栈</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span> <span class="err">栈</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">p2</span><span class="p">;</span> <span class="err">栈</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">p3</span> <span class="o">=</span> <span class="s">&quot;123456&quot;</span><span class="p">;</span> <span class="mi">123456</span><span class="err">\</span><span class="mi">0</span><span class="err">在常量区，</span><span class="n">p3</span><span class="err">在栈上。</span>
+</span><span class='line'>  <span class="k">static</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span><span class="mi">0</span><span class="err">；</span> <span class="err">全局（静态）初始化区</span>
+</span><span class='line'>  <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+</span><span class='line'>  <span class="err">分配得来得</span><span class="mi">10</span><span class="err">和</span><span class="mi">20</span><span class="err">字节的区域就在堆区。</span>
+</span><span class='line'>  <span class="n">strcpy</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="s">&quot;123456&quot;</span><span class="p">);</span> <span class="mi">123456</span><span class="err">\</span><span class="mi">0</span><span class="err">放在常量区，编译器可能会将它与</span><span class="n">p3</span><span class="err">所指向的</span><span class="s">&quot;123456&quot;</span> <span class="err">优化成一个地方。</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
 
 <p>堆和栈的理论知识</p>
 
@@ -208,32 +226,55 @@ main()
 
 <p>  但是，在以后的存取中，在栈上的数组比指针所指向的字符串(例如堆)快。</p>
 
-<p>  比如：</p>
+<p>  比如：</p></li>
+</ul>
 
-<pre><code>  #include 
-  void main() 
-  { 
-      char a = 1; 
-      char c[] = "1234567890"; 
-      char *p ="1234567890"; 
-      a = c[1]; 
-      a = p[1]; 
-  return; 
-  } 
-</code></pre>
 
-<p>  对应的汇编代码</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'> <span class="err">#</span><span class="n">include</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="n">main</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">char</span> <span class="n">c</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;1234567890&quot;</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span><span class="s">&quot;1234567890&quot;</span><span class="p">;</span>
+</span><span class='line'>      <span class="n">a</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>      <span class="n">a</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>      <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>  10: a = c[1]; 
-  00401067 8A 4D F1 mov cl,byte ptr [ebp-0Fh] 
-  0040106A 88 4D FC mov byte ptr [ebp-4],cl 
-  11: a = p[1]; 
-  0040106D 8B 55 EC mov edx,dword ptr [ebp-14h] 
-  00401070 8A 42 01 mov al,byte ptr [edx+1] 
-  00401073 88 45 FC mov byte ptr [ebp-4],al 
-</code></pre>
 
-<p>  第一种在读取时直接就把字符串中的元素读到寄存器cl中，而第二种则要先把指针值读到edx中，再根据edx读取字符，显然慢了。</p></li>
+<p>对应的汇编代码</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'> <span class="mi">10</span><span class="o">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="mo">00401067</span> <span class="mi">8</span><span class="n">A</span> <span class="mi">4</span><span class="n">D</span> <span class="n">F1</span> <span class="n">mov</span> <span class="n">cl</span><span class="p">,</span><span class="n">byte</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mf">0F</span><span class="n">h</span><span class="p">]</span>
+</span><span class='line'>  <span class="mo">0040106</span><span class="n">A</span> <span class="mi">88</span> <span class="mi">4</span><span class="n">D</span> <span class="n">FC</span> <span class="n">mov</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span><span class="n">cl</span>
+</span><span class='line'>  <span class="mi">11</span><span class="o">:</span> <span class="n">a</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="mo">0040106</span><span class="n">D</span> <span class="mi">8</span><span class="n">B</span> <span class="mi">55</span> <span class="n">EC</span> <span class="n">mov</span> <span class="n">edx</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">14</span><span class="n">h</span><span class="p">]</span>
+</span><span class='line'>  <span class="mo">00401070</span> <span class="mi">8</span><span class="n">A</span> <span class="mi">42</span> <span class="mo">01</span> <span class="n">mov</span> <span class="n">al</span><span class="p">,</span><span class="n">byte</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">edx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>  <span class="mo">00401073</span> <span class="mi">88</span> <span class="mi">45</span> <span class="n">FC</span> <span class="n">mov</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span><span class="n">al</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第一种在读取时直接就把字符串中的元素读到寄存器cl中，而第二种则要先把指针值读到edx中，再根据edx读取字符，显然慢了。</p>
+
+<ul>
 <li><p>小结：</p>
 
 <p>  堆和栈的区别可以用如下的比喻来看出：</p>
@@ -244,7 +285,7 @@ main()
 </ul>
 
 
-<h4>3、进程和线程的区别</h4>
+<h3>3、进程和线程的区别</h3>
 
 <ul>
 <li><p>通俗的解释</p>

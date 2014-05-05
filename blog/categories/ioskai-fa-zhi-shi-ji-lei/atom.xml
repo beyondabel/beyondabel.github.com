@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS开发知识积累 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioskai-fa-zhi-shi-ji-lei/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-04-14T23:54:49+08:00</updated>
+  <updated>2014-05-05T15:03:32+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -76,7 +76,8 @@
 
 <h4>4、 ARC &amp; MAC 在大量数据下的测试</h4>
 
-<p>下面举一个例子，同样的代码，只是在「ARC」与「MRC」的情況下编译执行， 但是二者所需要的时间是相差数倍的！</p>
+<p>下面举一个例子，同样的代码，只是在「ARC」与「MRC」的情況下编译执行， 但是二者所需要的时间是相差数倍的！
+```objc</p>
 
 <pre><code>int n = 600000, m = 10000000;
 arr = [NSMutableArray new];
@@ -98,7 +99,8 @@ NSLog(@"end:%lf, start:%lf, diff:%lf", end, start, end - start);
 [arr release]; // -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行
 </code></pre>
 
-<p>执行结果：</p>
+<p>```
+执行结果：</p>
 
 <pre><code>MRC:  end:358178433.846184, start:358178433.753032, diff:0.093152
 ARC:    end:358178929.480108, start:358178928.841418, diff:0.638690
@@ -146,7 +148,8 @@ for (int j = 0; j &lt; m; j++){
 
 <p>在OC和FC之间进行转化的时候，主要是对象的归属问题。共有两种方式：</p>
 
-<p>1、使用宏，可以标识归属者从OC到CF，还是从CF到OC。</p>
+<p>1、使用宏，可以标识归属者从OC到CF，还是从CF到OC。
+```objc</p>
 
 <pre><code>NS_INLINE CFTypeRef CFBridgingRetain(id X) { 
     return (__bridge_retain CFTypeRef)X; 
@@ -157,7 +160,9 @@ NS_INLINE id CFBridgingRelease(CFTypeRef X) {
 }
 </code></pre>
 
-<p>2、使用转化符,如：<code>__bridge</code>，<code>__bridge_transfer</code>，<code>__bridge_retained</code></p>
+<p><code>
+2、使用转化符,如：`__bridge`，`__bridge_transfer`，`__bridge_retained`
+</code>objc</p>
 
 <pre><code>id my_id; 
 CFStringRef my_cfref; 
@@ -169,9 +174,11 @@ NSString   *c = (__bridge_transfer NSString*)my_cfref; // -1 on the CFRef
 CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
 </code></pre>
 
-<p>下面以详细的例子来介绍一下OC和CF在arc下内存管理的详细写法.下面以CFURLCreateStringByAddingPercentEscapes()函数为例说一下在ARC下的写法和非ARC下的写法。</p>
+<p>```
+下面以详细的例子来介绍一下OC和CF在arc下内存管理的详细写法.下面以CFURLCreateStringByAddingPercentEscapes()函数为例说一下在ARC下的写法和非ARC下的写法。</p>
 
-<p>非ARC模式下的写法：</p>
+<p>非ARC模式下的写法：
+```objc</p>
 
 <pre><code>#pragma mark – View lifecycle 
 - (void)viewDidLoad { 
@@ -183,11 +190,13 @@ CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
 }
 </code></pre>
 
-<p>使用instruments检测，没有内存泄漏。</p>
+<p>```
+使用instruments检测，没有内存泄漏。</p>
 
 <p>下面把上面工程改为arc模式。</p>
 
-<p>可以看到xcode自动把上面函数转化为：</p>
+<p>可以看到xcode自动把上面函数转化为：
+```objc</p>
 
 <pre><code>#pragma mark – View lifecycle 
 - (void)viewDidLoad { 
@@ -199,7 +208,8 @@ CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
 }
 </code></pre>
 
-<p>在arc中，CF和OC之间的转化桥梁是 __bridge，有两种方式：</p>
+<p>```
+在arc中，CF和OC之间的转化桥梁是 __bridge，有两种方式：</p>
 
 <ul>
 <li>__bridge_transfer  ARC接管管理内存</li>
@@ -209,25 +219,30 @@ CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
 
 <p>上面的方法是从CF转化为OC NSString对象，使用的__bridge_transfer ，对象所有者发生转变，由CF到OC，最后由ARC接管内存管理。运行上面的代码，用instruments检测，是没有内存泄漏的。</p>
 
-<p>上面代码等同于：</p>
+<p>上面代码等同于：
+```objc</p>
 
 <pre><code>- (NSString *)escape:(NSString *)text { 
     return CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)text,NULL,CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
 }
 </code></pre>
 
-<p>如果将上述代码改为：</p>
+<p><code>
+如果将上述代码改为：
+</code>objc</p>
 
 <pre><code>-(NSString *)escape:(NSString *)text { 
     return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text, NULL, CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));; 
 }
 </code></pre>
 
-<p>编译也会成功，但是这时候用instruments检测，可以发现内存泄漏：</p>
+<p>```
+编译也会成功，但是这时候用instruments检测，可以发现内存泄漏：</p>
 
 <p>由于CF转化完OC，没有自己释放内存，同时也没有把内存管理交给ARC，所以出现内存泄漏。由于__bridge只是同一个对象的引用，内存的所有权没有发生变化。</p>
 
-<p>下面在说一下oc到CF的转化，需要把OC的内存管理权释放掉。</p>
+<p>下面在说一下oc到CF的转化，需要把OC的内存管理权释放掉。
+```objc</p>
 
 <pre><code>NSString *s1 = [[NSString alloc] initWithFormat:@"Hello, %@!", name]; 
 CFStringRef s2 = (__bridge_retained CFStringRef)s1; 
@@ -235,16 +250,19 @@ CFStringRef s2 = (__bridge_retained CFStringRef)s1;
 CFRelease(s2);
 </code></pre>
 
-<p>最后由CF进行内存释放。</p>
+<p>```
+最后由CF进行内存释放。</p>
 
-<p>上面代码等同于：</p>
+<p>上面代码等同于：
+```objc</p>
 
 <pre><code>CFStringRef s2 = CFBridgingRetain(s1); 
 // . . . 
 CFRelease(s2);
 </code></pre>
 
-<p>下面总结一下我们使用ARC情况下。oc和CF互相转化的原则：</p>
+<p>```
+下面总结一下我们使用ARC情况下。oc和CF互相转化的原则：</p>
 
 <ul>
 <li>CF转化为OC时，并且对象的所有者发生改变，则使用<code>CFBridgingRelease()</code>或<code>__bridge_transfer</code> 。</li>
@@ -403,7 +421,8 @@ int resut = hbFunction(10);   // 函数调用
 
 <h5>3、如何调用Blocks</h5>
 
-<p>主动调用一下：</p>
+<p>主动调用一下：
+```objc</p>
 
 <pre><code>- (void)someMethod
 {
@@ -415,7 +434,9 @@ int resut = hbFunction(10);   // 函数调用
 }
 </code></pre>
 
-<p>作为参数返回：</p>
+<p><code>
+作为参数返回：
+</code>objc</p>
 
 <pre><code>typedef void (^BoolBlock)(BOOL);
 - (BoolBlock)foo()
@@ -427,19 +448,28 @@ int resut = hbFunction(10);   // 函数调用
 }
 </code></pre>
 
-<p>类的一个成员：</p>
+<p><code>
+类的一个成员：
+</code>objc</p>
 
 <pre><code>@interface OBJ1 : NSObject
 @property (nonatomic, copy)BoolBlock block;//理由同上啊，同学们
 @end
+</code></pre>
 
-OBJ1 *obj1 = ...
+<p>```</p>
+
+<p>```objc</p>
+
+<pre><code>OBJ1 *obj1 = ...
 obj1.block = ^(BOOL bValue) {
     NSLog(@"Bool block!");
 };
 </code></pre>
 
-<p>其他函数的参数：</p>
+<p><code>   
+其他函数的参数：
+</code>objc</p>
 
 <pre><code>- (void)foo(BoolBlock block)
 {
@@ -449,7 +479,9 @@ obj1.block = ^(BOOL bValue) {
 }
 </code></pre>
 
-<p>甚至其他block的参数：</p>
+<p><code>
+甚至其他block的参数：
+</code>objc</p>
 
 <pre><code>BoolBlock bBlock = ^(BOOL bV){if(Bv){/*do some thing*/}};
 HugeBlock hBlock = ^(BoolBlock bB) {bB();};
@@ -457,13 +489,16 @@ HugeBlock hBlock = ^(BoolBlock bB) {bB();};
 hBolck(bBlock); 
 </code></pre>
 
+<p>```</p>
+
 <h4>二、Block内存管理与其他特性</h4>
 
 <h5>1、Block放在哪里</h5>
 
 <h6>1.1栈和堆</h6>
 
-<p>以下情况中的block位于堆中：</p>
+<p>以下情况中的block位于堆中：
+```objc</p>
 
 <pre><code>void foo()
 {
@@ -484,9 +519,12 @@ hBolck(bBlock);
 }
 </code></pre>
 
+<p>```</p>
+
 <h6>1.2全局</h6>
 
-<p>以下情况中的block位于全局区：</p>
+<p>以下情况中的block位于全局区：
+```objc</p>
 
 <pre><code>static int(^maxIntBlock)(int, int) = ^(int a, int b){return a&gt;b?a:b;};
 - (void)fooBar
@@ -500,13 +538,15 @@ void foo()
 }
 </code></pre>
 
-<p>需要注意的是，这里复制过后的block依旧位于全局区，实际上，复制操作是直接返回了原block对象。</p>
+<p>```
+需要注意的是，这里复制过后的block依旧位于全局区，实际上，复制操作是直接返回了原block对象。</p>
 
 <h5>2、Block引用的变量在哪里</h5>
 
-<h6>1.全局区</h6>
+<h5>1.全局区</h5>
 
-<p>全局区的变量存储位置与block无关：</p>
+<p>全局区的变量存储位置与block无关：
+```objc</p>
 
 <pre><code>static int gVar = 0;
 //__block static int gMVar = 1;
@@ -518,9 +558,12 @@ void foo()
 }
 </code></pre>
 
-<p>注意，static变量是不允许添加__block标记的</p>
+<p>```
+注意，static变量是不允许添加__block标记的</p>
 
-<h6>2.堆栈</h6>
+<h5>2.堆栈</h5>
+
+<p>```objc</p>
 
 <pre><code>void foo()
 {
@@ -539,13 +582,16 @@ void foo()
 }
 </code></pre>
 
+<p>```</p>
+
 <h4>三、Block揭开神秘面纱</h4>
 
 <h5>1、Block到底是什么</h5>
 
 <p>我们使用clang的rewrite-objc命令来获取转码后的代码。</p>
 
-<p>我们来看看最简单的一个block：</p>
+<p>我们来看看最简单的一个block：
+```objc</p>
 
 <pre><code>__block int i = 1024;
 int j = 1;
@@ -555,7 +601,9 @@ blk = ^{
 };
 </code></pre>
 
-<p>这个block仅仅打印栈变量i和j的值，其被clang转码为：</p>
+<p><code>
+这个block仅仅打印栈变量i和j的值，其被clang转码为：
+</code>objc</p>
 
 <pre><code>struct __main_block_impl_0{
     struct __block_impl impl;
@@ -600,7 +648,11 @@ int main()
 }
 </code></pre>
 
+<p>```</p>
+
 <p>首先是一个结构体<code>__main_block_impl_0</code>（从图二中的最后一行可以看到，block是一个指向<code>__main_block_impl_0</code>的指针，初始化后被类型强转为函数指针），其中包含的<code>__block_impl</code>是一个公共实现（学过c语言的同学都知道，<code>__main_block_impl_0</code>的这种写法表示其可以被类型强转为<code>__block_impl</code>类型）：</p>
+
+<p>```objc</p>
 
 <pre><code>struct __block_impl {
     void *isa;
@@ -610,7 +662,8 @@ int main()
 };
 </code></pre>
 
-<p> isa指针说明block可以成为一个objc 对象。</p>
+<p>```
+ isa指针说明block可以成为一个objc 对象。</p>
 
 <pre><code>__main_block_impl_0的意思是main函数中的第0个block的implementation，这就是这个block的主体了。
 </code></pre>
@@ -675,7 +728,8 @@ int main()
 
 <h5>4、objective-c类成员函数中的block</h5>
 
-<p>源码如下：</p>
+<p>源码如下：
+```objc</p>
 
 <pre><code>- (void)of1
 {
@@ -685,8 +739,10 @@ int main()
 }
 </code></pre>
 
-<p>这里我故意将self赋值给oj这个变量，是为了验证前一章提出的一个结论：无法通过简单的间接引用self来防止retain循环，要避免循环，我们需要__block标记（多谢楼下网友的提醒）
-转码如下：</p>
+<p><code>
+这里我故意将self赋值给oj这个变量，是为了验证前一章提出的一个结论：无法通过简单的间接引用self来防止retain循环，要避免循环，我们需要__block标记（多谢楼下网友的提醒）
+转码如下：
+</code>objc</p>
 
 <pre><code>struct __OBJ1__of1_block_impl_0 {
     struct __block_impl impl;
@@ -705,13 +761,15 @@ static void __OBJ1__of1_block_func_0(struct __OBJ1__of1_block_impl_0 *__cself) {
 }
 </code></pre>
 
-<p>objc方法中的block与c中的block并无太多差别，只是一些标记值可能不同，为了标记其是objc方法中的blcok。</p>
+<p>```
+objc方法中的block与c中的block并无太多差别，只是一些标记值可能不同，为了标记其是objc方法中的blcok。</p>
 
 <p>注意其构造函数的参数:OBJ1 *_oj</p>
 
 <p>这个<em>oj在block复制到heap时，会被retain，而</em>oj与self根本就是相等的，所以，最终retain的就是self，所以如果当前实例持有了这个block，retain循环就形成了。</p>
 
-<p>而一旦为其增加了__block标记：</p>
+<p>而一旦为其增加了__block标记：
+```objc</p>
 
 <pre><code>- (void)of1
 {
@@ -720,9 +778,11 @@ static void __OBJ1__of1_block_func_0(struct __OBJ1__of1_block_impl_0 *__cself) {
 }
 </code></pre>
 
-<p>其转码则变为：</p>
+<p>```
+其转码则变为：</p>
 
-<p>//增加了如下行</p>
+<p>//增加了如下行
+```objc</p>
 
 <pre><code>struct __Block_byref_bSelf_0 {
     void *__isa;
@@ -741,8 +801,11 @@ static void __Block_byref_id_object_copy_131(void *dst, void *src) {
 static void __Block_byref_id_object_dispose_131(void *src) {
     _Block_object_dispose(*(void * *) ((char*)src + 40), 131);
 }
+</code></pre>
 
-//声明处变为
+<p>```</p>
+
+<pre><code>//声明处变为
 __block __Block_byref_bSelf_0 bSelf = {(void*)0,(__Block_byref_bSelf_0 *)&amp;bSelf, 33554432, sizeof(__Block_byref_bSelf_0),   __Block_byref_id_object_copy_131, __Block_byref_id_object_dispose_131, self};
 </code></pre>
 
@@ -770,7 +833,8 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 </code></pre>
 
 <p>其用于对block的isa指针赋值
-1.栈</p>
+1.栈
+```objc</p>
 
 <pre><code>struct __OBJ1__of2_block_impl_0 {
     struct __block_impl impl;
@@ -785,7 +849,8 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 };
 </code></pre>
 
-<p>在栈上创建的block，其isa指针是_NSConcreteStackBlock。</p>
+<p>```
+在栈上创建的block，其isa指针是_NSConcreteStackBlock。</p>
 
 <h5>2.全局区</h5>
 
@@ -793,7 +858,8 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 
 <h5>3.堆</h5>
 
-<p>我们无法直接创建堆上的block，堆上的block需要从stack block拷贝得来，在runtime.c中的_Block_copy_internal函数中，有这样几行：</p>
+<p>我们无法直接创建堆上的block，堆上的block需要从stack block拷贝得来，在runtime.c中的_Block_copy_internal函数中，有这样几行：
+```objc</p>
 
 <pre><code>// Its a stack block.  Make a copy.
 if (!isGC) {
@@ -805,7 +871,8 @@ if (!isGC) {
 }
 </code></pre>
 
-<p>可以看到，栈block复制得来的新block，其isa指针会被赋值为_NSConcreteMallocBlock</p>
+<p>```  <br/>
+可以看到，栈block复制得来的新block，其isa指针会被赋值为_NSConcreteMallocBlock</p>
 
 <h5>4.其余的isa类型</h5>
 
@@ -818,7 +885,8 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 
 <p>复制block</p>
 
-<p> 对block调用Block_copy方法，或者向其发送objc copy消息，最终都会调用runtime.c中的<code>_Block_copy_internal</code>函数，其内部实现会检查block的flag，从而进行不同的操作：</p>
+<p> 对block调用Block_copy方法，或者向其发送objc copy消息，最终都会调用runtime.c中的<code>_Block_copy_internal</code>函数，其内部实现会检查block的flag，从而进行不同的操作：
+```objc</p>
 
 <pre><code>static void *_Block_copy_internal(const void *arg, const int flags) {
     ...
@@ -827,7 +895,9 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 }
 </code></pre>
 
-<p>1.栈block的复制</p>
+<p><code>
+1.栈block的复制
+</code>objc</p>
 
 <pre><code> // reset refcount
  result-&gt;flags &amp;= ~(BLOCK_REFCOUNT_MASK);    // XXX not needed
@@ -839,19 +909,23 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
  }
 </code></pre>
 
-<p>除了修改isa指针的值之外，拷贝过程中，还会将BLOCK_NEEDS_FREE置入，大家记住这个值，后面会用到。
+<p>```
+除了修改isa指针的值之外，拷贝过程中，还会将BLOCK_NEEDS_FREE置入，大家记住这个值，后面会用到。
 最后，如果block有辅助copy/dispose函数，那么辅助的copy函数会被调用。</p>
 
-<p>2.全局block的复制</p>
+<p>2.全局block的复制
+```objc</p>
 
 <pre><code>else if (aBlock-&gt;flags &amp; BLOCK_IS_GLOBAL) {
     return aBlock;
 }
 </code></pre>
 
-<p>全局block进行copy是直接返回了原block，没有任何的其他操作。</p>
+<p>```  <br/>
+全局block进行copy是直接返回了原block，没有任何的其他操作。</p>
 
-<p>3.堆block的复制</p>
+<p>3.堆block的复制
+```objc</p>
 
 <pre><code>if (aBlock-&gt;flags &amp; BLOCK_NEEDS_FREE) {
     // latches on high
@@ -860,13 +934,15 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 }
 </code></pre>
 
-<p>栈block复制时，置入的BLOCK_NEEDS_FREE标记此时起作用，_Block_copy_internal函数识别当前block是一个堆block，则仅仅增加引用计数，然后返回原block。</p>
+<p>```  <br/>
+栈block复制时，置入的BLOCK_NEEDS_FREE标记此时起作用，_Block_copy_internal函数识别当前block是一个堆block，则仅仅增加引用计数，然后返回原block。</p>
 
 <p>辅助copy/dispose函数</p>
 
 <p>1.普通变量的复制
 辅助copy函数用于拷贝block所引用的可修改变量，我们这里以 __block int i = 1024为例：
-先看看Block_private.h中的定义：</p>
+先看看Block_private.h中的定义：
+```objc</p>
 
 <pre><code>struct Block_byref {
     void *isa;
@@ -879,7 +955,9 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 };
 </code></pre>
 
-<p>而我们的__block int i = 1024的转码：</p>
+<p><code>
+而我们的__block int i = 1024的转码：
+</code>objc</p>
 
 <pre><code>struct __Block_byref_i_0 {
     void *__isa;
@@ -893,7 +971,9 @@ __attribute__((__blocks__(byref))) __Block_byref_i_0 i = {(void*)0, (__Block_byr
 static void __main_block_copy_0(struct __main_block_impl_0*dst, struct  __main_block_impl_0*src) {_Block_object_assign((void*)&amp;dst-&gt;i, (void*)src-&gt;i, 8/*BLOCK_FIELD_IS_BYREF*/);}
 </code></pre>
 
-<p>此时，复制时调用的辅助函数：</p>
+<p><code>
+此时，复制时调用的辅助函数：
+</code>objc</p>
 
 <pre><code>void _Block_object_assign(void *destAddr, const void *object, const int flags) {//此处flags为8，即BLOCK_FIELD_IS_BYREF
 ...
@@ -921,11 +1001,13 @@ static void _Block_byref_assign_copy(void *dest, const void *arg, const int flag
 }
 </code></pre>
 
-<p>所以，我们知道，当我们多次copy一个block时，其引用的__block变量只会被拷贝一次。</p>
+<p>```
+所以，我们知道，当我们多次copy一个block时，其引用的__block变量只会被拷贝一次。</p>
 
 <p>2.objc变量的复制</p>
 
-<p>当objc变量没有__block修饰时：</p>
+<p>当objc变量没有__block修饰时：
+```objc</p>
 
 <pre><code>static void __OBJ1__of2_block_copy_0(struct __OBJ1__of2_block_impl_0*dst, struct __OBJ1__of2_block_impl_0*src) {_Block_object_assign((void*)&amp;dst-&gt;self, (void*)src-&gt;self, 3/*BLOCK_FIELD_IS_OBJECT*/);}
 
@@ -941,7 +1023,9 @@ void _Block_object_assign(void *destAddr, const void *object, const int flags) {
 }
 </code></pre>
 
-<p>当objc变量有__block修饰时：</p>
+<p><code>
+当objc变量有__block修饰时：
+</code>objc</p>
 
 <pre><code>struct __Block_byref_bSelf_0 {
     void *__isa;
@@ -965,7 +1049,10 @@ static void __Block_byref_id_object_dispose_131(void *src) {
 __block __Block_byref_bSelf_0 bSelf = {(void*)0,(__Block_byref_bSelf_0 *)&amp;bSelf, 33554432, sizeof(__Block_byref_bSelf_0), __Block_byref_id_object_copy_131, __Block_byref_id_object_dispose_131, self};
 </code></pre>
 
-<p>BLOCK_HAS_COPY_DISPOSE告诉内部实现，这个变量结构体具有自己的copy/dispose辅助函数，而此时我们的内部实现不会进行默认的复制操作：</p>
+<p>```</p>
+
+<p>BLOCK_HAS_COPY_DISPOSE告诉内部实现，这个变量结构体具有自己的copy/dispose辅助函数，而此时我们的内部实现不会进行默认的复制操作：
+```objc</p>
 
 <pre><code>void _Block_object_assign(void *destAddr, const void *object, const int flags) {
     //printf("_Block_object_assign(*%p, %p, %x)\n", destAddr, object, flags);
@@ -980,7 +1067,8 @@ __block __Block_byref_bSelf_0 bSelf = {(void*)0,(__Block_byref_bSelf_0 *)&amp;bS
 }
 </code></pre>
 
-<p>当我们没有开启arc，且flags中具有BLOCK_BYREF_CALLER时，会进入_Block_assign函数，而此函数仅仅是赋值
+<p>```  <br/>
+当我们没有开启arc，且flags中具有BLOCK_BYREF_CALLER时，会进入_Block_assign函数，而此函数仅仅是赋值
 所以，如果要避免objc实例中的block引起的循环引用，我们需要让block间接使用self：</p>
 
 <pre><code>__block bSelf = self;

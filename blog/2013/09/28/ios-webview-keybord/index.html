@@ -96,13 +96,20 @@
 <!--more-->
 
 
-<pre><code>webview.scrollView.delegate=self;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">webview</span><span class="p">.</span><span class="n">scrollView</span><span class="p">.</span><span class="n">delegate</span><span class="o">=</span><span class="n">self</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">UIView</span><span class="o">*</span><span class="p">)</span><span class="nf">viewForZoomingInScrollView:</span><span class="p">(</span><span class="n">UIScrollView</span><span class="o">*</span><span class="p">)</span><span class="nv">scrollView</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
--(UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView 
-{
-    return nil;
-}
-</code></pre>
 </div>
 
 </article>

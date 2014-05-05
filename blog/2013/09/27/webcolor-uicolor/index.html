@@ -9,7 +9,13 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="网页颜色值转化成UIColor 在做项目过程中，有时设计人员给我们往往是一个设计图，而我们用PS取值的时候可以得到一个红绿蓝和一个网页的颜色值，用红绿蓝往往不是很方便，后来我们在项目工具中写一个方法，专门把网页的颜色值转化成UIColor，这样一来，方便了许多。 + (UIColor *) &hellip;">
+	<meta name="description" content="网页颜色值转化成UIColor 在做项目过程中，有时设计人员给我们往往是一个设计图，而我们用PS取值的时候可以得到一个红绿蓝和一个网页的颜色值，用红绿蓝往往不是很方便，后来我们在项目工具中写一个方法，专门把网页的颜色值转化成UIColor，这样一来，方便了许多。 1
+2
+3
+4
+5
+6
+7 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,14 +102,22 @@
 <!--more-->
 
 
-<pre><code>+ (UIColor *)colorFromHexString:(NSString *)hexString {
-    unsigned rgbValue = 0;
-    NSScanner *scanner = [NSScannerscannerWithString:hexString];
-    [scanner setScanLocation:1];// bypass '#' character
-    [scannerscanHexInt:&amp;rgbValue];
-    return [UIColorcolorWithRed:((rgbValue &amp; 0xFF0000) &gt;&gt; 16)/255.0green:((rgbValue &amp; 0xFF00) &gt;&gt; 8)/255.0 blue:(rgbValue &amp; 0xFF)/255.0 alpha:1.0];
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">+</span> <span class="p">(</span><span class="n">UIColor</span> <span class="o">*</span><span class="p">)</span><span class="nf">colorFromHexString:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">hexString</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kt">unsigned</span> <span class="n">rgbValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">NSScanner</span> <span class="o">*</span><span class="n">scanner</span> <span class="o">=</span> <span class="p">[</span><span class="nl">NSScannerscannerWithString:</span><span class="n">hexString</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">scanner</span> <span class="nl">setScanLocation:</span><span class="mi">1</span><span class="p">];</span><span class="c1">// bypass &#39;#&#39; character</span>
+</span><span class='line'>  <span class="p">[</span><span class="nl">scannerscanHexInt:</span><span class="o">&amp;</span><span class="n">rgbValue</span><span class="p">];</span>
+</span><span class='line'>          <span class="k">return</span> <span class="p">[</span><span class="nl">UIColorcolorWithRed:</span><span class="p">((</span><span class="n">rgbValue</span> <span class="o">&amp;</span> <span class="mh">0xFF0000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span><span class="o">/</span><span class="mf">255.0</span><span class="nl">green:</span><span class="p">((</span><span class="n">rgbValue</span> <span class="o">&amp;</span> <span class="mh">0xFF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mf">255.0</span> <span class="nl">blue:</span><span class="p">(</span><span class="n">rgbValue</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span><span class="o">/</span><span class="mf">255.0</span> <span class="nl">alpha:</span><span class="mf">1.0</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 </article>

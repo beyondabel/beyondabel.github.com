@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-04-14T23:54:49+08:00</updated>
+  <updated>2014-05-05T15:03:32+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -148,25 +148,44 @@
 
 <p>下面举一个例子，同样的代码，只是在「ARC」与「MRC」的情況下编译执行， 但是二者所需要的时间是相差数倍的！</p>
 
-<pre><code>int n = 600000, m = 10000000;
-arr = [NSMutableArray new];
-for (int i = 0; i &lt; n; i++) {
-    [arr addObject:[NSNumber numberWithInt:1]];
-}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">600000</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">;</span>
+</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="n">new</span><span class="p">];</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">arr</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">1</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">CFAbsoluteTime</span> <span class="n">start</span> <span class="o">=</span> <span class="n">CFAbsoluteTimeGetCurrent</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">id</span> <span class="n">obj</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">arr</span> <span class="nl">objectAtIndex:</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">CFAbsoluteTime</span> <span class="n">end</span> <span class="o">=</span> <span class="n">CFAbsoluteTimeGetCurrent</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;end:%lf, start:%lf, diff:%lf&quot;</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">[</span><span class="n">arr</span> <span class="n">release</span><span class="p">];</span> <span class="c1">// -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行</span>
+</span></code></pre></td></tr></table></div></figure>
 
-CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
-
-id obj = nil;
-for (int j = 0; j &lt; m; j++) {
-    obj = [arr objectAtIndex:n - 1];
-}
-
-CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
-
-NSLog(@"end:%lf, start:%lf, diff:%lf", end, start, end - start);
-
-[arr release]; // -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行
-</code></pre>
 
 <p>执行结果：</p>
 
@@ -218,58 +237,97 @@ for (int j = 0; j &lt; m; j++){
 
 <p>1、使用宏，可以标识归属者从OC到CF，还是从CF到OC。</p>
 
-<pre><code>NS_INLINE CFTypeRef CFBridgingRetain(id X) { 
-    return (__bridge_retain CFTypeRef)X; 
-} 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NS_INLINE</span> <span class="n">CFTypeRef</span> <span class="nf">CFBridgingRetain</span><span class="p">(</span><span class="kt">id</span> <span class="n">X</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_retain</span> <span class="n">CFTypeRef</span><span class="p">)</span><span class="n">X</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">NS_INLINE</span> <span class="kt">id</span> <span class="nf">CFBridgingRelease</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">X</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="kt">id</span><span class="p">)</span><span class="n">X</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-NS_INLINE id CFBridgingRelease(CFTypeRef X) { 
-    return (__bridge_transfer id)X; 
-}
-</code></pre>
 
-<p>2、使用转化符,如：<code>__bridge</code>，<code>__bridge_transfer</code>，<code>__bridge_retained</code></p>
+<p>
+2、使用转化符,如：<code>__bridge</code>，<code>__bridge_transfer</code>，<code>__bridge_retained</code></p>
 
-<pre><code>id my_id; 
-CFStringRef my_cfref; 
-… 
-NSString   *a = (__bridge NSString*)my_cfref;     // Noop cast. 
-CFStringRef b = (__bridge CFStringRef)my_id;      // Noop cast. 
-… 
-NSString   *c = (__bridge_transfer NSString*)my_cfref; // -1 on the CFRef 
-CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">id</span> <span class="n">my_id</span><span class="p">;</span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">my_cfref</span><span class="p">;</span>
+</span><span class='line'><span class="err">…</span>
+</span><span class='line'><span class="n">NSString</span>   <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span>     <span class="c1">// Noop cast. </span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>      <span class="c1">// Noop cast. </span>
+</span><span class='line'><span class="err">…</span>
+</span><span class='line'><span class="n">NSString</span>   <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span> <span class="c1">// -1 on the CFRef </span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_retained</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>  <span class="c1">// returned CFRef is +1</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>下面以详细的例子来介绍一下OC和CF在arc下内存管理的详细写法.下面以CFURLCreateStringByAddingPercentEscapes()函数为例说一下在ARC下的写法和非ARC下的写法。</p>
+
+<p>
+下面以详细的例子来介绍一下OC和CF在arc下内存管理的详细写法.下面以CFURLCreateStringByAddingPercentEscapes()函数为例说一下在ARC下的写法和非ARC下的写法。</p>
 
 <p>非ARC模式下的写法：</p>
 
-<pre><code>#pragma mark – View lifecycle 
-- (void)viewDidLoad { 
-    [super viewDidLoad]; 
-    NSLog(@"=%@", [self escape:@"wangjun"]); 
-} 
--(NSString *)escape:(NSString *)text { 
-    return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text, NULL, CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));; 
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#pragma mark – View lifecycle </span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">self</span> <span class="nl">escape:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>使用instruments检测，没有内存泄漏。</p>
+
+<p>
+使用instruments检测，没有内存泄漏。</p>
 
 <p>下面把上面工程改为arc模式。</p>
 
 <p>可以看到xcode自动把上面函数转化为：</p>
 
-<pre><code>#pragma mark – View lifecycle 
-- (void)viewDidLoad { 
-    [super viewDidLoad]; 
-    NSLog(@"=%@", [self escape:@"wangjun"]); 
-} 
--(NSString *)escape:(NSString *)text { 
-    return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text,NULL,CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#pragma mark – View lifecycle </span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">self</span> <span class="nl">escape:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>在arc中，CF和OC之间的转化桥梁是 __bridge，有两种方式：</p>
+
+<p>
+在arc中，CF和OC之间的转化桥梁是 __bridge，有两种方式：</p>
 
 <ul>
 <li>__bridge_transfer  ARC接管管理内存</li>
@@ -281,40 +339,61 @@ CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
 
 <p>上面代码等同于：</p>
 
-<pre><code>- (NSString *)escape:(NSString *)text { 
-    return CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)text,NULL,CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">CFBridgingRelease</span><span class="p">(</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">)));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>如果将上述代码改为：</p>
 
-<pre><code>-(NSString *)escape:(NSString *)text { 
-    return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text, NULL, CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));; 
-}
-</code></pre>
+<p>
+如果将上述代码改为：</p>
 
-<p>编译也会成功，但是这时候用instruments检测，可以发现内存泄漏：</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+编译也会成功，但是这时候用instruments检测，可以发现内存泄漏：</p>
 
 <p>由于CF转化完OC，没有自己释放内存，同时也没有把内存管理交给ARC，所以出现内存泄漏。由于__bridge只是同一个对象的引用，内存的所有权没有发生变化。</p>
 
 <p>下面在说一下oc到CF的转化，需要把OC的内存管理权释放掉。</p>
 
-<pre><code>NSString *s1 = [[NSString alloc] initWithFormat:@"Hello, %@!", name]; 
-CFStringRef s2 = (__bridge_retained CFStringRef)s1; 
-// do something with s2 // . . . 
-CFRelease(s2);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSString</span> <span class="o">*</span><span class="n">s1</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFormat:</span><span class="s">@&quot;Hello, %@!&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">];</span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_retained</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">s1</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// do something with s2 // . . . </span>
+</span><span class='line'><span class="n">CFRelease</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>最后由CF进行内存释放。</p>
+
+<p>
+最后由CF进行内存释放。</p>
 
 <p>上面代码等同于：</p>
 
-<pre><code>CFStringRef s2 = CFBridgingRetain(s1); 
-// . . . 
-CFRelease(s2);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">CFStringRef</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">CFBridgingRetain</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// . . . </span>
+</span><span class='line'><span class="n">CFRelease</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>下面总结一下我们使用ARC情况下。oc和CF互相转化的原则：</p>
+
+<p>
+下面总结一下我们使用ARC情况下。oc和CF互相转化的原则：</p>
 
 <ul>
 <li>CF转化为OC时，并且对象的所有者发生改变，则使用<code>CFBridgingRelease()</code>或<code>__bridge_transfer</code> 。</li>
@@ -475,57 +554,101 @@ int resut = hbFunction(10);   // 函数调用
 
 <p>主动调用一下：</p>
 
-<pre><code>- (void)someMethod
-{
-    BoolBlock ablock = ^(BOOL bValue) {
-        NSLog(@"Bool block!");
-    };
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">someMethod</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">BoolBlock</span> <span class="n">ablock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">bValue</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Bool block!&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">ablock</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    ablock();
-}
-</code></pre>
 
 <p>作为参数返回：</p>
 
-<pre><code>typedef void (^BoolBlock)(BOOL);
-- (BoolBlock)foo()
-{
-    BoolBlock ablock = ^(BOOL bValue) {
-        NSLog(@"Bool block!");
-    };
-    return [[ablock copy] autorelease];//一定要copy，将其复制到堆上，更详细的原理，将在后续章节讲解
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">^</span><span class="n">BoolBlock</span><span class="p">)(</span><span class="kt">BOOL</span><span class="p">);</span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">BoolBlock</span><span class="p">)</span><span class="nf">foo</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">BoolBlock</span> <span class="n">ablock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">bValue</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Bool block!&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">[[</span><span class="n">ablock</span> <span class="n">copy</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span><span class="c1">//一定要copy，将其复制到堆上，更详细的原理，将在后续章节讲解</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>类的一个成员：</p>
 
-<pre><code>@interface OBJ1 : NSObject
-@property (nonatomic, copy)BoolBlock block;//理由同上啊，同学们
-@end
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@interface</span> <span class="nc">OBJ1</span> : <span class="nc">NSObject</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">;</span><span class="c1">//理由同上啊，同学们</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-OBJ1 *obj1 = ...
-obj1.block = ^(BOOL bValue) {
-    NSLog(@"Bool block!");
-};
-</code></pre>
 
-<p>其他函数的参数：</p>
 
-<pre><code>- (void)foo(BoolBlock block)
-{
-    if (block) {
-        block();
-    }
-}
-</code></pre>
 
-<p>甚至其他block的参数：</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">OBJ1</span> <span class="o">*</span><span class="n">obj1</span> <span class="o">=</span> <span class="p">...</span>
+</span><span class='line'><span class="n">obj1</span><span class="p">.</span><span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">bValue</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Bool block!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>BoolBlock bBlock = ^(BOOL bV){if(Bv){/*do some thing*/}};
-HugeBlock hBlock = ^(BoolBlock bB) {bB();};
 
-hBolck(bBlock); 
-</code></pre>
+<p>  <br/>
+其他函数的参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">foo</span><span class="p">(</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">block</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">block</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+甚至其他block的参数：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">BoolBlock</span> <span class="n">bBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">bV</span><span class="p">){</span><span class="k">if</span><span class="p">(</span><span class="n">Bv</span><span class="p">){</span><span class="cm">/*do some thing*/</span><span class="p">}};</span>
+</span><span class='line'><span class="n">HugeBlock</span> <span class="n">hBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">BoolBlock</span> <span class="n">bB</span><span class="p">)</span> <span class="p">{</span><span class="n">bB</span><span class="p">();};</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">hBolck</span><span class="p">(</span><span class="n">bBlock</span><span class="p">);</span>   
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h4>二、Block内存管理与其他特性</h4>
 
@@ -535,79 +658,138 @@ hBolck(bBlock);
 
 <p>以下情况中的block位于堆中：</p>
 
-<pre><code>void foo()
-{
-    __block int i = 1024;
-    int j = 1;
-    void (^blk)(void);
-    void (^blkInHeap)(void);
-    blk = ^{ printf("%d, %d\n", i, j);};//blk在栈里
-    blkInHeap = Block_copy(blk);//blkInHeap在堆里
-}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blkInHeap</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">blk</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d, %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);};</span><span class="c1">//blk在栈里</span>
+</span><span class='line'>  <span class="n">blkInHeap</span> <span class="o">=</span> <span class="n">Block_copy</span><span class="p">(</span><span class="n">blk</span><span class="p">);</span><span class="c1">//blkInHeap在堆里</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">_oi</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblk</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">oj</span><span class="p">.</span><span class="n">oi</span><span class="p">);};</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblkInHeap</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">oblk</span> <span class="n">copy</span><span class="p">];</span><span class="c1">//oblkInHeap在堆中</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-- (void)fooBar
-{
-    _oi = 1;
-    OBJ1* oj = self;
-    void (^oblk)(void) = ^{ printf("%d\n", oj.oi);};
-    void (^oblkInHeap)(void) = [oblk copy];//oblkInHeap在堆中
-}
-</code></pre>
+
+<p></p>
 
 <h6>1.2全局</h6>
 
 <p>以下情况中的block位于全局区：</p>
 
-<pre><code>static int(^maxIntBlock)(int, int) = ^(int a, int b){return a&gt;b?a:b;};
-- (void)fooBar
-{
-    int(^maxIntBlockCopied)(int, int) =[maxIntBlock copy];
-}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="nf">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlock</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="o">?</span><span class="nl">a:</span><span class="n">b</span><span class="p">;};</span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlockCopied</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span><span class="p">[</span><span class="n">maxIntBlock</span> <span class="n">copy</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlockCopied</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="n">Block_copy</span><span class="p">(</span><span class="n">maxIntBlock</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-void foo()
-{
-    int(^maxIntBlockCopied)(int, int) = Block_copy(maxIntBlock);
-}
-</code></pre>
 
 <p>需要注意的是，这里复制过后的block依旧位于全局区，实际上，复制操作是直接返回了原block对象。</p>
 
 <h5>2、Block引用的变量在哪里</h5>
 
-<h6>1.全局区</h6>
+<h5>1.全局区</h5>
 
 <p>全局区的变量存储位置与block无关：</p>
 
-<pre><code>static int gVar = 0;
-//__block static int gMVar = 1;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="kt">int</span> <span class="n">gVar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//__block static int gMVar = 1;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">static</span> <span class="kt">int</span> <span class="n">stackVar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="c1">//    __block static int stackMVar = 0;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-void foo()
-{
-    static int stackVar = 0;
-//    __block static int stackMVar = 0;
-}
-</code></pre>
 
-<p>注意，static变量是不允许添加__block标记的</p>
+<p>
+注意，static变量是不允许添加__block标记的</p>
 
-<h6>2.堆栈</h6>
+<h5>2.堆栈</h5>
 
-<pre><code>void foo()
-{
-    __block int i = 1024; // 此时i在栈上
-    int j = 1; // 此时j在栈上
-    void (^blk)(void);
-    blk = ^{
-        printf("%d,  %d\n",i,j);
-    };  //此时blk位于栈上，其使用的变量也在栈上
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span> <span class="c1">// 此时i在栈上</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 此时j在栈上</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">blk</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+</span><span class='line'>      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d,  %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">};</span>   <span class="c1">//此时blk位于栈上，其使用的变量也在栈上</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="n">blk</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="p">(</span><span class="o">^</span><span class="n">blkInHeap</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="n">Block_copy</span><span class="p">(</span><span class="n">blk</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// 复制block后，block位于堆上，有__block标记的i会被复制一份至堆，而没有__block标记的j并不会动依旧位于栈上。</span>
+</span><span class='line'>  
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    blk();
-    j++;
-    int (^blkInHeap)(int, int) = Block_copy(blk);
-    // 复制block后，block位于堆上，有__block标记的i会被复制一份至堆，而没有__block标记的j并不会动依旧位于栈上。
 
-}
-</code></pre>
+<p></p>
 
 <h4>三、Block揭开神秘面纱</h4>
 
@@ -617,70 +799,129 @@ void foo()
 
 <p>我们来看看最简单的一个block：</p>
 
-<pre><code>__block int i = 1024;
-int j = 1;
-void (^blk)(void);
-blk = ^{
-    printf("i :%d,j:%d,&amp;i:%p,&amp;j:%p",i,j,&amp;i,&amp;j);
-};
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</span><span class='line'><span class="n">blk</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;i :%d,j:%d,&amp;i:%p,&amp;j:%p&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span><span class="o">&amp;</span><span class="n">j</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>这个block仅仅打印栈变量i和j的值，其被clang转码为：</p>
 
-<pre><code>struct __main_block_impl_0{
-    struct __block_impl impl;
-    struct __main_block_desc_0 * Desc;
-    int j;
-    __Block_byref_i_0 *i;
-    __main_block_impl_0(void * fp, struct __main_block_desc_0 *desc,int _j,__Block_byref_i_0 *_i, int flags = 0) : j(_j),int(_i-&gt;__forwarding){
-         impl.isa = &amp;_NSConcreteStackBlock;
-         impl.Flags = flags;
-         impl.FuncPtr = fp;
-         Desc = desc;
-    }
-};
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="p">{</span>
+</span><span class='line'>    <span class="k">struct</span> <span class="n">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">struct</span> <span class="n">__main_block_desc_0</span> <span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">__Block_byref_i_0</span> <span class="o">*</span><span class="n">i</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">__main_block_impl_0</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">fp</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__main_block_desc_0</span> <span class="o">*</span><span class="n">desc</span><span class="p">,</span><span class="kt">int</span> <span class="n">_j</span><span class="p">,</span><span class="n">__Block_byref_i_0</span> <span class="o">*</span><span class="n">_i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="n">j</span><span class="p">(</span><span class="n">_j</span><span class="p">),</span><span class="kt">int</span><span class="p">(</span><span class="n">_i</span><span class="o">-&gt;</span><span class="n">__forwarding</span><span class="p">){</span>
+</span><span class='line'>         <span class="n">impl</span><span class="p">.</span><span class="n">isa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_NSConcreteStackBlock</span><span class="p">;</span>
+</span><span class='line'>         <span class="n">impl</span><span class="p">.</span><span class="n">Flags</span> <span class="o">=</span> <span class="n">flags</span><span class="p">;</span>
+</span><span class='line'>         <span class="n">impl</span><span class="p">.</span><span class="n">FuncPtr</span> <span class="o">=</span> <span class="n">fp</span><span class="p">;</span>
+</span><span class='line'>         <span class="n">Desc</span> <span class="o">=</span> <span class="n">desc</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__main_block_func_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="n">__cself</span><span class="p">){</span>
+</span><span class='line'>   <span class="n">__Block_byref_i_0</span> <span class="o">*</span><span class="n">i</span> <span class="o">=</span> <span class="n">__cself</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">;</span>
+</span><span class='line'>   <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">__cself</span><span class="o">-&gt;</span><span class="n">j</span><span class="p">;</span>
+</span><span class='line'>   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;i :%d,j:%d,&amp;i:%p,&amp;j:%p&quot;</span><span class="p">,</span><span class="n">i</span><span class="o">-&gt;</span><span class="n">__forwarding</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="o">&amp;</span><span class="p">(</span><span class="n">i</span><span class="o">-&gt;</span><span class="n">__forwarding</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">),</span><span class="o">&amp;</span><span class="n">j</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__main_block_copy_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="n">src</span><span class="p">){</span>
+</span><span class='line'>   <span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">dst</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__main_block_dispose_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="n">src</span><span class="p">){</span>
+</span><span class='line'>   <span class="n">_Block_object_dispose</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="k">struct</span> <span class="n">__main_block_desc_0</span><span class="p">{</span>
+</span><span class='line'>   <span class="n">size_t</span> <span class="n">reserved</span><span class="p">;</span>
+</span><span class='line'>   <span class="n">size_t</span> <span class="n">Block_size</span><span class="p">;</span>
+</span><span class='line'>   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">copy</span><span class="p">)(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'>   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">dispose</span><span class="p">)(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span><span class="n">__main_block_desc_0_DATA</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="p">),</span><span class="n">__main_block_copy_0</span><span class="p">,</span><span class="n">__main_block_dispose_0</span><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>   <span class="n">__attribute__</span><span class="p">((</span><span class="n">__blocks__</span><span class="p">(</span><span class="n">byref</span><span class="p">)))</span> <span class="n">__Block_byref_i_0</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_i_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_i_0</span><span class="p">),</span><span class="mi">1024</span><span class="p">};</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">blk</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="p">)())</span><span class="o">&amp;</span> <span class="n">__main_block_impl_0</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">__main_block_func_0</span><span class="p">,</span><span class="o">&amp;</span><span class="n">__main_block_desc_0_DATA</span><span class="p">,</span><span class="n">j</span><span class="p">,(</span><span class="n">__Block_byref_i_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span><span class="mi">570425344</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-static void __main_block_func_0(struct __main_block_impl_0 *__cself){
-   __Block_byref_i_0 *i = __cself-&gt;i;
-   int j = __cself-&gt;j;
-   printf("i :%d,j:%d,&amp;i:%p,&amp;j:%p",i-&gt;__forwarding-&gt;i,j,&amp;(i-&gt;__forwarding-&gt;i),&amp;j);
-}
 
-static void __main_block_copy_0(struct __main_block_impl_0 *dst, struct __main_block_impl_0 *src){
-   _Block_object_assign((void *)&amp;dst-&gt;i, (void *)src-&gt;i,8);
-}
-
-static void __main_block_dispose_0(struct __main_block_impl_0 *src){
-   _Block_object_dispose((void *)src-&gt;i,8);
-}
-
-static struct __main_block_desc_0{
-   size_t reserved;
-   size_t Block_size;
-   void (*copy)(struct __main_block_impl_0*,struct __main_block_impl_0 *);
-   void (*dispose)(struct __main_block_impl_0*);
-}__main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0),__main_block_copy_0,__main_block_dispose_0};
-
-int main()
-{
-   __attribute__((__blocks__(byref))) __Block_byref_i_0 = {(void *)0,(__Block_byref_i_0 *)&amp;i,0,sizeof(__Block_byref_i_0),1024};
-  int j = 1;
-  void (*blk)(void);
-  blk = (void (*)())&amp; __main_block_impl_0((void *)__main_block_func_0,&amp;__main_block_desc_0_DATA,j,(__Block_byref_i_0 *)&amp;i,570425344);
-}
-</code></pre>
+<p></p>
 
 <p>首先是一个结构体<code>__main_block_impl_0</code>（从图二中的最后一行可以看到，block是一个指向<code>__main_block_impl_0</code>的指针，初始化后被类型强转为函数指针），其中包含的<code>__block_impl</code>是一个公共实现（学过c语言的同学都知道，<code>__main_block_impl_0</code>的这种写法表示其可以被类型强转为<code>__block_impl</code>类型）：</p>
 
-<pre><code>struct __block_impl {
-    void *isa;
-    int Flags;
-    int Reserved;
-    void *FuncPtr;
-};
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__block_impl</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kt">void</span> <span class="o">*</span><span class="n">isa</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">int</span> <span class="n">Flags</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">int</span> <span class="n">Reserved</span><span class="p">;</span>
+</span><span class='line'>          <span class="kt">void</span> <span class="o">*</span><span class="n">FuncPtr</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p> isa指针说明block可以成为一个objc 对象。</p>
+
+<p>
+ isa指针说明block可以成为一个objc 对象。</p>
 
 <pre><code>__main_block_impl_0的意思是main函数中的第0个block的implementation，这就是这个block的主体了。
 </code></pre>
@@ -747,35 +988,60 @@ int main()
 
 <p>源码如下：</p>
 
-<pre><code>- (void)of1
-{
-    OBJ1* oj = self;
-    void (^oblk)(void) = ^{ printf("%d\n", oj.oi);};
-    Block_copy(oblk);
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblk</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">oj</span><span class="p">.</span><span class="n">oi</span><span class="p">);};</span>
+</span><span class='line'>  <span class="n">Block_copy</span><span class="p">(</span><span class="n">oblk</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>这里我故意将self赋值给oj这个变量，是为了验证前一章提出的一个结论：无法通过简单的间接引用self来防止retain循环，要避免循环，我们需要__block标记（多谢楼下网友的提醒）
+
+<p>
+这里我故意将self赋值给oj这个变量，是为了验证前一章提出的一个结论：无法通过简单的间接引用self来防止retain循环，要避免循环，我们需要__block标记（多谢楼下网友的提醒）
 转码如下：</p>
 
-<pre><code>struct __OBJ1__of1_block_impl_0 {
-    struct __block_impl impl;
-    struct __OBJ1__of1_block_desc_0* Desc;
-    OBJ1 *oj;
-    __OBJ1__of1_block_impl_0(void *fp, struct __OBJ1__of1_block_desc_0 *desc, OBJ1 *_oj, int flags=0) : oj(_oj) {
-    impl.isa = &amp;_NSConcreteStackBlock;
-    impl.Flags = flags;
-    impl.FuncPtr = fp;
-    Desc = desc;
-    }
-};
-static void __OBJ1__of1_block_func_0(struct __OBJ1__of1_block_impl_0 *__cself) {
-    OBJ1 *oj = __cself-&gt;oj; // bound by copy
-    printf("%d\n", ((int (*)(id, SEL))(void *)objc_msgSend)((id)oj,         sel_registerName("oi")));
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__OBJ1__of1_block_impl_0</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">struct</span> <span class="n">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">struct</span> <span class="n">__OBJ1__of1_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">OBJ1</span> <span class="o">*</span><span class="n">oj</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">__OBJ1__of1_block_impl_0</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">fp</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of1_block_desc_0</span> <span class="o">*</span><span class="n">desc</span><span class="p">,</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">_oj</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="n">oj</span><span class="p">(</span><span class="n">_oj</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">impl</span><span class="p">.</span><span class="n">isa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_NSConcreteStackBlock</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">impl</span><span class="p">.</span><span class="n">Flags</span> <span class="o">=</span> <span class="n">flags</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">impl</span><span class="p">.</span><span class="n">FuncPtr</span> <span class="o">=</span> <span class="n">fp</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">Desc</span> <span class="o">=</span> <span class="n">desc</span><span class="p">;</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__OBJ1__of1_block_func_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__OBJ1__of1_block_impl_0</span> <span class="o">*</span><span class="n">__cself</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">OBJ1</span> <span class="o">*</span><span class="n">oj</span> <span class="o">=</span> <span class="n">__cself</span><span class="o">-&gt;</span><span class="n">oj</span><span class="p">;</span> <span class="c1">// bound by copy</span>
+</span><span class='line'>      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">((</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">id</span><span class="p">,</span> <span class="kt">SEL</span><span class="p">))(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">objc_msgSend</span><span class="p">)((</span><span class="kt">id</span><span class="p">)</span><span class="n">oj</span><span class="p">,</span>         <span class="n">sel_registerName</span><span class="p">(</span><span class="s">&quot;oi&quot;</span><span class="p">)));</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>objc方法中的block与c中的block并无太多差别，只是一些标记值可能不同，为了标记其是objc方法中的blcok。</p>
+
+<p>
+objc方法中的block与c中的block并无太多差别，只是一些标记值可能不同，为了标记其是objc方法中的blcok。</p>
 
 <p>注意其构造函数的参数:OBJ1 *_oj</p>
 
@@ -783,36 +1049,64 @@ static void __OBJ1__of1_block_func_0(struct __OBJ1__of1_block_impl_0 *__cself) {
 
 <p>而一旦为其增加了__block标记：</p>
 
-<pre><code>- (void)of1
-{
-    __block OBJ1 *bSelf = self;
-    ^{ printf("%d", bSelf.oi); };
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">__block</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">bSelf</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">bSelf</span><span class="p">.</span><span class="n">oi</span><span class="p">);</span> <span class="p">};</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>其转码则变为：</p>
+
+<p>
+其转码则变为：</p>
 
 <p>//增加了如下行</p>
 
-<pre><code>struct __Block_byref_bSelf_0 {
-    void *__isa;
-    __Block_byref_bSelf_0 *__forwarding;
-    int __flags;
-    int __size;
-    void (*__Block_byref_id_object_copy)(void*, void*);
-    void (*__Block_byref_id_object_dispose)(void*);
-    OBJ1 *bSelf;
-};
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__Block_byref_bSelf_0</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kt">void</span> <span class="o">*</span><span class="n">__isa</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">__Block_byref_bSelf_0</span> <span class="o">*</span><span class="n">__forwarding</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">__flags</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">__size</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">__Block_byref_id_object_copy</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>      <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">__Block_byref_id_object_dispose</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">OBJ1</span> <span class="o">*</span><span class="n">bSelf</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__Block_byref_id_object_copy_131</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">dst</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="o">*</span><span class="p">)</span> <span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">src</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="mi">131</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__Block_byref_id_object_dispose_131</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">_Block_object_dispose</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="o">*</span><span class="p">)</span> <span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">src</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="mi">131</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-static void __Block_byref_id_object_copy_131(void *dst, void *src) {
-    _Block_object_assign((char*)dst + 40, *(void * *) ((char*)src + 40), 131);
-}
 
-static void __Block_byref_id_object_dispose_131(void *src) {
-    _Block_object_dispose(*(void * *) ((char*)src + 40), 131);
-}
+<p></p>
 
-//声明处变为
+<pre><code>//声明处变为
 __block __Block_byref_bSelf_0 bSelf = {(void*)0,(__Block_byref_bSelf_0 *)&amp;bSelf, 33554432, sizeof(__Block_byref_bSelf_0),   __Block_byref_id_object_copy_131, __Block_byref_id_object_dispose_131, self};
 </code></pre>
 
@@ -842,20 +1136,33 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 <p>其用于对block的isa指针赋值
 1.栈</p>
 
-<pre><code>struct __OBJ1__of2_block_impl_0 {
-    struct __block_impl impl;
-    struct __OBJ1__of2_block_desc_0* Desc;
-    OBJ1 *self;
-    __OBJ1__of2_block_impl_0(void *fp, struct __OBJ1__of2_block_desc_0 *desc, OBJ1 *_self, int flags=0) : self(_self) {
-        impl.isa = &amp;_NSConcreteStackBlock;
-        impl.Flags = flags;
-        impl.FuncPtr = fp;
-        Desc = desc;
-    }
-};
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">struct</span> <span class="n">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">struct</span> <span class="n">__OBJ1__of2_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">OBJ1</span> <span class="o">*</span><span class="n">self</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">__OBJ1__of2_block_impl_0</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">fp</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_desc_0</span> <span class="o">*</span><span class="n">desc</span><span class="p">,</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">_self</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="n">self</span><span class="p">(</span><span class="n">_self</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">isa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_NSConcreteStackBlock</span><span class="p">;</span>
+</span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">Flags</span> <span class="o">=</span> <span class="n">flags</span><span class="p">;</span>
+</span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">FuncPtr</span> <span class="o">=</span> <span class="n">fp</span><span class="p">;</span>
+</span><span class='line'>      <span class="n">Desc</span> <span class="o">=</span> <span class="n">desc</span><span class="p">;</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>在栈上创建的block，其isa指针是_NSConcreteStackBlock。</p>
+
+<p>
+在栈上创建的block，其isa指针是_NSConcreteStackBlock。</p>
 
 <h5>2.全局区</h5>
 
@@ -865,17 +1172,27 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 
 <p>我们无法直接创建堆上的block，堆上的block需要从stack block拷贝得来，在runtime.c中的_Block_copy_internal函数中，有这样几行：</p>
 
-<pre><code>// Its a stack block.  Make a copy.
-if (!isGC) {
-    struct Block_layout *result = malloc(aBlock-&gt;descriptor-&gt;size);
-    ...
-    result-&gt;isa = _NSConcreteMallocBlock;
-    ...
-    return result;
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">// Its a stack block.  Make a copy.</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isGC</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">struct</span> <span class="n">Block_layout</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">descriptor</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>    <span class="n">result</span><span class="o">-&gt;</span><span class="n">isa</span> <span class="o">=</span> <span class="n">_NSConcreteMallocBlock</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>可以看到，栈block复制得来的新block，其isa指针会被赋值为_NSConcreteMallocBlock</p>
+
+<p>  <br/>
+可以看到，栈block复制得来的新block，其isa指针会被赋值为_NSConcreteMallocBlock</p>
 
 <h5>4.其余的isa类型</h5>
 
@@ -890,47 +1207,74 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 
 <p> 对block调用Block_copy方法，或者向其发送objc copy消息，最终都会调用runtime.c中的<code>_Block_copy_internal</code>函数，其内部实现会检查block的flag，从而进行不同的操作：</p>
 
-<pre><code>static void *_Block_copy_internal(const void *arg, const int flags) {
-    ...
-    aBlock = (struct Block_layout *)arg;
-    ...
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="o">*</span><span class="nf">_Block_copy_internal</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'>  <span class="n">aBlock</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">Block_layout</span> <span class="o">*</span><span class="p">)</span><span class="n">arg</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>1.栈block的复制</p>
 
-<pre><code> // reset refcount
- result-&gt;flags &amp;= ~(BLOCK_REFCOUNT_MASK);    // XXX not needed
- result-&gt;flags |= BLOCK_NEEDS_FREE | 1;
- result-&gt;isa = _NSConcreteMallocBlock;
- if (result-&gt;flags &amp; BLOCK_HAS_COPY_DISPOSE) {
-     //printf("calling block copy helper %p(%p, %p)...\n", aBlock-&gt;descriptor-&gt;copy, result, aBlock);
-     (*aBlock-&gt;descriptor-&gt;copy)(result, aBlock); // do fixup
- }
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'> <span class="c1">// reset refcount</span>
+</span><span class='line'> <span class="n">result</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="n">BLOCK_REFCOUNT_MASK</span><span class="p">);</span>    <span class="c1">// XXX not needed</span>
+</span><span class='line'> <span class="n">result</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">|=</span> <span class="n">BLOCK_NEEDS_FREE</span> <span class="o">|</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'> <span class="n">result</span><span class="o">-&gt;</span><span class="n">isa</span> <span class="o">=</span> <span class="n">_NSConcreteMallocBlock</span><span class="p">;</span>
+</span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_HAS_COPY_DISPOSE</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="c1">//printf(&quot;calling block copy helper %p(%p, %p)...\n&quot;, aBlock-&gt;descriptor-&gt;copy, result, aBlock);</span>
+</span><span class='line'>     <span class="p">(</span><span class="o">*</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">descriptor</span><span class="o">-&gt;</span><span class="n">copy</span><span class="p">)(</span><span class="n">result</span><span class="p">,</span> <span class="n">aBlock</span><span class="p">);</span> <span class="c1">// do fixup</span>
+</span><span class='line'> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>除了修改isa指针的值之外，拷贝过程中，还会将BLOCK_NEEDS_FREE置入，大家记住这个值，后面会用到。
 最后，如果block有辅助copy/dispose函数，那么辅助的copy函数会被调用。</p>
 
 <p>2.全局block的复制</p>
 
-<pre><code>else if (aBlock-&gt;flags &amp; BLOCK_IS_GLOBAL) {
-    return aBlock;
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_IS_GLOBAL</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">aBlock</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>全局block进行copy是直接返回了原block，没有任何的其他操作。</p>
+
+<p>  <br/>
+全局block进行copy是直接返回了原block，没有任何的其他操作。</p>
 
 <p>3.堆block的复制</p>
 
-<pre><code>if (aBlock-&gt;flags &amp; BLOCK_NEEDS_FREE) {
-    // latches on high
-    latching_incr_int(&amp;aBlock-&gt;flags);
-    return aBlock;
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_NEEDS_FREE</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// latches on high</span>
+</span><span class='line'>    <span class="n">latching_incr_int</span><span class="p">(</span><span class="o">&amp;</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">flags</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">aBlock</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>栈block复制时，置入的BLOCK_NEEDS_FREE标记此时起作用，_Block_copy_internal函数识别当前block是一个堆block，则仅仅增加引用计数，然后返回原block。</p>
+
+<p>  <br/>
+栈block复制时，置入的BLOCK_NEEDS_FREE标记此时起作用，_Block_copy_internal函数识别当前block是一个堆block，则仅仅增加引用计数，然后返回原block。</p>
 
 <p>辅助copy/dispose函数</p>
 
@@ -938,119 +1282,215 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 辅助copy函数用于拷贝block所引用的可修改变量，我们这里以 __block int i = 1024为例：
 先看看Block_private.h中的定义：</p>
 
-<pre><code>struct Block_byref {
-    void *isa;
-    struct Block_byref *forwarding;
-    int flags; /* refcount; */
-    int size;
-    void (*byref_keep)(struct Block_byref *dst, struct Block_byref *src);
-    void (*byref_destroy)(struct Block_byref *);
-    /* long shared[0]; */
-};
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">Block_byref</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="o">*</span><span class="n">isa</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">Block_byref</span> <span class="o">*</span><span class="n">forwarding</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">flags</span><span class="p">;</span> <span class="cm">/* refcount; */</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">byref_keep</span><span class="p">)(</span><span class="k">struct</span> <span class="n">Block_byref</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">struct</span> <span class="n">Block_byref</span> <span class="o">*</span><span class="n">src</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">byref_destroy</span><span class="p">)(</span><span class="k">struct</span> <span class="n">Block_byref</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'>  <span class="cm">/* long shared[0]; */</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>而我们的__block int i = 1024的转码：</p>
 
-<pre><code>struct __Block_byref_i_0 {
-    void *__isa;
-    __Block_byref_i_0 *__forwarding;
-    int __flags;
-    int __size;
-    int i;
-};//所以我们知道，当此结构体被类型强转为Block_byref时，前四个成员是一致的，访问flags就相当于访问__flags，而内部实现就是这样使用的
-...
-__attribute__((__blocks__(byref))) __Block_byref_i_0 i = {(void*)0, (__Block_byref_i_0 *)&amp;i, 0, sizeof(__Block_byref_i_0), 1024};//i初始化时__flags为0
-static void __main_block_copy_0(struct __main_block_impl_0*dst, struct  __main_block_impl_0*src) {_Block_object_assign((void*)&amp;dst-&gt;i, (void*)src-&gt;i, 8/*BLOCK_FIELD_IS_BYREF*/);}
-</code></pre>
+<p>
+而我们的__block int i = 1024的转码：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__Block_byref_i_0</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kt">void</span> <span class="o">*</span><span class="n">__isa</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">__Block_byref_i_0</span> <span class="o">*</span><span class="n">__forwarding</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">__flags</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">__size</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span><span class="c1">//所以我们知道，当此结构体被类型强转为Block_byref时，前四个成员是一致的，访问flags就相当于访问__flags，而内部实现就是这样使用的</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="n">__attribute__</span><span class="p">((</span><span class="n">__blocks__</span><span class="p">(</span><span class="n">byref</span><span class="p">)))</span> <span class="n">__Block_byref_i_0</span> <span class="n">i</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,</span>    <span class="p">(</span><span class="n">__Block_byref_i_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_i_0</span><span class="p">),</span> <span class="mi">1024</span><span class="p">};</span><span class="c1">//i初始化时__flags为0</span>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__main_block_copy_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">struct</span>    <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span><span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">dst</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">,</span> <span class="mi">8</span><span class="cm">/*BLOCK_FIELD_IS_BYREF*/</span><span class="p">);}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>此时，复制时调用的辅助函数：</p>
 
-<pre><code>void _Block_object_assign(void *destAddr, const void *object, const int flags) {//此处flags为8，即BLOCK_FIELD_IS_BYREF
-...
-    if ((flags &amp; BLOCK_FIELD_IS_BYREF) == BLOCK_FIELD_IS_BYREF)  {
-        // copying a __block reference from the stack Block to the heap
-        // flags will indicate if it holds a __weak reference and needs a special isa
-        _Block_byref_assign_copy(destAddr, object, flags);
-    }
-...
-}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">void</span> <span class="nf">_Block_object_assign</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">destAddr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span><span class="c1">//此处flags为8，即BLOCK_FIELD_IS_BYREF</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">((</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_FIELD_IS_BYREF</span><span class="p">)</span> <span class="o">==</span> <span class="n">BLOCK_FIELD_IS_BYREF</span><span class="p">)</span>  <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// copying a __block reference from the stack Block to the heap</span>
+</span><span class='line'>      <span class="c1">// flags will indicate if it holds a __weak reference and needs a special isa</span>
+</span><span class='line'>          <span class="n">_Block_byref_assign_copy</span><span class="p">(</span><span class="n">destAddr</span><span class="p">,</span> <span class="n">object</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">_Block_byref_assign_copy</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span><span class="c1">//此处flags为8，即BLOCK_FIELD_IS_BYREF</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">Block_byref</span> <span class="o">**</span><span class="n">destp</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">Block_byref</span> <span class="o">**</span><span class="p">)</span><span class="n">dest</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">Block_byref</span> <span class="o">*</span><span class="n">src</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="n">Block_byref</span> <span class="o">*</span><span class="p">)</span><span class="n">arg</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'>  <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">forwarding</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_REFCOUNT_MASK</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="c1">//当初次拷贝i时，flags为0，进入此分支会进行复制操作并改变flags值，置入BLOCK_NEEDS_FREE和初始的引用计数</span>
+</span><span class='line'>   <span class="p">...</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="c1">// already copied to heap</span>
+</span><span class='line'>  <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">forwarding</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_NEEDS_FREE</span><span class="p">)</span> <span class="o">==</span> <span class="n">BLOCK_NEEDS_FREE</span><span class="p">)</span> <span class="p">{</span><span class="c1">//当再次拷贝i时，则仅仅增加其引用计数</span>
+</span><span class='line'>      <span class="n">latching_incr_int</span><span class="p">(</span><span class="o">&amp;</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">forwarding</span><span class="o">-&gt;</span><span class="n">flags</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="c1">// assign byref data block pointer into new Block</span>
+</span><span class='line'>  <span class="n">_Block_assign</span><span class="p">(</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">forwarding</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">**</span><span class="p">)</span><span class="n">destp</span><span class="p">);</span><span class="c1">//这句仅仅是直接赋值，其函数实现只有一行赋值语句，查阅runtime.c可知</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-static void _Block_byref_assign_copy(void *dest, const void *arg, const int flags) {//此处flags为8，即BLOCK_FIELD_IS_BYREF
-    struct Block_byref **destp = (struct Block_byref **)dest;
-    struct Block_byref *src = (struct Block_byref *)arg;
-    ...
-    else if ((src-&gt;forwarding-&gt;flags &amp; BLOCK_REFCOUNT_MASK) == 0) {//当初次拷贝i时，flags为0，进入此分支会进行复制操作并改变flags值，置入BLOCK_NEEDS_FREE和初始的引用计数
-   ...
-    }
-    // already copied to heap
-    else if ((src-&gt;forwarding-&gt;flags &amp; BLOCK_NEEDS_FREE) == BLOCK_NEEDS_FREE) {//当再次拷贝i时，则仅仅增加其引用计数
-        latching_incr_int(&amp;src-&gt;forwarding-&gt;flags);
-    }
-    // assign byref data block pointer into new Block
-    _Block_assign(src-&gt;forwarding, (void **)destp);//这句仅仅是直接赋值，其函数实现只有一行赋值语句，查阅runtime.c可知
-}
-</code></pre>
 
-<p>所以，我们知道，当我们多次copy一个block时，其引用的__block变量只会被拷贝一次。</p>
+<p>
+所以，我们知道，当我们多次copy一个block时，其引用的__block变量只会被拷贝一次。</p>
 
 <p>2.objc变量的复制</p>
 
 <p>当objc变量没有__block修饰时：</p>
 
-<pre><code>static void __OBJ1__of2_block_copy_0(struct __OBJ1__of2_block_impl_0*dst, struct __OBJ1__of2_block_impl_0*src) {_Block_object_assign((void*)&amp;dst-&gt;self, (void*)src-&gt;self, 3/*BLOCK_FIELD_IS_OBJECT*/);}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__OBJ1__of2_block_copy_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span><span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">dst</span><span class="o">-&gt;</span><span class="n">self</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">self</span><span class="p">,</span> <span class="mi">3</span><span class="cm">/*BLOCK_FIELD_IS_OBJECT*/</span><span class="p">);}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">_Block_object_assign</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">destAddr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">...</span>
+</span><span class='line'>  <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_FIELD_IS_OBJECT</span><span class="p">)</span> <span class="o">==</span> <span class="n">BLOCK_FIELD_IS_OBJECT</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">//printf(&quot;retaining object at %p\n&quot;, object);</span>
+</span><span class='line'>      <span class="n">_Block_retain_object</span><span class="p">(</span><span class="n">object</span><span class="p">);</span><span class="c1">//当我们没有开启arc时，这个函数会retian此object</span>
+</span><span class='line'>      <span class="c1">//printf(&quot;done retaining object at %p\n&quot;, object);</span>
+</span><span class='line'>      <span class="n">_Block_assign</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">object</span><span class="p">,</span> <span class="n">destAddr</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="p">....</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-void _Block_object_assign(void *destAddr, const void *object, const int flags) {
-    ...
-    else if ((flags &amp; BLOCK_FIELD_IS_OBJECT) == BLOCK_FIELD_IS_OBJECT) {
-        //printf("retaining object at %p\n", object);
-        _Block_retain_object(object);//当我们没有开启arc时，这个函数会retian此object
-        //printf("done retaining object at %p\n", object);
-        _Block_assign((void *)object, destAddr);
-    }
-    ....
-}
-</code></pre>
 
-<p>当objc变量有__block修饰时：</p>
+<p>
+当objc变量有__block修饰时：</p>
 
-<pre><code>struct __Block_byref_bSelf_0 {
-    void *__isa;
-    __Block_byref_bSelf_0 *__forwarding;
-    int __flags;
-    int __size;
-    void (*__Block_byref_id_object_copy)(void*, void*);
-    void (*__Block_byref_id_object_dispose)(void*);
-    OBJ1 *bSelf;
-};
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__Block_byref_bSelf_0</span> <span class="p">{</span>
+</span><span class='line'>          <span class="kt">void</span> <span class="o">*</span><span class="n">__isa</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">__Block_byref_bSelf_0</span> <span class="o">*</span><span class="n">__forwarding</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">__flags</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">__size</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">__Block_byref_id_object_copy</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>      <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">__Block_byref_id_object_dispose</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">OBJ1</span> <span class="o">*</span><span class="n">bSelf</span><span class="p">;</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__Block_byref_id_object_copy_131</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">dst</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="o">*</span><span class="p">)</span> <span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">src</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="mi">131</span><span class="p">);</span><span class="c1">//131即为BLOCK_FIELD_IS_OBJECT|BLOCK_BYREF_CALLER</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__Block_byref_id_object_dispose_131</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">_Block_object_dispose</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="o">*</span><span class="p">)</span> <span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">src</span> <span class="o">+</span> <span class="mi">40</span><span class="p">),</span> <span class="mi">131</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">...</span> <span class="c1">//33554432即为BLOCK_HAS_COPY_DISPOSE</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">__block</span> <span class="n">__Block_byref_bSelf_0</span> <span class="n">bSelf</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_bSelf_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">bSelf</span><span class="p">,</span> <span class="mi">33554432</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_bSelf_0</span><span class="p">),</span> <span class="n">__Block_byref_id_object_copy_131</span><span class="p">,</span> <span class="n">__Block_byref_id_object_dispose_131</span><span class="p">,</span> <span class="n">self</span><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-static void __Block_byref_id_object_copy_131(void *dst, void *src) {
-    _Block_object_assign((char*)dst + 40, *(void * *) ((char*)src + 40), 131);//131即为BLOCK_FIELD_IS_OBJECT|BLOCK_BYREF_CALLER
-}
-static void __Block_byref_id_object_dispose_131(void *src) {
-    _Block_object_dispose(*(void * *) ((char*)src + 40), 131);
-}
-
-... //33554432即为BLOCK_HAS_COPY_DISPOSE
-
-__block __Block_byref_bSelf_0 bSelf = {(void*)0,(__Block_byref_bSelf_0 *)&amp;bSelf, 33554432, sizeof(__Block_byref_bSelf_0), __Block_byref_id_object_copy_131, __Block_byref_id_object_dispose_131, self};
-</code></pre>
 
 <p>BLOCK_HAS_COPY_DISPOSE告诉内部实现，这个变量结构体具有自己的copy/dispose辅助函数，而此时我们的内部实现不会进行默认的复制操作：</p>
 
-<pre><code>void _Block_object_assign(void *destAddr, const void *object, const int flags) {
-    //printf("_Block_object_assign(*%p, %p, %x)\n", destAddr, object, flags);
-    if ((flags &amp; BLOCK_BYREF_CALLER) == BLOCK_BYREF_CALLER) {
-        if ((flags &amp; BLOCK_FIELD_IS_WEAK) == BLOCK_FIELD_IS_WEAK) {
-            _Block_assign_weak(object, destAddr);
-    }
-    else {
-        // do *not* retain or *copy* __block variables whatever they are
-        _Block_assign((void *)object, destAddr);
-    }
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">void</span> <span class="nf">_Block_object_assign</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">destAddr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">//printf(&quot;_Block_object_assign(*%p, %p, %x)\n&quot;, destAddr, object, flags);</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">((</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_BYREF_CALLER</span><span class="p">)</span> <span class="o">==</span> <span class="n">BLOCK_BYREF_CALLER</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">((</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_FIELD_IS_WEAK</span><span class="p">)</span> <span class="o">==</span> <span class="n">BLOCK_FIELD_IS_WEAK</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">_Block_assign_weak</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="n">destAddr</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// do *not* retain or *copy* __block variables whatever they are</span>
+</span><span class='line'>        <span class="n">_Block_assign</span><span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">object</span><span class="p">,</span> <span class="n">destAddr</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>当我们没有开启arc，且flags中具有BLOCK_BYREF_CALLER时，会进入_Block_assign函数，而此函数仅仅是赋值
+
+<p>  <br/>
+当我们没有开启arc，且flags中具有BLOCK_BYREF_CALLER时，会进入_Block_assign函数，而此函数仅仅是赋值
 所以，如果要避免objc实例中的block引起的循环引用，我们需要让block间接使用self：</p>
 
 <pre><code>__block bSelf = self;

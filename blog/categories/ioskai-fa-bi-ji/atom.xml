@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS开发笔记 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/ioskai-fa-bi-ji/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-04-14T23:54:49+08:00</updated>
+  <updated>2014-05-05T15:03:32+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -23,6 +23,8 @@
 <!--more-->
 
 
+<p>```objc</p>
+
 <pre><code>NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 NSDate *now;
 NSDateComponents *comps = [[NSDateComponents alloc] init];
@@ -38,7 +40,10 @@ min = [comps minute];
 sec = [comps second];
 </code></pre>
 
-<p><strong>二、世界标准时间UTC /GMT 转为当前系统时区对应的时间</strong></p>
+<p>```</p>
+
+<p><strong>二、世界标准时间UTC /GMT 转为当前系统时区对应的时间</strong>
+```objc</p>
 
 <pre><code>- (NSDate *)getNowDateFromatAnDate:(NSDate *)anyDate
 {
@@ -58,7 +63,10 @@ sec = [comps second];
 }
 </code></pre>
 
-<p><strong>三、NSString格式转化为NSDate</strong></p>
+<p>```</p>
+
+<p><strong>三、NSString格式转化为NSDate</strong>
+```objc</p>
 
 <pre><code>- (NSDate *)stringToDate:(NSString *)strdate
 {
@@ -70,7 +78,10 @@ sec = [comps second];
 }
 </code></pre>
 
-<p><strong>四、NSDate转化为NSString</strong></p>
+<p>```</p>
+
+<p><strong>四、NSDate转化为NSString</strong>
+```objc</p>
 
 <pre><code>- (NSString *)dateToString:(NSDate *)date
 {
@@ -82,7 +93,10 @@ sec = [comps second];
 }
 </code></pre>
 
-<p><strong>五、将本地日期字符串转为UTC日期字符串</strong></p>
+<p>```</p>
+
+<p><strong>五、将本地日期字符串转为UTC日期字符串</strong>
+```objc</p>
 
 <pre><code>//本地日期格式:2013-08-03 12:53:51
 //可自行指定输入输出格式
@@ -103,7 +117,9 @@ sec = [comps second];
 }
 </code></pre>
 
-<p><strong>六、将UTC日期字符串转为本地时间字符串</strong></p>
+<p><code>
+**六、将UTC日期字符串转为本地时间字符串**
+</code>objc</p>
 
 <pre><code>//输入的UTC日期格式2013-08-03T04:53:51+0000
 -(NSString *)getLocalDateFormateUTCDate:(NSString *)utcDate
@@ -122,6 +138,8 @@ sec = [comps second];
     return dateString;
 }
 </code></pre>
+
+<p>```</p>
 
 <p><strong>七、iOS开发之格式化日期时间</strong></p>
 
@@ -213,6 +231,8 @@ M/D/YYYY H:MM     12/7/1958 20:50
 <!--more-->
 
 
+<p>```objc</p>
+
 <pre><code>webview.scrollView.delegate=self;
 
 -(UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView 
@@ -220,6 +240,8 @@ M/D/YYYY H:MM     12/7/1958 20:50
     return nil;
 }
 </code></pre>
+
+<p>```</p>
 ]]></content>
   </entry>
   
@@ -233,6 +255,8 @@ M/D/YYYY H:MM     12/7/1958 20:50
 <!--more-->
 
 
+<p>```objc</p>
+
 <pre><code>+ (UIColor *)colorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScannerscannerWithString:hexString];
@@ -241,6 +265,8 @@ M/D/YYYY H:MM     12/7/1958 20:50
     return [UIColorcolorWithRed:((rgbValue &amp; 0xFF0000) &gt;&gt; 16)/255.0green:((rgbValue &amp; 0xFF00) &gt;&gt; 8)/255.0 blue:(rgbValue &amp; 0xFF)/255.0 alpha:1.0];
 }
 </code></pre>
+
+<p>```</p>
 ]]></content>
   </entry>
   
@@ -285,8 +311,6 @@ M/D/YYYY H:MM     12/7/1958 20:50
 <h4>3、While reading /Users/abel/.……..png pngcrush caught libpng error:   Not a PNG filCould not find file: /Users/abel/Library/Developer/Xcode/.…..Default.pngCommand /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/copypng emitted errors but did not return a nonzero exit code to indicate failure</h4>
 
 <pre><code>报这个错误是因为我把一张本身为jpg的图片的名字修改成png后缀了。
-
-
 將 Xcode 升级到最新的 5.1，在使用AFNetworking时遇到了 property synthesis 相关的 error，错误信息如下：
 </code></pre>
 
@@ -295,23 +319,45 @@ M/D/YYYY H:MM     12/7/1958 20:50
 <pre><code>Auto property synthesis will not synthesize property 'response' because it is 'readwrite' but it will be synthesized 'readonly' via another property
 </code></pre>
 
-<p>在AFHTTPRequestOperation中定义了：</p>
+<p>在AFHTTPRequestOperation中定义了：
+```objc</p>
 
 <pre><code>@property (readwrite, nonatomic, strong) NSURLRequest *request;
 @property (readwrite, nonatomic, strong) NSHTTPURLResponse *response;
 </code></pre>
 
-<p>就是这样的代码，会让 <code>request property</code> 出现 warning。原因是因为 compiler 读取 sub-class 時，会发现 request 明明应该是個 readonly property（super-class 讲的），但你却要将它设为 readwriteproperty，所以 compiler 不知道该怎么 auto synthesis。</p>
+<p><code>``
+就是这样的代码，会让</code>request property` 出现 warning。原因是因为 compiler 读取 sub-class 時，会发现 request 明明应该是個 readonly property（super-class 讲的），但你却要将它设为 readwriteproperty，所以 compiler 不知道该怎么 auto synthesis。</p>
 
 <p>但你知道 super-class 的实现，也会将这个 property 改成 readwrite，因此你在 sub-class 的实现里这样子写是不会有问题的。可是 compiler 不知道啊，這要怎么办呢？</p>
 
-<p>你要告诉 compiler，要它不用担心。那要怎么告诉 compiler 呢？你需要的是 @dynamic，它是一种给 compiler 的「承诺」，承诺它「虽然你现在不知道该怎么办，但是在 runtime 的时候你就会知道了」。所以只要把代码改成以下这样就可以了：</p>
+<p>你要告诉 compiler，要它不用担心。那要怎么告诉 compiler 呢？你需要的是 @dynamic，它是一种给 compiler 的「承诺」，承诺它「虽然你现在不知道该怎么办，但是在 runtime 的时候你就会知道了」。所以只要把代码改成以下这样就可以了：
+```objc</p>
 
 <pre><code>@implementation AFHTTPRequestOperation
 @dynamic response;
 @dynamic request;
 @end
 </code></pre>
+
+<p>```</p>
+
+<h4>5、“Your build settings specify a provisioning profile with the UUID “”, however, no such provisioning profile was found”</h4>
+
+<p>在Archive项目时，出现了“Your build settings specify a provisioning profile with the UUID “”, however, no such provisioning profile was found”的出错。一直提示指定UUID的provisioning profile找不到，感觉很奇怪。明明自己的provisioning profile是刚下载好的，并且全是新安装。于是通过谷歌找到了答案。</p>
+
+<p>参考地址：<a href="http://stackoverflow.com/questions/1760518/codesign-error-provisioning-profile-cannot-be-found-after-deleting-expired-prof">http://stackoverflow.com/questions/1760518/codesign-error-provisioning-profile-cannot-be-found-after-deleting-expired-prof</a>
+这里所说的就是要通过修改你的项目的.xcodeproj文件来解决上述的错误。</p>
+
+<ul>
+<li>1.找到项目中的**.xcodeproj文件，点击右键，show package contents(打开包内容)。</li>
+<li>2.打开后找到project.pbxproj文件，用文本编辑器打开。其实就是右键，点击open就好了。</li>
+<li>3.打开这个文件后，按command+F，在这个文件中查找“PROVISIONING_PROFILE",找到和这个“
+PROVISIONING_PROFILE = &ldquo;487F3EAC-05FB-4A2A-9EA0-31F1F35760EB&rdquo;;
+&ldquo;PROVISIONING_PROFILE[sdk=iphoneos*]&rdquo; = &ldquo;487F3EAC-05FB-4A2A-9EA0-31F1F35760EB&rdquo;;”类似的都删除。</li>
+<li>4.然后保存文件，重新打开项目。xcode会提示你重新下载安装provisioning profile文件。下载后安装上就可以。</li>
+</ul>
+
 ]]></content>
   </entry>
   

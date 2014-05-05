@@ -151,25 +151,44 @@
 
 <p>下面举一个例子，同样的代码，只是在「ARC」与「MRC」的情況下编译执行， 但是二者所需要的时间是相差数倍的！</p>
 
-<pre><code>int n = 600000, m = 10000000;
-arr = [NSMutableArray new];
-for (int i = 0; i &lt; n; i++) {
-    [arr addObject:[NSNumber numberWithInt:1]];
-}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">600000</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">;</span>
+</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="n">new</span><span class="p">];</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">arr</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">1</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">CFAbsoluteTime</span> <span class="n">start</span> <span class="o">=</span> <span class="n">CFAbsoluteTimeGetCurrent</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">id</span> <span class="n">obj</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">arr</span> <span class="nl">objectAtIndex:</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">CFAbsoluteTime</span> <span class="n">end</span> <span class="o">=</span> <span class="n">CFAbsoluteTimeGetCurrent</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;end:%lf, start:%lf, diff:%lf&quot;</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">[</span><span class="n">arr</span> <span class="n">release</span><span class="p">];</span> <span class="c1">// -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行</span>
+</span></code></pre></td></tr></table></div></figure>
 
-CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
-
-id obj = nil;
-for (int j = 0; j &lt; m; j++) {
-    obj = [arr objectAtIndex:n - 1];
-}
-
-CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
-
-NSLog(@"end:%lf, start:%lf, diff:%lf", end, start, end - start);
-
-[arr release]; // -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行
-</code></pre>
 
 <p>执行结果：</p>
 
@@ -221,58 +240,97 @@ for (int j = 0; j &lt; m; j++){
 
 <p>1、使用宏，可以标识归属者从OC到CF，还是从CF到OC。</p>
 
-<pre><code>NS_INLINE CFTypeRef CFBridgingRetain(id X) { 
-    return (__bridge_retain CFTypeRef)X; 
-} 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NS_INLINE</span> <span class="n">CFTypeRef</span> <span class="nf">CFBridgingRetain</span><span class="p">(</span><span class="kt">id</span> <span class="n">X</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_retain</span> <span class="n">CFTypeRef</span><span class="p">)</span><span class="n">X</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">NS_INLINE</span> <span class="kt">id</span> <span class="nf">CFBridgingRelease</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">X</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="kt">id</span><span class="p">)</span><span class="n">X</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-NS_INLINE id CFBridgingRelease(CFTypeRef X) { 
-    return (__bridge_transfer id)X; 
-}
-</code></pre>
 
-<p>2、使用转化符,如：<code>__bridge</code>，<code>__bridge_transfer</code>，<code>__bridge_retained</code></p>
+<p>
+2、使用转化符,如：<code>__bridge</code>，<code>__bridge_transfer</code>，<code>__bridge_retained</code></p>
 
-<pre><code>id my_id; 
-CFStringRef my_cfref; 
-… 
-NSString   *a = (__bridge NSString*)my_cfref;     // Noop cast. 
-CFStringRef b = (__bridge CFStringRef)my_id;      // Noop cast. 
-… 
-NSString   *c = (__bridge_transfer NSString*)my_cfref; // -1 on the CFRef 
-CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">id</span> <span class="n">my_id</span><span class="p">;</span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">my_cfref</span><span class="p">;</span>
+</span><span class='line'><span class="err">…</span>
+</span><span class='line'><span class="n">NSString</span>   <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span>     <span class="c1">// Noop cast. </span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>      <span class="c1">// Noop cast. </span>
+</span><span class='line'><span class="err">…</span>
+</span><span class='line'><span class="n">NSString</span>   <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span> <span class="c1">// -1 on the CFRef </span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_retained</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>  <span class="c1">// returned CFRef is +1</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>下面以详细的例子来介绍一下OC和CF在arc下内存管理的详细写法.下面以CFURLCreateStringByAddingPercentEscapes()函数为例说一下在ARC下的写法和非ARC下的写法。</p>
+
+<p>
+下面以详细的例子来介绍一下OC和CF在arc下内存管理的详细写法.下面以CFURLCreateStringByAddingPercentEscapes()函数为例说一下在ARC下的写法和非ARC下的写法。</p>
 
 <p>非ARC模式下的写法：</p>
 
-<pre><code>#pragma mark – View lifecycle 
-- (void)viewDidLoad { 
-    [super viewDidLoad]; 
-    NSLog(@"=%@", [self escape:@"wangjun"]); 
-} 
--(NSString *)escape:(NSString *)text { 
-    return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text, NULL, CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));; 
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#pragma mark – View lifecycle </span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">self</span> <span class="nl">escape:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>使用instruments检测，没有内存泄漏。</p>
+
+<p>
+使用instruments检测，没有内存泄漏。</p>
 
 <p>下面把上面工程改为arc模式。</p>
 
 <p>可以看到xcode自动把上面函数转化为：</p>
 
-<pre><code>#pragma mark – View lifecycle 
-- (void)viewDidLoad { 
-    [super viewDidLoad]; 
-    NSLog(@"=%@", [self escape:@"wangjun"]); 
-} 
--(NSString *)escape:(NSString *)text { 
-    return (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text,NULL,CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#pragma mark – View lifecycle </span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">self</span> <span class="nl">escape:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>在arc中，CF和OC之间的转化桥梁是 __bridge，有两种方式：</p>
+
+<p>
+在arc中，CF和OC之间的转化桥梁是 __bridge，有两种方式：</p>
 
 <ul>
 <li>__bridge_transfer  ARC接管管理内存</li>
@@ -284,40 +342,61 @@ CFStringRef d = (__bridge_retained CFStringRef)my_id;  // returned CFRef is +1
 
 <p>上面代码等同于：</p>
 
-<pre><code>- (NSString *)escape:(NSString *)text { 
-    return CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)text,NULL,CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">CFBridgingRelease</span><span class="p">(</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">)));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>如果将上述代码改为：</p>
 
-<pre><code>-(NSString *)escape:(NSString *)text { 
-    return (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,(__bridge CFStringRef)text, NULL, CFSTR("!*’();:@&amp;=+$,/?%#[]"), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));; 
-}
-</code></pre>
+<p>
+如果将上述代码改为：</p>
 
-<p>编译也会成功，但是这时候用instruments检测，可以发现内存泄漏：</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+编译也会成功，但是这时候用instruments检测，可以发现内存泄漏：</p>
 
 <p>由于CF转化完OC，没有自己释放内存，同时也没有把内存管理交给ARC，所以出现内存泄漏。由于__bridge只是同一个对象的引用，内存的所有权没有发生变化。</p>
 
 <p>下面在说一下oc到CF的转化，需要把OC的内存管理权释放掉。</p>
 
-<pre><code>NSString *s1 = [[NSString alloc] initWithFormat:@"Hello, %@!", name]; 
-CFStringRef s2 = (__bridge_retained CFStringRef)s1; 
-// do something with s2 // . . . 
-CFRelease(s2);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSString</span> <span class="o">*</span><span class="n">s1</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFormat:</span><span class="s">@&quot;Hello, %@!&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">];</span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_retained</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">s1</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// do something with s2 // . . . </span>
+</span><span class='line'><span class="n">CFRelease</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>最后由CF进行内存释放。</p>
+
+<p>
+最后由CF进行内存释放。</p>
 
 <p>上面代码等同于：</p>
 
-<pre><code>CFStringRef s2 = CFBridgingRetain(s1); 
-// . . . 
-CFRelease(s2);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">CFStringRef</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">CFBridgingRetain</span><span class="p">(</span><span class="n">s1</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// . . . </span>
+</span><span class='line'><span class="n">CFRelease</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>下面总结一下我们使用ARC情况下。oc和CF互相转化的原则：</p>
+
+<p>
+下面总结一下我们使用ARC情况下。oc和CF互相转化的原则：</p>
 
 <ul>
 <li>CF转化为OC时，并且对象的所有者发生改变，则使用<code>CFBridgingRelease()</code>或<code>__bridge_transfer</code> 。</li>

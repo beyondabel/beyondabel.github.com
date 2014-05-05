@@ -125,48 +125,82 @@
 
 <p>在《设计模式》一书中的原始示例中，单例模式的C++例子如下所求：</p>
 
-<pre><code>class Singleton
-{
-    public:
-        static Singleton *Instance();
-    protected:
-        Singleton();
-    private:
-        static Singletion * _instance;
-}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">class</span> <span class="n">Singleton</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nl">public:</span>
+</span><span class='line'>      <span class="k">static</span> <span class="n">Singleton</span> <span class="o">*</span><span class="n">Instance</span><span class="p">();</span>
+</span><span class='line'>  <span class="nl">protected:</span>
+</span><span class='line'>      <span class="n">Singleton</span><span class="p">();</span>
+</span><span class='line'>  <span class="nl">private:</span>
+</span><span class='line'>      <span class="k">static</span> <span class="n">Singletion</span> <span class="o">*</span> <span class="n">_instance</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Singleton</span> <span class="o">*</span><span class="n">Singleton</span><span class="o">::</span><span class="n">Instance</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="n">_instance</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>      <span class="n">instance</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Singleton</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">_instance</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-Singleton *Singleton::Instance()
-{
-    if(_instance == 0)
-    {
-        instance = new Singleton;
-    }
-    return _instance;
-}
-</code></pre>
 
 <p>知道C++语言的人都能看出来，在上面的C++代码Instance()方法中，检查静态的_instance实例变量，看它是否为0，如果是，会生成一个新的Singleton对象，然后将实例返回，现在我们把它改造成Objective-C版。</p>
 
 <p>那么用Objective-C如何实现单例模式呢？下面我们来新建一个Singleton类，在Singleton.h中实现如下</p>
 
-<pre><code>@interface Singleton : NSObject 
-+ (Singleton *) sharedInstance;
-@end 
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@interface</span> <span class="nc">Singleton</span> : <span class="nc">NSObject</span>
+</span><span class='line'><span class="k">+</span> <span class="p">(</span><span class="n">Singleton</span> <span class="o">*</span><span class="p">)</span> <span class="nf">sharedInstance</span><span class="p">;</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>在Singleton.m</p>
 
-<pre><code>@implementation Singleton 
-static Singleton * sharedSingleton = nil;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@implementation</span> <span class="nc">Singleton</span>
+</span><span class='line'><span class="k">static</span> <span class="n">Singleton</span> <span class="o">*</span> <span class="n">sharedSingleton</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">+</span> <span class="p">(</span><span class="n">Singleton</span> <span class="o">*</span><span class="p">)</span> <span class="nf">sharedInstance</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">sharedSingleton</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">sharedSingleton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Singleton</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">sharedSingleton</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-+ (Singleton *) sharedInstance  { 
-    if (sharedSingleton == nil) {    
-        sharedSingleton = [[Singleton alloc] init]; 
-    } 
-    return sharedSingleton;
-}  
-@end 
-</code></pre>
 
 <p>按照C++改造成Objective-C就完成了。如果真是这样的话，那么单例模式真的是太简单了，但实际上，需要克服一些障碍，才能让单例模式更可靠，可以真正放心地应用于程序中。如果需要实现一个“严格”的单例模式，还需要面对两个主要的障碍。</p>
 
@@ -176,41 +210,76 @@ static Singleton * sharedSingleton = nil;
 
 <p>下面我对<code>Singleton.m</code>的进行改进</p>
 
-<pre><code>@implementation Singleton  
- static Singleton * sharedSingleton = nil;  
-+ (Singleton *) sharedInstance  {  
-    if (sharedSingleton == nil) {  
-        sharedSingleton = [[super allocWithZone:NULL] init];  
-    }  
-    return sharedSingleton;  
-}  
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@implementation</span> <span class="nc">Singleton</span>
+</span><span class='line'> <span class="k">static</span> <span class="n">Singleton</span> <span class="o">*</span> <span class="n">sharedSingleton</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+</span><span class='line'><span class="k">+</span> <span class="p">(</span><span class="n">Singleton</span> <span class="o">*</span><span class="p">)</span> <span class="nf">sharedInstance</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">sharedSingleton</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">sharedSingleton</span> <span class="o">=</span> <span class="p">[[</span><span class="n">super</span> <span class="nl">allocWithZone:</span><span class="nb">NULL</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">sharedSingleton</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="nf">allocWithZone:</span><span class="p">(</span><span class="k">struct</span> <span class="n">_NSZone</span> <span class="o">*</span><span class="p">)</span><span class="nv">zone</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">[[</span><span class="n">self</span> <span class="n">sharedInstance</span><span class="p">]</span> <span class="n">retain</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="nf">copyWithZone:</span><span class="p">(</span><span class="n">NSZone</span> <span class="o">*</span><span class="p">)</span> <span class="n">zone</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">retain</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span> <span class="n">retainCount</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">NSUIntegerMax</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">release</span>  <span class="p">{</span>
+</span><span class='line'><span class="c1">//  </span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">autorelease</span>  <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-+ (id) allocWithZone:(struct _NSZone *)zone  {  
-    return [[self sharedInstance] retain];  
-}  
-
-- (id) copyWithZone:(NSZone *) zone  {  
-    return self;  
-}  
-
-- (id) retain  {  
-    return self;  
-}  
-
-- (NSUInteger) retainCount  {  
-    return NSUIntegerMax;  
-}  
-
-
-- (void) release  {  
-//  
-}  
-
-- (id) autorelease  {  
-    return self;  
-}  
-@end 
-</code></pre>
 
 <p>也许你注意到了，我重载了<code>allocWithZone:</code>，保持了从<code>sharedInstance</code>方法返回的单例对象，使用者哪怕使用<code>alloc</code>时也会返回唯一的实例（<code>alloc</code>方法中会先调用<code>allocWithZone:</code>创建对象）。而<code>retain</code>等内存管理的函数也被重载了，这样实现了合适的内存管理原则。</p>
 

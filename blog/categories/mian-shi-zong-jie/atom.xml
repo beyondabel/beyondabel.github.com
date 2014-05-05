@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 面试总结 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/mian-shi-zong-jie/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-04-14T23:54:49+08:00</updated>
+  <updated>2014-05-05T15:03:32+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -27,7 +27,7 @@
 <!--more-->
 
 
-<h4>1、#import与#include的区别，以及@class</h4>
+<h3>1、#import与#include的区别，以及@class</h3>
 
 <ul>
 <li>1.import会包含这个类的所有信息，包括实体变量和方法，而@class只是告诉编译器，其后面声明的名称是类的名称，至于这些类是如何定义的，暂时不用考虑，后面会再告诉你。</li>
@@ -44,7 +44,7 @@
 
 <p><code>#import</code>处理了重复引用的问题，还有一个用法会引起编译错误的就是在ClassA中<code>#import ClassB</code> 在ClassB中#import ClassA（交叉编译）那么在编译的时候也会出现未知错误。</p>
 
-<h4>2、堆和栈的区别?定义一个变量时，这个变量是在堆上还是在栈上？什么时候这个变量的内存会被释放？</h4>
+<h3>2、堆和栈的区别?定义一个变量时，这个变量是在堆上还是在栈上？什么时候这个变量的内存会被释放？</h3>
 
 <p>预备知识—程序的内存分配</p>
 
@@ -59,7 +59,8 @@
 </ul>
 
 
-<p>例子程序，这是一个前辈写的，非常详细</p>
+<p>例子程序，这是一个前辈写的，非常详细
+```objc</p>
 
 <pre><code>//main.cpp 
 int a = 0; 全局初始化区 
@@ -77,6 +78,8 @@ main()
     strcpy(p1, "123456"); 123456\0放在常量区，编译器可能会将它与p3所指向的"123456" 优化成一个地方。 
 } 
 </code></pre>
+
+<p>```</p>
 
 <p>堆和栈的理论知识</p>
 
@@ -135,32 +138,39 @@ main()
 
 <p>  但是，在以后的存取中，在栈上的数组比指针所指向的字符串(例如堆)快。</p>
 
-<p>  比如：</p>
+<p>  比如：
+<code>objc
+      #include
+      void main()
+      {
+          char a = 1;
+          char c[] = "1234567890";
+          char *p ="1234567890";
+          a = c[1];
+          a = p[1];
+          return;
+      }
+</code></p></li>
+</ul>
 
-<pre><code>  #include 
-  void main() 
-  { 
-      char a = 1; 
-      char c[] = "1234567890"; 
-      char *p ="1234567890"; 
-      a = c[1]; 
-      a = p[1]; 
-  return; 
-  } 
+
+<p>对应的汇编代码
+```objc</p>
+
+<pre><code>    10: a = c[1]; 
+    00401067 8A 4D F1 mov cl,byte ptr [ebp-0Fh] 
+    0040106A 88 4D FC mov byte ptr [ebp-4],cl 
+    11: a = p[1]; 
+    0040106D 8B 55 EC mov edx,dword ptr [ebp-14h] 
+    00401070 8A 42 01 mov al,byte ptr [edx+1] 
+    00401073 88 45 FC mov byte ptr [ebp-4],al 
 </code></pre>
 
-<p>  对应的汇编代码</p>
+<p>```</p>
 
-<pre><code>  10: a = c[1]; 
-  00401067 8A 4D F1 mov cl,byte ptr [ebp-0Fh] 
-  0040106A 88 4D FC mov byte ptr [ebp-4],cl 
-  11: a = p[1]; 
-  0040106D 8B 55 EC mov edx,dword ptr [ebp-14h] 
-  00401070 8A 42 01 mov al,byte ptr [edx+1] 
-  00401073 88 45 FC mov byte ptr [ebp-4],al 
-</code></pre>
+<p>第一种在读取时直接就把字符串中的元素读到寄存器cl中，而第二种则要先把指针值读到edx中，再根据edx读取字符，显然慢了。</p>
 
-<p>  第一种在读取时直接就把字符串中的元素读到寄存器cl中，而第二种则要先把指针值读到edx中，再根据edx读取字符，显然慢了。</p></li>
+<ul>
 <li><p>小结：</p>
 
 <p>  堆和栈的区别可以用如下的比喻来看出：</p>
@@ -171,7 +181,7 @@ main()
 </ul>
 
 
-<h4>3、进程和线程的区别</h4>
+<h3>3、进程和线程的区别</h3>
 
 <ul>
 <li><p>通俗的解释</p>
