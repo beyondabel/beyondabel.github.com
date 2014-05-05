@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS安全攻防 | Abel's Den]]></title>
   <link href="http://beyondabel.github.io/blog/categories/iosan-quan-gong-fang/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-05-05T15:03:32+08:00</updated>
+  <updated>2014-05-05T19:42:29+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -113,12 +113,16 @@ ldid -S helloworld
 
 <h4>3.来个经典Hello world ：</h4>
 
+<p>```objc</p>
+
 <pre><code>#include &lt;stdio.h&gt;                                                                                             
 int main(){  
    printf("Hello world !!!\n");  
    return 0;  
 }  
 </code></pre>
+
+<p>```</p>
 
 <h4>4.编译</h4>
 
