@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iOS常用设计模式 | Abel's Den]]></title>
-  <link href="http://beyondabel.github.io/blog/categories/ioschang-yong-she-ji-mo-shi/atom.xml" rel="self"/>
-  <link href="http://beyondabel.github.io/"/>
-  <updated>2014-06-24T16:34:00+08:00</updated>
-  <id>http://beyondabel.github.io/</id>
+  <link href="http://www.beyondabel.com/blog/categories/ioschang-yong-she-ji-mo-shi/atom.xml" rel="self"/>
+  <link href="http://www.beyondabel.com/"/>
+  <updated>2014-06-24T17:06:12+08:00</updated>
+  <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
     <email><![CDATA[abel_tu@163.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[iOS常用设计模式之委托模式]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/10/31/ios-proxymode/"/>
+    <link href="http://www.beyondabel.com/blog/2013/10/31/ios-proxymode/"/>
     <updated>2013-10-31T19:20:57+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/10/31/ios-proxymode</id>
+    <id>http://www.beyondabel.com/blog/2013/10/31/ios-proxymode</id>
     <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>在代理模式中，有两个对象参与处理同一个请求，接受请求的对象将请求委托给另一个对象来处理。</p>
@@ -159,9 +159,9 @@
   
   <entry>
     <title type="html"><![CDATA[iOS常用设计模式之单例模式]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/10/30/singleton/"/>
+    <link href="http://www.beyondabel.com/blog/2013/10/30/singleton/"/>
     <updated>2013-10-30T12:55:59+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/10/30/singleton</id>
+    <id>http://www.beyondabel.com/blog/2013/10/30/singleton</id>
     <content type="html"><![CDATA[<p><img src="/images/2013/10/30/singleton.png" alt="image" /></p>
 
 <h3>引言</h3>

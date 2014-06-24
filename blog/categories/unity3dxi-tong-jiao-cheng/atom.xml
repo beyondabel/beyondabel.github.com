@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Unity3D系统教程 | Abel's Den]]></title>
-  <link href="http://beyondabel.github.io/blog/categories/unity3dxi-tong-jiao-cheng/atom.xml" rel="self"/>
-  <link href="http://beyondabel.github.io/"/>
-  <updated>2014-06-24T16:34:00+08:00</updated>
-  <id>http://beyondabel.github.io/</id>
+  <link href="http://www.beyondabel.com/blog/categories/unity3dxi-tong-jiao-cheng/atom.xml" rel="self"/>
+  <link href="http://www.beyondabel.com/"/>
+  <updated>2014-06-24T17:06:12+08:00</updated>
+  <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
     <email><![CDATA[abel_tu@163.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac Unity3D安装及破解教程]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/04/07/unity3dinstall/"/>
+    <link href="http://www.beyondabel.com/blog/2014/04/07/unity3dinstall/"/>
     <updated>2014-04-07T17:41:20+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/04/07/unity3dinstall</id>
+    <id>http://www.beyondabel.com/blog/2014/04/07/unity3dinstall</id>
     <content type="html"><![CDATA[<p><img src="/images/2014/04/07/unity3dInstall.png" alt="image" /></p>
 
 <h3>引言</h3>

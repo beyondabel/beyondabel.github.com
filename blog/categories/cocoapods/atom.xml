@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: CocoaPods | Abel's Den]]></title>
-  <link href="http://beyondabel.github.io/blog/categories/cocoapods/atom.xml" rel="self"/>
-  <link href="http://beyondabel.github.io/"/>
-  <updated>2014-06-24T16:34:00+08:00</updated>
-  <id>http://beyondabel.github.io/</id>
+  <link href="http://www.beyondabel.com/blog/categories/cocoapods/atom.xml" rel="self"/>
+  <link href="http://www.beyondabel.com/"/>
+  <updated>2014-06-24T17:06:12+08:00</updated>
+  <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
     <email><![CDATA[abel_tu@163.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac下CocoaPods安装步骤]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/11/13/mac-install-cocoapods/"/>
+    <link href="http://www.beyondabel.com/blog/2013/11/13/mac-install-cocoapods/"/>
     <updated>2013-11-13T19:16:34+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/11/13/mac-install-cocoapods</id>
+    <id>http://www.beyondabel.com/blog/2013/11/13/mac-install-cocoapods</id>
     <content type="html"><![CDATA[<h3>引言：</h3>
 
 <p>开发应用的时候第三方的库是不可缺少的，它能提高开发的效率。一些经常用到的库，在新的项目里用是，你又得手工的Add到项目里，用的到库多起来了，就不方便管理了。CocoaPods这个软件，可以方便的帮你管理Xcode里的第三方的库。</p>

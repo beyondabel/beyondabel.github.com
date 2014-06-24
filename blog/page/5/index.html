@@ -9,7 +9,8 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Sep 27th, 2013 iOS开发笔记 网页颜色值转化成UIColor 在做项目过程中，有时设计人员给我们往往是一个设计图，而我们用PS取值的时候可以得到一个红绿蓝和一个网页的颜色值，用红绿蓝往往不是很方便，后来我们在项目工具中写一个方法，专门把网页的颜色值转化成UIColor，这样一来， &hellip;">
+	<meta name="description" content=" Sep 10th, 2013 面试总结 面试中常遇到的几个问题 引言 对于以技术出身的程序员来说，面试题的积累是非常有必要的。Abel在这整理几个iOS面试中常常会问到的几个问题。 阅读全文 &rarr; Prev Blog Archives
+">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Abel's Den" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://beyondabel.github.io/blog/page/5/">
+	<link rel="canonical" href="http://www.beyondabel.com/blog/page/5/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -91,171 +92,6 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-27T19:14:03+08:00" data-updated="true" itemprop="datePublished">Sep 27<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ioskai-fa-bi-ji/'>iOS开发笔记</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/27/webcolor-uicolor/" itemprop="url">网页颜色值转化成UIColor</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>在做项目过程中，有时设计人员给我们往往是一个设计图，而我们用PS取值的时候可以得到一个红绿蓝和一个网页的颜色值，用红绿蓝往往不是很方便，后来我们在项目工具中写一个方法，专门把网页的颜色值转化成UIColor，这样一来，方便了许多。</p>
-
-
-		
-		<a href="/blog/2013/09/27/webcolor-uicolor/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-26T15:39:29+08:00" data-updated="true" itemprop="datePublished">Sep 26<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/thread/'>Thread</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/26/ios-gcd-one/" itemprop="url">iOS多线程之GCD</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/images/2013/09/26/gcd.png" alt="image" /></p>
-
-<h3>引言</h3>
-
-<p>GCD（Grand Central Dispatch）是一套低层API，提供了一种新的方法来进行并发程序编写。允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行。GCD比之NSOpertionQueue更底层更高效，并且它不是Cocoa框架的一部分。</p>
-
-
-		
-		<a href="/blog/2013/09/26/ios-gcd-one/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-25T19:10:57+08:00" data-updated="true" itemprop="datePublished">Sep 25<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ioskai-fa-bi-ji/'>iOS开发笔记</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/25/ios-developerment-error/" itemprop="url">iOS开发过程中出现错误整理</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<h3>引言</h3>
-
-<p>在开发过程中，编译器有时候会报各种各样的错误，当程序在运行的过程中，有时也会出现不同的bug导致crash。为了以后能够快速知道是什么原因导致，Abel在这整理一些常见的错误点。</p>
-
-<h3>目录</h3>
-
-<ul>
-<li>1、No architectures to compile for …</li>
-<li>2、CodeSign error: code signing is required for product type &lsquo;Application&rsquo; in SDK &lsquo;iOS 5.0&rsquo;</li>
-<li>3、While reading /Users/abel/.……..png pngcrush caught libpng error:   Not a PNG</li>
-</ul>
-
-
-<h5>1、No architectures to compile for (ONLY_ACTIVE_ARCH=YES, active arch=armv7s, VALID_ARCHS=armv7 armv6).</h5>
-
-
-		
-		<a href="/blog/2013/09/25/ios-developerment-error/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-24T10:34:29+08:00" data-updated="true" itemprop="datePublished">Sep 24<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/thread/'>Thread</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/24/thread-overview/" itemprop="url">多线程总述</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/images/2013/09/26/multithreading.png" alt="image" /></p>
-
-<p><strong>引言</strong></p>
-
-<p>多线程是一个比较轻量级的方法来实现单个应用程序内多个代码执行路径。在系统级别内，程序并排执行，系统分配到每个程序的执行时间是基于该程序的所需时间和其他程序的所需时间来决定的。然而在每个应程序的内部，存在一个或多个执行线程，它同时或在一个几乎同时发生的方式里执行不同的任务。系统本身管理这些执行的线程，调度它们在可用的内核上运行，并在需要让其他线程执行的时候抢先打断它们。</p>
-
-
-		
-		<a href="/blog/2013/09/24/thread-overview/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">

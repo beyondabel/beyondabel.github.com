@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 个人经历 | Abel's Den]]></title>
-  <link href="http://beyondabel.github.io/blog/categories/ge-ren-jing-li/atom.xml" rel="self"/>
-  <link href="http://beyondabel.github.io/"/>
-  <updated>2014-06-24T16:34:00+08:00</updated>
-  <id>http://beyondabel.github.io/</id>
+  <link href="http://www.beyondabel.com/blog/categories/ge-ren-jing-li/atom.xml" rel="self"/>
+  <link href="http://www.beyondabel.com/"/>
+  <updated>2014-06-24T17:06:12+08:00</updated>
+  <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
     <email><![CDATA[abel_tu@163.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[博客搬家到Octopress]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/12/01/my-new-blog/"/>
+    <link href="http://www.beyondabel.com/blog/2013/12/01/my-new-blog/"/>
     <updated>2013-12-01T23:37:45+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/12/01/my-new-blog</id>
+    <id>http://www.beyondabel.com/blog/2013/12/01/my-new-blog</id>
     <content type="html"><![CDATA[<p>我是一个非常喜欢折腾的程序猿，之前我一直在CSDN上写博文，但由于一些种种的原因，后来放弃了CSDN,之后一直都有搭建个人站点的想法,在网上搜索了如何搭建个人站点,网上有很多的人建议用Octopress+Github,据说Octopress是一个面向黑客和开发者的博客,转而开始用Octopress搭建博客，经常一个月的折腾终于把博客从CSDN搬到Octopress。</p>
 
 <!--more-->

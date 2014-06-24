@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iOS | Abel's Den]]></title>
-  <link href="http://beyondabel.github.io/blog/categories/ios/atom.xml" rel="self"/>
-  <link href="http://beyondabel.github.io/"/>
-  <updated>2014-06-24T16:34:00+08:00</updated>
-  <id>http://beyondabel.github.io/</id>
+  <link href="http://www.beyondabel.com/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://www.beyondabel.com/"/>
+  <updated>2014-06-24T17:06:12+08:00</updated>
+  <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
     <email><![CDATA[abel_tu@163.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[iOS多线程之GCD]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one/"/>
+    <link href="http://www.beyondabel.com/blog/2013/09/26/ios-gcd-one/"/>
     <updated>2013-09-26T15:39:29+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/09/26/ios-gcd-one</id>
+    <id>http://www.beyondabel.com/blog/2013/09/26/ios-gcd-one</id>
     <content type="html"><![CDATA[<p><img src="/images/2013/09/26/gcd.png" alt="image" /></p>
 
 <h3>引言</h3>
@@ -53,9 +53,9 @@
   
   <entry>
     <title type="html"><![CDATA[多线程总述]]></title>
-    <link href="http://beyondabel.github.io/blog/2013/09/24/thread-overview/"/>
+    <link href="http://www.beyondabel.com/blog/2013/09/24/thread-overview/"/>
     <updated>2013-09-24T10:34:29+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2013/09/24/thread-overview</id>
+    <id>http://www.beyondabel.com/blog/2013/09/24/thread-overview</id>
     <content type="html"><![CDATA[<p><img src="/images/2013/09/26/multithreading.png" alt="image" /></p>
 
 <p><strong>引言</strong></p>

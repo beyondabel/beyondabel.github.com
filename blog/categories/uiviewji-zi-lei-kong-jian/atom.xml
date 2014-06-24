@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: UIView及子类控件 | Abel's Den]]></title>
-  <link href="http://beyondabel.github.io/blog/categories/uiviewji-zi-lei-kong-jian/atom.xml" rel="self"/>
-  <link href="http://beyondabel.github.io/"/>
-  <updated>2014-06-24T16:34:00+08:00</updated>
-  <id>http://beyondabel.github.io/</id>
+  <link href="http://www.beyondabel.com/blog/categories/uiviewji-zi-lei-kong-jian/atom.xml" rel="self"/>
+  <link href="http://www.beyondabel.com/"/>
+  <updated>2014-06-24T17:06:12+08:00</updated>
+  <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
     <email><![CDATA[abel_tu@163.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[iOS组件之UISwitch详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/11/uiswitch/"/>
+    <link href="http://www.beyondabel.com/blog/2014/01/11/uiswitch/"/>
     <updated>2014-01-11T12:34:31+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/11/uiswitch</id>
+    <id>http://www.beyondabel.com/blog/2014/01/11/uiswitch</id>
     <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UISwitch继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）,您可以使用UISwitch类来创建和管理使用开/关按钮。例如，在对选项，如飞行模式和蓝牙设置应用程序。这些对象被称为交换机。</p>
@@ -82,9 +82,9 @@
   
   <entry>
     <title type="html"><![CDATA[iOS组件之UISlider详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/11/uislider/"/>
+    <link href="http://www.beyondabel.com/blog/2014/01/11/uislider/"/>
     <updated>2014-01-11T12:34:24+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/11/uislider</id>
+    <id>http://www.beyondabel.com/blog/2014/01/11/uislider</id>
     <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UISlider继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。UISlider对象是用来从一个连续的数值范围内选择单个值的可视化控制。滑块总是显示为水平条形图。一个指标，注意到滑块的当前值，并且可以由用户进行移动来改变该设置。</p>
@@ -212,9 +212,9 @@
   
   <entry>
     <title type="html"><![CDATA[iOS组件之UITextField详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/10/uitextfield/"/>
+    <link href="http://www.beyondabel.com/blog/2014/01/10/uitextfield/"/>
     <updated>2014-01-10T12:34:12+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/10/uitextfield</id>
+    <id>http://www.beyondabel.com/blog/2014/01/10/uitextfield</id>
     <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UITextField对象是显示可编辑的文本，当用户按下键盘上的return按钮发送一个动作消息到目标对象,UITextField继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。</p>
@@ -433,9 +433,9 @@ BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
   
   <entry>
     <title type="html"><![CDATA[iOS组件之UISegmentedControl详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/10/uisegmentedcontrol/"/>
+    <link href="http://www.beyondabel.com/blog/2014/01/10/uisegmentedcontrol/"/>
     <updated>2014-01-10T12:34:00+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/10/uisegmentedcontrol</id>
+    <id>http://www.beyondabel.com/blog/2014/01/10/uisegmentedcontrol</id>
     <content type="html"><![CDATA[<p><strong>引言</strong></p>
 
 <p>UISegmentedControl对象是一个水平控制使多个区段，每个区段用作离散的按钮。分段控件提供了一次小型的手段组合在一起的一些控制。</p>
@@ -604,9 +604,9 @@ BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
   
   <entry>
     <title type="html"><![CDATA[iOS组件之UIPageControl详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/09/uipagecontrol/"/>
+    <link href="http://www.beyondabel.com/blog/2014/01/09/uipagecontrol/"/>
     <updated>2014-01-09T12:33:46+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/09/uipagecontrol</id>
+    <id>http://www.beyondabel.com/blog/2014/01/09/uipagecontrol</id>
     <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>UIPageControl继承于UIControl（有关UIControl请参照<a href="/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。您可以使用UIPageControl类来创建和管理页面控件。一个页面控件显示一个水平一系列的点，每个对应一个页面应用程序的文档（或其他数据模型实体）中。当前浏览的页面是由一个白色的圆点表示。</p>

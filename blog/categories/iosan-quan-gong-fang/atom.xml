@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iOS安全攻防 | Abel's Den]]></title>
-  <link href="http://beyondabel.github.io/blog/categories/iosan-quan-gong-fang/atom.xml" rel="self"/>
-  <link href="http://beyondabel.github.io/"/>
-  <updated>2014-06-24T16:34:00+08:00</updated>
-  <id>http://beyondabel.github.io/</id>
+  <link href="http://www.beyondabel.com/blog/categories/iosan-quan-gong-fang/atom.xml" rel="self"/>
+  <link href="http://www.beyondabel.com/"/>
+  <updated>2014-06-24T17:06:12+08:00</updated>
+  <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
     <email><![CDATA[abel_tu@163.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[iOS安全攻防（一）：Hack必备的命令与工具]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools/"/>
+    <link href="http://www.beyondabel.com/blog/2014/02/11/iossafety-hacktools/"/>
     <updated>2014-02-11T23:32:27+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/02/11/iossafety-hacktools</id>
+    <id>http://www.beyondabel.com/blog/2014/02/11/iossafety-hacktools</id>
     <content type="html"><![CDATA[<h3>Hack必备的命令与工具</h3>
 
 <p>你的应用正在被其他对手反向工程、跟踪和操作！你的应用是否依旧裸奔豪不防御？

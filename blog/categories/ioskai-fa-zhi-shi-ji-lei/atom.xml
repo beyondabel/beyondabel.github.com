@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iOS开发知识积累 | Abel's Den]]></title>
-  <link href="http://beyondabel.github.io/blog/categories/ioskai-fa-zhi-shi-ji-lei/atom.xml" rel="self"/>
-  <link href="http://beyondabel.github.io/"/>
-  <updated>2014-06-24T16:34:00+08:00</updated>
-  <id>http://beyondabel.github.io/</id>
+  <link href="http://www.beyondabel.com/blog/categories/ioskai-fa-zhi-shi-ji-lei/atom.xml" rel="self"/>
+  <link href="http://www.beyondabel.com/"/>
+  <updated>2014-06-24T17:06:12+08:00</updated>
+  <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
     <email><![CDATA[abel_tu@163.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ARC vs MRC，这不是一个编程习惯问题]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/03/05/mrc-arc/"/>
+    <link href="http://www.beyondabel.com/blog/2014/03/05/mrc-arc/"/>
     <updated>2014-03-05T10:21:40+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/03/05/mrc-arc</id>
+    <id>http://www.beyondabel.com/blog/2014/03/05/mrc-arc</id>
     <content type="html"><![CDATA[<p><img src="/images/2014/03/05/arcvsmrc.png" alt="image" /></p>
 
 <h3>引言</h3>
@@ -295,9 +295,9 @@ CFRelease(s2);
   
   <entry>
     <title type="html"><![CDATA[NSObjective-C之id/NSObject/id&lt;NSObject>区别]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/02/16/ios-nsobject-id-difference/"/>
+    <link href="http://www.beyondabel.com/blog/2014/02/16/ios-nsobject-id-difference/"/>
     <updated>2014-02-16T16:23:26+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/02/16/ios-nsobject-id-difference</id>
+    <id>http://www.beyondabel.com/blog/2014/02/16/ios-nsobject-id-difference</id>
     <content type="html"><![CDATA[<h3>概述</h3>
 
 <p>我们在iOS开发过程中，经常会碰到id、NSObject、id&lt; NSObject>，但我们也经常会混淆这三种申明（我之前也不是很留意这个），现在Abel带你一起去看看他们的真实面目。</p>
@@ -350,9 +350,9 @@ CFRelease(s2);
   
   <entry>
     <title type="html"><![CDATA[Objective C之Block教程]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/02/15/ios-block/"/>
+    <link href="http://www.beyondabel.com/blog/2014/02/15/ios-block/"/>
     <updated>2014-02-15T21:06:42+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/02/15/ios-block</id>
+    <id>http://www.beyondabel.com/blog/2014/02/15/ios-block</id>
     <content type="html"><![CDATA[<h3>引言</h3>
 
 <p>Block是C级别的语法和运行时特性。Block比较类似C函数，但是Block比之C函数，其灵活性体现在栈内存、堆内存的引用，我们甚至可以将一个Block作为参数传给其他的函数或者Block。</p>
