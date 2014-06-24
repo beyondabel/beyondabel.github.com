@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://beyondabel.github.io/atom.xml" rel="self"/>
   <link href="http://beyondabel.github.io/"/>
-  <updated>2014-05-07T11:49:12+08:00</updated>
+  <updated>2014-06-24T16:34:00+08:00</updated>
   <id>http://beyondabel.github.io/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -80,6 +80,79 @@
 <p><img src="http://beyondabel.github.io/images/2014/04/07/6.png" alt="image" /></p>
 
 <p>这就说明你已经破解成功了</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[程序员，是什么让你坚持下来]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/04/03/dream/"/>
+    <updated>2014-04-03T15:40:54+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/04/03/dream</id>
+    <content type="html"><![CDATA[<p><img src="http://beyondabel.github.io/images/2014/04/03/dream.png" alt="image" /></p>
+
+<p>距离上一次更新博客，冒似是很久以前的事了。最近一直在忙于项目、工作、尝试创业，以致于更新博客的时间少得可怜，之前写技术类的博文太多了，所以最近一直想写一篇关于程序人生的博文，今天终于有点空闲的时间停下来写写博文了……</p>
+
+<!--more-->
+
+
+<p>我时常在想，如果高考时学的是土木工程，现在的我会是怎么样？曾经看过一篇关于程序员的诗</p>
+
+<pre><code>写字楼里写字间，写字间里程序员；程序人员写程序，又拿程序换酒钱。
+酒醒只在网上坐，酒醉还来网下眠；酒醉酒醒日复日，网上网下年复年。
+但愿老死电脑前，不愿鞠躬老板前；奔驰宝马贵者趣，公交自行程序员。
+别人笑我忒疯癫，我笑自己命太贱；君见满街漂亮妹，哪个归得程序员。
+</code></pre>
+
+<p>这首诗的作者不知道是谁，但有一点可以肯定的是一名程序员。如果不是程序员不会生动地写出程序员的酸甜苦辣。</p>
+
+<p>看到这，你有没有问问自己，到底是什么让你坚持下来？</p>
+
+<h3>倾听内心的声音</h3>
+
+<p>我在逛各种论坛时，经常会看到问自己是否适合做程序员。其实我想说，自己是否适合做程序员应该倾听一下内心的声音。</p>
+
+<p>我身边也存在着这样的人，总是说着自己不适合这行，说自己天资不好或者说是自己的性格不适合，而从我的角度去看他们，如果他们的性格不适合做程序员，那他们适合做什么呢？你是否在内心深处询问过自己：如果自己不做程序员，那么你适合做什么呢？这座城市不适合你，那么哪座城市会适合你呢？</p>
+
+<p>如果你真的不喜欢程序员的生活，我奉劝各位还是尽早放弃程序员生活，找一份自己喜欢的去做。</p>
+
+<p>如果在内心深处没有那么讨厌程序员生活，你是否应该问问自己是否真的努力了？我常常会看到这样的人：学习编程依靠老师，老师教多少自己学多少，从来不关注为什么会这样写，别人写的代码看着就说看不懂，不愿意静下心来仔细拜读。你向别人请教时，别人告诉解决办法，并向你推荐一个好的开源的第三库让你去补习基本工，你却不愿意去看，这样的你到底凭什么说你喜欢做程序员呢？凭什么说你已经对你自己负责了呢？你根本只是想着生活在自己舒服的区域，喜欢上自己意淫的形象而已。</p>
+
+<h3>没有梦想的人，去哪都是“逃离”</h3>
+
+<p>北京，一座充满无限魅力的城市，也是一个神秘的城市，多少人怀着崇高理想来到这座城市想开创一片自己的领地，又有多少人带着破碎的梦想离开这个伤心地。经过这座城市几年的洗礼，时至今日，你是否还会记得曾经来这座城市的最初理想。</p>
+
+<p>总会听到说这座城市有许多的毛病，堵车、空气污染严重、房价高、物价高等等，身边的人总是嚷着要离开。离开这座城市我们确实有许多去处，其他一线城市，二线城市、甚至老家，当然，有钱的还可去国外定居。但是，如果你不知道你在寻找什么，世界之大，你又怎会知道那个城市是你喜欢的呢？你又怎会知道那个城市你能适应呢？你又怎会知道你能在那座城市生存呢？……</p>
+
+<p>一线城市的房价贵、消费高，是不争的事实。但当你看到房价高得让人绝望却还在涨，35元只有一个鸡腿的盒饭却还是卖到排队，你就该明白，大城市也为相当一部分人提供了与之相匹配的收入水平，或者至少是可能性。这有点残酷——你觉得高，只是因为你不是获利的人。大城市是个大的PK赛场，赛场附近堵车、人挤、高压力又乌烟瘴气，却也有巨额赏金——你是决定再试一把，还是换个游戏玩？这个纯粹是你的个人心气问题。</p>
+
+<p>同样道理，小城市没有高压力的淘金游戏，有合理的物价，相对轻松的房价，以及相对从容的工作，也有稳定平静的工作。小城市面临的不是消费压力，而是收入的压力。你拿着只有以前一半的工资，以一半的效率工作着。虽然够用，总觉得亏。这样的低节奏也带来了高速运转的大城市人的恐慌，这样再过几年，你也许永远回不去了。</p>
+
+<p>不同的地方拥有不同的资源。大城市几乎集中了中国最好的教育、艺术和医疗资源；还有政治和金融资源（如果你玩这个的话）。而小城市也有特殊的资源：和父母亲生活在一起，在家乡生活的归属感，以及老家来自家庭的各种人脉关系。</p>
+
+<p>让你的人生先打开，再合拢。只有你明白了各自的好处，你才能在不同地方真正过得好。</p>
+
+<p>你永远无法停止逃离，除非你找到自己真正想要追求的。要做清楚这个选择，每个人都需要认真思考：你这个阶段到底想要些什么？职业、自我、家庭，你的重心在何处？精彩、多元、归属、从容、可能、宜居……哪些是你不可或缺的生命资源？</p>
+
+<p>对于自己内心没有方向的人，去哪里都是逃离，而对于生命有方向的人，走向哪里都是追寻。</p>
+
+<h3>程序员，你也该为自己想想未来</h3>
+
+<p>之前我们有一句熟语：“少壮不努力，老大干IT”。但事实是，你如果有一个像李刚的爸爸，你还需要出来干IT吗？我想在IT界真正做程序员绝大多数没有像李刚那样的父亲吧！父母把你生下来已经非常不容易，你无法决定你的父母给你的生活条件，但你可以决定未来给你子女的生活条件。你也该为自己想想未来……</p>
+
+<p>我常常会把码农作自嘲，当我在网上看到码畜和码奴时心里的五谷杂粮。现贴上网民对IT人士级别的划分：</p>
+
+<pre><code>IT领袖：年入过亿（例如任正非、马化腾、李彦宏、丁磊、马云等，包括期权股票以及投资理财等收入。）
+IT大哥：年入千万（级别次于以上几位大佬的公司老板，不缺钱，普遍对上一条里的人物羡慕嫉妒恨。）
+IT精英：年入百万（各IT公司副总裁级别人物，包括COO、CTO等，大多为职业经理人，赚够钱就跑。）
+IT人才：年入50万（各IT公司总监级别人物，有房有车，生活压力相对较小）
+IT工程师：年入20万（高级经理级别，有房贷，生活压力大）
+IT民工：年入10万（经理级别，基本无房，学会装波一，生活压力大）
+码农：年入6万到10万（工作三四年，租房，继续混日子）
+码奴：年入3万到6万（工作一两年，租房，混日子）
+码畜：年入低于3万（刚毕业的，租房，傻乐）
+</code></pre>
+
+<p>看了这个表，你觉得自己是哪个级别呢？</p>
 ]]></content>
   </entry>
   
@@ -2620,6 +2693,142 @@ BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[iOS组件之UITextView详解]]></title>
+    <link href="http://beyondabel.github.io/blog/2014/01/07/uitextview/"/>
+    <updated>2014-01-07T12:33:10+08:00</updated>
+    <id>http://beyondabel.github.io/blog/2014/01/07/uitextview</id>
+    <content type="html"><![CDATA[<h3>引言</h3>
+
+<!--more-->
+
+
+<p>// 代理</p>
+
+<pre><code>id&lt;UITextViewDelegate&gt; delegate;
+</code></pre>
+
+<p>// 设置textview里面的字体内容</p>
+
+<pre><code>NSString *text;
+</code></pre>
+
+<p>// 设置textview里面的字体样式</p>
+
+<pre><code>UIFont *font;
+</code></pre>
+
+<p>// 设置textview里面的字体颜色</p>
+
+<pre><code>UIColor *textColor;
+</code></pre>
+
+<p>// 设置textview里面的字体对齐方式（默认为NSLeftTextAlignment）</p>
+
+<pre><code>NSTextAlignment textAlignment;
+</code></pre>
+
+<p>// 设置选择文字的范围</p>
+
+<pre><code>NSRange selectedRange;
+</code></pre>
+
+<p>//  是否允许编辑</p>
+
+<pre><code>BOOL editable;
+</code></pre>
+
+<p>// 是否允许内容选择(iOS 7.0)</p>
+
+<pre><code>BOOL selectable;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>UIDataDetectorTypes dataDetectorTypes;
+</code></pre>
+
+<p>//  (iOS 6.0)</p>
+
+<pre><code>BOOL allowsEditingTextAttributes; // defaults to NO
+</code></pre>
+
+<p>// (iOS 6.0)</p>
+
+<pre><code>NSAttributedString *attributedText; // default is nil
+</code></pre>
+
+<p>// (iOS 6.0)</p>
+
+<pre><code>NSDictionary *typingAttributes; // automatically resets when the selection changes
+</code></pre>
+
+<p>//</p>
+
+<pre><code>- (void)scrollRangeToVisible:(NSRange)range;
+</code></pre>
+
+<p>// Presented when object becomes first responder.  If set to nil, reverts to following responder chain.  If
+// set while first responder, will not take effect until reloadInputViews is called.
+//</p>
+
+<pre><code>UIView *inputView;
+</code></pre>
+
+<p>//</p>
+
+<pre><code>UIView *inputAccessoryView;
+</code></pre>
+
+<p>// (iOS 6.0)</p>
+
+<pre><code>BOOL clearsOnInsertion; // defaults to NO. if YES, the selection UI is hidden, and inserting text will replace the contents of the field. changing the selection will automatically set this to NO.
+</code></pre>
+
+<p>// Create a new text view with the specified text container (can be nil) &ndash; this is the new designated initializer for this class</p>
+
+<pre><code>- (instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer *)textContainer NS_AVAILABLE_IOS(7_0);
+</code></pre>
+
+<p>// Get the text container for the text view
+@property(nonatomic,readonly) NSTextContainer *textContainer NS_AVAILABLE_IOS(7_0);
+// Inset the text container&rsquo;s layout area within the text view&rsquo;s content area</p>
+
+<pre><code>UIEdgeInsets textContainerInset NS_AVAILABLE_IOS(7_0);
+</code></pre>
+
+<p>//</p>
+
+<pre><code>@property(nonatomic,readonly) NSLayoutManager *layoutManager NS_AVAILABLE_IOS(7_0);
+@property(nonatomic,readonly,retain) NSTextStorage *textStorage NS_AVAILABLE_IOS(7_0);
+</code></pre>
+
+<p>// Style for links</p>
+
+<pre><code>NSDictionary *linkTextAttributes NS_AVAILABLE_IOS(7_0);
+</code></pre>
+
+<p><strong>UITextViewDelegate协议（可选）</strong></p>
+
+<p>//</p>
+
+<pre><code>- (BOOL)textViewShouldBeginEditing:(UITextView *)textView;
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView;
+
+- (void)textViewDidBeginEditing:(UITextView *)textView;
+- (void)textViewDidEndEditing:(UITextView *)textView;
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
+- (void)textViewDidChange:(UITextView *)textView;
+
+- (void)textViewDidChangeSelection:(UITextView *)textView;
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0);
+- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0);
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[iOS组件之UITableView详解]]></title>
     <link href="http://beyondabel.github.io/blog/2014/01/07/uitableview/"/>
     <updated>2014-01-07T12:33:02+08:00</updated>
@@ -4048,264 +4257,6 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
 
 <pre><code>- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView;   
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIAlertView详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/05/uialertview/"/>
-    <updated>2014-01-05T12:32:06+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/05/uialertview</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>使用UIAlertView类显示一个警告信息给用户。警报视图的功能类似，但不同的外观在一个动作片（ UIActionSheet的一个实例）。UIAlertView继承于UIView(有关UIView的介绍请到<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>)。</p>
-
-<p>使用定义的属性和方法在这个类来设置标题，消息和警报视图的委托和配置按钮。你必须设置一个委托，如果你添加自定义按钮。委托应符合UIAlertViewDelegate协议。使用show方法来显示一个警报视图，一旦它被配置。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<p>// 初始化UIAlertView</p>
-
-<pre><code>- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id &lt;UIAlertViewDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id &lt;UIAlertViewDelegate&gt; delegate;
-</code></pre>
-
-<p>// 设置title</p>
-
-<pre><code>NSString *title;
-</code></pre>
-
-<p>// 显示的消息文本文字</p>
-
-<pre><code>NSString *message;
-</code></pre>
-
-<p>// 添加一个Button到AlertView并且指定按钮显示的文字，并且返回它的索引(从0开始，cancelButton的索引是0)</p>
-
-<pre><code>- (NSInteger)addButtonWithTitle:(NSString *)title; 
-</code></pre>
-
-<p>// 通过下标获取button的title</p>
-
-<pre><code>- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// button的总数(只读)</p>
-
-<pre><code>NSInteger numberOfButtons;
-</code></pre>
-
-<p>// 取消按钮的下标</p>
-
-<pre><code>NSInteger cancelButtonIndex;
-</code></pre>
-
-<p>// 第一个其他button的下标(只读)</p>
-
-<pre><code>NSInteger firstOtherButtonIndex;
-</code></pre>
-
-<p>// 是否显示了(只读)</p>
-
-<pre><code>BOOL visible;
-</code></pre>
-
-<p>// 动画显示alert.</p>
-
-<pre><code>- (void)show;
-</code></pre>
-
-<p>// 隐藏按下指定索引值的按钮之后，隐藏AlertView，并制定是否启动动画效果</p>
-
-<pre><code>- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
-</code></pre>
-
-<p>// 设置alertView样式（iOS5.0）</p>
-
-<pre><code>UIAlertViewStyle alertViewStyle;
-</code></pre>
-
-<p>// 返回指定索引值的TextField ，这个API仅存在于IOS5.0以上</p>
-
-<pre><code>- (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;
-</code></pre>
-
-<p>UIAlertViewDelegate协议（可选）</p>
-
-<p>// 当一个指定索引的按钮被点击的时候，回调此方法，buttonIndex是按钮的索引值，从0开始</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 当用户按下HOME键的时候，回调此方法，用户点击Cancel按钮的时候不会回调此方法</p>
-
-<pre><code>- (void)alertViewCancel:(UIAlertView *)alertView;
-</code></pre>
-
-<p>// 开始显示View的动画之前进行回调</p>
-
-<pre><code>- (void)willPresentAlertView:(UIAlertView *)alertView;  
-</code></pre>
-
-<p>// 显示动画完成之后进行回调</p>
-
-<pre><code>- (void)didPresentAlertView:(UIAlertView *)alertView;  
-</code></pre>
-
-<p>// 将要开始View隐藏动画的时候进行回调</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex; 
-</code></pre>
-
-<p>// 当View的隐藏动画结束的时候进行回调</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 编辑任何默认的字段添加的风格之后调用</p>
-
-<pre><code>- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIActionSheet详解]]></title>
-    <link href="http://beyondabel.github.io/blog/2014/01/05/uiactionsheet/"/>
-    <updated>2014-01-05T12:31:54+08:00</updated>
-    <id>http://beyondabel.github.io/blog/2014/01/05/uiactionsheet</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>UIActionSheet继承于UIView（有关UIView的介绍请到<a href="http://beyondabel.github.io/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>）。使用UIActionSheet类有一组关于如何进行给定任务的备选方案呈现给用户。也可以使用动作表，以提示用户进行确认，有潜在危险的动作。动作片包含一个可选的标题和一个或多个按钮，其中每一个对应于要采取的动作。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<p>// 初始化UIActionSheet上的button按钮</p>
-
-<pre><code>- (id)initWithTitle:(NSString *)title delegate:(id&lt;UIActionSheetDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;
-</code></pre>
-
-<p>// 设置UIActionSheet代理</p>
-
-<pre><code>id&lt;UIActionSheetDelegate&gt; delegate;    // weak reference
-</code></pre>
-
-<p>// 设置UIActionSheet的title</p>
-
-<pre><code>NSString *title;
-</code></pre>
-
-<p>// 设置UIActionSheet的样式（默认为UIActionSheetStyleAutomatic）</p>
-
-<pre><code>UIActionSheetStyle actionSheetStyle;
-</code></pre>
-
-<p>// 通过按钮的title获取这个按钮在UIActionSheet上的下标</p>
-
-<pre><code>- (NSInteger)addButtonWithTitle:(NSString *)title;
-</code></pre>
-
-<p>// 通过下标获得按钮的title</p>
-
-<pre><code>- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 获取按钮的总个数(只读)</p>
-
-<pre><code>NSInteger numberOfButtons;
-</code></pre>
-
-<p>// 获取取消按钮的下标</p>
-
-<pre><code>NSInteger cancelButtonIndex;
-</code></pre>
-
-<p>// 红色按钮的下标（翻译成破坏性的，其实就是那个红色的按钮）</p>
-
-<pre><code>NSInteger destructiveButtonIndex;
-</code></pre>
-
-<p>// 获取第一个其他按钮的下标(只读)</p>
-
-<pre><code>NSInteger firstOtherButtonIndex;
-</code></pre>
-
-<p>// UIActionSheet是否可见（只读）</p>
-
-<pre><code>BOOL visible;
-</code></pre>
-
-<p>// show a sheet animated. you can specify either a toolbar, a tab bar, a bar butto item or a plain view. We do a special animation if the sheet rises from
-// a toolbar, tab bar or bar button item and we will automatically select the correct style based on the bar style. if not from a bar, we use
-// UIActionSheetStyleDefault if automatic style set
-// 如果要将ActonSheet 与工具栏或者标签栏对齐，可以使用showFromToolBar(showFromTabBar)</p>
-
-<pre><code>- (void)showFromToolbar:(UIToolbar *)view;
-- (void)showFromTabBar:(UITabBar *)view;
-</code></pre>
-
-<p>// showFromBarButtonItem，就是popover会指向个BarButtonItem。在iPhone上只能使用showInView，如果是universal app，要用些if来判断。用delegate来知道用户选择了什么</p>
-
-<pre><code>- (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
-</code></pre>
-
-<p>// showFromRect，在ipad上指定个矩形区域，它会在其上显示个popover</p>
-
-<pre><code>- (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;
-</code></pre>
-
-<p>// 显示在iphone的中间位置，它会从下往上滑动；在ipad上它会放在中间，所以在ipad上从不用showInView</p>
-
-<pre><code>- (void)showInView:(UIView *)view;
-</code></pre>
-
-<p>// hides alert sheet or popup. use this method when you need to explicitly dismiss the alert.
-// it does not need to be called if the user presses on a button</p>
-
-<pre><code>- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
-</code></pre>
-
-<p>UIActionSheetDelegate协议（可选）</p>
-
-<p>// 点击UIActionSheet会调用的函数，buttonIndex为所点击button在UIActionSheet的下标</p>
-
-<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 点击取消按钮会调用的函数</p>
-
-<pre><code>- (void)actionSheetCancel:(UIActionSheet *)actionSheet;
-</code></pre>
-
-<p>// 将来显示ActionSheet</p>
-
-<pre><code>- (void)willPresentActionSheet:(UIActionSheet *)actionSheet;
-</code></pre>
-
-<p>// 显示ActionSheet</p>
-
-<pre><code>- (void)didPresentActionSheet:(UIActionSheet *)actionSheet;
-</code></pre>
-
-<p>// ActionSheet将要消失</p>
-
-<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// ActionSheet消失</p>
-
-<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex;
 </code></pre>
 ]]></content>
   </entry>
