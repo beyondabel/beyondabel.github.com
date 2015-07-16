@@ -1,0 +1,244 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>自己写一个第三方分享库（一） - Abel's Den</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="自己写一个第三方分享库（一） 前言 最近想做分享时，总是遇到需要更新最新包的问题，并且还需要导入真机和模拟器二个包，非常麻烦，所以一直在思考如何自己做一个分享库，要想做第三方的分享库，首要问题是需要知道App是如何跳转以及分享数据是如何传递，之前我想到是通过OpenURL中URL后面带参数去实现 &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel's Den" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://www.beyondabel.com/blog/2015/07/16/share1/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel's Den</a></h1>
+  
+    <p class="subtitle">上善若水，厚德载物</p>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/openSource">开源项目</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">自己写一个第三方分享库（一）</h1>
+	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2015/07/16/share1.png" alt="image" /></p>
+
+<h4>前言</h4>
+
+<p>最近想做分享时，总是遇到需要更新最新包的问题，并且还需要导入真机和模拟器二个包，非常麻烦，所以一直在思考如何自己做一个分享库，要想做第三方的分享库，首要问题是需要知道App是如何跳转以及分享数据是如何传递，之前我想到是通过OpenURL中URL后面带参数去实现，后来想想URL长度传递是不可能允许这么多的数据传递，应该是通过App之间相互能访问的存储空间实现APP之间的数据传递，想想只有剪贴版了，实践证明我的猜想是对的，所以就把这次研究的步骤一步一步想下，与大家分享~</p>
+
+<!--more-->
+
+
+<h4>准备工作</h4>
+
+<p>本代码都是在真机上测试，模拟器不在此次考虑之内，为了简化，现在暂时以微信做介绍。</p>
+
+<p>到微信官网下载Lib库，并按照微信官方指示搭建项目。</p>
+
+<h4>证明猜想</h4>
+
+<p>微信会话分享代码</p>
+
+<pre><code>- (void)weixinSession_share:(NSDictionary *)para {
+
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = title;
+    message.description = description;
+    [message setThumbImage:[UIImage imageNamed:@"Icon-72"]];
+
+    WXWebpageObject *ext = [WXWebpageObject object];
+    ext.webpageUrl = webpageUrl;
+    message.mediaObject = ext;
+
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    req.bText = NO;
+    req.message = message;
+    req.scene = WXSceneSession;
+    [WXApi sendReq:req];
+
+    NSArray * pastboardTypes = [[UIPasteboard generalPasteboard] pasteboardTypes];
+    for (NSString * pastboardType in pastboardTypes) {
+        NSData * data = [[UIPasteboard generalPasteboard] valueForPasteboardType:pastboardType];
+        NSDictionary * dictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListBinaryFormat_v1_0 format:0 error:nil];
+        debug(@"%@", dictionary);
+    }
+}
+</code></pre>
+
+<p>打印出来的结果</p>
+
+<pre><code>{
+    wx72607e32ec65d0e1 =     {
+        command = 1010;
+        description = "8%\U6d3b\U671f\U6536\U76ca\U7387\Uff0c\U4ec5\U5343\U5206\U4e4b\U4e00\U574f\U5e10\U7387\Uff0c2015\U5e74\U6700\U706b\U7206\U7684\U62a2\U94b1\U795e\U5668\Uff0c\U771f\U5fc3\U8dea\U4e86\Uff01";
+        mediaUrl = "http://www.jindanlicai.com/download/download.html";
+        objectType = 5;
+        result = 1;
+        returnFromApp = 0;
+        scene = 0;
+        sdkver = "1.5";
+        thumbData = &lt;ffd8ffe0 .....&gt;;（图片太长，这个就省略了）
+        title = "\U91d1\U86cb\U7406\U8d22\Uff0c\U8de8\U754c\U7406\U8d22\U795e\U5668";
+    };
+}
+</code></pre>
+
+<p>从打印结果看，他的数据是存在UIPasteboard中，其中，wx72607e32ec65d0e1为我在微信平台申请的key值，description为分享描述，mediaUrl为分享链接，objectType为分享对象类型，scene为分享目的地，sdkver为版本号，thumbData为分享的缩略图，title为分享标题。</p>
+
+<h4>自己实现分享</h4>
+
+<p>既然我们已经知道了微信的数据保存在哪，并且知道他的数据格式是如何保存的，那么我们就可以自己写代码去实现微信分享了，我们新建一个项目SharedSDKDemo,然后在viewController中添加如下代码</p>
+
+<pre><code>- (NSString*)weixinShare {
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc] initWithDictionary:@{
+                            @"result" : @"1",
+                            @"returnFromApp" : @"0",
+                            @"scene" : [NSString stringWithFormat:@"%d",shareTo],
+                            @"sdkver" : @"1.5",
+                            @"command" : @"1020",
+                            @"title" : @"我们来测试",
+                        }];
+
+    NSData *output = [NSPropertyListSerialization dataWithPropertyList:@{@"wxd930ea5d5a258f4f":dic} format:NSPropertyListBinaryFormat_v1_0 options:0 error:nil];
+    [[UIPasteboard generalPasteboard] setData:output forPasteboardType:@"content"];
+
+
+
+[[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"weixin://app/%@/sendreq/?",@"wx72607e32ec65d0e1"]];
+}
+</code></pre>
+
+<p>执行以上代码可以得到：</p>
+
+<p><img src="http://img.blog.csdn.net/20150714224138423" height="568" width="320" alt="image " /></p>
+
+<p>由此可看到如果我们自己想做一具分享SDK也是可以的~</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style_32x32">
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1394432532557467" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2015 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc699c19000b89d76ce55e9a9fab7da1b' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+		</div>
+	</div>
+</body>
+</html>
