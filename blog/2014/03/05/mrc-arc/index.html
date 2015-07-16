@@ -41,7 +41,7 @@
 	
 	<script src="/javascripts/md5.js"></script>
 	<script type="text/javascript">
-		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
 	</script>
 	
 </div>
@@ -56,7 +56,6 @@
   <li><a href="/">首页</a></li>
   <li><a href="/blog/archives">所有文章</a></li>
   <li><a href="/openSource">开源项目</a></li>
-  <li><a href="/den">关于我</a></li>
 </ul>
 
 </nav>
@@ -68,6 +67,8 @@
 		
 		
 		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
 		
 		
 		
@@ -170,23 +171,23 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">600000</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">;</span>
-</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="n">new</span><span class="p">];</span>
+</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableArray</span> <span class="n">new</span><span class="p">];</span>
 </span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="p">[</span><span class="n">arr</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">1</span><span class="p">]];</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">arr</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSNumber</span> <span class="nl">numberWithInt</span><span class="p">:</span><span class="mi">1</span><span class="p">]];</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">CFAbsoluteTime</span> <span class="n">start</span> <span class="o">=</span> <span class="n">CFAbsoluteTimeGetCurrent</span><span class="p">();</span>
 </span><span class='line'>
 </span><span class='line'><span class="kt">id</span> <span class="n">obj</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
 </span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">arr</span> <span class="nl">objectAtIndex:</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>    <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">arr</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">CFAbsoluteTime</span> <span class="n">end</span> <span class="o">=</span> <span class="n">CFAbsoluteTimeGetCurrent</span><span class="p">();</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;end:%lf, start:%lf, diff:%lf&quot;</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
 </span><span class='line'>
-</span><span class='line'><span class="p">[</span><span class="n">arr</span> <span class="n">release</span><span class="p">];</span> <span class="c1">// -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行</span>
+</span><span class='line'><span class="p">[</span><span class="n">arr</span> <span class="k">release</span><span class="p">];</span> <span class="c1">// -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -252,7 +253,7 @@ for (int j = 0; j &lt; m; j++){
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">NS_INLINE</span> <span class="kt">id</span> <span class="nf">CFBridgingRelease</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">X</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="kt">id</span><span class="p">)</span><span class="n">X</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="kt">id</span><span class="p">)</span><span class="n">X</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -271,10 +272,10 @@ for (int j = 0; j &lt; m; j++){
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">id</span> <span class="n">my_id</span><span class="p">;</span>
 </span><span class='line'><span class="n">CFStringRef</span> <span class="n">my_cfref</span><span class="p">;</span>
 </span><span class='line'><span class="err">…</span>
-</span><span class='line'><span class="n">NSString</span>   <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span>     <span class="c1">// Noop cast. </span>
-</span><span class='line'><span class="n">CFStringRef</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>      <span class="c1">// Noop cast. </span>
+</span><span class='line'><span class="bp">NSString</span>   <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge</span> <span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span>     <span class="c1">// Noop cast. </span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>      <span class="c1">// Noop cast. </span>
 </span><span class='line'><span class="err">…</span>
-</span><span class='line'><span class="n">NSString</span>   <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span> <span class="c1">// -1 on the CFRef </span>
+</span><span class='line'><span class="bp">NSString</span>   <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span> <span class="c1">// -1 on the CFRef </span>
 </span><span class='line'><span class="n">CFStringRef</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_retained</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>  <span class="c1">// returned CFRef is +1</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -293,12 +294,12 @@ for (int j = 0; j &lt; m; j++){
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#pragma mark – View lifecycle </span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">self</span> <span class="nl">escape:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">escape</span><span class="p">:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
+</span><span class='line'><span class="p">-(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -319,12 +320,12 @@ for (int j = 0; j &lt; m; j++){
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#pragma mark – View lifecycle </span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">self</span> <span class="nl">escape:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">escape</span><span class="p">:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));</span>
+</span><span class='line'><span class="p">-(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -345,8 +346,8 @@ for (int j = 0; j &lt; m; j++){
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">CFBridgingRelease</span><span class="p">(</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">)));</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">CFBridgingRelease</span><span class="p">(</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">)));</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -357,8 +358,8 @@ for (int j = 0; j &lt; m; j++){
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="k">__bridge</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -374,7 +375,7 @@ for (int j = 0; j &lt; m; j++){
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSString</span> <span class="o">*</span><span class="n">s1</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFormat:</span><span class="s">@&quot;Hello, %@!&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">];</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">NSString</span> <span class="o">*</span><span class="n">s1</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFormat</span><span class="p">:</span><span class="s">@&quot;Hello, %@!&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">];</span>
 </span><span class='line'><span class="n">CFStringRef</span> <span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_retained</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">s1</span><span class="p">;</span>
 </span><span class='line'><span class="c1">// do something with s2 // . . . </span>
 </span><span class='line'><span class="n">CFRelease</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
@@ -467,7 +468,7 @@ for (int j = 0; j &lt; m; j++){
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2014 - Abel -
+  Copyright &copy; 2015 - Abel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

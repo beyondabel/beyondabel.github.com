@@ -42,7 +42,7 @@
 	
 	<script src="/javascripts/md5.js"></script>
 	<script type="text/javascript">
-		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
 	</script>
 	
 </div>
@@ -57,7 +57,6 @@
   <li><a href="/">首页</a></li>
   <li><a href="/blog/archives">所有文章</a></li>
   <li><a href="/openSource">开源项目</a></li>
-  <li><a href="/den">关于我</a></li>
 </ul>
 
 </nav>
@@ -69,6 +68,8 @@
 		
 		
 		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
 		
 		
 		
@@ -170,7 +171,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">someMethod</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">someMethod</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">BoolBlock</span> <span class="n">ablock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">bValue</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Bool block!&quot;</span><span class="p">);</span>
@@ -192,12 +193,12 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">^</span><span class="n">BoolBlock</span><span class="p">)(</span><span class="kt">BOOL</span><span class="p">);</span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">BoolBlock</span><span class="p">)</span><span class="nf">foo</span><span class="p">()</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="n">BoolBlock</span><span class="p">)</span><span class="nf">foo</span><span class="p">()</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">BoolBlock</span> <span class="n">ablock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">bValue</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Bool block!&quot;</span><span class="p">);</span>
 </span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">[[</span><span class="n">ablock</span> <span class="n">copy</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span><span class="c1">//一定要copy，将其复制到堆上，更详细的原理，将在后续章节讲解</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">[[</span><span class="n">ablock</span> <span class="k">copy</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span><span class="c1">//一定要copy，将其复制到堆上，更详细的原理，将在后续章节讲解</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -207,8 +208,8 @@ int resut = hbFunction(10);   // 函数调用
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@interface</span> <span class="nc">OBJ1</span> : <span class="nc">NSObject</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">;</span><span class="c1">//理由同上啊，同学们</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@interface</span> <span class="nc">OBJ1</span> : <span class="bp">NSObject</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">copy</span><span class="p">)</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">;</span><span class="c1">//理由同上啊，同学们</span>
 </span><span class='line'><span class="k">@end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -235,7 +236,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">foo</span><span class="p">(</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">)</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">foo</span><span class="p">(</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">block</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="n">block</span><span class="p">();</span>
@@ -285,7 +286,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>17</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blkInHeap</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
@@ -293,12 +294,12 @@ int resut = hbFunction(10);   // 函数调用
 </span><span class='line'>  <span class="n">blkInHeap</span> <span class="o">=</span> <span class="n">Block_copy</span><span class="p">(</span><span class="n">blk</span><span class="p">);</span><span class="c1">//blkInHeap在堆里</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">_oi</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblk</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">oj</span><span class="p">.</span><span class="n">oi</span><span class="p">);};</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblkInHeap</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">oblk</span> <span class="n">copy</span><span class="p">];</span><span class="c1">//oblkInHeap在堆中</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblkInHeap</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">oblk</span> <span class="k">copy</span><span class="p">];</span><span class="c1">//oblkInHeap在堆中</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -319,10 +320,10 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="nf">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlock</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="o">?</span><span class="nl">a:</span><span class="n">b</span><span class="p">;};</span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="nf">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlock</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="o">?</span><span class="nl">a</span><span class="p">:</span><span class="n">b</span><span class="p">;};</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlockCopied</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span><span class="p">[</span><span class="n">maxIntBlock</span> <span class="n">copy</span><span class="p">];</span>
+</span><span class='line'>  <span class="kt">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlockCopied</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span><span class="p">[</span><span class="n">maxIntBlock</span> <span class="k">copy</span><span class="p">];</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
@@ -381,7 +382,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span> <span class="c1">// 此时i在栈上</span>
+</span><span class='line'>  <span class="k">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span> <span class="c1">// 此时i在栈上</span>
 </span><span class='line'>  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 此时j在栈上</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
 </span><span class='line'>  <span class="n">blk</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
@@ -413,7 +414,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
 </span><span class='line'><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span><span class='line'><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
 </span><span class='line'><span class="n">blk</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
@@ -493,9 +494,9 @@ int resut = hbFunction(10);   // 函数调用
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">static</span> <span class="k">struct</span> <span class="n">__main_block_desc_0</span><span class="p">{</span>
-</span><span class='line'>   <span class="n">size_t</span> <span class="n">reserved</span><span class="p">;</span>
-</span><span class='line'>   <span class="n">size_t</span> <span class="n">Block_size</span><span class="p">;</span>
-</span><span class='line'>   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">copy</span><span class="p">)(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'>   <span class="kt">size_t</span> <span class="n">reserved</span><span class="p">;</span>
+</span><span class='line'>   <span class="kt">size_t</span> <span class="n">Block_size</span><span class="p">;</span>
+</span><span class='line'>   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="k">copy</span><span class="p">)(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="p">);</span>
 </span><span class='line'>   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">dispose</span><span class="p">)(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="p">);</span>
 </span><span class='line'><span class="p">}</span><span class="n">__main_block_desc_0_DATA</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="p">),</span><span class="n">__main_block_copy_0</span><span class="p">,</span><span class="n">__main_block_dispose_0</span><span class="p">};</span>
 </span><span class='line'>
@@ -602,9 +603,9 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblk</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">oj</span><span class="p">.</span><span class="n">oi</span><span class="p">);};</span>
 </span><span class='line'>  <span class="n">Block_copy</span><span class="p">(</span><span class="n">oblk</span><span class="p">);</span>
 </span><span class='line'><span class="p">}</span>
@@ -662,9 +663,9 @@ objc方法中的block与c中的block并无太多差别，只是一些标记值�
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">__block</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">bSelf</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">__block</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">bSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
 </span><span class='line'>  <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">bSelf</span><span class="p">.</span><span class="n">oi</span><span class="p">);</span> <span class="p">};</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -758,8 +759,8 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span> <span class="p">{</span>
 </span><span class='line'>          <span class="k">struct</span> <span class="n">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
 </span><span class='line'>          <span class="k">struct</span> <span class="n">__OBJ1__of2_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
-</span><span class='line'>          <span class="n">OBJ1</span> <span class="o">*</span><span class="n">self</span><span class="p">;</span>
-</span><span class='line'>          <span class="n">__OBJ1__of2_block_impl_0</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">fp</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_desc_0</span> <span class="o">*</span><span class="n">desc</span><span class="p">,</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">_self</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="n">self</span><span class="p">(</span><span class="n">_self</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">OBJ1</span> <span class="o">*</span><span class="nb">self</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">__OBJ1__of2_block_impl_0</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">fp</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_desc_0</span> <span class="o">*</span><span class="n">desc</span><span class="p">,</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">_self</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="nb">self</span><span class="p">(</span><span class="n">_self</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">isa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_NSConcreteStackBlock</span><span class="p">;</span>
 </span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">Flags</span> <span class="o">=</span> <span class="n">flags</span><span class="p">;</span>
 </span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">FuncPtr</span> <span class="o">=</span> <span class="n">fp</span><span class="p">;</span>
@@ -844,7 +845,7 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 </span><span class='line'> <span class="n">result</span><span class="o">-&gt;</span><span class="n">isa</span> <span class="o">=</span> <span class="n">_NSConcreteMallocBlock</span><span class="p">;</span>
 </span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_HAS_COPY_DISPOSE</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>     <span class="c1">//printf(&quot;calling block copy helper %p(%p, %p)...\n&quot;, aBlock-&gt;descriptor-&gt;copy, result, aBlock);</span>
-</span><span class='line'>     <span class="p">(</span><span class="o">*</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">descriptor</span><span class="o">-&gt;</span><span class="n">copy</span><span class="p">)(</span><span class="n">result</span><span class="p">,</span> <span class="n">aBlock</span><span class="p">);</span> <span class="c1">// do fixup</span>
+</span><span class='line'>     <span class="p">(</span><span class="o">*</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">descriptor</span><span class="o">-&gt;</span><span class="k">copy</span><span class="p">)(</span><span class="n">result</span><span class="p">,</span> <span class="n">aBlock</span><span class="p">);</span> <span class="c1">// do fixup</span>
 </span><span class='line'> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1009,7 +1010,7 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__OBJ1__of2_block_copy_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span><span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">dst</span><span class="o">-&gt;</span><span class="n">self</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">self</span><span class="p">,</span> <span class="mi">3</span><span class="cm">/*BLOCK_FIELD_IS_OBJECT*/</span><span class="p">);}</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__OBJ1__of2_block_copy_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span><span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">dst</span><span class="o">-&gt;</span><span class="nb">self</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">src</span><span class="o">-&gt;</span><span class="nb">self</span><span class="p">,</span> <span class="mi">3</span><span class="cm">/*BLOCK_FIELD_IS_OBJECT*/</span><span class="p">);}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kt">void</span> <span class="nf">_Block_object_assign</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">destAddr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>  <span class="p">...</span>
@@ -1066,7 +1067,7 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 </span><span class='line'>
 </span><span class='line'><span class="p">...</span> <span class="c1">//33554432即为BLOCK_HAS_COPY_DISPOSE</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">__block</span> <span class="n">__Block_byref_bSelf_0</span> <span class="n">bSelf</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_bSelf_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">bSelf</span><span class="p">,</span> <span class="mi">33554432</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_bSelf_0</span><span class="p">),</span> <span class="n">__Block_byref_id_object_copy_131</span><span class="p">,</span> <span class="n">__Block_byref_id_object_dispose_131</span><span class="p">,</span> <span class="n">self</span><span class="p">};</span>
+</span><span class='line'><span class="k">__block</span> <span class="n">__Block_byref_bSelf_0</span> <span class="n">bSelf</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_bSelf_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">bSelf</span><span class="p">,</span> <span class="mi">33554432</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_bSelf_0</span><span class="p">),</span> <span class="n">__Block_byref_id_object_copy_131</span><span class="p">,</span> <span class="n">__Block_byref_id_object_dispose_131</span><span class="p">,</span> <span class="nb">self</span><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1152,7 +1153,7 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2014 - Abel -
+  Copyright &copy; 2015 - Abel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

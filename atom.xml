@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2014-06-24T18:18:52+08:00</updated>
+  <updated>2015-07-16T11:33:16+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[我们能为世界做什么]]></title>
+    <link href="http://www.beyondabel.com/blog/2014/06/25/young-people/"/>
+    <updated>2014-06-25T09:52:23+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2014/06/25/young-people</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>密码</p></li>
+<li><p>用户名</p></li>
+<li>性别</li>
+<li>手机号码</li>
+<li>邮箱</li>
+<li>地址</li>
+<li>生日</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac Unity3D安装及破解教程]]></title>
@@ -167,23 +185,23 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">600000</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">;</span>
-</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="n">new</span><span class="p">];</span>
+</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableArray</span> <span class="n">new</span><span class="p">];</span>
 </span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="p">[</span><span class="n">arr</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">1</span><span class="p">]];</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">arr</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSNumber</span> <span class="nl">numberWithInt</span><span class="p">:</span><span class="mi">1</span><span class="p">]];</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">CFAbsoluteTime</span> <span class="n">start</span> <span class="o">=</span> <span class="n">CFAbsoluteTimeGetCurrent</span><span class="p">();</span>
 </span><span class='line'>
 </span><span class='line'><span class="kt">id</span> <span class="n">obj</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
 </span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">arr</span> <span class="nl">objectAtIndex:</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>    <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">arr</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">CFAbsoluteTime</span> <span class="n">end</span> <span class="o">=</span> <span class="n">CFAbsoluteTimeGetCurrent</span><span class="p">();</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;end:%lf, start:%lf, diff:%lf&quot;</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
 </span><span class='line'>
-</span><span class='line'><span class="p">[</span><span class="n">arr</span> <span class="n">release</span><span class="p">];</span> <span class="c1">// -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行</span>
+</span><span class='line'><span class="p">[</span><span class="n">arr</span> <span class="k">release</span><span class="p">];</span> <span class="c1">// -&gt; 这一行是「MRC」需要加上的，但「ARC」沒有这行</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -249,7 +267,7 @@ for (int j = 0; j &lt; m; j++){
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">NS_INLINE</span> <span class="kt">id</span> <span class="nf">CFBridgingRelease</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">X</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="kt">id</span><span class="p">)</span><span class="n">X</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="kt">id</span><span class="p">)</span><span class="n">X</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -268,10 +286,10 @@ for (int j = 0; j &lt; m; j++){
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">id</span> <span class="n">my_id</span><span class="p">;</span>
 </span><span class='line'><span class="n">CFStringRef</span> <span class="n">my_cfref</span><span class="p">;</span>
 </span><span class='line'><span class="err">…</span>
-</span><span class='line'><span class="n">NSString</span>   <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span>     <span class="c1">// Noop cast. </span>
-</span><span class='line'><span class="n">CFStringRef</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>      <span class="c1">// Noop cast. </span>
+</span><span class='line'><span class="bp">NSString</span>   <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge</span> <span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span>     <span class="c1">// Noop cast. </span>
+</span><span class='line'><span class="n">CFStringRef</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>      <span class="c1">// Noop cast. </span>
 </span><span class='line'><span class="err">…</span>
-</span><span class='line'><span class="n">NSString</span>   <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span> <span class="c1">// -1 on the CFRef </span>
+</span><span class='line'><span class="bp">NSString</span>   <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">my_cfref</span><span class="p">;</span> <span class="c1">// -1 on the CFRef </span>
 </span><span class='line'><span class="n">CFStringRef</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_retained</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">my_id</span><span class="p">;</span>  <span class="c1">// returned CFRef is +1</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -290,12 +308,12 @@ for (int j = 0; j &lt; m; j++){
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#pragma mark – View lifecycle </span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">self</span> <span class="nl">escape:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">escape</span><span class="p">:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
+</span><span class='line'><span class="p">-(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -316,12 +334,12 @@ for (int j = 0; j &lt; m; j++){
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#pragma mark – View lifecycle </span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">self</span> <span class="nl">escape:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;=%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">escape</span><span class="p">:</span><span class="s">@&quot;wangjun&quot;</span><span class="p">]);</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge_transfer</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));</span>
+</span><span class='line'><span class="p">-(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -342,8 +360,8 @@ for (int j = 0; j &lt; m; j++){
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">CFBridgingRelease</span><span class="p">(</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">)));</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">CFBridgingRelease</span><span class="p">(</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="nb">NULL</span><span class="p">,</span><span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">)));</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -354,8 +372,8 @@ for (int j = 0; j &lt; m; j++){
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">__bridge</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="n">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">escape:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">text</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="k">__bridge</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">CFURLCreateStringByAddingPercentEscapes</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">text</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">CFSTR</span><span class="p">(</span><span class="s">&quot;!*’();:@&amp;=+$,/?%#[]&quot;</span><span class="p">),</span> <span class="n">CFStringConvertNSStringEncodingToEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">));;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -371,7 +389,7 @@ for (int j = 0; j &lt; m; j++){
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSString</span> <span class="o">*</span><span class="n">s1</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFormat:</span><span class="s">@&quot;Hello, %@!&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">];</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">NSString</span> <span class="o">*</span><span class="n">s1</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFormat</span><span class="p">:</span><span class="s">@&quot;Hello, %@!&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">];</span>
 </span><span class='line'><span class="n">CFStringRef</span> <span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">__bridge_retained</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">s1</span><span class="p">;</span>
 </span><span class='line'><span class="c1">// do something with s2 // . . . </span>
 </span><span class='line'><span class="n">CFRelease</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span>
@@ -562,7 +580,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">someMethod</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">someMethod</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">BoolBlock</span> <span class="n">ablock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">bValue</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Bool block!&quot;</span><span class="p">);</span>
@@ -584,12 +602,12 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">^</span><span class="n">BoolBlock</span><span class="p">)(</span><span class="kt">BOOL</span><span class="p">);</span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">BoolBlock</span><span class="p">)</span><span class="nf">foo</span><span class="p">()</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="n">BoolBlock</span><span class="p">)</span><span class="nf">foo</span><span class="p">()</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">BoolBlock</span> <span class="n">ablock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">bValue</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Bool block!&quot;</span><span class="p">);</span>
 </span><span class='line'>  <span class="p">};</span>
-</span><span class='line'>  <span class="k">return</span> <span class="p">[[</span><span class="n">ablock</span> <span class="n">copy</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span><span class="c1">//一定要copy，将其复制到堆上，更详细的原理，将在后续章节讲解</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">[[</span><span class="n">ablock</span> <span class="k">copy</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span><span class="c1">//一定要copy，将其复制到堆上，更详细的原理，将在后续章节讲解</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -599,8 +617,8 @@ int resut = hbFunction(10);   // 函数调用
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@interface</span> <span class="nc">OBJ1</span> : <span class="nc">NSObject</span>
-</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">;</span><span class="c1">//理由同上啊，同学们</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@interface</span> <span class="nc">OBJ1</span> : <span class="bp">NSObject</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">copy</span><span class="p">)</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">;</span><span class="c1">//理由同上啊，同学们</span>
 </span><span class='line'><span class="k">@end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -627,7 +645,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">foo</span><span class="p">(</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">)</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">foo</span><span class="p">(</span><span class="n">BoolBlock</span> <span class="n">block</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">block</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="n">block</span><span class="p">();</span>
@@ -677,7 +695,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>17</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blkInHeap</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
@@ -685,12 +703,12 @@ int resut = hbFunction(10);   // 函数调用
 </span><span class='line'>  <span class="n">blkInHeap</span> <span class="o">=</span> <span class="n">Block_copy</span><span class="p">(</span><span class="n">blk</span><span class="p">);</span><span class="c1">//blkInHeap在堆里</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">_oi</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblk</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">oj</span><span class="p">.</span><span class="n">oi</span><span class="p">);};</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblkInHeap</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">oblk</span> <span class="n">copy</span><span class="p">];</span><span class="c1">//oblkInHeap在堆中</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblkInHeap</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">oblk</span> <span class="k">copy</span><span class="p">];</span><span class="c1">//oblkInHeap在堆中</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -711,10 +729,10 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="nf">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlock</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="o">?</span><span class="nl">a:</span><span class="n">b</span><span class="p">;};</span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="nf">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlock</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">){</span><span class="k">return</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">b</span><span class="o">?</span><span class="nl">a</span><span class="p">:</span><span class="n">b</span><span class="p">;};</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooBar</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="kt">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlockCopied</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span><span class="p">[</span><span class="n">maxIntBlock</span> <span class="n">copy</span><span class="p">];</span>
+</span><span class='line'>  <span class="kt">int</span><span class="p">(</span><span class="o">^</span><span class="n">maxIntBlockCopied</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span><span class="p">[</span><span class="n">maxIntBlock</span> <span class="k">copy</span><span class="p">];</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
@@ -773,7 +791,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span> <span class="c1">// 此时i在栈上</span>
+</span><span class='line'>  <span class="k">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span> <span class="c1">// 此时i在栈上</span>
 </span><span class='line'>  <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 此时j在栈上</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
 </span><span class='line'>  <span class="n">blk</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
@@ -805,7 +823,7 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">__block</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">;</span>
 </span><span class='line'><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span><span class='line'><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blk</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
 </span><span class='line'><span class="n">blk</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
@@ -885,9 +903,9 @@ int resut = hbFunction(10);   // 函数调用
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">static</span> <span class="k">struct</span> <span class="n">__main_block_desc_0</span><span class="p">{</span>
-</span><span class='line'>   <span class="n">size_t</span> <span class="n">reserved</span><span class="p">;</span>
-</span><span class='line'>   <span class="n">size_t</span> <span class="n">Block_size</span><span class="p">;</span>
-</span><span class='line'>   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">copy</span><span class="p">)(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="p">);</span>
+</span><span class='line'>   <span class="kt">size_t</span> <span class="n">reserved</span><span class="p">;</span>
+</span><span class='line'>   <span class="kt">size_t</span> <span class="n">Block_size</span><span class="p">;</span>
+</span><span class='line'>   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="k">copy</span><span class="p">)(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span> <span class="o">*</span><span class="p">);</span>
 </span><span class='line'>   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">dispose</span><span class="p">)(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="o">*</span><span class="p">);</span>
 </span><span class='line'><span class="p">}</span><span class="n">__main_block_desc_0_DATA</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">__main_block_impl_0</span><span class="p">),</span><span class="n">__main_block_copy_0</span><span class="p">,</span><span class="n">__main_block_dispose_0</span><span class="p">};</span>
 </span><span class='line'>
@@ -994,9 +1012,9 @@ int resut = hbFunction(10);   // 函数调用
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">OBJ1</span><span class="o">*</span> <span class="n">oj</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">oblk</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">oj</span><span class="p">.</span><span class="n">oi</span><span class="p">);};</span>
 </span><span class='line'>  <span class="n">Block_copy</span><span class="p">(</span><span class="n">oblk</span><span class="p">);</span>
 </span><span class='line'><span class="p">}</span>
@@ -1054,9 +1072,9 @@ objc方法中的block与c中的block并无太多差别，只是一些标记值�
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">of1</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">__block</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">bSelf</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">__block</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">bSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
 </span><span class='line'>  <span class="o">^</span><span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">bSelf</span><span class="p">.</span><span class="n">oi</span><span class="p">);</span> <span class="p">};</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -1150,8 +1168,8 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span> <span class="p">{</span>
 </span><span class='line'>          <span class="k">struct</span> <span class="n">__block_impl</span> <span class="n">impl</span><span class="p">;</span>
 </span><span class='line'>          <span class="k">struct</span> <span class="n">__OBJ1__of2_block_desc_0</span><span class="o">*</span> <span class="n">Desc</span><span class="p">;</span>
-</span><span class='line'>          <span class="n">OBJ1</span> <span class="o">*</span><span class="n">self</span><span class="p">;</span>
-</span><span class='line'>          <span class="n">__OBJ1__of2_block_impl_0</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">fp</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_desc_0</span> <span class="o">*</span><span class="n">desc</span><span class="p">,</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">_self</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="n">self</span><span class="p">(</span><span class="n">_self</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">OBJ1</span> <span class="o">*</span><span class="nb">self</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">__OBJ1__of2_block_impl_0</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">fp</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_desc_0</span> <span class="o">*</span><span class="n">desc</span><span class="p">,</span> <span class="n">OBJ1</span> <span class="o">*</span><span class="n">_self</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="nb">self</span><span class="p">(</span><span class="n">_self</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">isa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">_NSConcreteStackBlock</span><span class="p">;</span>
 </span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">Flags</span> <span class="o">=</span> <span class="n">flags</span><span class="p">;</span>
 </span><span class='line'>      <span class="n">impl</span><span class="p">.</span><span class="n">FuncPtr</span> <span class="o">=</span> <span class="n">fp</span><span class="p">;</span>
@@ -1236,7 +1254,7 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 </span><span class='line'> <span class="n">result</span><span class="o">-&gt;</span><span class="n">isa</span> <span class="o">=</span> <span class="n">_NSConcreteMallocBlock</span><span class="p">;</span>
 </span><span class='line'> <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">BLOCK_HAS_COPY_DISPOSE</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>     <span class="c1">//printf(&quot;calling block copy helper %p(%p, %p)...\n&quot;, aBlock-&gt;descriptor-&gt;copy, result, aBlock);</span>
-</span><span class='line'>     <span class="p">(</span><span class="o">*</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">descriptor</span><span class="o">-&gt;</span><span class="n">copy</span><span class="p">)(</span><span class="n">result</span><span class="p">,</span> <span class="n">aBlock</span><span class="p">);</span> <span class="c1">// do fixup</span>
+</span><span class='line'>     <span class="p">(</span><span class="o">*</span><span class="n">aBlock</span><span class="o">-&gt;</span><span class="n">descriptor</span><span class="o">-&gt;</span><span class="k">copy</span><span class="p">)(</span><span class="n">result</span><span class="p">,</span> <span class="n">aBlock</span><span class="p">);</span> <span class="c1">// do fixup</span>
 </span><span class='line'> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1401,7 +1419,7 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__OBJ1__of2_block_copy_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span><span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">dst</span><span class="o">-&gt;</span><span class="n">self</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">src</span><span class="o">-&gt;</span><span class="n">self</span><span class="p">,</span> <span class="mi">3</span><span class="cm">/*BLOCK_FIELD_IS_OBJECT*/</span><span class="p">);}</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">static</span> <span class="kt">void</span> <span class="nf">__OBJ1__of2_block_copy_0</span><span class="p">(</span><span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="k">struct</span> <span class="n">__OBJ1__of2_block_impl_0</span><span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span><span class="n">_Block_object_assign</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">dst</span><span class="o">-&gt;</span><span class="nb">self</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">src</span><span class="o">-&gt;</span><span class="nb">self</span><span class="p">,</span> <span class="mi">3</span><span class="cm">/*BLOCK_FIELD_IS_OBJECT*/</span><span class="p">);}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kt">void</span> <span class="nf">_Block_object_assign</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">destAddr</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>  <span class="p">...</span>
@@ -1458,7 +1476,7 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 </span><span class='line'>
 </span><span class='line'><span class="p">...</span> <span class="c1">//33554432即为BLOCK_HAS_COPY_DISPOSE</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">__block</span> <span class="n">__Block_byref_bSelf_0</span> <span class="n">bSelf</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_bSelf_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">bSelf</span><span class="p">,</span> <span class="mi">33554432</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_bSelf_0</span><span class="p">),</span> <span class="n">__Block_byref_id_object_copy_131</span><span class="p">,</span> <span class="n">__Block_byref_id_object_dispose_131</span><span class="p">,</span> <span class="n">self</span><span class="p">};</span>
+</span><span class='line'><span class="k">__block</span> <span class="n">__Block_byref_bSelf_0</span> <span class="n">bSelf</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">,(</span><span class="n">__Block_byref_bSelf_0</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">bSelf</span><span class="p">,</span> <span class="mi">33554432</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">__Block_byref_bSelf_0</span><span class="p">),</span> <span class="n">__Block_byref_id_object_copy_131</span><span class="p">,</span> <span class="n">__Block_byref_id_object_dispose_131</span><span class="p">,</span> <span class="nb">self</span><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -4173,139 +4191,6 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
 <p>// 编辑任何默认的字段添加的风格之后调用</p>
 
 <pre><code>- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIActionSheet详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/05/uiactionsheet/"/>
-    <updated>2014-01-05T12:31:54+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/05/uiactionsheet</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>UIActionSheet继承于UIView（有关UIView的介绍请到<a href="http://www.beyondabel.com/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>）。使用UIActionSheet类有一组关于如何进行给定任务的备选方案呈现给用户。也可以使用动作表，以提示用户进行确认，有潜在危险的动作。动作片包含一个可选的标题和一个或多个按钮，其中每一个对应于要采取的动作。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<p>// 初始化UIActionSheet上的button按钮</p>
-
-<pre><code>- (id)initWithTitle:(NSString *)title delegate:(id&lt;UIActionSheetDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;
-</code></pre>
-
-<p>// 设置UIActionSheet代理</p>
-
-<pre><code>id&lt;UIActionSheetDelegate&gt; delegate;    // weak reference
-</code></pre>
-
-<p>// 设置UIActionSheet的title</p>
-
-<pre><code>NSString *title;
-</code></pre>
-
-<p>// 设置UIActionSheet的样式（默认为UIActionSheetStyleAutomatic）</p>
-
-<pre><code>UIActionSheetStyle actionSheetStyle;
-</code></pre>
-
-<p>// 通过按钮的title获取这个按钮在UIActionSheet上的下标</p>
-
-<pre><code>- (NSInteger)addButtonWithTitle:(NSString *)title;
-</code></pre>
-
-<p>// 通过下标获得按钮的title</p>
-
-<pre><code>- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 获取按钮的总个数(只读)</p>
-
-<pre><code>NSInteger numberOfButtons;
-</code></pre>
-
-<p>// 获取取消按钮的下标</p>
-
-<pre><code>NSInteger cancelButtonIndex;
-</code></pre>
-
-<p>// 红色按钮的下标（翻译成破坏性的，其实就是那个红色的按钮）</p>
-
-<pre><code>NSInteger destructiveButtonIndex;
-</code></pre>
-
-<p>// 获取第一个其他按钮的下标(只读)</p>
-
-<pre><code>NSInteger firstOtherButtonIndex;
-</code></pre>
-
-<p>// UIActionSheet是否可见（只读）</p>
-
-<pre><code>BOOL visible;
-</code></pre>
-
-<p>// show a sheet animated. you can specify either a toolbar, a tab bar, a bar butto item or a plain view. We do a special animation if the sheet rises from
-// a toolbar, tab bar or bar button item and we will automatically select the correct style based on the bar style. if not from a bar, we use
-// UIActionSheetStyleDefault if automatic style set
-// 如果要将ActonSheet 与工具栏或者标签栏对齐，可以使用showFromToolBar(showFromTabBar)</p>
-
-<pre><code>- (void)showFromToolbar:(UIToolbar *)view;
-- (void)showFromTabBar:(UITabBar *)view;
-</code></pre>
-
-<p>// showFromBarButtonItem，就是popover会指向个BarButtonItem。在iPhone上只能使用showInView，如果是universal app，要用些if来判断。用delegate来知道用户选择了什么</p>
-
-<pre><code>- (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
-</code></pre>
-
-<p>// showFromRect，在ipad上指定个矩形区域，它会在其上显示个popover</p>
-
-<pre><code>- (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;
-</code></pre>
-
-<p>// 显示在iphone的中间位置，它会从下往上滑动；在ipad上它会放在中间，所以在ipad上从不用showInView</p>
-
-<pre><code>- (void)showInView:(UIView *)view;
-</code></pre>
-
-<p>// hides alert sheet or popup. use this method when you need to explicitly dismiss the alert.
-// it does not need to be called if the user presses on a button</p>
-
-<pre><code>- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
-</code></pre>
-
-<p>UIActionSheetDelegate协议（可选）</p>
-
-<p>// 点击UIActionSheet会调用的函数，buttonIndex为所点击button在UIActionSheet的下标</p>
-
-<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 点击取消按钮会调用的函数</p>
-
-<pre><code>- (void)actionSheetCancel:(UIActionSheet *)actionSheet;
-</code></pre>
-
-<p>// 将来显示ActionSheet</p>
-
-<pre><code>- (void)willPresentActionSheet:(UIActionSheet *)actionSheet;
-</code></pre>
-
-<p>// 显示ActionSheet</p>
-
-<pre><code>- (void)didPresentActionSheet:(UIActionSheet *)actionSheet;
-</code></pre>
-
-<p>// ActionSheet将要消失</p>
-
-<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// ActionSheet消失</p>
-
-<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex;
 </code></pre>
 ]]></content>
   </entry>

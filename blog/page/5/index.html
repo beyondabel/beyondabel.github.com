@@ -9,8 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content=" Sep 10th, 2013 面试总结 面试中常遇到的几个问题 引言 对于以技术出身的程序员来说，面试题的积累是非常有必要的。Abel在这整理几个iOS面试中常常会问到的几个问题。 阅读全文 &rarr; Prev Blog Archives
-">
+	<meta name="description" content="Sep 24th, 2013 Thread, iOS 多线程总述 引言 多线程是一个比较轻量级的方法来实现单个应用程序内多个代码执行路径。在系统级别内，程序并排执行，系统分配到每个程序的执行时间是基于该程序的所需时间和其他程序的所需时间来决定的。然而在每个应程序的内部，存在一个或多个执行线程， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -42,7 +41,7 @@
 	
 	<script src="/javascripts/md5.js"></script>
 	<script type="text/javascript">
-		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
 	</script>
 	
 </div>
@@ -57,7 +56,6 @@
   <li><a href="/">首页</a></li>
   <li><a href="/blog/archives">所有文章</a></li>
   <li><a href="/openSource">开源项目</a></li>
-  <li><a href="/den">关于我</a></li>
 </ul>
 
 </nav>
@@ -69,6 +67,8 @@
 		
 		
 		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
 		
 		
 		
@@ -92,6 +92,46 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-24T10:34:29+08:00" data-updated="true" itemprop="datePublished">Sep 24<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/thread/'>Thread</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/09/24/thread-overview/" itemprop="url">多线程总述</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/images/2013/09/26/multithreading.png" alt="image" /></p>
+
+<p><strong>引言</strong></p>
+
+<p>多线程是一个比较轻量级的方法来实现单个应用程序内多个代码执行路径。在系统级别内，程序并排执行，系统分配到每个程序的执行时间是基于该程序的所需时间和其他程序的所需时间来决定的。然而在每个应程序的内部，存在一个或多个执行线程，它同时或在一个几乎同时发生的方式里执行不同的任务。系统本身管理这些执行的线程，调度它们在可用的内核上运行，并在需要让其他线程执行的时候抢先打断它们。</p>
+
+
+		
+		<a href="/blog/2013/09/24/thread-overview/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -143,7 +183,7 @@
 </nav></div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2014 - Abel -
+  Copyright &copy; 2015 - Abel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

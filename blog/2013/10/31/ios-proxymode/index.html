@@ -45,7 +45,7 @@
 	
 	<script src="/javascripts/md5.js"></script>
 	<script type="text/javascript">
-		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
 	</script>
 	
 </div>
@@ -60,7 +60,6 @@
   <li><a href="/">首页</a></li>
   <li><a href="/blog/archives">所有文章</a></li>
   <li><a href="/openSource">开源项目</a></li>
-  <li><a href="/den">关于我</a></li>
 </ul>
 
 </nav>
@@ -72,6 +71,8 @@
 		
 		
 		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
 		
 		
 		
@@ -151,9 +152,9 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#import &lt;Foundation/Foundation.h&gt;</span>
-</span><span class='line'><span class="k">@protocol</span> <span class="nc">ServantProtocol</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">@protocol</span> <span class="nc">ServantProtocol</span> <span class="o">&lt;</span><span class="bp">NSObject</span><span class="o">&gt;</span>
 </span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">finishedBuyWater</span><span class="p">;</span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWaterError</span><span class="p">;</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWaterError</span><span class="p">;</span>
 </span><span class='line'><span class="k">@end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -169,11 +170,11 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'> <span class="err">#</span><span class="n">import</span> <span class="o">&lt;</span><span class="n">Foundation</span><span class="o">/</span><span class="n">Foundation</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="err">#</span><span class="n">import</span> <span class="s">&quot;ServantProtocol.h&quot;</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'> <span class="cp">#import &lt;Foundation/Foundation.h&gt;</span>
+</span><span class='line'>  <span class="cp">#import &quot;ServantProtocol.h&quot;</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">@interface</span> <span class="nc">Servant</span> : <span class="nc">NSObject</span>
-</span><span class='line'>  <span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">assign</span><span class="p">)</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">ServantProtocol</span><span class="o">&gt;</span> <span class="n">delegate</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">@interface</span> <span class="nc">Servant</span> : <span class="bp">NSObject</span>
+</span><span class='line'>  <span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span><span class="k">assign</span><span class="p">)</span> <span class="kt">id</span><span class="o">&lt;</span><span class="n">ServantProtocol</span><span class="o">&gt;</span> <span class="n">delegate</span><span class="p">;</span>
 </span><span class='line'>  <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">buyWater</span><span class="p">;</span>
 </span><span class='line'>  <span class="k">@end</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -196,12 +197,12 @@
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#import &quot;Servant.h&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">@implementation</span> <span class="nc">Servant</span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">buyWater:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">money</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">buyWater:</span><span class="p">(</span><span class="bp">NSInteger</span><span class="p">)</span><span class="nv">money</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">money</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">delegate</span> <span class="n">finishedBuyWater</span><span class="p">];</span>
+</span><span class='line'>      <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">delegate</span> <span class="n">finishedBuyWater</span><span class="p">];</span>
 </span><span class='line'>  <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-</span><span class='line'>      <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">delegate</span> <span class="n">finishedBuyWaterError</span><span class="p">];</span>
+</span><span class='line'>      <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">delegate</span> <span class="n">finishedBuyWaterError</span><span class="p">];</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="k">@end</span>
@@ -219,7 +220,7 @@
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#import &lt;Foundation/Foundation.h&gt;</span>
 </span><span class='line'><span class="cp">#import &quot;ServantProtocol.h&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">@interface</span> <span class="nc">Master</span> : <span class="nc">NSObject</span><span class="o">&lt;</span><span class="n">ServantProtocol</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">@interface</span> <span class="nc">Master</span> : <span class="bp">NSObject</span><span class="o">&lt;</span><span class="n">ServantProtocol</span><span class="o">&gt;</span>
 </span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">drinkWater</span><span class="p">;</span>
 </span><span class='line'><span class="k">@end</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -256,21 +257,21 @@
 </span><span class='line'>
 </span><span class='line'><span class="k">@implementation</span> <span class="nc">Master</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">drinkWater</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">drinkWater</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">Servant</span> <span class="o">*</span> <span class="n">servant</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Servant</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">servant</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">servant</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
 </span><span class='line'>  <span class="c1">// 命令仆人去买水</span>
 </span><span class='line'>  <span class="p">[</span><span class="n">servant</span> <span class="n">buyWater</span><span class="p">];</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="cp">#pragma mark - ServantProtocol</span>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWater</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWater</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;完成买水&quot;</span><span class="p">);</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWaterError</span>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">finishedBuyWaterError</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;买水出错&quot;</span><span class="p">);</span>
 </span><span class='line'><span class="p">}</span>
@@ -320,7 +321,7 @@
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2014 - Abel -
+  Copyright &copy; 2015 - Abel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

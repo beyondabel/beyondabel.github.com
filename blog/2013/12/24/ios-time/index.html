@@ -54,7 +54,7 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
 	
 	<script src="/javascripts/md5.js"></script>
 	<script type="text/javascript">
-		document.write("<img src='http://www.gravatar.com/avatar/" + MD5("abeltuya@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
 	</script>
 	
 </div>
@@ -69,7 +69,6 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
   <li><a href="/">首页</a></li>
   <li><a href="/blog/archives">所有文章</a></li>
   <li><a href="/openSource">开源项目</a></li>
-  <li><a href="/den">关于我</a></li>
 </ul>
 
 </nav>
@@ -81,6 +80,8 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
 		
 		
 		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
 		
 		
 		
@@ -122,13 +123,13 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSCalendar</span> <span class="o">*</span><span class="n">calendar</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSCalendar</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithCalendarIdentifier:</span><span class="n">NSGregorianCalendar</span><span class="p">];</span>
-</span><span class='line'><span class="n">NSDate</span> <span class="o">*</span><span class="n">now</span><span class="p">;</span>
-</span><span class='line'><span class="n">NSDateComponents</span> <span class="o">*</span><span class="n">comps</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateComponents</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-</span><span class='line'><span class="n">NSInteger</span> <span class="n">unitFlags</span> <span class="o">=</span> <span class="n">NSYearCalendarUnit</span> <span class="o">|</span> <span class="n">NSMonthCalendarUnit</span> <span class="o">|</span> <span class="n">NSDayCalendarUnit</span> <span class="o">|</span> <span class="n">NSWeekdayCalendarUnit</span> <span class="o">|</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">NSCalendar</span> <span class="o">*</span><span class="n">calendar</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSCalendar</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithCalendarIdentifier</span><span class="p">:</span><span class="n">NSGregorianCalendar</span><span class="p">];</span>
+</span><span class='line'><span class="bp">NSDate</span> <span class="o">*</span><span class="n">now</span><span class="p">;</span>
+</span><span class='line'><span class="bp">NSDateComponents</span> <span class="o">*</span><span class="n">comps</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateComponents</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'><span class="bp">NSInteger</span> <span class="n">unitFlags</span> <span class="o">=</span> <span class="n">NSYearCalendarUnit</span> <span class="o">|</span> <span class="n">NSMonthCalendarUnit</span> <span class="o">|</span> <span class="n">NSDayCalendarUnit</span> <span class="o">|</span> <span class="n">NSWeekdayCalendarUnit</span> <span class="o">|</span>
 </span><span class='line'>                                     <span class="n">NSHourCalendarUnit</span> <span class="o">|</span> <span class="n">NSMinuteCalendarUnit</span> <span class="o">|</span> <span class="n">NSSecondCalendarUnit</span><span class="p">;</span>
-</span><span class='line'><span class="n">now</span><span class="o">=</span><span class="p">[</span><span class="n">NSDate</span> <span class="n">date</span><span class="p">];</span>
-</span><span class='line'><span class="n">comps</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">components:</span><span class="n">unitFlags</span> <span class="nl">fromDate:</span><span class="n">now</span><span class="p">];</span>
+</span><span class='line'><span class="n">now</span><span class="o">=</span><span class="p">[</span><span class="bp">NSDate</span> <span class="n">date</span><span class="p">];</span>
+</span><span class='line'><span class="n">comps</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">components</span><span class="p">:</span><span class="n">unitFlags</span> <span class="nl">fromDate</span><span class="p">:</span><span class="n">now</span><span class="p">];</span>
 </span><span class='line'><span class="n">week</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">weekday</span><span class="p">];</span>
 </span><span class='line'><span class="n">month</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">month</span><span class="p">];</span>
 </span><span class='line'><span class="n">day</span> <span class="o">=</span> <span class="p">[</span><span class="n">comps</span> <span class="n">day</span><span class="p">];</span>
@@ -156,20 +157,20 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nf">getNowDateFromatAnDate:</span><span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nv">anyDate</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="bp">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nf">getNowDateFromatAnDate:</span><span class="p">(</span><span class="bp">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nv">anyDate</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>  <span class="c1">//设置源日期时区</span>
-</span><span class='line'>  <span class="n">NSTimeZone</span><span class="o">*</span> <span class="n">sourceTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSTimeZone</span> <span class="nl">timeZoneWithAbbreviation:</span><span class="s">@&quot;UTC&quot;</span><span class="p">];</span><span class="c1">//或GMT</span>
+</span><span class='line'>  <span class="bp">NSTimeZone</span><span class="o">*</span> <span class="n">sourceTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSTimeZone</span> <span class="nl">timeZoneWithAbbreviation</span><span class="p">:</span><span class="s">@&quot;UTC&quot;</span><span class="p">];</span><span class="c1">//或GMT</span>
 </span><span class='line'>  <span class="c1">//设置转换后的目标日期时区</span>
-</span><span class='line'>  <span class="n">NSTimeZone</span><span class="o">*</span> <span class="n">destinationTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSTimeZone</span> <span class="n">localTimeZone</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSTimeZone</span><span class="o">*</span> <span class="n">destinationTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSTimeZone</span> <span class="n">localTimeZone</span><span class="p">];</span>
 </span><span class='line'>  <span class="c1">//得到源日期与世界标准时间的偏移量</span>
-</span><span class='line'>  <span class="n">NSInteger</span> <span class="n">sourceGMTOffset</span> <span class="o">=</span> <span class="p">[</span><span class="n">sourceTimeZone</span> <span class="nl">secondsFromGMTForDate:</span><span class="n">anyDate</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSInteger</span> <span class="n">sourceGMTOffset</span> <span class="o">=</span> <span class="p">[</span><span class="n">sourceTimeZone</span> <span class="nl">secondsFromGMTForDate</span><span class="p">:</span><span class="n">anyDate</span><span class="p">];</span>
 </span><span class='line'>  <span class="c1">//目标日期与本地时区的偏移量</span>
-</span><span class='line'>  <span class="n">NSInteger</span> <span class="n">destinationGMTOffset</span> <span class="o">=</span> <span class="p">[</span><span class="n">destinationTimeZone</span> <span class="nl">secondsFromGMTForDate:</span><span class="n">anyDate</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSInteger</span> <span class="n">destinationGMTOffset</span> <span class="o">=</span> <span class="p">[</span><span class="n">destinationTimeZone</span> <span class="nl">secondsFromGMTForDate</span><span class="p">:</span><span class="n">anyDate</span><span class="p">];</span>
 </span><span class='line'>  <span class="c1">//得到时间偏移量的差值</span>
 </span><span class='line'>  <span class="n">NSTimeInterval</span> <span class="n">interval</span> <span class="o">=</span> <span class="n">destinationGMTOffset</span> <span class="o">-</span> <span class="n">sourceGMTOffset</span><span class="p">;</span>
 </span><span class='line'>  <span class="c1">//转为现在时间</span>
-</span><span class='line'>  <span class="n">NSDate</span><span class="o">*</span> <span class="n">destinationDateNow</span> <span class="o">=</span> <span class="p">[[[</span><span class="n">NSDate</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTimeInterval:</span><span class="n">interval</span> <span class="nl">sinceDate:</span><span class="n">anyDate</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSDate</span><span class="o">*</span> <span class="n">destinationDateNow</span> <span class="o">=</span> <span class="p">[[[</span><span class="bp">NSDate</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTimeInterval</span><span class="p">:</span><span class="n">interval</span> <span class="nl">sinceDate</span><span class="p">:</span><span class="n">anyDate</span><span class="p">]</span> <span class="n">autorelease</span><span class="p">];</span>
 </span><span class='line'>  <span class="k">return</span> <span class="n">destinationDateNow</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -185,12 +186,12 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nf">stringToDate:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">strdate</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="bp">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nf">stringToDate:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">strdate</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatteralloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span><span class="c1">// NSString的时间格式</span>
-</span><span class='line'>  <span class="n">NSDate</span> <span class="o">*</span><span class="n">retdate</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString:</span><span class="n">strdate</span><span class="p">];</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">release</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatteralloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat</span><span class="p">:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span><span class="c1">// NSString的时间格式</span>
+</span><span class='line'>  <span class="bp">NSDate</span> <span class="o">*</span><span class="n">retdate</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString</span><span class="p">:</span><span class="n">strdate</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="k">release</span><span class="p">];</span>
 </span><span class='line'>  <span class="k">return</span> <span class="n">retdate</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -206,12 +207,12 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">dateToString:</span><span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nv">date</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">dateToString:</span><span class="p">(</span><span class="bp">NSDate</span> <span class="o">*</span><span class="p">)</span><span class="nv">date</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatteralloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">strDate</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate:</span><span class="n">date</span><span class="p">];</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">release</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatteralloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat</span><span class="p">:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSString</span> <span class="o">*</span><span class="n">strDate</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate</span><span class="p">:</span><span class="n">date</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="k">release</span><span class="p">];</span>
 </span><span class='line'>  <span class="k">return</span> <span class="n">strDate</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -238,19 +239,19 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
 <span class='line-number'>17</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">//本地日期格式:2013-08-03 12:53:51</span>
 </span><span class='line'><span class="c1">//可自行指定输入输出格式</span>
-</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">getUTCFormateLocalDate:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">localDate</span>
+</span><span class='line'><span class="p">-(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">getUTCFormateLocalDate:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">localDate</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
 </span><span class='line'>  <span class="c1">//输入格式</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat</span><span class="p">:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="n">NSDate</span> <span class="o">*</span><span class="n">dateFormatted</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString:</span><span class="n">localDate</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSTimeZone</span> <span class="o">*</span><span class="n">timeZone</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSTimeZone</span> <span class="nl">timeZoneWithName:</span><span class="s">@&quot;UTC&quot;</span><span class="p">];</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setTimeZone:</span><span class="n">timeZone</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSDate</span> <span class="o">*</span><span class="n">dateFormatted</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString</span><span class="p">:</span><span class="n">localDate</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSTimeZone</span> <span class="o">*</span><span class="n">timeZone</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSTimeZone</span> <span class="nl">timeZoneWithName</span><span class="p">:</span><span class="s">@&quot;UTC&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setTimeZone</span><span class="p">:</span><span class="n">timeZone</span><span class="p">];</span>
 </span><span class='line'>  <span class="c1">//输出格式</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&quot;</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">dateString</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate:</span><span class="n">dateFormatted</span><span class="p">];</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">release</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat</span><span class="p">:</span><span class="s">@&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSString</span> <span class="o">*</span><span class="n">dateString</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate</span><span class="p">:</span><span class="n">dateFormatted</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="k">release</span><span class="p">];</span>
 </span><span class='line'>  <span class="k">return</span> <span class="n">dateString</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -275,19 +276,19 @@ NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: &hellip;"
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">//输入的UTC日期格式2013-08-03T04:53:51+0000</span>
-</span><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">getLocalDateFormateUTCDate:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">utcDate</span>
+</span><span class='line'><span class="p">-(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">getLocalDateFormateUTCDate:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">utcDate</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
 </span><span class='line'>  <span class="c1">//输入格式</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&quot;</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSTimeZone</span> <span class="o">*</span><span class="n">localTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSTimeZone</span> <span class="n">localTimeZone</span><span class="p">];</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setTimeZone:</span><span class="n">localTimeZone</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat</span><span class="p">:</span><span class="s">@&quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSTimeZone</span> <span class="o">*</span><span class="n">localTimeZone</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSTimeZone</span> <span class="n">localTimeZone</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setTimeZone</span><span class="p">:</span><span class="n">localTimeZone</span><span class="p">];</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="n">NSDate</span> <span class="o">*</span><span class="n">dateFormatted</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString:</span><span class="n">utcDate</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSDate</span> <span class="o">*</span><span class="n">dateFormatted</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">dateFromString</span><span class="p">:</span><span class="n">utcDate</span><span class="p">];</span>
 </span><span class='line'>  <span class="c1">//输出格式</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
-</span><span class='line'>  <span class="n">NSString</span> <span class="o">*</span><span class="n">dateString</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate:</span><span class="n">dateFormatted</span><span class="p">];</span>
-</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">release</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">setDateFormat</span><span class="p">:</span><span class="s">@&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">];</span>
+</span><span class='line'>  <span class="bp">NSString</span> <span class="o">*</span><span class="n">dateString</span> <span class="o">=</span> <span class="p">[</span><span class="n">dateFormatter</span> <span class="nl">stringFromDate</span><span class="p">:</span><span class="n">dateFormatted</span><span class="p">];</span>
+</span><span class='line'>  <span class="p">[</span><span class="n">dateFormatter</span> <span class="k">release</span><span class="p">];</span>
 </span><span class='line'>  <span class="k">return</span> <span class="n">dateString</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -413,7 +414,7 @@ M/D/YYYY H:MM     12/7/1958 20:50
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
-  Copyright &copy; 2014 - Abel -
+  Copyright &copy; 2015 - Abel -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
