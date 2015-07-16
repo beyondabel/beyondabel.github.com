@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2015-07-16T11:36:08+08:00</updated>
+  <updated>2015-07-16T11:38:11+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,24 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[我们能为世界做什么]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/06/25/young-people/"/>
-    <updated>2014-06-25T09:52:23+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/06/25/young-people</id>
-    <content type="html"><![CDATA[<ol>
-<li><p>密码</p></li>
-<li><p>用户名</p></li>
-<li>性别</li>
-<li>手机号码</li>
-<li>邮箱</li>
-<li>地址</li>
-<li>生日</li>
-</ol>
-
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac Unity3D安装及破解教程]]></title>
@@ -4191,6 +4173,139 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
 <p>// 编辑任何默认的字段添加的风格之后调用</p>
 
 <pre><code>- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS组件之UIActionSheet详解]]></title>
+    <link href="http://www.beyondabel.com/blog/2014/01/05/uiactionsheet/"/>
+    <updated>2014-01-05T12:31:54+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2014/01/05/uiactionsheet</id>
+    <content type="html"><![CDATA[<p><strong>引言</strong></p>
+
+<p>UIActionSheet继承于UIView（有关UIView的介绍请到<a href="http://www.beyondabel.com/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>）。使用UIActionSheet类有一组关于如何进行给定任务的备选方案呈现给用户。也可以使用动作表，以提示用户进行确认，有潜在危险的动作。动作片包含一个可选的标题和一个或多个按钮，其中每一个对应于要采取的动作。</p>
+
+<!--more-->
+
+
+<p><strong>目录</strong></p>
+
+<p>// 初始化UIActionSheet上的button按钮</p>
+
+<pre><code>- (id)initWithTitle:(NSString *)title delegate:(id&lt;UIActionSheetDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;
+</code></pre>
+
+<p>// 设置UIActionSheet代理</p>
+
+<pre><code>id&lt;UIActionSheetDelegate&gt; delegate;    // weak reference
+</code></pre>
+
+<p>// 设置UIActionSheet的title</p>
+
+<pre><code>NSString *title;
+</code></pre>
+
+<p>// 设置UIActionSheet的样式（默认为UIActionSheetStyleAutomatic）</p>
+
+<pre><code>UIActionSheetStyle actionSheetStyle;
+</code></pre>
+
+<p>// 通过按钮的title获取这个按钮在UIActionSheet上的下标</p>
+
+<pre><code>- (NSInteger)addButtonWithTitle:(NSString *)title;
+</code></pre>
+
+<p>// 通过下标获得按钮的title</p>
+
+<pre><code>- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
+</code></pre>
+
+<p>// 获取按钮的总个数(只读)</p>
+
+<pre><code>NSInteger numberOfButtons;
+</code></pre>
+
+<p>// 获取取消按钮的下标</p>
+
+<pre><code>NSInteger cancelButtonIndex;
+</code></pre>
+
+<p>// 红色按钮的下标（翻译成破坏性的，其实就是那个红色的按钮）</p>
+
+<pre><code>NSInteger destructiveButtonIndex;
+</code></pre>
+
+<p>// 获取第一个其他按钮的下标(只读)</p>
+
+<pre><code>NSInteger firstOtherButtonIndex;
+</code></pre>
+
+<p>// UIActionSheet是否可见（只读）</p>
+
+<pre><code>BOOL visible;
+</code></pre>
+
+<p>// show a sheet animated. you can specify either a toolbar, a tab bar, a bar butto item or a plain view. We do a special animation if the sheet rises from
+// a toolbar, tab bar or bar button item and we will automatically select the correct style based on the bar style. if not from a bar, we use
+// UIActionSheetStyleDefault if automatic style set
+// 如果要将ActonSheet 与工具栏或者标签栏对齐，可以使用showFromToolBar(showFromTabBar)</p>
+
+<pre><code>- (void)showFromToolbar:(UIToolbar *)view;
+- (void)showFromTabBar:(UITabBar *)view;
+</code></pre>
+
+<p>// showFromBarButtonItem，就是popover会指向个BarButtonItem。在iPhone上只能使用showInView，如果是universal app，要用些if来判断。用delegate来知道用户选择了什么</p>
+
+<pre><code>- (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
+</code></pre>
+
+<p>// showFromRect，在ipad上指定个矩形区域，它会在其上显示个popover</p>
+
+<pre><code>- (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;
+</code></pre>
+
+<p>// 显示在iphone的中间位置，它会从下往上滑动；在ipad上它会放在中间，所以在ipad上从不用showInView</p>
+
+<pre><code>- (void)showInView:(UIView *)view;
+</code></pre>
+
+<p>// hides alert sheet or popup. use this method when you need to explicitly dismiss the alert.
+// it does not need to be called if the user presses on a button</p>
+
+<pre><code>- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
+</code></pre>
+
+<p>UIActionSheetDelegate协议（可选）</p>
+
+<p>// 点击UIActionSheet会调用的函数，buttonIndex为所点击button在UIActionSheet的下标</p>
+
+<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+</code></pre>
+
+<p>// 点击取消按钮会调用的函数</p>
+
+<pre><code>- (void)actionSheetCancel:(UIActionSheet *)actionSheet;
+</code></pre>
+
+<p>// 将来显示ActionSheet</p>
+
+<pre><code>- (void)willPresentActionSheet:(UIActionSheet *)actionSheet;
+</code></pre>
+
+<p>// 显示ActionSheet</p>
+
+<pre><code>- (void)didPresentActionSheet:(UIActionSheet *)actionSheet;
+</code></pre>
+
+<p>// ActionSheet将要消失</p>
+
+<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex;
+</code></pre>
+
+<p>// ActionSheet消失</p>
+
+<pre><code>- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex;
 </code></pre>
 ]]></content>
   </entry>
