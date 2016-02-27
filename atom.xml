@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2015-07-16T14:36:45+08:00</updated>
+  <updated>2016-02-27T20:11:38+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[mac系统安装Lua]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/01/04/macxi-tong-an-zhuang-lua/"/>
+    <updated>2016-01-04T21:44:12+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/01/04/macxi-tong-an-zhuang-lua</id>
+    <content type="html"><![CDATA[<ol>
+<li>下载最新版的lua-5.2.0 请点击，然后解压</li>
+<li>运行“终端”进入到该文件夹下  ，主要是cd 【文件夹名】</li>
+<li>在“终端”输入    make macosx   （回车）</li>
+<li><p>在“终端”输入    make test  （回车）</p>
+
+<p> 正常情况下会出现： src/lua -v
+            Lua 5.2.0 Copyright&copy;1994-2011 Lua.org,PUC-Rio</p></li>
+<li><p>然后再输入“sudo make install”命令，会要求输入Password:     输入相应密码（你的密码），然后回车就自动安装了</p></li>
+</ol>
+
+
+<p>待安装完成后可输入 lua -v，回车就会看到 ：Lua 5.2.0  Copyright &copy; 1994-2011 Lua.org, PUC-Rio</p>
+
+<p>OK ，已经安装成功！</p>
+
+<p>然后你可以键入lua   开始lua之旅！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[自己写一个第三方分享库（一）]]></title>
@@ -4149,131 +4174,6 @@ UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // de
 
 <pre><code>- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView;   
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIAlertView详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/05/uialertview/"/>
-    <updated>2014-01-05T12:32:06+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/05/uialertview</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>使用UIAlertView类显示一个警告信息给用户。警报视图的功能类似，但不同的外观在一个动作片（ UIActionSheet的一个实例）。UIAlertView继承于UIView(有关UIView的介绍请到<a href="http://www.beyondabel.com/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>)。</p>
-
-<p>使用定义的属性和方法在这个类来设置标题，消息和警报视图的委托和配置按钮。你必须设置一个委托，如果你添加自定义按钮。委托应符合UIAlertViewDelegate协议。使用show方法来显示一个警报视图，一旦它被配置。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<p>// 初始化UIAlertView</p>
-
-<pre><code>- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id &lt;UIAlertViewDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id &lt;UIAlertViewDelegate&gt; delegate;
-</code></pre>
-
-<p>// 设置title</p>
-
-<pre><code>NSString *title;
-</code></pre>
-
-<p>// 显示的消息文本文字</p>
-
-<pre><code>NSString *message;
-</code></pre>
-
-<p>// 添加一个Button到AlertView并且指定按钮显示的文字，并且返回它的索引(从0开始，cancelButton的索引是0)</p>
-
-<pre><code>- (NSInteger)addButtonWithTitle:(NSString *)title; 
-</code></pre>
-
-<p>// 通过下标获取button的title</p>
-
-<pre><code>- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// button的总数(只读)</p>
-
-<pre><code>NSInteger numberOfButtons;
-</code></pre>
-
-<p>// 取消按钮的下标</p>
-
-<pre><code>NSInteger cancelButtonIndex;
-</code></pre>
-
-<p>// 第一个其他button的下标(只读)</p>
-
-<pre><code>NSInteger firstOtherButtonIndex;
-</code></pre>
-
-<p>// 是否显示了(只读)</p>
-
-<pre><code>BOOL visible;
-</code></pre>
-
-<p>// 动画显示alert.</p>
-
-<pre><code>- (void)show;
-</code></pre>
-
-<p>// 隐藏按下指定索引值的按钮之后，隐藏AlertView，并制定是否启动动画效果</p>
-
-<pre><code>- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
-</code></pre>
-
-<p>// 设置alertView样式（iOS5.0）</p>
-
-<pre><code>UIAlertViewStyle alertViewStyle;
-</code></pre>
-
-<p>// 返回指定索引值的TextField ，这个API仅存在于IOS5.0以上</p>
-
-<pre><code>- (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;
-</code></pre>
-
-<p>UIAlertViewDelegate协议（可选）</p>
-
-<p>// 当一个指定索引的按钮被点击的时候，回调此方法，buttonIndex是按钮的索引值，从0开始</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 当用户按下HOME键的时候，回调此方法，用户点击Cancel按钮的时候不会回调此方法</p>
-
-<pre><code>- (void)alertViewCancel:(UIAlertView *)alertView;
-</code></pre>
-
-<p>// 开始显示View的动画之前进行回调</p>
-
-<pre><code>- (void)willPresentAlertView:(UIAlertView *)alertView;  
-</code></pre>
-
-<p>// 显示动画完成之后进行回调</p>
-
-<pre><code>- (void)didPresentAlertView:(UIAlertView *)alertView;  
-</code></pre>
-
-<p>// 将要开始View隐藏动画的时候进行回调</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex; 
-</code></pre>
-
-<p>// 当View的隐藏动画结束的时候进行回调</p>
-
-<pre><code>- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
-</code></pre>
-
-<p>// 编辑任何默认的字段添加的风格之后调用</p>
-
-<pre><code>- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView;
 </code></pre>
 ]]></content>
   </entry>
