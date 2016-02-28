@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-02-27T20:11:38+08:00</updated>
+  <updated>2016-02-28T17:02:31+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -14,12 +14,17 @@
 
   
   <entry>
-    <title type="html"><![CDATA[mac系统安装Lua]]></title>
+    <title type="html"><![CDATA[Mac系统安装Lua]]></title>
     <link href="http://www.beyondabel.com/blog/2016/01/04/macxi-tong-an-zhuang-lua/"/>
     <updated>2016-01-04T21:44:12+08:00</updated>
     <id>http://www.beyondabel.com/blog/2016/01/04/macxi-tong-an-zhuang-lua</id>
-    <content type="html"><![CDATA[<ol>
-<li>下载最新版的lua-5.2.0 请点击，然后解压</li>
+    <content type="html"><![CDATA[<p><img src="http://www.beyondabel.com/images/2016/02/beyondabel.png" alt="image" /></p>
+
+<!--more-->
+
+
+<ol>
+<li>下载最新版的<a href="http://www.lua.org/download.html">lua-5.2.0</a> 请点击，然后解压</li>
 <li>运行“终端”进入到该文件夹下  ，主要是cd 【文件夹名】</li>
 <li>在“终端”输入    make macosx   （回车）</li>
 <li><p>在“终端”输入    make test  （回车）</p>
