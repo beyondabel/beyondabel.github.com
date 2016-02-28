@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-02-28T17:02:31+08:00</updated>
+  <updated>2016-02-28T17:25:41+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第1期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/02/28/weekly01/"/>
+    <updated>2016-02-28T17:05:32+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/02/28/weekly01</id>
+    <content type="html"><![CDATA[<h3>业界新闻</h3>
+
+<hr />
+
+<ol>
+<li><a href="http://tech2ipo.com/10027880">Facebook 再次进军搜索领域，想和 Google 干一仗？</a></li>
+<li><a href="http://tech.sina.com.cn/mobile/n/n/2016-02-26/doc-ifxpvysv4898279.shtml">传苹果将推出9.7英寸iPad Pro</a></li>
+<li><a href="http://tech.sina.com.cn/it/2016-02-26/doc-ifxpvysx1670446.shtml">微软正式宣布移植 Android 应用计划流产</a></li>
+</ol>
+
+
+<h3>教程</h3>
+
+<hr />
+
+<ol>
+<li><a href="http://www.jianshu.com/p/c467809bedb3">《七个Swift中的陷阱以及避免方法》</a>: Swift语言希望通过采用安全的编程模式去帮助开发者避免bug。然而这也会不可避免的产生一些人造的陷阱，他们会在编译器不报错的情况下引入一些Bug。这些陷阱有的已经在Swift book中提到，有一些还没有。这里有七个我在去年遇到的陷阱，它们涉及Swift协议扩展、可选链和函数式编程。</li>
+<li><a href="http://jspatch.com/Docs/intro">《JSPatch使用文档》</a>:JSPatch 是一个开源项目(Github链接)，只需要在项目里引入极小的引擎文件，就可以使用 JavaScript 调用任何 Objective-C 的原生接口，替换任意 Objective-C 原生方法。目前主要用于下发 JS 脚本替换原生 Objective-C 代码，实时修复线上 bug。</li>
+<li><a href="http://bugly.qq.com/bbs/forum.php?mod=viewthread&amp;tid=267&amp;extra=page%3D1">H5 缓存机制浅析 移动端 Web 加载性能优化</a>:如果曾经被UIWebView的cache虐过的人可以看看这篇文章是否能解决你的问题。</li>
+</ol>
+
+
+<h3>开源代码</h3>
+
+<hr />
+
+<ol>
+<li><a href="https://github.com/beyondabel/BATableView">BATableView</a> : BATableView是自定义列表中的索引栏（Index Bar）。手指滑动 index bar 时，中间会出现黑色小浮块，并把index Bar上的字显示在黑色小浮块上，黑色小浮块上的字会随手指index bar 变换。</li>
+<li><a href="https://github.com/dustturtle/RealReachability">RealReachability</a>：一个类似于Reachability的库，但比Reachability对网络侦听更好的库。</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac系统安装Lua]]></title>
@@ -3909,276 +3948,6 @@ UISearchBarStyle searchBarStyle (iOS7.0);
 <p>// 还有一个很重要的事情，设了按钮就要给他们安排功能。所以说，我们要实现这个代理UISearchBarDelegate里的这个方法searchBar:selectedScopeButtonIndexDidChange:告诉表格，你选择的范围是啥。</p>
 
 <pre><code>- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIScrollView详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/05/uiscrollview/"/>
-    <updated>2014-01-05T12:32:18+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/05/uiscrollview</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>UIScrollView控制继承于UIView(有关UIView的介绍请到<a href="http://www.beyondabel.com/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>),该UIScrollView的类提供了用于显示的内容比应用程序的窗口的大小支持。它使用户能够通过使刷卡手势内容中滚动，并从内容部分通过使捏的手势和背部放大。</p>
-
-<p>UIScrollView的是几个UIKit类包括的UITableView和UITextView中的超类。</p>
-
-<p>一个UIScrollView对象（或者，简单地说，一个滚动视图）的核心概念是，它是一个视图，其起源是可调过的内容视图。它剪辑的内容，它的框架，这通常（但不一定）恰逢该应用程序的主窗口。滚动视图跟踪手指的变动，并相应调整原点。这正显示出它的内容“，通过”滚动视图的视图绘制的基础上，新的原点，它被固定在内容视图的偏移部分本身。滚动视图本身没有绘制，除了显示垂直和水平滚动的指标。滚动视图必须知道的内容视图的大小，所以它知道何时停止滚动，默认情况下，它“反弹”回来时，滚动超出了内容的范围。</p>
-
-<!--more-->
-
-
-<p>用于管理内容的绘制有关的对象显示在一个滚动视图应该瓦片的内容的子视图，以便没有视图超过屏幕的大小。当用户在滚动滚动视图，这个对象应该添加和删除子视图是必要的。</p>
-
-<p>由于滚动视图没有滚动条，它必须知道是否触摸信号的意图与滚动意图在内容跟踪一个子视图。做出此决定，它暂时拦截触摸按下事件通过启动一个定时器，并在定时器触发之前，看是否触摸手指做任何运动。如果定时器触发无位置显著的变化，滚动视图将跟踪事件的内容视图的感动子视图。然后，如果用户在定时器期满前拉着自己的手指远远不够，滚动视图将取消任何跟踪的子视图，并进行滚动本身。子类可以重写touchesShouldBegin ： withEvent：方法inContentView ：,pagingEnabled和touchesShouldCancelInContentView ：方法（这是由滚动视图调用）来影响滚动视图如何处理滚动手势。</p>
-
-<p>滚动视图还处理缩放和平移的内容。当用户使一个夹在或向外挤压手势，滚动视图调整偏移量和内容的标度。当手势结束，管理内容视图中的对象应该要更新的内容为必要的子视图。 （请注意，手势可以结束和手指仍可能下跌。 ）虽然手势正在进行中，滚动视图不发送任何跟踪调用子视图。</p>
-
-<p>该UIScrollView的类可以有必须采取UIScrollViewDelegate协议的委托。对于缩放和平移工作，委托必须实现viewForZoomingInScrollView ：和scrollViewDidEndZooming ： withView ： atScale ： ，此外，最大（ maximumZoomScale ）和最小（ minimumZoomScale ）变焦倍数必须是不同的。</p>
-
-<p><strong>目录</strong></p>
-
-<p>// 监控目前滚动的位置(默认CGPointZero)</p>
-
-<pre><code>CGPoint                      contentOffset; 
-- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
-</code></pre>
-
-<p>// 滚动范围的大小(默认CGSizeZero)</p>
-
-<pre><code>CGSize                       contentSize; 
-</code></pre>
-
-<p>// 视图在scrollView中的位置(UIEdgeInsetsZero)</p>
-
-<pre><code>UIEdgeInsets                 contentInset;                   
-</code></pre>
-
-<p>// 设置协议</p>
-
-<pre><code>id&lt;UIScrollViewDelegate&gt;      delegate;                       
-</code></pre>
-
-<p>// 指定控件是否只能在一个方向上滚动(默认为NO)</p>
-
-<pre><code>BOOL directionalLockEnabled;         
-</code></pre>
-
-<p>// 控制控件遇到边框是否反弹(默认为YES)</p>
-
-<pre><code>BOOL                         bounces;                        
-</code></pre>
-
-<p>// 控制垂直方向遇到边框是否反弹(默认为NO,如果为YES，bounces也是YES)</p>
-
-<pre><code>BOOL                         alwaysBounceVertical;           
-</code></pre>
-
-<p>// 控制水平方向遇到边框是否反弹(默认为NO,如果为YES，bounces也是YES)</p>
-
-<pre><code>BOOL                         alwaysBounceHorizontal;         
-</code></pre>
-
-<p>// 控制控件是否整页翻动(默认为NO)</p>
-
-<pre><code>BOOL          pagingEnabled;                  
-</code></pre>
-
-<p>// 控制控件是否能滚动</p>
-
-<pre><code>BOOL          scrollEnabled;                  
-</code></pre>
-
-<p>// 控制是否显示水平方向的滚动条</p>
-
-<pre><code>BOOL                         showsHorizontalScrollIndicator; 
-</code></pre>
-
-<p>// 控制是否显示垂直方向的滚动条</p>
-
-<pre><code>BOOL                         showsVerticalScrollIndicator;   
-</code></pre>
-
-<p>// 指定滚动条在scrollerView中的位置</p>
-
-<pre><code>UIEdgeInsets                 scrollIndicatorInsets;          
-</code></pre>
-
-<p>// 设定滚动条的样式</p>
-
-<pre><code>UIScrollViewIndicatorStyle   indicatorStyle;                 
-</code></pre>
-
-<p>// 改变scrollerView的减速点位置</p>
-
-<pre><code>CGFloat                      decelerationRate;
-</code></pre>
-
-<p>// UITableView 在EnablePage状态下滚动到指定的页面上</p>
-
-<pre><code>- (void)scrollRectToVisible:(CGRect)rect animated:(BOOL)animated;
-</code></pre>
-
-<p>//  这个很有用，闪一下滚动条，暗示是否有可滚动的内容。可以在ViewDidAppear或[table reload]之后调用。</p>
-
-<pre><code>- (void)flashScrollIndicators; 
-</code></pre>
-
-<p>// 监控当前目标是否正在被跟踪(只读)</p>
-
-<pre><code>BOOL tracking;
-</code></pre>
-
-<p>//  监控当前目标是否正在被拖拽(只读)</p>
-
-<pre><code>BOOL dragging;
-</code></pre>
-
-<p>// 监控当前目标是否正在减速(只读)</p>
-
-<pre><code>BOOL decelerating;    
-</code></pre>
-
-<p>// 控制视图是否延时调用开始滚动的方法</p>
-
-<pre><code>BOOL delaysContentTouches;       
-</code></pre>
-
-<p>// 控制控件是否接触取消touch的事件</p>
-
-<pre><code>BOOL canCancelContentTouches;
-</code></pre>
-
-<p>//返回yes 是不滚动 scroll 返回no 是滚动scroll</p>
-
-<pre><code>- (BOOL)touchesShouldBegin:(NSSet *)touches withEvent:(UIEvent *)event inContentView:(UIView *)view;
-</code></pre>
-
-<p>//NO scroll不可以滚动 YES scroll可以滚动</p>
-
-<pre><code>- (BOOL)touchesShouldCancelInContentView:(UIView *)view;
-</code></pre>
-
-<p>// 缩小的最小比例</p>
-
-<pre><code>CGFloat minimumZoomScale;     
-</code></pre>
-
-<p>// 放大的最大比例</p>
-
-<pre><code>CGFloat maximumZoomScale;     
-</code></pre>
-
-<p>// 设置变化比例</p>
-
-<pre><code>CGFloat zoomScale;  
-- (void)setZoomScale:(CGFloat)scale animated:(BOOL)animated;
-</code></pre>
-
-<p>//  设置变化范围</p>
-
-<pre><code>- (void)zoomToRect:(CGRect)rect animated:(BOOL)animated;
-</code></pre>
-
-<p>// 控制缩放的时候是否会反弹</p>
-
-<pre><code>BOOL  bouncesZoom;
-</code></pre>
-
-<p>// 判断控件的大小是否正在改变(只读)</p>
-
-<pre><code>BOOL zooming;
-</code></pre>
-
-<p>// 判断是否正在进行缩放反弹(只读)</p>
-
-<pre><code>BOOL zoomBouncing;
-</code></pre>
-
-<p>// 控制控件滚动到顶部</p>
-
-<pre><code>BOOL  scrollsToTop;
-</code></pre>
-
-<p>// Use these accessors to configure the scroll view&rsquo;s built-in gesture recognizers.
-// Do not change the gestures&#8217; delegates or override the getters for these properties.
-// 只读</p>
-
-<pre><code>UIPanGestureRecognizer *panGestureRecognizer NS_AVAILABLE_IOS(5_0);
-</code></pre>
-
-<p>// <code>pinchGestureRecognizer</code> will return nil when zooming is disabled.
-// 只读</p>
-
-<pre><code>UIPinchGestureRecognizer *pinchGestureRecognizer NS_AVAILABLE_IOS(5_0);
-
-UIScrollViewKeyboardDismissMode keyboardDismissMode NS_AVAILABLE_IOS(7_0); // default is UIScrollViewKeyboardDismissModeNone
-</code></pre>
-
-<p>@end</p>
-
-<p>UIScrollViewDelegate协议（可选）</p>
-
-<p>//只要滚动了就会触发</p>
-
-<pre><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-</code></pre>
-
-<p>// 当scrollview发生缩放的时相应</p>
-
-<pre><code>- (void)scrollViewDidZoom:(UIScrollView *)scrollView;
-</code></pre>
-
-<p>// 将要拖拽视图</p>
-
-<pre><code>- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
-</code></pre>
-
-<p>// 开始拖拽视图</p>
-
-<pre><code>- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset;
-</code></pre>
-
-<p>// 完成拖拽</p>
-
-<pre><code>- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
-</code></pre>
-
-<p>// 将开始降速时</p>
-
-<pre><code>- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView;   
-</code></pre>
-
-<p>// 减速停止了时执行</p>
-
-<pre><code>- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;      
-</code></pre>
-
-<p>// 滚动动画停止时执行,代码改变时出发,也就是setContentOffset改变时</p>
-
-<pre><code>- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView; 
-</code></pre>
-
-<p>// 设置放大缩小的视图，要是uiscrollview的subview</p>
-
-<pre><code>- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView;     
-</code></pre>
-
-<p>// 当scrollview将要发生缩放的时相应</p>
-
-<pre><code>- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view; 
-</code></pre>
-
-<p>// 完成放大缩小时调用</p>
-
-<pre><code>- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale; 
-</code></pre>
-
-<p>// //如果你不是完全滚动到滚轴视图的顶部，你可以轻点状态栏，那个可视的滚轴视图会一直滚动到顶部，那是默认行为，你可以通过该方法返回NO来关闭它 。点击状态栏，scroll view回到顶部，如果想实现这个，实现代理方法scrollViewShouldScrollToTop返回YES，当完成时，给代理发送scrollViewDidScrollToTop: 消息</p>
-
-<pre><code>- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView;   
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView;
 </code></pre>
 ]]></content>
   </entry>
