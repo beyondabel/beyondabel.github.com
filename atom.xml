@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-02-29T10:23:02+08:00</updated>
+  <updated>2016-03-06T23:17:53+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,209 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第2期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/03/03/weekly02/"/>
+    <updated>2016-03-03T00:36:30+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/03/03/weekly02</id>
+    <content type="html"><![CDATA[<p><img src="http://www.beyondabel.com/images/2016/03/weekly02.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><a href="http://www.cocoachina.com/apple/20160302/15503.html">苹果iOS 10系统已现身：允许删除系统预装软件</a></li>
+<li><a href="http://news.xinhuanet.com/fortune/2016-03/02/c_128769374.htm">OpenSSL曝新漏洞 超1100万HTTPS站点受影响</a></li>
+<li><a href="http://www.infoq.com/cn/news/2016/02/realm-react-native">Realm推出了适用于React Native的新数据库</a></li>
+<li><a href="http://tech.qq.com/a/20160303/028642.htm">苹果获柔性屏专利 或应用到未来iPhone中</a></li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><a href="http://www.jianshu.com/p/f970872fdc22">《iOS高效添加圆角效果实战讲解》</a>: 在项目中我们会经常使用圆角来做一些效果，通过这篇文章你就会知道为什么自己的项目会很卡，自己的姿势是否正确了。</li>
+<li><a href="http://wereadteam.github.io/2016/02/22/MLeaksFinder/">MLeaksFinder：精准 iOS 内存泄露检测工具</a>：在 iOS 开发中，稍不注意就会导致内存泄露的问题，MLeaksFinder 相较于 Instrument，为我们提供了更方便易用的内存泄露检测方案。这篇文章介绍了该工具的使用方式。</li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/Mantle/Mantle">Mantle</a> : Mantle是一个用于简化Cocoa或Cocoa Touch程序中model层的第三方库。通常我们的应该中都会定义大量的model来表示各种数据结构，而这些model的初始化和编码解码都需要写大量的代码。而Mantle的优点在于能够大大地简化这些代码。</li>
+<li><a href="https://github.com/marcuswestin/WebViewJavascriptBridge">WebViewJavaScriptBridge</a> : WebViewJavascriptBridge是Obj-C和JavaScript通过UIWebViews/WebViews互通消息的一个iOS/OSX的桥梁.</li>
+<li><a href="https://github.com/SnapKit/Masonry">Masonry</a> : 用过autolayout会感觉这东西好麻烦，写一个约束得一堆很罗嗦的代码，还不如直接frame来得快，Masonry是一个轻量级的布局框架 拥有自己的描述语法 采用更优雅的链式语法封装自动布局 简洁明了，非常好用</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[UIWebView中Objective-C与JavaScript交互]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/03/03/oc-to-js/"/>
+    <updated>2016-03-03T00:13:39+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/03/03/oc-to-js</id>
+    <content type="html"><![CDATA[<p><img src="http://www.beyondabel.com/images/2016/03/js-oc.png" alt="image" /></p>
+
+<p>现在越来越多的项目为了支持公司业务的发展而选择使用HTML5做一些功能，那么这样就会涉及到HTML5与原生Objective-C的交互，今天就聊聊HMTL与原生之间的相互调用问题。</p>
+
+<!--more-->
+
+
+<h3>概述</h3>
+
+<p>原生与Web页面的交互可以分为Objective-C执行JavaScript代码和Web页面（或JavaScript）执行Objective-C代码,前者相对非常简单，后面可以通过JavaScriptCore、拦截协议等方式实现，下面我将主要对这二种方式进行叙述。</p>
+
+<h3>Objective-C执行JavaScript代码</h3>
+
+<p>打开UIWebView的头文件我们可以发现有一个方法叫stringByEvaluatingJavaScriptFromString:，它就是Objective-C执行JavaScript代码的通路，并且要注意它的返回值是NSString，这个方法在平时非常实用，列举几个例子：</p>
+
+<pre><code>// 获取当前页面的title
+NSString *title = [webview stringByEvaluatingJavaScriptFromString:@"document.title"];
+
+// 获取当前页面的可高度
+float offsetHeight = [[webview stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"] floatValue];
+
+// 获取需要分享的类内
+NSString *sharedDictionary = [webview stringByEvaluatingJavaScriptFromString:@"getSharedContent"];
+</code></pre>
+
+<h3>JavaScript执行Objective-C代码</h3>
+
+<p>JavaScript执行Objective-C代码之前我就说过有二种方式，现在我分别来说说这二种方式。</p>
+
+<h4>1. 利用JavaScriptCore来执行Objective-C代码</h4>
+
+<p>iOS7之后苹果推出了JavaScriptCore这个框架，从而让Web页面和本地原生应用交互起来非常方便，而且使用此框架可以做到Android那边和iOS相对统一，web前端写一套代码就可以适配客户端的两个平台，从而减少了Web前端的工作量。</p>
+
+<h5>Web前端</h5>
+
+<p>在三端交互中，web前端要强势一些，一切传值、方法命名都按web前端开发人员来定义，让另外两端去做适配。在这里以调用分享为例来详细讲解，测试网页代码取名为shared.html，其代码内容如下：</p>
+
+<p>shared.html代码内容</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;js调用objective-c代码&lt;/title&gt;
+    &lt;style type="text/css"&gt;
+        #backButton { 
+            display: inline-block;
+            width:50px; height:30px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id="backButton"&gt;返回&lt;/button&gt;
+    &lt;script type="text/javascript"&gt;
+
+        var btn = document.getElementById('backButton');
+
+        btn.addEventListener('click', function() {
+           callBackObj.letsGoBack();
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h5>iOS</h5>
+
+<p>iOS这边根据前端定义的方法名来写代码，但是有些时候web前端会让我们定义，但是我们定义好之后他又要修改，这时候就会很烦啊。所以碰到三端交互的时候最好就是让web前端去定义方法名，iOS和Android根据web前端定义好的去写代码。JavaScriptCore中web页面调用原生应用的方法可以用Delegate或Block两种方法，此文以按Delegate讲解。</p>
+
+<pre><code>JavaScriptCore中类及协议：
+
+JSContext：给JavaScript提供运行的上下文环境
+JSValue：JavaScript和Objective-C数据和方法的桥梁
+JSManagedValue：管理数据和方法的类
+JSVirtualMachine：处理线程相关，使用较少
+JSExport：这是一个协议，如果采用协议的方法交互，自己定义的协议必须遵守此协议
+</code></pre>
+
+<p>ViewController中的代码</p>
+
+<pre><code>- (void)webViewDidFinishLoad:(UIWebView *)webView {
+
+    JSContext *context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    [context setExceptionHandler:^(JSContext *ctx, JSValue *value) {
+    NSLog(@"error: %@", value);
+}];
+
+    context[@"callBackObj"] = self;
+}
+
+- (void) letsGoBack {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+</code></pre>
+
+<p>ViewController中的代码解释</p>
+
+<p>看到上面的代码我们可以看到设置了context中的callBackObj为self,通过这样的设置js在使用callBackObj.letsGoBack时其实等价于在viewController中使用[self letsGoBack]。</p>
+
+<p>运行效果如图所示</p>
+
+<p><img src="http://www.beyondabel.com/images/2016/03/js-to-oc.gif" alt="image" /></p>
+
+<h4>拦截协议</h4>
+
+<p>首先我说解释一下什么是协议，协议是共同计议的规定，是大家一起遵循的准则。拦截协议这个非常适合各个平台，不需要引入什么框架，只需要大家相互之间遵守协议就可以了。那么在我们团队中协议是怎么定义的呢？scheme://model/aciton?{参数1}={数值1}&amp;{参数2}={数值2}&amp;&hellip;，比如在金蛋中分享的协议会是:jindanlicai://active/shared?callback=result(&lsquo;%s&rsquo;,&lsquo;%s&rsquo;)&amp;function=getContent()。其中，function的值是可以获取分享内容的JavaScript函数名称，callback的值是分享结束之后调用的方法来告知HTML5是否分享成功与失败状态。</p>
+
+<h5>web前端</h5>
+
+<p>home.html中的代码</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;
+            &lt;input type="button" value="分享" onclick="share()"&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+        function share() {
+            window.location.href = 'jindanlicai://active/shared?callback=result('%s','%s')&amp;function=getContent()';
+        }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>home.html中的代码解释</p>
+
+<p>通过点击分享按钮将会调用JavaStript中的share()，window.location.href这里是改变主窗口的指向从而马上发出一个链接为‘jindanlicai://active/shared?callback=result(&lsquo;%s&rsquo;,&lsquo;%s&rsquo;)&amp;function=getContent()’请求，而在iOS方法中我们要拦截这个请求，根据URL请求内容去判断Web页面想要原生做的事情，从而实现web页面和本地应用之间的交互。</p>
+
+<h5>iOS</h5>
+
+<p>iOS对应的代码</p>
+
+<pre><code>- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSString *url = request.URL.absoluteString;
+    if ([[request.URL scheme] isEqualToString:@"jindanlicai"]) {
+        [JDOpenURL handlerURL:request.URL context:self];
+        return NO;
+    }
+    return YES;
+}
+</code></pre>
+
+<p>iOS对应的代码的解释</p>
+
+<p>在webView的代理方法中去拦截URL的scheme为自定义jindanlicai协议，调用原生提前约定好的方法，并且返回值为NO来阻止此链接的跳转。</p>
+
+<h3>总结</h3>
+
+<p>随着手机硬件的配置越来越强大和HTML5的兴起，一个App完全可以由web页面来写。现在在我们公司已经有很多的App已经完全是这么干了，iOS和Android只是给这个App套一个壳并通过一些协议去实现一些本地逻辑。协议是一个非常不错的方法，在这我推荐使用协议去做这样的事，当前提前是你要非常理解协议。如果有人喜欢协议，WebViewJavaScriptBridge是一个不错的第三库。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第1期]]></title>
@@ -3515,444 +3718,6 @@ UIControlContentVerticalAlignmentFill
 <p>// 如果设计了一个自定义控件类，可以使用sendActionsForControlEvent方法，为基本的UIControl事件或自己的自定义事件发送通知。例如，如果你的控件值正在发生变化，就可以发送相应通知，通过控件的代码可以指定时间目标，这个通知将被传播到这些指定的目标。</p>
 
 <pre><code>- (void)sendActionsForControlEvents:(UIControlEvents)controlEvents;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIWebView详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/05/uiwebview/"/>
-    <updated>2014-01-05T12:32:39+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/05/uiwebview</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>UIWebView是继承于UIView(有关UIView请参照<a href="http://www.beyondabel.com/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>),在您的应用程序中，您可以使用UIWebView嵌入网页内容。要做到这一点，你只需创建一个UIWebView对象，将其附加到一个窗口，并发送一个请求来加载网页内容。您也可以使用此类前进和后退的网页的历史记录，甚至可以通过编程设置一些网页内容属性。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、基本属性及方法
-2、iOS5新增
-3、iOS6新增
-4、iOS7新增
-5、UIWebViewDelegate协议（可选）
-</code></pre>
-
-<p><strong>1、基本属性及方法</strong></p>
-
-<p>// 设置代理</p>
-
-<pre><code>id&lt;UIWebViewDelegate&gt; delegate;
-</code></pre>
-
-<p>//  加载一个url地址</p>
-
-<pre><code>- (void)loadRequest:(NSURLRequest *)request;
-</code></pre>
-
-<p>// 加载一个html的string</p>
-
-<pre><code>- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;
-</code></pre>
-
-<p>// 获取web的请求</p>
-
-<pre><code>NSURLRequest *request;
-</code></pre>
-
-<p>// 重新加载</p>
-
-<pre><code>- (void)reload; 
-</code></pre>
-
-<p>// 停止加载</p>
-
-<pre><code>- (void)stopLoading;
-</code></pre>
-
-<p>// 返回</p>
-
-<pre><code>- (void)goBack;
-</code></pre>
-
-<p>// 前进</p>
-
-<pre><code>- (void)goForward;
-</code></pre>
-
-<p>// 是否能返回(只读)</p>
-
-<pre><code>BOOL canGoBack;
-</code></pre>
-
-<p>// 是否能前进（只读)</p>
-
-<pre><code>BOOL canGoForward;
-</code></pre>
-
-<p>// 是否正在加载（只读）</p>
-
-<pre><code>BOOL loading;
-</code></pre>
-
-<p>// 添加javascript</p>
-
-<pre><code>- (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;
-</code></pre>
-
-<p>// 默认值为NO，用户不可以放大或缩小页面；如果设置为YES，页面可以通过放大缩小去适应，用户也可以通过手势来放大和缩小</p>
-
-<pre><code>BOOL scalesPageToFit;
-</code></pre>
-
-<p>// 如果设置为YES，用户必须明确的点击页面上的元素或者相关联的输入页面来显示键盘；如果设置为NO，一个元素的焦点事件导致输入视图的显示和自动关联这个元素。</p>
-
-<pre><code>BOOL detectsPhoneNumbers;
-</code></pre>
-
-<p>//  把网页上内容转换成可点击的链接类型</p>
-
-<pre><code>UIDataDetectorTypes dataDetectorTypes;
-</code></pre>
-
-<p>// 这个值决定了用内嵌HTML5播放视频还是用本地的全屏控制。为了内嵌视频播放，不仅仅需要在这个页面上设置这个属性，还必须的是在HTML中的video元素必须包含webkit-playsinline属性。(iPhone默认为NO, iPad默认为YES)</p>
-
-<pre><code>BOOL allowsInlineMediaPlayback;
-</code></pre>
-
-<p>// 在iPhone和iPad上默认使YES。这个值决定了HTML5视频可以自动播放还是需要用户去启动播放</p>
-
-<pre><code>BOOL mediaPlaybackRequiresUserAction; 
-</code></pre>
-
-<p><strong>2、iOS5新增</strong></p>
-
-<p>// 获取webView中的scrollView(只读)</p>
-
-<pre><code>UIScrollView *scrollView;
-</code></pre>
-
-<p>// 这个值决定了从这个页面是否可以Air Play(默认YES)</p>
-
-<pre><code>BOOL mediaPlaybackAllowsAirPlay; 
-</code></pre>
-
-<p><strong>3、iOS6新增</strong></p>
-
-<p>// 这个值决定了网页内容的渲染是否在把内容全部加载到内存中再去处理。如果设置为YES，只有网页内容加载到内存里了才会去渲染(默认值为NO)</p>
-
-<pre><code>BOOL suppressesIncrementalRendering; 
-</code></pre>
-
-<p>// 如果设置为YES，用户必须明确的点击页面上的元素或者相关联的输入页面来显示键盘；如果设置为NO，一个元素的焦点事件导致输入视图的显示和自动关联这个元素。(默认为YES)</p>
-
-<pre><code>BOOL keyboardDisplayRequiresUserAction;
-</code></pre>
-
-<p><strong>4、iOS7新增</strong></p>
-
-<p>// 随意翻阅模式</p>
-
-<pre><code>UIWebPaginationMode paginationMode;
-UIWebPaginationBreakingMode paginationBreakingMode;
-CGFloat pageLength;
-CGFloat gapBetweenPages;
-</code></pre>
-
-<p>当在原生应用中，使用 UIWebView 实现丰富内容时，或者对于原生 webapp，我们可以为了电子书阅读体验使用 Paginate （随意翻阅）特性，避免垂直滚动条（类似 Windows 8 应用体验）。如果应用显示动态内容，这一特性是完美的，我们不能预先优化分页。有不同的 Objective-C 属性配置分页过程。要启用它，需要这么做：</p>
-
-<pre><code>myWebView.paginationMode = UIWebPaginationModeLeftToRight;
-myWebView.paginationBreakingMode = UIWebPaginationBreakingModePage;
-myWebView.gapBetweenPages = 50; 
-</code></pre>
-
-<p>// 获取页码总数(只读)</p>
-
-<pre><code>NSUInteger pageCount;
-</code></pre>
-
-<p><strong>5、UIWebViewDelegate协议（可选）</strong></p>
-
-<p>//当网页视图被指示载入内容而得到通知。应当返回YES，这样会进行加载。</p>
-
-<pre><code>- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
-</code></pre>
-
-<p>// 开始加载的时候执行该方法。</p>
-
-<pre><code>- (void)webViewDidStartLoad:(UIWebView *)webView;
-</code></pre>
-
-<p>// 加载完成的时候执行该方法。</p>
-
-<pre><code>- (void)webViewDidFinishLoad:(UIWebView *)webView;
-</code></pre>
-
-<p>// 加载出错的时候执行该方法。</p>
-
-<pre><code>- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UISearchBar详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/05/uisearchbar/"/>
-    <updated>2014-01-05T12:32:30+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/05/uisearchbar</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong>
-UISearchBar类实现一个文本字段控制基于文本的搜索，它是继承于UIView(有关UIView的介绍请到<a href="http://www.beyondabel.com/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>)。控制输入文字，一个搜索按钮，书签按钮和取消按钮提供了一个文本字段。该对象的UISearchBar实际上并不执行任何搜查。您可以使用委托符合UISearchBarDelegate协议对象，实现这些输入文字和点击按钮的事件。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、基本属性和方法
-2、iOS5新增
-3、iOS7新增
-4、UISearchBarDelegate协议（可选）
-</code></pre>
-
-<p><strong>1、基本属性和方法</strong></p>
-
-<p>// 设置控件样式（默认UIBarStyleDefault）</p>
-
-<pre><code>UIBarStyle              barStyle;              
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id&lt;UISearchBarDelegate&gt; delegate;              
-</code></pre>
-
-<p>// 控件上面显示的文字</p>
-
-<pre><code>NSString               *text;                  
-</code></pre>
-
-<p>// 显示在顶部的单行文字，通常作为一个提示行</p>
-
-<pre><code>NSString               *prompt;                
-</code></pre>
-
-<p>// 半透明的提示文字，输入搜索内容会消失</p>
-
-<pre><code>NSString               *placeholder;           
-</code></pre>
-
-<p>// 是否在控件的右端显示一个书的按钮（没有文字的时候）</p>
-
-<pre><code>BOOL                    showsBookmarkButton;   
-</code></pre>
-
-<p>// 是否显示cancel按钮</p>
-
-<pre><code>BOOL                    showsCancelButton; 
-- (void)setShowsCancelButton:(BOOL)showsCancelButton animated:(BOOL)animated;    
-</code></pre>
-
-<p>// 是否在控件的右端显示搜索结果按钮（没有文字的时候）</p>
-
-<pre><code>BOOL                    showsSearchResultsButton; 
-</code></pre>
-
-<p>// 搜索结果按钮是否被选中</p>
-
-<pre><code>BOOL searchResultsButtonSelected; 
-</code></pre>
-
-<p>// bar的颜色(具有渐变效果)</p>
-
-<pre><code>UIColor *tintColor;
-UIColor *barTintColor(iOS7.0);
-
-UISearchBarStyle searchBarStyle (iOS7.0);
-</code></pre>
-
-<p> // 指定控件是否会有透明效果</p>
-
-<pre><code>BOOL translucent;
-</code></pre>
-
-<p>// 设置在什么情况下自动大写（默认UITextAutocapitalizationTypeNone）</p>
-
-<pre><code>UITextAutocapitalizationType autocapitalizationType;  
-</code></pre>
-
-<p>// 对于文本对象自动校正风格 （默认UITextAutocorrectionTypeDefault）</p>
-
-<pre><code>UITextAutocorrectionType     autocorrectionType;      
-</code></pre>
-
-<p>//  （默认UITextSpellCheckingTypeDefault）</p>
-
-<pre><code>UITextSpellCheckingType      spellCheckingType;       
-</code></pre>
-
-<p>// 键盘样式 （默认UIKeyboardTypeDefault）</p>
-
-<pre><code>UIKeyboardType               keyboardType;            
-</code></pre>
-
-<p>// 搜索栏下部的选择栏，数组里面的内容是按钮的标题</p>
-
-<pre><code>NSArray   *scopeButtonTitles;
-</code></pre>
-
-<p>// 搜索栏下部的选择栏按钮的个数</p>
-
-<pre><code>NSInteger  selectedScopeButtonIndex; 
-</code></pre>
-
-<p>// 控制搜索栏下部的选择栏是否显示出来</p>
-
-<pre><code>BOOL       showsScopeBar; 
-</code></pre>
-
-<p>// 提供一个遮盖视图</p>
-
-<pre><code>UIView *inputAccessoryView;
-</code></pre>
-
-<p><strong>2、iOS5新增</strong></p>
-
-<p>// 设置背景图片</p>
-
-<pre><code>UIImage *backgroundImage;
-</code></pre>
-
-<p>// 设置scope的背景颜色</p>
-
-<pre><code>UIImage *scopeBarBackgroundImage;
-
-
-- (void)setSearchFieldBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state;
-- (UIImage *)searchFieldBackgroundImageForState:(UIControlState)state;
-</code></pre>
-
-<p>// 设置某个状态下search的ico图片</p>
-
-<pre><code>- (void)setImage:(UIImage *)iconImage forSearchBarIcon:(UISearchBarIcon)icon state:(UIControlState)state;
-</code></pre>
-
-<p>// 获取某个状态下的ico图片</p>
-
-<pre><code>- (UIImage *)imageForSearchBarIcon:(UISearchBarIcon)icon state:(UIControlState)state;
-</code></pre>
-
-<p>// 设置某个状态下scopeBarButton的背景图片</p>
-
-<pre><code>- (void)setScopeBarButtonBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state; 
-</code></pre>
-
-<p>// 获取某个状态下scopeBarButton的背景图片</p>
-
-<pre><code>- (UIImage *)scopeBarButtonBackgroundImageForState:(UIControlState)state;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)setScopeBarButtonDividerImage:(UIImage *)dividerImage forLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState;
-- (UIImage *)scopeBarButtonDividerImageForLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)setScopeBarButtonTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state;
-- (NSDictionary *)scopeBarButtonTitleTextAttributesForState:(UIControlState)state;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>UIOffset searchFieldBackgroundPositionAdjustment;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>UIOffset searchTextPositionAdjustment;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)setPositionAdjustment:(UIOffset)adjustment forSearchBarIcon:(UISearchBarIcon)icon;
-- (UIOffset)positionAdjustmentForSearchBarIcon:(UISearchBarIcon)icon;
-</code></pre>
-
-<p><strong>3、iOS7新增</strong></p>
-
-<p>//</p>
-
-<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;  
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (UIImage *)backgroundImageForBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p><strong>4、UISearchBarDelegate协议（可选）</strong></p>
-
-<p>// 是否允许编辑，如果返回为NO则不能成为第一响应者</p>
-
-<pre><code>- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar;                      
-</code></pre>
-
-<p>// 开始编辑</p>
-
-<pre><code>- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar;                     
-</code></pre>
-
-<p>// 是否允许结束编辑</p>
-
-<pre><code>- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar;                        
-</code></pre>
-
-<p>// 结束编辑</p>
-
-<pre><code>- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar;                       
-</code></pre>
-
-<p>// 文本内容改变时调用</p>
-
-<pre><code>- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;   
-</code></pre>
-
-<p>// 如果允许继续输入，那么返回YES，否则返回NO。（可以对字数进行限制）</p>
-
-<pre><code>- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text; 
-</code></pre>
-
-<p>// 当搜索按钮被点击的时候</p>
-
-<pre><code>- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;                     
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar;                   
-</code></pre>
-
-<p>// cancel按钮点击时调用</p>
-
-<pre><code>- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar;                    
-</code></pre>
-
-<p>// ResultsList按钮被点击时调用</p>
-
-<pre><code>- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar; 
-</code></pre>
-
-<p>// 还有一个很重要的事情，设了按钮就要给他们安排功能。所以说，我们要实现这个代理UISearchBarDelegate里的这个方法searchBar:selectedScopeButtonIndexDidChange:告诉表格，你选择的范围是啥。</p>
-
-<pre><code>- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope;
 </code></pre>
 ]]></content>
   </entry>

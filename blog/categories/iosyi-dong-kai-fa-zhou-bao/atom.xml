@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS移动开发周报 | Abel's Den]]></title>
   <link href="http://www.beyondabel.com/blog/categories/iosyi-dong-kai-fa-zhou-bao/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-02-29T10:23:02+08:00</updated>
+  <updated>2016-03-06T23:17:53+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第2期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/03/03/weekly02/"/>
+    <updated>2016-03-03T00:36:30+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/03/03/weekly02</id>
+    <content type="html"><![CDATA[<p><img src="/images/2016/03/weekly02.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><a href="http://www.cocoachina.com/apple/20160302/15503.html">苹果iOS 10系统已现身：允许删除系统预装软件</a></li>
+<li><a href="http://news.xinhuanet.com/fortune/2016-03/02/c_128769374.htm">OpenSSL曝新漏洞 超1100万HTTPS站点受影响</a></li>
+<li><a href="http://www.infoq.com/cn/news/2016/02/realm-react-native">Realm推出了适用于React Native的新数据库</a></li>
+<li><a href="http://tech.qq.com/a/20160303/028642.htm">苹果获柔性屏专利 或应用到未来iPhone中</a></li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><a href="http://www.jianshu.com/p/f970872fdc22">《iOS高效添加圆角效果实战讲解》</a>: 在项目中我们会经常使用圆角来做一些效果，通过这篇文章你就会知道为什么自己的项目会很卡，自己的姿势是否正确了。</li>
+<li><a href="http://wereadteam.github.io/2016/02/22/MLeaksFinder/">MLeaksFinder：精准 iOS 内存泄露检测工具</a>：在 iOS 开发中，稍不注意就会导致内存泄露的问题，MLeaksFinder 相较于 Instrument，为我们提供了更方便易用的内存泄露检测方案。这篇文章介绍了该工具的使用方式。</li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/Mantle/Mantle">Mantle</a> : Mantle是一个用于简化Cocoa或Cocoa Touch程序中model层的第三方库。通常我们的应该中都会定义大量的model来表示各种数据结构，而这些model的初始化和编码解码都需要写大量的代码。而Mantle的优点在于能够大大地简化这些代码。</li>
+<li><a href="https://github.com/marcuswestin/WebViewJavascriptBridge">WebViewJavaScriptBridge</a> : WebViewJavascriptBridge是Obj-C和JavaScript通过UIWebViews/WebViews互通消息的一个iOS/OSX的桥梁.</li>
+<li><a href="https://github.com/SnapKit/Masonry">Masonry</a> : 用过autolayout会感觉这东西好麻烦，写一个约束得一堆很罗嗦的代码，还不如直接frame来得快，Masonry是一个轻量级的布局框架 拥有自己的描述语法 采用更优雅的链式语法封装自动布局 简洁明了，非常好用</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第1期]]></title>
