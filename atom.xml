@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-03-14T22:17:43+08:00</updated>
+  <updated>2016-03-15T00:31:07+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,433 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS学习资料整理]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/03/14/comming-soon/"/>
+    <updated>2016-03-14T22:35:45+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/03/14/comming-soon</id>
+    <content type="html"><![CDATA[<p>目录</p>
+
+<!--more-->
+
+
+<ul>
+<li><a href="#1">iOS开发</a>
+
+<ul>
+<li> <a href="#1.1">架构设计</a></li>
+<li> <a href="#1.2">Apple Watch</a></li>
+<li> <a href="#1.3">Swift</a></li>
+<li> <a href="#1.4">屏幕适配</a></li>
+<li> <a href="#1.5">工程</a></li>
+<li> <a href="#1.6">Foundation</a></li>
+<li> <a href="#1.7">旋转</a></li>
+<li> <a href="#1.8">Category</a></li>
+<li> <a href="#1.9">UIKit</a>
+
+<ul>
+<li><a href="#1.9.1">UIViewController</a></li>
+<li><a href="#1.9.2">UITableView</a></li>
+<li><a href="#1.9.3">UIActionSheet</a></li>
+<li><a href="#1.9.4">其他</a></li>
+</ul>
+</li>
+<li> <a href="#1.10">iOS7</a></li>
+<li> <a href="#1.11">iOS8</a>
+
+<ul>
+<li><a href="#1.12">App Extension</a></li>
+</ul>
+</li>
+<li> <a href="#1.13">内存管理</a></li>
+<li> <a href="#1.14">Block</a></li>
+<li> <a href="#1.15">GCD</a></li>
+<li> <a href="#1.16">绘图&amp;动画</a></li>
+<li> <a href="#1.17">runtime</a></li>
+<li> <a href="#1.18">C语言</a></li>
+<li> <a href="#1.19">代码优化</a></li>
+<li> <a href="#1.20">调试</a></li>
+<li> <a href="#1.21">第三库的使用</a></li>
+<li> <a href="#1.22">底层分析</a></li>
+<li> <a href="#1.23">StoryBoard</a></li>
+<li> <a href="#1.24">逆向</a></li>
+<li> <a href="#1.25">面试</a></li>
+<li> <a href="#1.26">工具</a></li>
+<li> <a href="#1.27">技巧</a></li>
+<li> <a href="#1.28">博客</a></li>
+<li> <a href="#1.29">期刊</a></li>
+</ul>
+</li>
+<li><a href="#2">其他</a>
+
+<ul>
+<li> <a href="#2.1">UI设计</a></li>
+<li> <a href="#2.2">Markdown</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h2 id="1">iOS开发</h2>
+
+
+<p></p>
+
+<h4 id="1.1">架构设计</h4>
+
+
+<ul>
+<li><a href="http://casatwy.com/iosying-yong-jia-gou-tan-kai-pian.html">iOS应用架构谈 开篇</a> by Casa Taloyum</li>
+<li><a href="http://">iOS应用架构谈 view层的组织和调用方案</a> by Casa Taloyum</li>
+<li><a href="http://">跳出面向对象思想(一)</a> 继承 by Casa Taloyum</li>
+<li><a href="http://">跳出面向对象思想(二)</a> 多态 by Casa Taloyum</li>
+<li><a href="http://">跳出面向对象思想(三)</a> 封装 by Casa Taloyum</li>
+</ul>
+
+
+<h4 id="1.2">Apple Watch</h4>
+
+
+<ul>
+<li><a href="http://">Apple Watch 开发调研一</a>：总览 by Swift 小瑞的BLOG</li>
+<li><a href="http://">Apple Watch 开发调研二</a>：WatchKit Apps by Swift 小瑞的BLOG</li>
+<li><a href="http://">Apple Watch 开发调研三</a>: Glances,Notifications by Swift 小瑞的BLOG</li>
+<li><a href="http://">Apple Watch三个月开发的一些收获总结</a> by Swift 小瑞的BLOG</li>
+</ul>
+
+
+<h4 id="1.2">Swift</h4>
+
+
+<ul>
+<li>The Swift Programming Language 中文版 by Swift 中文翻译组</li>
+<li>CocoaChina Swift专场 by CocoaChina</li>
+<li>Swift语言指南 by ipader</li>
+<li>喵神的Swift书~Tip列表 by onevcat</li>
+<li>Swift论坛社区 by Swiftist</li>
+<li>( ) –> ( ) by sunnyxx</li>
+<li>Swift如何检查系统版本 by <a href="http://idlelife.org">http://idlelife.org</a></li>
+<li>我在开发第一个Swift App过程中学到的四件事 by <a href="http://idlelife.org">http://idlelife.org</a></li>
+</ul>
+
+
+<h4 id="1.2">屏幕适配</h4>
+
+
+<ul>
+<li>为iPhone6设计自适应布局（一） by 宇轩</li>
+<li>为iPhone6设计自适应布局（二） by 宇轩</li>
+</ul>
+
+
+<h4 id="1.2">工程</h4>
+
+
+<ul>
+<li>iOS开发实战：如何将非ARC的项目转换成ARC项目 by CocoaChina</li>
+</ul>
+
+
+<h4 id="1.2">Foundation</h4>
+
+
+<ul>
+<li>对NSArray中自定义的对象进行排序 by破船</li>
+<li>Compile-time Key Paths Verification by lldong</li>
+<li>Cocoa 漢字轉拼音最簡單的方法 by lldong</li>
+<li>iOS将大文件映射到内存 by xcodev</li>
+<li>用宏提速NSCoding by isaced</li>
+<li>Toll-Free Bridging by Lancy</li>
+<li>NSString属性什么时候用copy，什么时候用strong? by 南峰子的技术博客</li>
+</ul>
+
+
+<h4 id="1.2">旋转</h4>
+
+
+<ul>
+<li>iOS旋转视图实践 by淘宝技术部</li>
+<li>强制旋转一个UIViewController bytxx’s blog</li>
+</ul>
+
+
+<h4 id="1.2">Category</h4>
+
+
+<ul>
+<li>Objective-C相关Category的收集 by CocoaChina</li>
+<li>Objective-C语言在Category中实现属性 by xcodev</li>
+</ul>
+
+
+<h4 id="1.2">UIKit</h4>
+
+
+<h5 id="1.2">UIViewController</h5>
+
+
+<ul>
+<li>iOS5中UIViewController的新方法 by 唐巧</li>
+</ul>
+
+
+<h5 id="1.2">UITableView</h5>
+
+
+<ul>
+<li>UITableView 滚动流畅性优化 by 6david9</li>
+<li>给tableview Cell添加动画 by 破船</li>
+<li>利用长按手势移动 Table View Cells by 破船</li>
+<li>制作一个可以滑动操作的 Table View Cell by nixzhu</li>
+<li>TableView中嵌套一个ScrollView有时导致ScrollView无法滚动 by xcodev</li>
+</ul>
+
+
+<h5 id="1.2">UIWebView</h5>
+
+
+<ul>
+<li>iOS5网页视图（UIWebView）中的输入框不能弹出键盘的问题 by xcodev</li>
+</ul>
+
+
+<h4 id="1.2">UIActionSheet</h4>
+
+
+<ul>
+<li>封装同步的UIActionSheet by 唐巧</li>
+</ul>
+
+
+<h4 id="1.2">其他</h4>
+
+
+<ul>
+<li>如何自定义iOS中的控件 by 破船</li>
+</ul>
+
+
+<h4 id="1.2">iOS7</h4>
+
+
+<ul>
+<li>iOS 7中实现模糊效果 by破船</li>
+<li>iOS 7 教程：让程序同时支持iOS 6和iOS 7 by破船</li>
+<li>iOS 7 教程：浅析Text Kit by破船</li>
+<li>iOS 7 教程：定制iOS 7中的导航栏和状态栏 by破船</li>
+<li>iOS 7中的一些小修改 by破船</li>
+<li>iOS 7 键盘动画 by nonomori</li>
+</ul>
+
+
+<h4 id="1.2">iOS8</h4>
+
+
+<ul>
+<li>App Extension</li>
+<li>WWDC2014之App Extensions学习笔记 by foggry.com</li>
+<li>iOS 8 Today Extension Tutorial by raywenderlich.com</li>
+<li>&lt;译>iOS 8 Today Extension Tutorial by zixun.github.io</li>
+</ul>
+
+
+<h4 id="1.2">内存管理</h4>
+
+
+<ul>
+<li>手把手教你ARC——iOS/Mac开发ARC入门和使用 by onevcat</li>
+<li>retainCount 不会为 0 by lldong</li>
+</ul>
+
+
+<h4 id="1.2">Block</h4>
+
+
+<ul>
+<li>谈Objective-C Block的实现 by 唐巧</li>
+<li>正确使用Block避免Cycle Retain和Crash by tanqisen</li>
+</ul>
+
+
+<h4 id="1.2">GCD</h4>
+
+
+<ul>
+<li>使用GCD by 唐巧</li>
+<li>GCD 深入理解：第一部分 by nixzhu</li>
+</ul>
+
+
+<h4 id="1.2">绘图&动画</h4>
+
+
+<ul>
+<li>在iOS中让图片旋转时抗锯齿 by xcodev&lt;br</li>
+<li>[Objective C中C99的使用 by answerhuangbr/> *</li>
+</ul>
+
+
+<h4 id="1.2">代码优化</h4>
+
+
+<ul>
+<li>类簇在iOS开发中的应用 by无网不剩</li>
+<li>iOS项目的目录结构和开发流程 by无网不剩</li>
+<li>Facebook Pop &amp; Tweaks Demo by不会开机的男孩</li>
+</ul>
+
+
+<h4 id="1.2">runtime</h4>
+
+
+<ul>
+<li>objc/runtime 探索(一)</li>
+<li>objc/runtime 探索(二))</li>
+<li>objc/runtime 探索(三))</li>
+<li>objc/runtime 探索(四))</li>
+<li>轻松学习之一－－Objective-C消息转发 by J_雨</li>
+</ul>
+
+
+<h4 id="1.2">c语言</h4>
+
+
+<ul>
+<li>什么情况下用宏定义do{}while(0);这种结构体</li>
+</ul>
+
+
+<h4 id="1.2">调试</h4>
+
+
+<ul>
+<li>LLDB调试命令初探 by 达叔</li>
+</ul>
+
+
+<h4 id="1.2">第三方库使用</h4>
+
+
+<ul>
+<li>在iOS开发中使用FMDB by 唐巧</li>
+</ul>
+
+
+<h4 id="1.2">底层分析</h4>
+
+
+<ul>
+<li>Objective-C对象模型及应用 by 唐巧</li>
+</ul>
+
+
+<p><h4 id="1.2">StoryBoard</p>
+
+<ul>
+<li>StoryBoard—看上去很美 by 唐巧</li>
+</ul>
+
+
+<p><h4 id="1.2">逆向</h4>
+* TweakWeek 每周一个开源tweek
+* iPhone 7.0 Headers</p>
+
+<p><h4 id="1.2">面试</h4></p>
+
+<ul>
+<li>上级向的十个iOS面试问题 by onevcat</li>
+</ul>
+
+
+<p><h4 id="1.2">工具</h4></p>
+
+<ul>
+<li>使用CocoaPods来做iOS程序的包依赖管理 by 唐巧</li>
+<li>CocoaPods详解之——制作篇 by wangzz</li>
+<li>Enrolling in Apple Developer Programs by Girl_iOS</li>
+</ul>
+
+
+<p><h4 id="1.2">技巧</h4></p>
+
+<ul>
+<li>Xcode Key Bindings &amp; Gestures利用快捷键提高开发效率 by CocoaChina</li>
+<li>www.gitignore.io/ by gitignore</li>
+<li>这个网站可以自动为你生成gitignore文件，比如你输入Objective Xcode 就会为你生成正对iOS开发的gitignore文件，如果你对gitignore文件不熟，那就请翻阅&lt;Git权威指南>。</li>
+<li>Chrome 快捷键 整理版 【来自豆瓣】 by douban
+少有人知的 GitHub 使用技巧 by segmentfault</li>
+</ul>
+
+
+<p><h4 id="1.2">插件</h4></p>
+
+<ul>
+<li>Alcatraz by Github
+Alcatraz是一个帮你管理Xcode插件、模版以及颜色配置的工具。它可以直接集成到Xcode的图形界面中，让你感觉就像在使用Xcode自带的功能一样.这里有一篇很好的介绍它的文章使用Alcatraz来管理Xcode插件</li>
+<li><p>ColorSense-for-Xcode by Github
+这个插件可以在编辑器上动态的渲染出你代码编写的颜色，例如在你写如下代码时它会在这段代码的右上角绘制出颜色预览，可以省去很多UI调整的时间</p></li>
+<li><p>KSImageNamed-Xcode by Github
+这个工具可以帮你自动补全image的图片信息，效果非常惊艳, 预览，自动补全，提示有无@2x高清图。</p></li>
+</ul>
+
+
+<p><h4 id="1.28">博客</h4></p>
+
+<ul>
+<li>Girl_iOS(萌妹子，iOS程序媛，下面的大牛博客很多都是摘自她的博客@Girl_iOS)</li>
+<li>唐巧(InfoQ编辑，Blogger，iOS开发，创业者，前网易员工。微信公共账号iOSDevTips创建者。)</li>
+<li>破船(宠辱不惊，闲看庭前花开花落。去留无意，漫随天外云卷云舒。不妄取，不妄予，不妄想，不妄求。与人方便，随遇而安)</li>
+<li>喵神 (iOS/Mac,Unity3D开发者，现就职于日本创意公司Kayac，正在修行，探求创意之源)</li>
+<li>念茜(一单线程妞儿，iOS安全大牛)</li>
+<li>宇轩(付宇轩，80后，程序员，关注技术和人文，记录学习的点点滴滴于《程序员说》)</li>
+<li>6david9(iOS码农，攻城狮。喜欢各种有意思的东西。最近迷恋上了自行车。)</li>
+<li>txx’s blog(中山大学大四翘课熬夜党 广州贴贴信息科技技术总监 高度强迫症 代码洁癖的 iOS开发者)
+lldong(不详！)</li>
+<li>yingkong1987(@兔be南玻1)</li>
+<li>xcodev(资深iOS开发工程师@谌启亮)</li>
+<li>isaced(iOS Programmer@isaced)</li>
+<li>answerhuang(iOS developer, Python fans@answer-huang)</li>
+<li>卢克(Mac，iOS开发@卢小克)</li>
+<li>余书懿(代表作:&lt;豆豆音乐> @余书懿)</li>
+<li>Creator of moke(Creator of 墨客(moke.com) and Voodo(moke.com/voodo)@an00na)</li>
+<li>萧宸宇(注定漂泊的人@Sumi-iYu)</li>
+<li>webfrogs(iOS开发，开源爱好者 @webfrogs)</li>
+<li>esoftmobile(iOS开发者 esoftmobile.com @TracyYih)</li>
+<li>无网不剩(iOS开发@李忠)</li>
+<li>starfelix达叔(不要告诉任何人你无法实现自己的梦想，包括我！@达叔是一种沧桑)</li>
+<li>老谭(不详，但看博客内容很牛！)</li>
+</ul>
+
+
+<p><h4 id="1.29">期刊</h4></p>
+
+<ul>
+<li>objc.io —-中文版—–> objccn.io</li>
+<li>nshipster.com —-中文版—–> nshipster.cn</li>
+<li>raywenderlich.com</li>
+</ul>
+
+
+<p><h4 id="2">其他</h4>
+<h5 id="2.1">UI设计</h5>
+Sketch</p>
+
+<ul>
+<li>酷九合金社Sketch教程系列-IOS图标（上） by C9D</li>
+<li>酷九合金社Sketch教程系列-IOS图标（下） by C9D</li>
+<li>奇葩的Sketch教程，专治各种疑难杂症 by JaminWoo</li>
+</ul>
+
+
+<p><h4 id="2.2">Markdown</h4></p>
+
+<ul>
+<li>Markdown 语法说明 (简体中文版)</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第3期]]></title>
@@ -3032,622 +3459,6 @@ BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
 <p>// 返回图片的绘制范围</p>
 
 <pre><code>- (CGRect)imageRectForContentRect:(CGRect)contentRect;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UITableView详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/07/uitableview/"/>
-    <updated>2014-01-07T12:33:02+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/07/uitableview</id>
-    <content type="html"><![CDATA[<h3>引言</h3>
-
-<p>UITableView简单来说是一个表视图，继承于UIScrollView（有关UIScrollView请参照<a href="http://www.beyondabel.com/blog/2014/01/05/uiscrollView/">《iOS组件之UIScrollView详解》</a>），用于显示和编辑信息的分层列表。</p>
-
-<!--more-->
-
-
-<h3>目录</h3>
-
-<pre><code>1、tableView的基本属性及方法
-2、访问tableView的画图区
-3、访问cells和sections
-4、滚动tableView
-5、插入、删除、移动行和sections
-6、管理和编辑cell
-7、管理sections
-8、配置
-9、iOS5.0新增
-10、iOS6.0新增
-11、iOS7.0
-12、UITableViewDataSource协议
-    12.1必须实现
-    12.2可选
-        12.2.1编辑模式
-    12.2.2数据操作  
-13、UITableViewDelegate协议（可选）
-    13.1定制化
-    13.2iOS6新增
-    13.3可变高度支持
-    13.4iOS7.0新增
-    13.5header 和 footer Section 信息
-    13.6附属公开的接口
-    13.7选择
-    13.8编辑
-    13.9移动
-    13.10缩格
-    13.11复制/粘贴
-</code></pre>
-
-<h3>1、tableView的基本属性及方法</h3>
-
-<p>// 初始化</p>
-
-<pre><code>- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
-</code></pre>
-
-<p>// 设置tableView的样式（只读）</p>
-
-<pre><code>UITableViewStyle style;
-</code></pre>
-
-<p>// 设置数据资源代理</p>
-
-<pre><code>id &lt;UITableViewDataSource&gt; dataSource;
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id &lt;UITableViewDelegate&gt; delegate;
-</code></pre>
-
-<p>// 设置每个row的高度，这个高度将被当成默认高度</p>
-
-<pre><code>CGFloat rowHeight;
-</code></pre>
-
-<p>// 设置sectionHeader高度，这个高度将被当成默认高度</p>
-
-<pre><code>CGFloat sectionHeaderHeight;   
-</code></pre>
-
-<p>// 设置sectionFooter高度，这个高度将被当成默认高度</p>
-
-<pre><code>CGFloat sectionFooterHeight;   
-</code></pre>
-
-<p>//  设置tableView的背景view</p>
-
-<pre><code>UIView *backgroundView;
-</code></pre>
-
-<p>// 刷新tableView</p>
-
-<pre><code>- (void)reloadData;
-</code></pre>
-
-<p>// 刷新tableView中的section</p>
-
-<pre><code>- (void)reloadSectionIndexTitles;
-</code></pre>
-
-<p>// sections的数量</p>
-
-<pre><code>- (NSInteger)numberOfSections;
-</code></pre>
-
-<p>// 下标为section中的row数量</p>
-
-<pre><code>- (NSInteger)numberOfRowsInSection:(NSInteger)section;
-</code></pre>
-
-<h3>2、访问tableView的画图区</h3>
-
-<p>// 返回指定section的矩形</p>
-
-<pre><code>- (CGRect)rectForSection:(NSInteger)section; 
-</code></pre>
-
-<p>// 返回indexPath指定行的矩形</p>
-
-<pre><code>- (CGRect)rectForHeaderInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 返回section的footer矩形</p>
-
-<pre><code>- (CGRect)rectForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 返回section的header矩形</p>
-
-<pre><code>- (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<h3>3、访问cells和sections</h3>
-
-<p>// 通过cell得到这个cell在tableView的位置</p>
-
-<pre><code>- (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell;
-</code></pre>
-
-<p>// 根据一个几何点返回indexPath,如果超过边界返回nil</p>
-
-<pre><code>- (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point;
-</code></pre>
-
-<p>// 根据一个几何的矩形返回矩形所覆盖的行,返回是一个indexPath数组</p>
-
-<pre><code>- (NSArray *)indexPathsForRowsInRect:(CGRect)rect;         
-</code></pre>
-
-<p>//  根据IndexPath返回cell</p>
-
-<pre><code>- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;            
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (NSArray *)visibleCells;
-- (NSArray *)indexPathsForVisibleRows;
-</code></pre>
-
-<h3>4、滚动tableView</h3>
-
-<p>// 滚动到指定位置</p>
-
-<pre><code>- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
-</code></pre>
-
-<p>//  同上</p>
-
-<pre><code>- (void)scrollToNearestSelectedRowAtScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
-</code></pre>
-
-<h3>5、插入、删除、移动行和sections</h3>
-
-<p>// 和endUpdates一起用，让插入、删除、选择操作同时动画，没用过</p>
-
-<pre><code>- (void)beginUpdates;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)endUpdates;
-</code></pre>
-
-<p>//根据indexPath数组插入行</p>
-
-<pre><code>- (void)insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//根据indexPath数组删除行</p>
-
-<pre><code>- (void)deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//移动一行到另一行</p>
-
-<pre><code>- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//插入sections</p>
-
-<pre><code>- (void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//删除sections</p>
-
-<pre><code>- (void)deleteRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<p>//移动section</p>
-
-<pre><code>- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-</code></pre>
-
-<h3>6、管理和编辑cell</h3>
-
-<p>// YES进入编辑模式，tableview cell会出现插入、删除、重排序的控件</p>
-
-<pre><code>BOOL editing;
-</code></pre>
-
-<p>// 设置进入退出编辑模式</p>
-
-<pre><code>- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
-</code></pre>
-
-<h3>7、管理sections</h3>
-
-<p>//是否允许用户选取一行</p>
-
-<pre><code>BOOL allowsSelection;
-</code></pre>
-
-<p>//返回选定行的indexPath,单行</p>
-
-<pre><code>- (NSIndexPath *)indexPathForSelectedRow;
-</code></pre>
-
-<p>// 根据indexPath选择一行</p>
-
-<pre><code>- (void)selectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
-</code></pre>
-
-<p>// 根据indexPath取消选择这一行</p>
-
-<pre><code>- (void)deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated;
-</code></pre>
-
-<h3>8、配置</h3>
-
-<p>// 指定当tableView中多少行的时候开始显示IndexList，默认的设置是NSIntegerMax，即默认是不显示indexList的</p>
-
-<pre><code>NSInteger sectionIndexMinimumDisplayRowCount;
-</code></pre>
-
-<p>// 分隔线的样式(默认为UITableViewCellSeparatorStyleSingleLine)</p>
-
-<pre><code>UITableViewCellSeparatorStyle separatorStyle;
-</code></pre>
-
-<p>// cell之间的分割线</p>
-
-<pre><code>UIColor *separatorColor;              
-</code></pre>
-
-<p>// 设置headerView</p>
-
-<pre><code>UIView *tableHeaderView;                            
-</code></pre>
-
-<p>// 设置footerView</p>
-
-<pre><code>UIView *tableFooterView;                            
-</code></pre>
-
-<p>// 必须要实现的方法，与tableView同生同死</p>
-
-<pre><code>- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;  
-</code></pre>
-
-<h3>9、iOS5.0新增</h3>
-
-<p>// 移动section</p>
-
-<pre><code>- (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection;
-</code></pre>
-
-<p>// 移动一行到另一行</p>
-
-<pre><code>- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
-</code></pre>
-
-<p>// 返回选定行的indexPath数组，多行</p>
-
-<pre><code>- (NSArray *)indexPathsForSelectedRows;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)registerNib:(UINib *)nib forCellReuseIdentifier:(NSString *)identifier;
-</code></pre>
-
-<p>//  编辑模式时是否可选取一行</p>
-
-<pre><code>BOOL allowsSelectionDuringEditing;
-</code></pre>
-
-<p>//  是否选取多行，缺省为NO(iOS 5.0)</p>
-
-<pre><code>BOOL allowsMultipleSelection;
-</code></pre>
-
-<p>//  编辑模式时可否选取多行</p>
-
-<pre><code>BOOL allowsMultipleSelectionDuringEditing;
-</code></pre>
-
-<h3>10、iOS6.0新增</h3>
-
-<p>// 我想在numberOfRowsInSection方法内获取该section的header View。须要在使用之前用 tableView 的 registerNib:forHeaderFooterViewReuseIdentifier:  或 registerClass:forHeaderFooterViewReuseIdentifier:。</p>
-
-<pre><code>- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section;
-</code></pre>
-
-<p>// 我想在numberOfRowsInSection方法内获取该section的footer View。须要在使用之前用 tableView 的 registerNib:forHeaderFooterViewReuseIdentifier:  或 registerClass:forHeaderFooterViewReuseIdentifier:。</p>
-
-<pre><code>- (UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section;
-</code></pre>
-
-<p>// 设置索引号颜色</p>
-
-<pre><code>UIColor *sectionIndexColor;
-</code></pre>
-
-<p>// 设置索引号背景颜色</p>
-
-<pre><code>UIColor *sectionIndexTrackingBackgroundColor;
-</code></pre>
-
-<p>// 注册（没有测试有什么用)</p>
-
-<pre><code>- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
-- (void)registerNib:(UINib *)nib forHeaderFooterViewReuseIdentifier:(NSString *)identifier; 
-- (void)registerClass:(Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier;
-- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;
-- (id)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;
-</code></pre>
-
-<h3>11、iOS7.0</h3>
-
-<p>// 预设SectionFooter的高度</p>
-
-<pre><code>CGFloat estimatedSectionFooterHeight;
-UIEdgeInsets separatorInset;
-UIColor *sectionIndexBackgroundColor;
-</code></pre>
-
-<p>// 预设row的高度</p>
-
-<pre><code>CGFloat estimatedRowHeight;     
-</code></pre>
-
-<p>// 预设SectionHeader的高度</p>
-
-<pre><code>CGFloat estimatedSectionHeaderHeight; 
-</code></pre>
-
-<h3>12、UITableViewDataSource协议</h3>
-
-<h4>12.1必须实现</h4>
-
-<p>// 返回每个section中row的数量</p>
-
-<pre><code>- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 返回每个UITableViewCell</p>
-
-<pre><code>- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<h4>12.2可选</h4>
-
-<p>// 返回section的个数</p>
-
-<pre><code>- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;              
-</code></pre>
-
-<p>//  section headerView的title文本内容</p>
-
-<pre><code>- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section; 
-</code></pre>
-
-<p>// section footerView的title文本内容</p>
-
-<pre><code>- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<h5>12.2.1 编辑模式</h5>
-
-<p>// 设置可编辑</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<h6>12.2.1.1 移动</h6>
-
-<p>// 设置是否可移动</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 设置索引号</p>
-
-<pre><code>- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-</code></pre>
-
-<p>// 点击索引触发</p>
-
-<pre><code>- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index;
-</code></pre>
-
-<h6>12.2.2 数据操作</h6>
-
-<p>// 插入/删除指定数据</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 重新排序/移动数据操作</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
-</code></pre>
-
-<h3>13、UITableViewDelegate协议（可选）</h3>
-
-<h4>13.1定制化</h4>
-
-<p>// cell将要显示的时候被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<h4>13.2iOS6新增</h4>
-
-<p>// HeaderView将要显示的时候被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section;
-</code></pre>
-
-<p>// FooterView将要显示的时候被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section;
-</code></pre>
-
-<p>// cell结束显示时被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
-</code></pre>
-
-<p>// HeaderView结束显示时被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section;
-</code></pre>
-
-<p>// FooterView结束显示时被调用</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section;
-</code></pre>
-
-<h4>13.3可变高度支持</h4>
-
-<p>// 根据indexPath返回row的高度</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 根据indexPath返回HeaderView的高度</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 根据indexPath返回FooterView的高度</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<h4>13.4iOS7.0新增</h4>
-
-<p>// 代理函数或者设置estimatedRowHeight属性值，提供一个预估高度值，对于可变高度的cell的表格视图可改进性能</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 代理函数或者设置estimatedRowHeight属性值，提供一个预估高度值，对于可变高度的Header的表格视图可改进性能</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 代理函数或者设置estimatedRowHeight属性值，提供一个预估高度值，对于可变高度的Footer的表格视图可改进性能</p>
-
-<pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<h4>13.5 header 和 footer Section 信息</h4>
-
-<p>// 根据section创建header section</p>
-
-<pre><code>- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
-</code></pre>
-
-<p>// 根据section创建footer section</p>
-
-<pre><code>- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section;
-</code></pre>
-
-<h4>13.6 附属公开的接口</h4>
-
-<p>// 回调设置辅助按钮被点击后的事件</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<h4>13.7 选择</h4>
-
-<p>// 回调设置某行是否当被点击后处于高亮状态</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
-</code></pre>
-
-<p>// 回调当某行处于高亮状态时的行为</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
-</code></pre>
-
-<p>// 回调当某行失去高亮状态时的行为</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
-</code></pre>
-
-<p>// 回调某行将要被选中的行为</p>
-
-<pre><code>- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 回调某行将要被取消选中的行为</p>
-
-<pre><code>- (NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 回调某行已经被选中点击的行为</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 回调某行已经取消选中的行为</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<h4>13.8 编辑</h4>
-
-<p>// 回调设置某行进入了哪种编辑模式</p>
-
-<pre><code>- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 回调设置某行进入删除模式的删除按钮名字</p>
-
-<pre><code>- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 是否允许对row进行编辑</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 开始编辑row时触发</p>
-
-<pre><code>- (void)tableView:(UITableView*)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 结束编辑row时触发</p>
-
-<pre><code>- (void)tableView:(UITableView*)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<h4>13.9 移动</h4>
-
-<p>// 移动Row时会把触发，在交换Row位置的时候，必须同时交换DataSource中数据的位置。</p>
-
-<pre><code>- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath;               
-</code></pre>
-
-<h4>13.10 缩格</h4>
-
-<p>// 设置内容缩进</p>
-
-<pre><code>- (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<h4>13.11 复制/粘贴</h4>
-
-<p>// 回调设置某行被长按是否出现菜单栏</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath;
-</code></pre>
-
-<p>// 回调设置菜单栏是否显示哪些菜单栏选项</p>
-
-<pre><code>- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender;
-</code></pre>
-
-<p>// 回调点击菜单栏选项触发的事件</p>
-
-<pre><code>- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender;
 </code></pre>
 ]]></content>
   </entry>
