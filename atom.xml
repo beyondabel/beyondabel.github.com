@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-03-06T23:17:53+08:00</updated>
+  <updated>2016-03-14T11:01:19+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第3期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/03/11/weekly03/"/>
+    <updated>2016-03-11T13:01:11+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/03/11/weekly03</id>
+    <content type="html"><![CDATA[<p><img src="http://www.beyondabel.com/images/2016/03/weekly03.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><a href="http://www.cocoachina.com/android/20160311/15656.html">Android 7.0新特性曝光：装App只需几秒</a></li>
+<li><a href="http://www.macx.cn/thread-2183605-1-1.html">盘古发布 iOS 9.1 越狱工具，Apple TV 4 越狱即将到来</a></li>
+<li><a href="http://tech.163.com/16/0307/06/BHHLO4PH000915BF.html">Mac用户成勒索病毒的首攻目标</a></li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><a href="http://www.jianshu.com/p/0b0d9b1f1f19">关于iOS多线程，你看我就够了</a></li>
+<li><a href="http://www.jianshu.com/p/7e3f197504c1">iOS开发中的测试框架</a></li>
+<li><a href="http://adad184.com/2015/08/01/advanced-icarousel-tutorial-copycat-of-ios9-task-tray/">如何轻松实现iOS9多任务管理器效果(iCarousel高级教程)</a></li>
+<li><a href="http://www.jianshu.com/p/f6300eb3ec3d">runtime那些事（消息机制）</a></li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/hades0918/ipapy">ipapy</a> : 用Python写的iOS项目自动打包脚本。</li>
+<li><a href="https://github.com/BradLarson/GPUImage">GPUImage</a> : 一款强大的图片滤镜工具, 支持自定义滤镜, 可用来实时处理图片和视频流, 作者是 SonoPlot 公司的 CTO, 在很小的时候便开始接触编程, 他在 SO 上面的回答也有很多值得阅读, GPUImage 这个项目从 2012 年开始, 使用 OpenGL 图形程序接口编写, 性能非常好, 现在很多 iOS 程序员都用它来实现 iOS 的模糊效果.</li>
+<li><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> : 由 GitHub 工程师们开发的一个应用于 iOS 和 OS X 开发的函数响应式编程新框架, Matt 称其为 &ldquo;An open source project that exemplifies this brave new era for Objective-C&rdquo;, 也有人说它是 Cocoa 的未来.</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第2期]]></title>
@@ -3609,115 +3649,6 @@ UIColor *sectionIndexBackgroundColor;
 <p>// 回调点击菜单栏选项触发的事件</p>
 
 <pre><code>- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIControl详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/06/uicontrol/"/>
-    <updated>2014-01-06T12:32:49+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/06/uicontrol</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>UIControl的是控制对象,继承于UIView（有关UIControl请参照<a href="http://www.beyondabel.com/blog/2014/01/01/uiview/">《iOS组件之UIView详解》</a>），如传达用户意图的应用程序按钮和滑块的基类。你不能使用uicontrol的类直接实例化控件。相反，它定义了它的所有子类的通用接口和行为结构。</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、基本属性及方法
-</code></pre>
-
-<p><strong>1、基本属性及方法</strong></p>
-
-<p>// 控件默认是启用的。要禁用控件，可以将enabled属性设置为NO，这将导致控件忽略任何触摸事件。被禁用后，控件还可以用不同的方式显示自己，比如变成灰色不可用。虽然是由控件的子类完成的，这个属性却存在于UIControl中。</p>
-
-<pre><code>BOOL enabled;
-</code></pre>
-
-<p>// 当用户选中控件时，UIControl类会将其selected属性设置为YES。子类有时使用这个属性来让控件选择自身，或者来表现不同的行为方式。</p>
-
-<pre><code>BOOL selected;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>BOOL highlighted;
-</code></pre>
-
-<p>// 控件如何在垂直方向上布置自身的内容。默认是将内容顶端对其，对于文本字段，可能会改成UIControlContentVerticalAlignmentCenter。对于这个字段，可以使用下列诸值.</p>
-
-<pre><code>UIControlContentVerticalAlignment contentVerticalAlignment;    
-
-UIControlContentVerticalAlignmentCenter //居中
-UIControlContentVerticalAlignmentTop    //居顶
-UIControlContentVerticalAlignmentBottom // 居下
-UIControlContentVerticalAlignmentFill   
-</code></pre>
-
-<p>// 控件如何在水平方向上布置自身的内容</p>
-
-<pre><code>UIControlContentHorizontalAlignment contentHorizontalAlignment; 
-</code></pre>
-
-<p>// UIControl状态(只读)</p>
-
-<pre><code>UIControlState state;
-</code></pre>
-
-<p>// 只读</p>
-
-<pre><code>BOOL tracking;
-</code></pre>
-
-<p>// 是否touchInside（只读）</p>
-
-<pre><code>BOOL touchInside; 
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
-- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
-- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event;
-- (void)cancelTrackingWithEvent:(UIEvent *)event;   // event may be nil if cancelled for non-event reasons, e.g. removed from window
-</code></pre>
-
-<p>// 事件通知。UIControl类提供了一个标准机制，来进行事件登记和接收。这令你可以指定你的控件在发生特定事件时，通知代理类的一个方法。如果要注册一个事件，可以使用addTarget方法：</p>
-
-<pre><code>- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
-</code></pre>
-
-<p>// 移除事件通知。要删除一个或多个事件的相应动作，可以使用UIControl类的removeTarget方法。使用nil值就可以将给定事件目标的所有动作删除</p>
-
-<pre><code>- (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
-</code></pre>
-
-<p>// 取得关于一个控件所有指定动作的列表，可以使用allTargets方法。这个方法返回一个NSSet，其中包含事件的完整列表</p>
-
-<pre><code>- (NSSet*)allTargets;
-</code></pre>
-
-<p>// 获取关于一个控件所有事件的列表</p>
-
-<pre><code>- (UIControlEvents)allControlEvents;
-</code></pre>
-
-<p>// 获取针对某一特定事件目标的全部动作列表</p>
-
-<pre><code>- (NSArray *)actionsForTarget:(id)target forControlEvent:(UIControlEvents)controlEvent;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (void)sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event;
-</code></pre>
-
-<p>// 如果设计了一个自定义控件类，可以使用sendActionsForControlEvent方法，为基本的UIControl事件或自己的自定义事件发送通知。例如，如果你的控件值正在发生变化，就可以发送相应通知，通过控件的代码可以指定时间目标，这个通知将被传播到这些指定的目标。</p>
-
-<pre><code>- (void)sendActionsForControlEvents:(UIControlEvents)controlEvents;
 </code></pre>
 ]]></content>
   </entry>
