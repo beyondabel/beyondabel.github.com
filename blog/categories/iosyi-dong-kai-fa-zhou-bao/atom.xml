@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS移动开发周报 | Abel's Den]]></title>
   <link href="http://www.beyondabel.com/blog/categories/iosyi-dong-kai-fa-zhou-bao/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-03-14T11:01:19+08:00</updated>
+  <updated>2016-03-14T22:17:43+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -26,26 +26,25 @@
 <h2>业界新闻</h2>
 
 <ol>
-<li><a href="http://www.cocoachina.com/android/20160311/15656.html">Android 7.0新特性曝光：装App只需几秒</a></li>
-<li><a href="http://www.macx.cn/thread-2183605-1-1.html">盘古发布 iOS 9.1 越狱工具，Apple TV 4 越狱即将到来</a></li>
-<li><a href="http://tech.163.com/16/0307/06/BHHLO4PH000915BF.html">Mac用户成勒索病毒的首攻目标</a></li>
+<li><a href="http://www.cocoachina.com/android/20160311/15656.html">Android 7.0新特性曝光：装App只需几秒</a> : 谷歌出乎意料的放出Android 7.0（Android N）的开发者预览版，Android 7.0带来了不少新特性，原生的分屏多任务支持、画中画功能、通知栏快速回复功能等。现在，Android 7.0又一新特性被曝出。</li>
+<li><p><a href="http://www.macx.cn/thread-2183605-1-1.html">盘古发布 iOS 9.1 越狱工具，Apple TV 4 越狱即将到来</a>：中国团队盘古更新了越狱工具，并开始支持运行 iOS 9.1 的设备。盘古越狱工具支持 Mac 和 Windows，用户可以对 iPad、iPhone 和 iPod touch 等设备完成越狱。更有趣的是，盘古团队表示下周会推出第四代 Apple TV 越狱工具。</p></li>
+<li><p><a href="http://tech.163.com/16/0307/06/BHHLO4PH000915BF.html">Mac用户成勒索病毒的首攻目标</a>：据路透社报道，苹果公司用户成为黑客首次针对Macintosh电脑的攻击目标。Ransomeware是目前增长最快的一种网络安全威胁因素，被感染的计算机数据将会被加密。之后，受害者需要支付一定的赎金以获取密码来解锁数据。</p></li>
 </ol>
 
 
 <h2>教程</h2>
 
 <ol>
-<li><a href="http://www.jianshu.com/p/0b0d9b1f1f19">关于iOS多线程，你看我就够了</a></li>
-<li><a href="http://www.jianshu.com/p/7e3f197504c1">iOS开发中的测试框架</a></li>
-<li><a href="http://adad184.com/2015/08/01/advanced-icarousel-tutorial-copycat-of-ios9-task-tray/">如何轻松实现iOS9多任务管理器效果(iCarousel高级教程)</a></li>
-<li><a href="http://www.jianshu.com/p/f6300eb3ec3d">runtime那些事（消息机制）</a></li>
+<li><a href="http://www.jianshu.com/p/0b0d9b1f1f19">关于iOS多线程，你看我就够了</a>：正如文章标题所示，这是一篇关于多线程的文章，以及其使用方法和注意事项。当然也会给出几种多线程的案例，在实际使用中感受它们的区别。</li>
+<li><a href="http://www.jianshu.com/p/7e3f197504c1">iOS开发中的测试框架</a>：我们为什么要用测试框架呢？当然对项目开发有帮助了，但是业内现状是经常赶进度，所以TDD还是算了吧，BDD就测测数据存取和重要环节，这很重要，一次性跑完测试单元检查接口或模块的可用性，这比打断点调试强多了吧。</li>
+<li><a href="http://www.jianshu.com/p/f6300eb3ec3d">runtime那些事</a>：我们经常会遇到RunTime（或者听别人说），这里有四篇文章是关于<code>runtime</code>教程，相信这四篇文章对你在<code>runtime</code>的理解有非常大的帮助。</li>
 </ol>
 
 
 <h2>开源代码</h2>
 
 <ol>
-<li><a href="https://github.com/hades0918/ipapy">ipapy</a> : 用Python写的iOS项目自动打包脚本。</li>
+<li><a href="https://github.com/hades0918/ipapy">ipapy</a> : 一个用Python写的iOS项目自动打包脚本工具。</li>
 <li><a href="https://github.com/BradLarson/GPUImage">GPUImage</a> : 一款强大的图片滤镜工具, 支持自定义滤镜, 可用来实时处理图片和视频流, 作者是 SonoPlot 公司的 CTO, 在很小的时候便开始接触编程, 他在 SO 上面的回答也有很多值得阅读, GPUImage 这个项目从 2012 年开始, 使用 OpenGL 图形程序接口编写, 性能非常好, 现在很多 iOS 程序员都用它来实现 iOS 的模糊效果.</li>
 <li><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> : 由 GitHub 工程师们开发的一个应用于 iOS 和 OS X 开发的函数响应式编程新框架, Matt 称其为 &ldquo;An open source project that exemplifies this brave new era for Objective-C&rdquo;, 也有人说它是 Cocoa 的未来.</li>
 </ol>
