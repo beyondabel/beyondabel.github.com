@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-03-15T11:32:36+08:00</updated>
+  <updated>2016-03-15T11:57:29+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -296,10 +296,10 @@
 
 <ul>
 <li><a href="http://blog.devwu.com/develop/2014-08-15/objcruntime-explore1/">objc/runtime 探索(一)</a></li>
-<li>objc/runtime 探索(二))</li>
-<li>objc/runtime 探索(三))</li>
-<li>objc/runtime 探索(四))</li>
-<li>轻松学习之一－－Objective-C消息转发 by J_雨</li>
+<li><a href="http://blog.devwu.com/develop/2014-08-17/objcruntime-explore2/">objc/runtime 探索(二)</a></li>
+<li><a href="http://blog.devwu.com/develop/2014-08-18/objcruntime-explore3/">objc/runtime 探索(三)</a></li>
+<li><a href="http://blog.devwu.com/develop/2014-08-19/objcruntime-explore4/">objc/runtime 探索(四)</a></li>
+<li><a href="http://www.jianshu.com/p/1bde36ad9938">轻松学习之一－－Objective-C消息转发</a> by J_雨</li>
 </ul>
 
 
@@ -307,7 +307,7 @@
 
 
 <ul>
-<li>什么情况下用宏定义do{}while(0);这种结构体</li>
+<li><a href="http://www.cnblogs.com/rollenholt/articles/1907414.html">什么情况下用宏定义do{}while(0);这种结构体</a></li>
 </ul>
 
 
@@ -315,7 +315,7 @@
 
 
 <ul>
-<li>LLDB调试命令初探 by 达叔</li>
+<li><a href="http://www.starfelix.com/blog/2014/03/17/lldbdiao-shi-ming-ling-chu-tan/">LLDB调试命令初探</a> by 达叔</li>
 </ul>
 
 
@@ -323,7 +323,7 @@
 
 
 <ul>
-<li>在iOS开发中使用FMDB by 唐巧</li>
+<li><a href="http://blog.devtang.com/blog/2013/07/28/a-look-inside-blocks/">在iOS开发中使用FMDB</a> by 唐巧</li>
 </ul>
 
 
@@ -331,7 +331,7 @@
 
 
 <ul>
-<li>Objective-C对象模型及应用 by 唐巧</li>
+<li><a href="http://blog.devtang.com/blog/2013/10/15/objective-c-object-model/">Objective-C对象模型及应用</a> by 唐巧</li>
 </ul>
 
 
@@ -339,7 +339,7 @@
 
 
 <ul>
-<li>StoryBoard—看上去很美 by 唐巧</li>
+<li><a href="http://blog.devtang.com/blog/2012/12/15/do-not-use-storyboard/">StoryBoard—看上去很美</a> by 唐巧</li>
 </ul>
 
 
@@ -347,8 +347,8 @@
 
 
 <ul>
-<li>TweakWeek 每周一个开源tweek</li>
-<li>iPhone 7.0 Headers</li>
+<li><a href="http://tweakweek.com/">TweakWeek</a> 每周一个开源tweek</li>
+<li><a href="http://developer.limneos.net/">iPhone 7.0 Headers</a></li>
 </ul>
 
 
@@ -356,7 +356,7 @@
 
 
 <ul>
-<li>上级向的十个iOS面试问题 by onevcat</li>
+<li><a href="http://onevcat.com/2013/04/ios-interview/">上级向的十个iOS面试问题</a> by onevcat</li>
 </ul>
 
 
@@ -364,9 +364,9 @@
 
 
 <ul>
-<li>使用CocoaPods来做iOS程序的包依赖管理 by 唐巧</li>
-<li>CocoaPods详解之——制作篇 by wangzz</li>
-<li>Enrolling in Apple Developer Programs by Girl_iOS</li>
+<li><a href="http://blog.devtang.com/blog/2012/12/02/use-cocoapod-to-manage-ios-lib-dependency/">使用CocoaPods来做iOS程序的包依赖管理</a> by 唐巧</li>
+<li><a href="http://blog.csdn.net/wzzvictory/article/details/20067595">CocoaPods详解之——制作篇</a> by wangzz</li>
+<li><a href="http://girlios.github.io/blog/2014/03/16/enrolling-in-apple-developer-programs/">Enrolling in Apple Developer Programs</a> by Girl_iOS</li>
 </ul>
 
 
@@ -374,11 +374,11 @@
 
 
 <ul>
-<li>Xcode Key Bindings &amp; Gestures利用快捷键提高开发效率 by CocoaChina</li>
-<li>www.gitignore.io/ by gitignore</li>
-<li>这个网站可以自动为你生成gitignore文件，比如你输入Objective Xcode 就会为你生成正对iOS开发的gitignore文件，如果你对gitignore文件不熟，那就请翻阅&lt;Git权威指南>。</li>
-<li>Chrome 快捷键 整理版 【来自豆瓣】 by douban
-少有人知的 GitHub 使用技巧 by segmentfault</li>
+<li><a href="http://www.cocoachina.com/newbie/basic/2014/0225/7882.html">Xcode Key Bindings &amp; Gestures利用快捷键提高开发效率</a> by CocoaChina</li>
+<li><a href="http://www.gitignore.io/">www.gitignore.io</a> by gitignore
+这个网站可以自动为你生成gitignore文件，比如你输入Objective Xcode 就会为你生成正对iOS开发的gitignore文件，如果你对gitignore文件不熟，那就请翻阅&lt;Git权威指南>。</li>
+<li><a href="http://www.douban.com/note/165306479/">Chrome 快捷键 整理版 【来自豆瓣】</a> by douban</li>
+<li><a href="http://segmentfault.com/a/1190000000475547">少有人知的 GitHub 使用技巧</a> by segmentfault</li>
 </ul>
 
 
@@ -386,11 +386,11 @@
 
 
 <ul>
-<li>Alcatraz by Github
+<li><a href="https://github.com/supermarin/Alcatraz">Alcatraz</a> by Github
 Alcatraz是一个帮你管理Xcode插件、模版以及颜色配置的工具。它可以直接集成到Xcode的图形界面中，让你感觉就像在使用Xcode自带的功能一样.这里有一篇很好的介绍它的文章使用Alcatraz来管理Xcode插件</li>
-<li><p>ColorSense-for-Xcode by Github
+<li><p><a href="https://github.com/omz/ColorSense-for-Xcode">ColorSense-for-Xcode</a> by Github
 这个插件可以在编辑器上动态的渲染出你代码编写的颜色，例如在你写如下代码时它会在这段代码的右上角绘制出颜色预览，可以省去很多UI调整的时间</p></li>
-<li><p>KSImageNamed-Xcode by Github
+<li><p><a href="https://github.com/ksuther/KSImageNamed-Xcode">KSImageNamed-Xcode</a> by Github
 这个工具可以帮你自动补全image的图片信息，效果非常惊艳, 预览，自动补全，提示有无@2x高清图。</p></li>
 </ul>
 
@@ -399,28 +399,28 @@ Alcatraz是一个帮你管理Xcode插件、模版以及颜色配置的工具。�
 
 
 <ul>
-<li>Girl_iOS(萌妹子，iOS程序媛，下面的大牛博客很多都是摘自她的博客@Girl_iOS)</li>
-<li>唐巧(InfoQ编辑，Blogger，iOS开发，创业者，前网易员工。微信公共账号iOSDevTips创建者。)</li>
-<li>破船(宠辱不惊，闲看庭前花开花落。去留无意，漫随天外云卷云舒。不妄取，不妄予，不妄想，不妄求。与人方便，随遇而安)</li>
-<li>喵神 (iOS/Mac,Unity3D开发者，现就职于日本创意公司Kayac，正在修行，探求创意之源)</li>
-<li>念茜(一单线程妞儿，iOS安全大牛)</li>
-<li>宇轩(付宇轩，80后，程序员，关注技术和人文，记录学习的点点滴滴于《程序员说》)</li>
-<li>6david9(iOS码农，攻城狮。喜欢各种有意思的东西。最近迷恋上了自行车。)</li>
-<li>txx’s blog(中山大学大四翘课熬夜党 广州贴贴信息科技技术总监 高度强迫症 代码洁癖的 iOS开发者)
-lldong(不详！)</li>
-<li>yingkong1987(@兔be南玻1)</li>
-<li>xcodev(资深iOS开发工程师@谌启亮)</li>
-<li>isaced(iOS Programmer@isaced)</li>
-<li>answerhuang(iOS developer, Python fans@answer-huang)</li>
-<li>卢克(Mac，iOS开发@卢小克)</li>
-<li>余书懿(代表作:&lt;豆豆音乐> @余书懿)</li>
-<li>Creator of moke(Creator of 墨客(moke.com) and Voodo(moke.com/voodo)@an00na)</li>
-<li>萧宸宇(注定漂泊的人@Sumi-iYu)</li>
-<li>webfrogs(iOS开发，开源爱好者 @webfrogs)</li>
-<li>esoftmobile(iOS开发者 esoftmobile.com @TracyYih)</li>
-<li>无网不剩(iOS开发@李忠)</li>
-<li>starfelix达叔(不要告诉任何人你无法实现自己的梦想，包括我！@达叔是一种沧桑)</li>
-<li>老谭(不详，但看博客内容很牛！)</li>
+<li><a href="http://girlios.github.io/">Girl_iOS</a>(萌妹子，iOS程序媛，下面的大牛博客很多都是摘自她的博客@Girl_iOS)</li>
+<li><a href="http://blog.devtang.com/">唐巧</a>(InfoQ编辑，Blogger，iOS开发，创业者，前网易员工。微信公共账号iOSDevTips创建者。)</li>
+<li><a href="http://beyondvincent.com/">破船</a>(宠辱不惊，闲看庭前花开花落。去留无意，漫随天外云卷云舒。不妄取，不妄予，不妄想，不妄求。与人方便，随遇而安)</li>
+<li><a href="http://onevcat.com/">喵神</a> (iOS/Mac,Unity3D开发者，现就职于日本创意公司Kayac，正在修行，探求创意之源)</li>
+<li><a href="http://nianxi.net/">念茜</a>(一单线程妞儿，iOS安全大牛)</li>
+<li><a href="http://www.devtalking.com/">宇轩</a>(付宇轩，80后，程序员，关注技术和人文，记录学习的点点滴滴于《程序员说》)</li>
+<li><a href="http://blog.cocoabit.com/">6david9</a>(iOS码农，攻城狮。喜欢各种有意思的东西。最近迷恋上了自行车。)</li>
+<li><a href="http://blog.t-xx.me/">txx’s blog</a>(中山大学大四翘课熬夜党 广州贴贴信息科技技术总监 高度强迫症 代码洁癖的 iOS开发者)</li>
+<li><a href="http://lldong.github.io/">lldong</a>(不详！)</li>
+<li><a href="http://yingkong1987.github.io/">yingkong1987</a>(@兔be南玻1)</li>
+<li><a href="http://blog.xcodev.com/">xcodev</a>(资深iOS开发工程师@谌启亮)</li>
+<li><a href="http://www.isaced.com/">isaced</a>(iOS Programmer@isaced)</li>
+<li><a href="http://answerhuang.duapp.com/">answerhuang</a>(iOS developer, Python fans@answer-huang)</li>
+<li><a href="http://geeklu.com/">卢克</a>(Mac，iOS开发@卢小克)</li>
+<li><a href="http://blog.csdn.net/ysy441088327">余书懿</a>(代表作:&lt;豆豆音乐> @余书懿)</li>
+<li><a href="http://wangling.me/">Creator of moke</a>(Creator of 墨客(moke.com) and Voodo(moke.com/voodo)@an00na)</li>
+<li><a href="http://iiiyu.com/">萧宸宇</a>(注定漂泊的人@Sumi-iYu)</li>
+<li><a href="http://webfrogs.me/">webfrogs</a>(iOS开发，开源爱好者 @webfrogs)</li>
+<li><a href="http://esoftmobile.com/">esoftmobile</a>(iOS开发者 esoftmobile.com @TracyYih)</li>
+<li><a href="http://blog.leezhong.com/">无网不剩</a>(iOS开发@李忠)</li>
+<li><a href="http://www.starfelix.com/">starfelix达叔</a>(不要告诉任何人你无法实现自己的梦想，包括我！@达叔是一种沧桑)</li>
+<li><a href="http://www.tanhao.me/">老谭</a>(不详，但看博客内容很牛！)</li>
 </ul>
 
 
@@ -428,9 +428,9 @@ lldong(不详！)</li>
 
 
 <ul>
-<li>objc.io —-中文版—–> objccn.io</li>
-<li>nshipster.com —-中文版—–> nshipster.cn</li>
-<li>raywenderlich.com</li>
+<li><a href="http://www.objc.io/">objc.io</a> —-中文版—–> <a href="http://www.objccn.io/">objccn.io</a></li>
+<li><a href="http://nshipster.com/">nshipster.com</a> —-中文版—–> <a href="http://nshipster.com/">nshipster.cn</a></li>
+<li><a href="http://raywenderlich.com">raywenderlich.com</a></li>
 </ul>
 
 
@@ -443,9 +443,9 @@ lldong(不详！)</li>
 <p>Sketch</p>
 
 <ul>
-<li>酷九合金社Sketch教程系列-IOS图标（上） by C9D</li>
-<li>酷九合金社Sketch教程系列-IOS图标（下） by C9D</li>
-<li>奇葩的Sketch教程，专治各种疑难杂症 by JaminWoo</li>
+<li><a href="http://www.zcool.com.cn/article/ZODQ1ODA=.html">酷九合金社Sketch教程系列-IOS图标（上）</a> by C9D</li>
+<li><a href="http://www.zcool.com.cn/article/ZODQ1ODg=.html">酷九合金社Sketch教程系列-IOS图标（下）</a> by C9D</li>
+<li><a href="http://www.ui.cn/project.php?id=31346">奇葩的Sketch教程，专治各种疑难杂症</a> by JaminWoo</li>
 </ul>
 
 
@@ -453,7 +453,7 @@ lldong(不详！)</li>
 
 
 <ul>
-<li>Markdown 语法说明 (简体中文版)</li>
+<li><a href="http://www.appinn.com/markdown/">Markdown 语法说明 (简体中文版)</a></li>
 </ul>
 
 ]]></content>
