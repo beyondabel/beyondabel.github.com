@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-03-15T10:24:09+08:00</updated>
+  <updated>2016-03-15T11:32:36+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -112,21 +112,24 @@
 <h4 id="1.3">Swift</h4>
 
 
-<p>*<a href="http://"> The Swift Programming Language 中文版</a> by Swift 中文翻译组
-* CocoaChina Swift专场 by CocoaChina
-* Swift语言指南 by ipader
-* 喵神的Swift书~Tip列表 by onevcat
-* Swift论坛社区 by Swiftist
-* <a href="http://blog.sunnyxx.com/2014/10/14/fp-essential/">( ) –> ( )</a> by sunnyxx
-* Swift如何检查系统版本 by <a href="http://idlelife.org">http://idlelife.org</a>
-* 我在开发第一个Swift App过程中学到的四件事 by <a href="http://idlelife.org">http://idlelife.org</a></p>
+<ul>
+<li><a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/content/"> The Swift Programming Language 中文版</a> by Swift 中文翻译组</li>
+<li><a href="http://www.cocoachina.com/special/swift/">CocoaChina Swift专场</a> by CocoaChina</li>
+<li><a href="https://github.com/ipader/SwiftGuide">Swift语言指南</a> by ipader</li>
+<li><a href="http://swifter.tips/">喵神的Swift书~Tip列表</a> by onevcat</li>
+<li><a href="https://swiftist.org/">Swift论坛社区</a> by Swiftist</li>
+<li><a href="http://blog.sunnyxx.com/2014/10/14/fp-essential/">( ) –> ( )</a> by sunnyxx</li>
+<li><a href="http://idlelife.org/archives/716">Swift如何检查系统版本</a> by <a href="http://idlelife.org">http://idlelife.org</a></li>
+<li><a href="http://idlelife.org/archives/742">我在开发第一个Swift App过程中学到的四件事</a> by <a href="http://idlelife.org">http://idlelife.org</a></li>
+</ul>
+
 
 <h4 id="1.4">屏幕适配</h4>
 
 
 <ul>
-<li>为iPhone6设计自适应布局（一） by 宇轩</li>
-<li>为iPhone6设计自适应布局（二） by 宇轩</li>
+<li><a href="http://www.devtalking.com/articles/adaptive-layout-for-iphone6-1/">为iPhone6设计自适应布局（一）</a> by 宇轩</li>
+<li><a href="http://www.devtalking.com/articles/adaptive-layout-for-iphone6-2/">为iPhone6设计自适应布局（二）</a> by 宇轩</li>
 </ul>
 
 
@@ -134,7 +137,7 @@
 
 
 <ul>
-<li>iOS开发实战：如何将非ARC的项目转换成ARC项目 by CocoaChina</li>
+<li><a href="http://www.cocoachina.com/ios/20140912/9605.html">iOS开发实战：如何将非ARC的项目转换成ARC项目</a> by CocoaChina</li>
 </ul>
 
 
@@ -142,13 +145,13 @@
 
 
 <ul>
-<li>对NSArray中自定义的对象进行排序 by破船</li>
-<li>Compile-time Key Paths Verification by lldong</li>
-<li>Cocoa 漢字轉拼音最簡單的方法 by lldong</li>
-<li>iOS将大文件映射到内存 by xcodev</li>
-<li>用宏提速NSCoding by isaced</li>
-<li>Toll-Free Bridging by Lancy</li>
-<li>NSString属性什么时候用copy，什么时候用strong? by 南峰子的技术博客</li>
+<li><a href="http://beyondvincent.com/blog/2014/01/26/how-to-sort-nsarray-with-custom-objects/">对NSArray中自定义的对象进行排序</a> by破船</li>
+<li><a href="http://lldong.github.io/2014/02/24/key-paths-validation.html">Compile-time Key Paths Verification</a> by lldong</li>
+<li><a href="http://lldong.github.io/2012/11/06/hanzi-to-pinyin.html">Cocoa 漢字轉拼音最簡單的方法</a> by lldong</li>
+<li><a href="http://blog.xcodev.com/archives/ios-mmap-api/">iOS将大文件映射到内存</a> by xcodev</li>
+<li><a href="http://www.isaced.com/post-244.html">用宏提速NSCoding</a> by isaced</li>
+<li><a href="http://gracelancy.com/blog/2014/04/21/toll-free-bridging/">Toll-Free Bridging</a> by Lancy</li>
+<li><a href="http://www.cocoachina.com/ios/20150512/11805.html">NSString属性什么时候用copy，什么时候用strong?</a> by 南峰子的技术博客</li>
 </ul>
 
 
@@ -156,8 +159,8 @@
 
 
 <ul>
-<li>iOS旋转视图实践 by淘宝技术部</li>
-<li>强制旋转一个UIViewController bytxx’s blog</li>
+<li><a href="http://rdc.taobao.org/?p=408">iOS旋转视图实践</a> by淘宝技术部</li>
+<li><a href="http://blog.t-xx.me/blog/2014/01/19/force-rotate-uiviewcontroller/">强制旋转一个UIViewController</a> bytxx’s blog</li>
 </ul>
 
 
@@ -165,8 +168,8 @@
 
 
 <ul>
-<li>Objective-C相关Category的收集 by CocoaChina</li>
-<li>Objective-C语言在Category中实现属性 by xcodev</li>
+<li><a href="http://www.cocoachina.com/applenews/devnews/2014/0212/7808.html">Objective-C相关Category的收集</a> by CocoaChina</li>
+<li><a href="http://blog.xcodev.com/archives/implement-objc-property-in-category/">Objective-C语言在Category中实现属性</a> by xcodev</li>
 </ul>
 
 
@@ -177,7 +180,7 @@
 
 
 <ul>
-<li>iOS5中UIViewController的新方法 by 唐巧</li>
+<li><a href="http://blog.devtang.com/blog/2012/02/06/new-methods-in-uiviewcontroller-of-ios5/">iOS5中UIViewController的新方法</a> by 唐巧</li>
 </ul>
 
 
@@ -185,11 +188,11 @@
 
 
 <ul>
-<li>UITableView 滚动流畅性优化 by 6david9</li>
-<li>给tableview Cell添加动画 by 破船</li>
-<li>利用长按手势移动 Table View Cells by 破船</li>
-<li>制作一个可以滑动操作的 Table View Cell by nixzhu</li>
-<li>TableView中嵌套一个ScrollView有时导致ScrollView无法滚动 by xcodev</li>
+<li><a href="http://blog.cocoabit.com/blog/2014/02/09/uitableview-gun-dong-liu-cheng-xing-you-hua/">UITableView 滚动流畅性优化</a> by 6david9</li>
+<li><a href="http://beyondvincent.com/blog/2014/01/13/animation-tableview-cell/">给tableview Cell添加动画</a> by 破船</li>
+<li><a href="http://beyondvincent.com/blog/2014/03/26/cookbook-moving-table-view-cells-with-a-long-press-gesture/">利用长按手势移动 Table View Cells</a> by 破船</li>
+<li><a href="https://github.com/nixzhu/dev-blog/blob/master/2014-04-26-make-swipeable-table-view-cell-actions-without-going-nuts-scroll-views.md">制作一个可以滑动操作的 Table View Cell</a> by nixzhu</li>
+<li><a href="http://blog.xcodev.com/archives/no-keyboard-in-webview-of-ios5/">TableView中嵌套一个ScrollView有时导致ScrollView无法滚动</a> by xcodev</li>
 </ul>
 
 
@@ -197,7 +200,7 @@
 
 
 <ul>
-<li>iOS5网页视图（UIWebView）中的输入框不能弹出键盘的问题 by xcodev</li>
+<li><a href="http://blog.xcodev.com/archives/no-keyboard-in-webview-of-ios5/">iOS5网页视图（UIWebView）中的输入框不能弹出键盘的问题</a> by xcodev</li>
 </ul>
 
 
@@ -205,7 +208,7 @@
 
 
 <ul>
-<li>封装同步的UIActionSheet by 唐巧</li>
+<li><a href="http://blog.devtang.com/blog/2012/06/24/enhance-uiactionsheet/">封装同步的UIActionSheet</a> by 唐巧</li>
 </ul>
 
 
@@ -213,7 +216,7 @@
 
 
 <ul>
-<li>如何自定义iOS中的控件 by 破船</li>
+<li><a href="http://beyondvincent.com/blog/2014/01/20/how-to-build-a-custom-control-in-ios/">如何自定义iOS中的控件</a> by 破船</li>
 </ul>
 
 
@@ -221,23 +224,24 @@
 
 
 <ul>
-<li>iOS 7中实现模糊效果 by破船</li>
-<li>iOS 7 教程：让程序同时支持iOS 6和iOS 7 by破船</li>
-<li>iOS 7 教程：浅析Text Kit by破船</li>
-<li>iOS 7 教程：定制iOS 7中的导航栏和状态栏 by破船</li>
-<li>iOS 7中的一些小修改 by破船</li>
-<li>iOS 7 键盘动画 by nonomori</li>
+<li><a href="http://beyondvincent.com/blog/2014/01/29/ios-7-blur-effects-gpuimage/">iOS 7中实现模糊效果</a> by破船</li>
+<li><a href="http://beyondvincent.com/blog/2013/11/19/122-working-with-ios-6-and-7/">iOS 7 教程：让程序同时支持iOS 6和iOS 7</a> by破船</li>
+<li><a href="http://beyondvincent.com/blog/2013/11/12/121-brief-analysis-text-kit/">iOS 7 教程：浅析Text Kit</a> by破船</li>
+<li><a href="http://beyondvincent.com/blog/2013/11/03/120-customize-navigation-status-bar-ios-7/">iOS 7 教程：定制iOS 7中的导航栏和状态栏</a> by破船</li>
+<li><a href="http://beyondvincent.com/blog/2013/09/20/112-ios-7-additions-omg-finally/">iOS 7中的一些小修改</a> by破船</li>
+<li><a href="http://nonomori.farbox.com/post/ios-7-jian-pan-dong-hua">iOS 7 键盘动画</a> by nonomori</li>
 </ul>
 
 
 <h4 id="1.11">iOS8</h4>
 
 
+<p>App Extension</p>
+
 <ul>
-<li>App Extension</li>
-<li>WWDC2014之App Extensions学习笔记 by foggry.com</li>
-<li>iOS 8 Today Extension Tutorial by raywenderlich.com</li>
-<li>&lt;译>iOS 8 Today Extension Tutorial by zixun.github.io</li>
+<li><a href="http://foggry.com/blog/2014/06/23/wwdc2014zhi-app-extensionsxue-xi-bi-ji/">WWDC2014之App Extensions学习笔记</a> by foggry.com</li>
+<li><a href="http://www.raywenderlich.com/83809/ios-8-today-extension-tutorial">iOS 8 Today Extension Tutorial</a> by raywenderlich.com</li>
+<li><a href="http://zixun.github.io/blog/2014/10/22/%3Cyi-%3Eios-8-today-extension-tutorial/">&lt;译>iOS 8 Today Extension Tutorial</a> by zixun.github.io</li>
 </ul>
 
 
@@ -245,8 +249,8 @@
 
 
 <ul>
-<li>手把手教你ARC——iOS/Mac开发ARC入门和使用 by onevcat</li>
-<li>retainCount 不会为 0 by lldong</li>
+<li><a href="http://onevcat.com/2012/06/arc-hand-by-hand/">手把手教你ARC——iOS/Mac开发ARC入门和使用</a> by onevcat</li>
+<li><a href="http://lldong.github.io/2011/10/20/retain-count.html">retainCount 不会为 0</a> by lldong</li>
 </ul>
 
 
@@ -254,8 +258,8 @@
 
 
 <ul>
-<li>谈Objective-C Block的实现 by 唐巧</li>
-<li>正确使用Block避免Cycle Retain和Crash by tanqisen</li>
+<li><a href="http://blog.devtang.com/blog/2013/07/28/a-look-inside-blocks/">谈Objective-C Block的实现</a> by 唐巧</li>
+<li><a href="http://tanqisen.github.io/blog/2013/04/19/gcd-block-cycle-retain/">正确使用Block避免Cycle Retain和Crash</a> by tanqisen</li>
 </ul>
 
 
@@ -263,8 +267,8 @@
 
 
 <ul>
-<li>使用GCD by 唐巧</li>
-<li>GCD 深入理解：第一部分 by nixzhu</li>
+<li><a href="http://blog.devtang.com/blog/2012/02/22/use-gcd/">使用GCD</a> by 唐巧</li>
+<li><a href="https://github.com/nixzhu/dev-blog/blob/master/2014-04-19-grand-central-dispatch-in-depth-part-1.md">GCD 深入理解：第一部分</a> by nixzhu</li>
 </ul>
 
 
@@ -272,8 +276,8 @@
 
 
 <ul>
-<li>在iOS中让图片旋转时抗锯齿 by xcodev&lt;br</li>
-<li>[Objective C中C99的使用 by answerhuangbr/> *</li>
+<li><a href="http://blog.xcodev.com/archives/anti-alise-for-image-ios/">在iOS中让图片旋转时抗锯齿</a> by xcodev&lt;br</li>
+<li><a href="http://answerhuang.duapp.com/index.php/2013/10/17/objective-c_c99/">Objective C中C99的使用</a> by answerhuangbr/> *</li>
 </ul>
 
 
@@ -281,9 +285,9 @@
 
 
 <ul>
-<li>类簇在iOS开发中的应用 by无网不剩</li>
-<li>iOS项目的目录结构和开发流程 by无网不剩</li>
-<li>Facebook Pop &amp; Tweaks Demo by不会开机的男孩</li>
+<li><a href="http://blog.leezhong.com/ios/2014/01/04/class-cluster.html">类簇在iOS开发中的应用</a> by无网不剩</li>
+<li><a href="http://blog.leezhong.com/ios/2013/09/23/build-ios-application.html">iOS项目的目录结构和开发流程</a> by无网不剩</li>
+<li><a href="http://studentdeng.github.io/blog/2014/05/09/pop-tweaks/">Facebook Pop &amp; Tweaks Demo</a> by不会开机的男孩</li>
 </ul>
 
 
@@ -291,7 +295,7 @@
 
 
 <ul>
-<li>objc/runtime 探索(一)</li>
+<li><a href="http://blog.devwu.com/develop/2014-08-15/objcruntime-explore1/">objc/runtime 探索(一)</a></li>
 <li>objc/runtime 探索(二))</li>
 <li>objc/runtime 探索(三))</li>
 <li>objc/runtime 探索(四))</li>
