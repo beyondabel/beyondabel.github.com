@@ -1,0 +1,225 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>如何编写高质量iOS代码 - Abel's Den</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="如何编写高质量iOS代码 一直以来，身边总会有这样的声音——“如何提高自己的代码质量”，我想这个话题可能大家会比较感兴趣，所以在这里分享一下我在iOS开发中对如何提高代码质量的一些心得体会，其他的语言可以以此做一个参照。 1. 基础知识及技巧 想写出高质量代码，并不是一触而就的， &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel's Den" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://www.beyondabel.com/blog/2016/03/23/efficient/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel's Den</a></h1>
+  
+    <p class="subtitle">上善若水，厚德载物</p>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/openSource">开源项目</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">如何编写高质量iOS代码</h1>
+	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2016/03/effective-objective-oc.png" alt="image" /></p>
+
+<p>一直以来，身边总会有这样的声音——“如何提高自己的代码质量”，我想这个话题可能大家会比较感兴趣，所以在这里分享一下我在iOS开发中对如何提高代码质量的一些心得体会，其他的语言可以以此做一个参照。</p>
+
+<!--more-->
+
+
+<h3>1. 基础知识及技巧</h3>
+
+<p>想写出高质量代码，并不是一触而就的，它需要有一定的基础以及大量的代码知识积累，这里我重点强调与代码质量密切相关的几点：</p>
+
+<p>首先得掌握好开发语言，iOS开发有二种语言——Objective-C和Swift，不管你选择哪种都可以，不过现在Objective-C还是主流，但我相信未来肯定是Swift的天下，关于Objective-C可以看看<a href="http://item.jd.com/11402853.html">《Effective Objective-C 2.0：编写高质量iOS与OS X代码的52个有效方法》</a>，这本书讲解了非常多使用Objective-C的技巧。</p>
+
+<p>其次你就需要去了解iOS开发平台特性以及工作原理，了解清楚这些之后，充分利用他的一些特性写出更加地道的代码。</p>
+
+<h3>2. 数据结构和算法</h3>
+
+<p>计算机科学本来就是由数学发展而来的，数据结构与算法的重要性不言而喻，当然，不是说你不学习算法就不能做开发了，而是说学好数据结构和算法，当你遇到问题时，你可以以更加优雅高效的解决问题。</p>
+
+<h3>3. 设计模式</h3>
+
+<p>设计模式是一个老生常谈的话题，市面上充斥着各种的设计模式，我们无需对所有的设计模式都需要了解，只需要了解一些常用的设计原则即可，这里给你推荐一本书——<a href="http://item.jd.com/10871643.html">《Objective-C编程之道：iOS设计模式解析》</a>，学完之后应该能解决你的绝大部分问题了。</p>
+
+<h3>4. 代码标准</h3>
+
+<p>一个团队中人来自不同的地方是非常正常的，每个团队中代码风格有时往往又会不一样，这个时候代码标准在团队合作中尤为重要，谁也不希望一个项目中代码风格各异，相互之间都不愿看别人的代码。标准怎么定是一个老生常谈的话题，我个人职业生涯中经历过很多次的代码标准讨论会议，大家有时会坚持自己的习惯不肯退让。代码规范问题我推荐raywenderlich.com团队的<a href="https://github.com/raywenderlich/objective-c-style-guide">objective-c-style-guide</a> （<a href="https://github.com/samlaudev/Objective-C-Coding-Style">中文翻译</a>），</p>
+
+<h3>5. 拆解功能，再写代码</h3>
+
+<p>拿到需求除非你很清楚你要怎么做，否则绝对不能直接下手写代码，而是我们需要先思考如何对功能进行拆解以及如何去解决问题，思考目前的方案是否有效？有没有更优的方案？如果你把问题拆解好了，实现其实是非常简单的事。</p>
+
+<h3>7. 代码审查</h3>
+
+<p>在项目起始阶段进行代码审查会帮助我们更好地使用已经建立起来的代码基，因为如果我们没有使用过某些现有代码，那么可以从当前的开发者中获得反馈信息。</p>
+
+<p>在项目进行过程中，我们会时不时地向团队增加新的开发人员，代码审查可以极大地降低这些新加入人员的熟悉时间。特别地，我们可以让新加入的开发人员很有信心地开发新特性，因为我们可以在合并前审查代码并且对于他们所编写的任何代码提供有价值的反馈信息。</p>
+
+<p>对于分布式团队来说，代码审查更加具有实际意义。团队协同在构建协作环境上会带来很大的帮助作用，我们可以即时提出想法，然后讨论，再进行开发。虽然由于不在同一地点我们会失去一些东西，不过我们却可以在代码审查过程中通过深入的讨论来获得好处。</p>
+
+<h3>8. 单元测试</h3>
+
+<p>iOS自从iOS7以来，Xcode就会默认带上单元测试库，但单元测试一直没有引起大家的注意，大家可能考虑到写单元测试太破费时间了，但单元测试的一个非常显著的优点是，当你需要修改大量代码时，尽管放心修改，只需要保证单元测试用例通过即可，无需瞻前顾后。</p>
+
+<h3>9. 充分自测</h3>
+
+<p>自测对于程序员来说是一个头痛的问题，有些程序员总想着让测试帮找问题，连自己的运行结果都不看就把App丢给测试，这是非常不负责任的。作为一个程序员在写完代码后至少需要跑完一遍全部流程以及一些简单的异常情况再交给测试，不然，随便用几下就Crash的东西，会给测试人员这人不靠谱以及技术真low的印象，再说，你准备在别人面前展示自己研究的工作成果时，突然之间Crash掉了，你真的好意思吗？充分自测也是基本的职业素养体现~所以充分自测非常重要！充分自测非常重要！充分自测非常重要！重要的事说三遍~</p>
+
+<h3>10. 善用开源</h3>
+
+<p>在我刚学iOS开发时，那时的iOS开源代码还是比较少的，我当时都是去官网去看一些代码，ASI还是非常火的网络框架，现在完全就不一样了，各种各样的轮子都有了。当然，在这些轮子的背景下并非所有的开源质量就很高，但一般情况下中口碑好的、使用人多的、关注度高的开源项目，质量是有一定的保证的，这其中的道理很简单。即便存在一些问题，也可以通过提交反馈，不断改进。而充分利用开源项目，能帮助你节省很多时间，把精力专注在最需要你关心的问题上。</p>
+
+<p>能被关注的开源项目，都是领域内的高手所写，向这些牛人学习编程技巧，能让你知道如何能写出高效的代码，学习别人解决问题的方式，培养自己对代码更灵敏的嗅觉。</p>
+</div>
+
+
+
+<p>
+
+<br></br>
+<br></br>
+<!-- 代码1：放在页面需要展示的位置  -->
+<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+<div id="cyReward" role="cylabs" data-use="reward"></div>
+<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+<script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/??lib/jquery.js,changyan.labs.js?appid=cysj2LEws"></script>
+
+</p>
+</article>
+
+
+
+
+	<div class="share">
+	<!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style_32x32">
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1394432532557467" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc699c19000b89d76ce55e9a9fab7da1b' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+		</div>
+	</div>
+</body>
+</html>
