@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-03-24T17:29:11+08:00</updated>
+  <updated>2016-03-27T15:31:43+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第4期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/03/27/weekly04/"/>
+    <updated>2016-03-27T13:40:37+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/03/27/weekly04</id>
+    <content type="html"><![CDATA[<p><img src="http://www.beyondabel.com/images/2016/03/weekly04.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><a href="http://www.infoq.com/cn/news/2016/03/ios-security-fix">苹果在iOS9.3中修复了安全漏洞</a> : 今天在加利福尼亚苹果总部的Let us loop you in活动中，苹果发布了他们移动端设备的更新版本，叫做iPhone SE。它回归了之前iPhone版本的4英寸设计但是拥有一个与iPhone 6相似的处理器，包括了Touch ID、NFC（为了使用Apple Pay）和Live Photos，其中Live Photos是一个记录拍照片前和拍照片后的一小段视频的功能，以实现真实的Harry Potter体验。伴随新发布的iPhone SE一起而来的是iPad Pro的一个较小版本，它使用了和iPad Pro一样的处理器和技术，但是和现有的iPad大小一致。</li>
+<li><p><a href="http://news.zol.com.cn/563/5631114.html">苹果推Watch OS 2.2更新</a>：苹果再3月22日凌晨1点发布了新的Apple Watch表带，颜色搭配相当之诡异。不过，庆幸的是，苹果同样推送了Watch OS 2.2的更新。</p></li>
+<li><p><a href="http://3g.163.com/ntes/special/0034073A/wechat_article.html?docid=BIBTQR67001168BQ&amp;spst=0&amp;spss=newsapp&amp;spsf=wx&amp;spsw=1">一弃用iOS应用数据库泄露</a>：Chris Vickery表示，与这款应用相关（MongoDB）数据库依然维持在线，尽管Kinoptic已经下架。Vickery称该数据库已经在网络上曝光，已经通过默认MongoDB配置来允许任何人不加认证的访问这些内容。</p></li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><a href="http://drops.wooyun.org/papers/13824">iOS冰与火之歌番外篇 &ndash; App Hook答疑以及iOS 9砸壳</a>：关于 iOS 安全系列的最新文章。上架 App Store 的 app 会被进行加壳处理，我们想要对这些 app 进行 hook 或者探索，第一步就是要进行去壳。本文主要介绍了 iOS 上砸壳 (Dumpdecrypted)，签名及重新安装的一些技巧。</li>
+<li><p><a href="https://bestswifter.com/uiviewlifetime/">UIView的生命周期总结</a>：这篇主要参考官方和文档和StackOVerFlow有关问题文章整理了View在UIViewController的生命周期的创建方法，以及IB和代码加载视图的区别，对UIView的讲解还是比较详细。</p></li>
+<li><p><a href="http://limboy.me/ios/2016/03/10/mgj-components.html">蘑菇街 App 的组件化之路</a>：随着项目规模变大，将业务进行组件化拆分是一个很容易做出的选择。本文介绍了在一个实际项目中，将业务拆分成分离的相互之间不直接引用的组件的一些方法和实践。</p></li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/ibireme/YYModel">YYModel</a> : 与Mantle一样，都是JSON转Model库，相比Mantle,YYModel源码小而精炼，接口也简单。</li>
+<li><a href="https://github.com/windshg/VPImageCropper">VPImageCropper</a> : 可以让你轻松实现微信选取图片并裁剪成头像的控件。</li>
+<li><a href="https://github.com/JaviSoto/JSBadgeView">JSBadgeView</a> : 添加带动画效果的未读消息数提醒</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[如何编写高质量iOS代码]]></title>
@@ -3255,86 +3294,6 @@ BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
 <p>// 当前点颜色</p>
 
 <pre><code>UIColor *currentPageIndicatorTintColor;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIDatePicker详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/09/uidatepicker/"/>
-    <updated>2014-01-09T12:33:27+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/09/uidatepicker</id>
-    <content type="html"><![CDATA[<h3>引言</h3>
-
-<p>该的UIDatePicker类实现使用多个车轮转动，以允许用户选择日期和时间的对象。UIDatePicker iPhone的例子是定时器和时钟应用程序的闹钟（设置闹钟）窗格。您也可以使用日期选择器作为一个倒数计时器。</p>
-
-<p>如果配置正确，一个的UIDatePicker对象发送一个动作消息，当一个用户完成旋转的轮子之一更改日期或时间，相关的控制事件是UIControlEventValueChanged 。一个的UIDatePicker对象呈现倒数计时，但没有实现它，应用程序必须设立的NSTimer对象，并为他们倒计数更新秒。</p>
-
-<p>UIDatePicker不是从UIPickerView的继承，而是继承于UIControl（有关UIControl请参照<a href="http://www.beyondabel.com/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。，但它管理的自定义选择器视图对象作为一个子视图。</p>
-
-<!--more-->
-
-
-<pre><code>typedef enum {
-    //根据区域设置,显示小时,分钟,并指定AM/PM(例如:6|53|PM)
-    UIDatePickerModeTime,
-    //根据区域设置,显示月,日,年(例如:November|15|2007)
-    UIDatePickerModeDate, 
-    //根据区域设置,显示日期(星期,月,日),小时,分钟,并指定AM/PM(例如:Wed Nov 15|6|53|PM)
-    UIDatePickerModeDateAndTime,
-    //显示小时,分钟(例如:1|53)  
-    UIDatePickerModeCountDownTimer
-} UIDatePickerMode;
-</code></pre>
-
-<p>// 设置UIDatePicker的显示模式(默认为UIDatePickerModeDateAndTime)</p>
-
-<pre><code>UIDatePickerMode datePickerMode; 
-</code></pre>
-
-<p>//设置为语言显示</p>
-
-<pre><code>NSLocale   *locale;   
-</code></pre>
-
-<p>// 设置日历</p>
-
-<pre><code>NSCalendar *calendar;
-</code></pre>
-
-<p>// 设置时区</p>
-
-<pre><code>NSTimeZone *timeZone; 
-</code></pre>
-
-<p>// 设置当前显示时间</p>
-
-<pre><code>NSDate *date;
-</code></pre>
-
-<p>//如果animated为YES,时间轮会自动显示新的时间</p>
-
-<pre><code>- (void)setDate:(NSDate *)date animated:(BOOL)animated;        
-</code></pre>
-
-<p>// 设置显示最小时间</p>
-
-<pre><code>NSDate *minimumDate;
-</code></pre>
-
-<p>// 设置显示最大时间（此处为当前时间）</p>
-
-<pre><code>NSDate *maximumDate;
-</code></pre>
-
-<p>//用于UIDatePickerModeCountDownTimer,否则忽略.默认为0.0.最大限制为23:59 (86,399秒)</p>
-
-<pre><code>NSTimeInterval countDownDuration;
-</code></pre>
-
-<p>//设置分钟之间的间隔.间隔必须均匀的分为60.默认为1.最小为1,最大为30</p>
-
-<pre><code>NSInteger      minuteInterval;
 </code></pre>
 ]]></content>
   </entry>
