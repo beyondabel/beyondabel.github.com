@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS移动开发周报 | Abel's Den]]></title>
   <link href="http://www.beyondabel.com/blog/categories/iosyi-dong-kai-fa-zhou-bao/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-03-27T20:35:11+08:00</updated>
+  <updated>2016-03-29T18:30:27+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第4期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/03/27/weekly04/"/>
+    <updated>2016-03-27T13:40:37+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/03/27/weekly04</id>
+    <content type="html"><![CDATA[<p><img src="/images/2016/03/weekly04.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><a href="http://www.infoq.com/cn/news/2016/03/ios-security-fix">苹果在iOS9.3中修复了安全漏洞</a> : 3月21日在加利福尼亚苹果总部的Let us loop you in活动中，苹果发布了他们移动端设备的更新版本，叫做iPhone SE。它回归了之前iPhone版本的4英寸设计但是拥有一个与iPhone 6相似的处理器，包括了Touch ID、NFC（为了使用Apple Pay）和Live Photos，其中Live Photos是一个记录拍照片前和拍照片后的一小段视频的功能，以实现真实的Harry Potter体验。伴随新发布的iPhone SE一起而来的是iPad Pro的一个较小版本，它使用了和iPad Pro一样的处理器和技术，但是和现有的iPad大小一致。</li>
+<li><a href="http://news.zol.com.cn/563/5631114.html">苹果推Watch OS 2.2更新</a>：苹果再3月22日凌晨1点发布了新的Apple Watch表带，颜色搭配相当之诡异。不过，庆幸的是，苹果同样推送了Watch OS 2.2的更新。</li>
+<li><p><a href="https://developer.apple.com/news/?id=03092016a">App Analytics 分析周报上线</a>：对于 app 下载和评论的管理一直是 iTunes Connect 的弱项，不过最近一两年来 Apple 一直这方面进行了改进，包括在 iTunes Connect 中添加分析模块，更好的 Crash 报告等。最近，Apple 为开发者提供了周报邮件，以帮助开发者追踪 app 的下载和评分状况。有需要的开发者可以在 iTunes Connect 中进行订阅。</p></li>
+<li><p><a href="http://3g.163.com/ntes/special/0034073A/wechat_article.html?docid=BIBTQR67001168BQ&amp;spst=0&amp;spss=newsapp&amp;spsf=wx&amp;spsw=1">一弃用iOS应用数据库泄露</a>：Chris Vickery表示，与这款应用相关（MongoDB）数据库依然维持在线，尽管Kinoptic已经下架。Vickery称该数据库已经在网络上曝光，已经通过默认MongoDB配置来允许任何人不加认证的访问这些内容。</p></li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><a href="http://drops.wooyun.org/papers/13824">iOS冰与火之歌番外篇 &ndash; App Hook答疑以及iOS 9砸壳</a>：关于 iOS 安全系列的最新文章。上架 App Store 的 app 会被进行加壳处理，我们想要对这些 app 进行 hook 或者探索，第一步就是要进行去壳。本文主要介绍了 iOS 上砸壳 (Dumpdecrypted)，签名及重新安装的一些技巧。</li>
+<li><p><a href="https://bestswifter.com/uiviewlifetime/">UIView的生命周期总结</a>：这篇主要参考官方和文档和StackOVerFlow有关问题文章整理了View在UIViewController的生命周期的创建方法，以及IB和代码加载视图的区别，对UIView的讲解还是比较详细。</p></li>
+<li><p><a href="http://limboy.me/ios/2016/03/10/mgj-components.html">蘑菇街 App 的组件化之路</a>：随着项目规模变大，将业务进行组件化拆分是一个很容易做出的选择。本文介绍了在一个实际项目中，将业务拆分成分离的相互之间不直接引用的组件的一些方法和实践。</p></li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/ibireme/YYModel">YYModel</a> : 与Mantle一样，都是JSON转Model库，相比Mantle,YYModel源码小而精炼，接口也简单。</li>
+<li><a href="https://github.com/windshg/VPImageCropper">VPImageCropper</a> : 可以让你轻松实现微信选取图片并裁剪成头像的控件。</li>
+<li><a href="https://github.com/JaviSoto/JSBadgeView">JSBadgeView</a> : 添加带动画效果的未读消息数提醒</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第3期]]></title>
