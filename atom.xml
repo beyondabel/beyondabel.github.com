@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-04-05T17:45:31+08:00</updated>
+  <updated>2016-04-05T17:53:55+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -50,10 +50,10 @@
 <ol>
 <li><p>将xx.ttf字体库加入工程里面</p>
 
-<p> <img src="http://www.beyondabel.com/images/2016/04/iconfont02.png" alt="image" /></p></li>
+<p> <img src="http://www.beyondabel.com/images/2016/04/iconfont02.png" height="216" width="200" alt="image" /></p></li>
 <li><p>在工程的xx-Info.plist文件中新添加一行Fonts provided by application，加上字体库的名称。</p>
 
-<p> <img src="http://www.beyondabel.com/images/2016/04/iconfont01.png" alt="image" /></p></li>
+<p> <img src="http://www.beyondabel.com/images/2016/04/iconfont01.png" height="200" width="634" alt="image" /></p></li>
 <li>引用字体库的名称，设置字体：</li>
 </ol>
 
