@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-04-05T22:22:55+08:00</updated>
+  <updated>2016-04-05T22:38:38+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -31,21 +31,25 @@
 
 <p>首先我问一下大家，如果看到以下的设计，大家会怎么做呢？</p>
 
-<h5 align = "center">
-![image](/images/2016/04/iconfont_sample01.png)<br />
-图1</h5>
+<p><img src="http://www.beyondabel.com/images/2016/04/iconfont_sample02.png" alt="image" /></p>
 
+<p>图1</p>
 
+<p>如图所示，用红色标出来的区域一般情况下，我们一般会使用一个imageViw后面加一个label,再接着imageView，最后时间又是一个label，这样使用起来不仅创建的控制多，而且他们的位置还不好控制，特别麻烦，如果我们使用字体库时只需要如下代码就可以了：</p>
 
+<pre><code>UILabel *addressLabel = [[UILabel alloc] initWithFrame:(CGRect){80, 33, 40, 21}];
+addressLabel.textColor = kColorWithRGB(0x666666);
+addressLabel.text = @"\ue601 北京   \ue600 4月23日 12:00";
+addressLabel.font = [UIFont fontWithName:@"iconfont" size:14];
+[self.contentView addSubview:addressLabel];
+</code></pre>
 
-<h5 align = "center">
-![image](/images/2016/04/iconfont_sample02.png)<br />
-图1</h5>
-
+<p>所以使用字体库图标可以带来如下的好处：</p>
 
 <ol>
 <li>减少资源所占内存。如果你使用TTF字体库的图标就是一个个文字，使用图片就需要单倍图、@2x、@3x三张图片。</li>
-<li>使用方便。TTF字体库的使用规则就像我们使用的文字一样（具体如何使用将在下面介绍到）。</li>
+<li>使用方便。TTF字体库的使用规则就像我们使用的文字一样（具体如何使用将在下面介绍到），我们还可以根据字体的颜色自由设置图标颜色，而不需要重新要UI切图。</li>
+<li>UI切图也方便，不需要切多套图。</li>
 </ol>
 
 
