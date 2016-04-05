@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>利用TTF文字库给App安装包瘦身 - Abel's Den</title>
+	<title>利用TTF文字库给App瘦身 - Abel's Den</title>
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="利用TTF文字库给App安装包瘦身 前提 自从4.7、5.5屏幕的iPhone出来之后，我们在做iPhone适配上就开始头痛了，他开始有@2x、@3x图了，这无疑增加了App的安装包的体积了，那么有没有好的方法去解决这个问题呢？答案其实当时就有了，那就是矢量图， &hellip;">
+	<meta name="description" content="利用TTF文字库给App瘦身 前言 自从4.7、5.5屏幕的iPhone出来之后，我们在做iPhone适配上就开始头痛了，他开始有@2x、@3x图了，这无疑增加了App的安装包的体积了，那么有没有好的方法去解决这个问题呢？在这我介绍一种使用TTF字体库替换使用图片方式。 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,19 +91,31 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">利用TTF文字库给App安装包瘦身</h1>
+	<h1 class="title" itemprop="name">利用TTF文字库给App瘦身</h1>
 	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2016/04/iconfont.png" alt="image" /></p>
 
 <!--more-->
 
 
-<h3>前提</h3>
+<h3>前言</h3>
 
-<p>自从4.7、5.5屏幕的iPhone出来之后，我们在做iPhone适配上就开始头痛了，他开始有@2x、@3x图了，这无疑增加了App的安装包的体积了，那么有没有好的方法去解决这个问题呢？答案其实当时就有了，那就是矢量图，而我们当时选择使用更方便点的ttf字体库，而我发现现在还是有相当多的项目还是在使用图片，利用现在的时间整理一份TTF使用文档，希望能帮助到大家。</p>
+<p>自从4.7、5.5屏幕的iPhone出来之后，我们在做iPhone适配上就开始头痛了，他开始有@2x、@3x图了，这无疑增加了App的安装包的体积了，那么有没有好的方法去解决这个问题呢？在这我介绍一种使用TTF字体库替换使用图片方式。利用现在的时间整理一份TTF使用文档，希望能帮助到大家。</p>
 
 <h3>为什么选择TTF字体库</h3>
 
 <p>首先我问一下大家，如果看到以下的设计，大家会怎么做呢？</p>
+
+<h5 align = "center">
+![image](/images/2016/04/iconfont_sample01.png)<br />
+图1</h5>
+
+
+
+
+<h5 align = "center">
+![image](/images/2016/04/iconfont_sample02.png)<br />
+图1</h5>
+
 
 <ol>
 <li>减少资源所占内存。如果你使用TTF字体库的图标就是一个个文字，使用图片就需要单倍图、@2x、@3x三张图片。</li>
@@ -119,7 +131,13 @@
 
 <p>在这里我向大家介绍一个生成一个ttf平台—— <a href="http://iconfont.cn/">阿里巴巴矢量图标库</a>，在这里有许多现成的图标库，你可以选择你需要的图标然后生成一个ttf库，具体可参考 <a href="http://iconfont.cn/help/platform.html">ICONFONT平台功能介绍</a>。</p>
 
-<h4>2. 使用TTF字体库</h4>
+<h4>2. 查看TTF字体库名称</h4>
+
+<p>双击<code>iconfont.tff</code>文件，能看到弹出了以下的一个字体弹框。用红色框住的就是字体库名称。</p>
+
+<p><img src="/images/2016/04/iconfont03.png" height="223" width="400" alt="image" /></p>
+
+<h4>3. 使用TTF字体库</h4>
 
 <ol>
 <li><p>将xx.ttf字体库加入工程里面</p>
@@ -151,12 +169,12 @@ button.frame = (CGRect){100, 120, 160, 40};
 [self.view addSubview:button];
 </code></pre>
 
-<p>注： 如果不知道字体名称，可以遍历字体进行查询：</p>
+<p>注： 如果不知道字体安装是否成功，可以遍历字体进行查询：</p>
 
 <pre><code> NSLog(@"familyNames:'%@'",[UIFont familyNames]);
 </code></pre>
 
-<h4>3. 使用TTF字体库创建图片</h4>
+<h4>4. 使用TTF字体库创建图片</h4>
 
 <pre><code>// 使用iconfont创建图片
 + (UIImage *)imageFromText:(NSString *)text fontSize:(CGFloat)fontSize color:(UIColor *)color {
