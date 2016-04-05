@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-03-29T18:30:27+08:00</updated>
+  <updated>2016-04-05T17:34:04+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[利用TTF文字库给App安装包瘦身]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/04/05/ttf/"/>
+    <updated>2016-04-05T14:42:10+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/04/05/ttf</id>
+    <content type="html"><![CDATA[<!--more-->
+
+
+<h3>前提</h3>
+
+<p>自从4.7、5.5屏幕的iPhone出来之后，我们在做iPhone适配上就开始头痛了，他开始有@2x、@3x图了，这无疑增加了App的安装包的体积了，那么有没有好的方法去解决这个问题呢？答案其实当时就有了，那就是矢量图，而我们当时选择使用更方便点的ttf字体库，而我发现现在还是有相当多的项目还是在使用图片，利用现在的时间整理一份TTF使用文档，希望能帮助到大家。</p>
+
+<h3>为什么选择TTF字体库</h3>
+
+<p>首先我问一下大家，如果看到以下的设计，大家会怎么做呢？</p>
+
+<ol>
+<li>减少资源所占内存。如果你使用TTF字体库的图标就是一个个文字，使用图片就需要单倍图、@2x、@3x三张图片。</li>
+<li>使用方便。TTF字体库的使用规则就像我们使用的文字一样（具体如何使用将在下面介绍到）。</li>
+</ol>
+
+
+<p>注：TTF适合范围只是单色的图标，如果是多色彩图片还是需要选择图片。</p>
+
+<h3>如何使用TTF字体库</h3>
+
+<h5>1. 创建TTF字体库</h5>
+
+<p>在这里我向大家介绍一个生成一个ttf平台—— <a href="http://iconfont.cn/">阿里巴巴矢量图标库</a>，在这里有许多现成的图标库，你可以选择你需要的图标然后生成一个ttf库，具体可参考 <a href="http://iconfont.cn/help/platform.html">ICONFONT平台功能介绍</a>。</p>
+
+<h4>2. 使用TTF字体库</h4>
+
+<ol>
+<li><p>将xx.ttf字体库加入工程里面</p>
+
+<p> <img src="http://www.beyondabel.com/images/2016/04/iconfont02.png" alt="image" /></p></li>
+<li><p>在工程的xx-Info.plist文件中新添加一行Fonts provided by application，加上字体库的名称。</p>
+
+<p> <img src="http://www.beyondabel.com/images/2016/04/iconfont01.png" alt="image" /></p></li>
+<li>引用字体库的名称，设置字体：</li>
+</ol>
+
+
+<p>A、 Label使用TTF</p>
+
+<pre><code>UILabel * iconFontLabel = [[UILabel alloc] initWithFrame:(CGRect){100, 60, 200, 40}];
+iconFontLabel.font = [UIFont fontWithName:@"fanghuwang" size:20];
+iconFontLabel.text = @"\ue62a 这是一个iconfont";
+iconFontLabel.textColor = [UIColor redColor]; // 设置字体的颜色
+[self.view addSubview:iconFontLabel];
+</code></pre>
+
+<p>B、Button 使用TTF</p>
+
+<pre><code>UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+button.titleLabel.font = [UIFont fontWithName:@"fanghuwang" size:20];
+button.frame = (CGRect){100, 120, 160, 40};
+[button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+[button setTitle:@"\ue61d iconfont Button" forState:UIControlStateNormal];
+[self.view addSubview:button];
+</code></pre>
+
+<p>注： 如果不知道字体名称，可以遍历字体进行查询：</p>
+
+<pre><code> NSLog(@"familyNames:'%@'",[UIFont familyNames]);
+</code></pre>
+
+<h4>3. 使用TTF字体库创建图片</h4>
+
+<pre><code>// 使用iconfont创建图片
++ (UIImage *)imageFromText:(NSString *)text fontSize:(CGFloat)fontSize color:(UIColor *)color {
+    UIFont *font = [UIFont fontWithName:@"fanghuwang" size:fontSize];
+    CGSize size  = [text sizeWithAttributes:@{NSFontAttributeName : font}];//[text sizeWithFont:font];
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(ctx, color.CGColor);
+    CGContextSetShouldSmoothFonts(ctx, YES);
+
+    CGContextSetShouldAntialias(ctx, YES);
+    CGContextSetLineWidth(ctx, 10);
+    [text drawAtPoint:CGPointMake(0.0, 0.0) withAttributes:@{NSFontAttributeName : font, NSForegroundColorAttributeName : color}];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第4期]]></title>
@@ -3230,71 +3319,6 @@ BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
 <p>//获取选项中内容的调整位置</p>
 
 <pre><code>- (UIOffset)contentPositionAdjustmentForSegmentType:(UISegmentedControlSegment)leftCenterRightOrAlone barMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UIPageControl详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/09/uipagecontrol/"/>
-    <updated>2014-01-09T12:33:46+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/09/uipagecontrol</id>
-    <content type="html"><![CDATA[<h3>引言</h3>
-
-<p>UIPageControl继承于UIControl（有关UIControl请参照<a href="http://www.beyondabel.com/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。您可以使用UIPageControl类来创建和管理页面控件。一个页面控件显示一个水平一系列的点，每个对应一个页面应用程序的文档（或其他数据模型实体）中。当前浏览的页面是由一个白色的圆点表示。</p>
-
-<p>当用户点击一个页面控件移动到下一页或上一页，控制处理由委托发送UIControlEventValueChanged事件。然后委托可以评估当前属性来确定要显示的页面。网页控制在任何一个方向前进只有一个页面。</p>
-
-<!--more-->
-
-
-<h3>目录</h3>
-
-<p>&mdash;-1、基本属性及方法
-2、iOS6.0新增</p>
-
-<h3>1、基本属性及方法</h3>
-
-<p>// 指定页面个数（默认为0）</p>
-
-<pre><code>NSInteger numberOfPages;
-</code></pre>
-
-<p>// 当前选中的页面（默认为0，范围为0 ～ numberOfPages-1）</p>
-
-<pre><code>NSInteger currentPage;
-</code></pre>
-
-<p>// 如果在numberOfPages为1的情况下隐藏指示器，可以将hideForSinglePage的值设为YES。默认情况下，即使只有一个页面，指示器也会显示进来。</p>
-
-<pre><code>BOOL hidesForSinglePage;
-</code></pre>
-
-<p>// 如果你希望直到有时间执行完你的操作之后，才更新当前指示器当前指示页，可以将 defersCurrentPageDisPlay 设为YES。这样的话你必须调用控件的 updateCurentPageDisPlay 来更新当前页</p>
-
-<pre><code>BOOL defersCurrentPageDisplay;
-</code></pre>
-
-<p>// 更新当前页</p>
-
-<pre><code>- (void)updateCurrentPageDisplay;
-</code></pre>
-
-<p>// 返回接受者的边界大小，与容纳被给的页面数有关</p>
-
-<pre><code>- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;
-</code></pre>
-
-<h3>2、iOS6.0新增</h3>
-
-<p>// 未选中的点的颜色</p>
-
-<pre><code>UIColor *pageIndicatorTintColor;
-</code></pre>
-
-<p>// 当前点颜色</p>
-
-<pre><code>UIColor *currentPageIndicatorTintColor;
 </code></pre>
 ]]></content>
   </entry>
