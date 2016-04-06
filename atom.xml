@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-04-06T11:35:38+08:00</updated>
+  <updated>2016-04-06T11:37:08+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[利用TTF字体库给App瘦身]]></title>
+    <title type="html"><![CDATA[利用ttf字体库给App瘦身]]></title>
     <link href="http://www.beyondabel.com/blog/2016/04/05/ttf/"/>
     <updated>2016-04-05T14:42:10+08:00</updated>
     <id>http://www.beyondabel.com/blog/2016/04/05/ttf</id>
@@ -27,7 +27,7 @@
 
 <p>自从4.7、5.5屏幕的iPhone出来之后，我们在做iPhone适配上就开始头痛了，他开始有@2x、@3x图了，这无疑增加了App的安装包的体积了，那么有没有好的方法去解决这个问题呢？在这我介绍一种使用TTF字体库替换使用图片方式。利用现在的时间整理一份TTF使用文档，希望能帮助到大家。</p>
 
-<h3>为什么选择TTF字体库</h3>
+<h3>为什么选择ttf字体库</h3>
 
 <p>首先我问一下大家，如果看到以下的设计，大家会怎么做呢？</p>
 
@@ -48,16 +48,16 @@ addressLabel.font = [UIFont fontWithName:@"iconfont" size:14];
 
 <ol>
 <li>减少资源所占内存。如果你使用TTF字体库的图标就是一个个文字，而使用图片就需要单倍图、@2x、@3x三张图片。</li>
-<li>使用方便。TTF字体库的使用规则就像我们使用的文字一样（具体如何使用将在下面介绍到），我们还可以根据字体的颜色自由设置图标颜色，而不需要重新要UI切图。</li>
+<li>使用方便。ttf字体库的使用规则就像我们使用的文字一样（具体如何使用将在下面介绍到），我们还可以根据字体的颜色自由设置图标颜色，而不需要重新要UI切图。</li>
 <li>UI切图也方便，不需要切多套图。</li>
 </ol>
 
 
-<p>注：TTF适合范围只是单色的图标，如果是多色彩图片还是需要选择图片。</p>
+<p>注：ttf适合范围只是单色的图标，如果是多色彩图片还是需要选择图片。</p>
 
-<h3>如何使用TTF字体库</h3>
+<h3>如何使用ttf字体库</h3>
 
-<h5>1. 创建TTF字体库</h5>
+<h5>1. 创建ttf字体库</h5>
 
 <p>在这里我向大家介绍一个生成一个字体库平台—— <a href="http://iconfont.cn/">阿里巴巴矢量图标库</a>，在这里有许多现成的图标库，你可以选择你需要的图标然后生成一个ttf库，具体可参考 <a href="http://iconfont.cn/help/platform.html">ICONFONT平台功能介绍</a>。</p>
 
@@ -80,7 +80,7 @@ addressLabel.font = [UIFont fontWithName:@"iconfont" size:14];
 </ol>
 
 
-<p>A、 Label使用TTF</p>
+<p>A、 Label使用ttf</p>
 
 <pre><code>UILabel * iconFontLabel = [[UILabel alloc] initWithFrame:(CGRect){100, 60, 200, 40}];
 iconFontLabel.font = [UIFont fontWithName:@"fanghuwang" size:20];
@@ -89,7 +89,7 @@ iconFontLabel.textColor = [UIColor redColor]; // 设置字体的颜色
 [self.view addSubview:iconFontLabel];
 </code></pre>
 
-<p>B、Button 使用TTF</p>
+<p>B、Button 使用ttf</p>
 
 <pre><code>UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 button.titleLabel.font = [UIFont fontWithName:@"fanghuwang" size:20];
@@ -104,7 +104,7 @@ button.frame = (CGRect){100, 120, 160, 40};
 <pre><code> NSLog(@"familyNames:'%@'",[UIFont familyNames]);
 </code></pre>
 
-<h4>4. 使用TTF字体库创建图片</h4>
+<h4>4. 使用ttf字体库创建图片</h4>
 
 <pre><code>// 使用iconfont创建图片
 + (UIImage *)imageFromText:(NSString *)text fontSize:(CGFloat)fontSize color:(UIColor *)color {
