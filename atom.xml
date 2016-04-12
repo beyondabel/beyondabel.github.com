@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-04-06T11:37:08+08:00</updated>
+  <updated>2016-04-12T23:07:03+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第4期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/04/12/weekly05/"/>
+    <updated>2016-04-12T22:19:53+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/04/12/weekly05</id>
+    <content type="html"><![CDATA[<p><img src="http://www.beyondabel.com/images/2016/05/weekly05.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><p><a href="http://thenextweb.com/dd/2016/04/07/google-facebook-uber-swift/?%2BSandbox">Google Android或采纳苹果的Swift编程语言：避开Java这个坑？</a> : 据TNW报道，苹果正考虑将苹果公司开源的Swift作为Android的“一类”编程语言。有消息称，在苹果宣布将Swift开源的前后（去年12月），Google、Facebook和Uber的高管曾进行了会面讨论：“Google的Android操作系统，当前仍将Java作为它的首选语言，但消息人士称，Swift并不是要取代Java，至少从目前来说不是”。</p></li>
+<li><p><a href="http://3g.163.com/ntes/special/0034073A/wechat_article.html?docid=BKEGUNKU0011179O&amp;spst=0&amp;spss=newsapp&amp;spsf=wx&amp;spsw=1">iOS 10将于6月到来：新增表情</a>：根据最新的消息显示，iOS10或于今年在WWDC大会上发布预览版，虽然目前苹果还没有公布具体的举行实现，但是根据每年的惯例，今年的会议也将于6月13日至6月17日举行，地点位于旧金山MosconeWest。</p></li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><a href="http://drops.wooyun.org/papers/14170">iOS冰与火之歌 – 利用XPC过App沙盒</a>：XPC 是 OS X 上进程间通讯的常用手段，而在 iOS 中虽然第三方开发者不允许直接使用 XPC，但是这项技术还是存在于 iOS 系统之中的，这篇文章简单介绍了在 iOS 上利用 XPC 与系统进程通讯并突破沙盒的技术要点。</li>
+<li><a href="http://ios.jobbole.com/84513/">iOS 不要用宏来定义你的常量</a>：前不久有人在询问我关于define和const的用法以及一些区别，本来想写一篇关于它们的文章，看到这篇文章之后，我想这个已能解决你们的疑点了。</li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/hypoyao/GYHttpMock">GYHttpMock：iOS HTTP请求模拟工具</a> : iOS App开发过程中，前台开发过程通常都是并行进行的，因此难免会出现一些客户端需要等待后台开发联调的情景，等待的过程往往痛若而无奈（后台被催得痛苦，前端无奈等待）。通常解决办法是，客户端在某处 hardcode 网络返回数据，当然，一不小心，这种测试代码被提交到了线上也是常有的事情。还有更“高级”一点，通过设置代理，用抓包工具修改网络数据，但这种效率低得令人抓狂。引入一个可以模拟网络请求的工具似乎就可以轻松满足需求，但实践证明，“模拟网络请求”这个需求并不简单。例如对于全新的业务，后台如果还没有数据，前端完全可以根据协议自己制造假数据返回。但是，很多情况下，可能是对已有业务的变更，也就是需要修改后台已有的业务数据。</li>
+<li><a href="https://github.com/EddyBorja/EBPhotoPages">EBPhotoPages</a> : 用于显示一个滚动型照片页和元数据的图片库。用户可以放大、缩小图片，以及创建，编辑或删除注释和标记，共享或删除照片，并报告不当的照片。所有照片和内容异步加载。相片的用户权限通过委托协议控制。该库是使用状态模式来控制画廊的行为，让其他开发人员可以轻松地修改或增加新的状态，而不必了解太多的原代码设计。。</li>
+<li><a href="https://github.com/tdginternet/TGCameraViewController">TGCameraViewController</a> : 一款可定制的AVFoundation相机,界面美观、实用性强且容易集成。</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[利用ttf字体库给App瘦身]]></title>
@@ -3172,177 +3209,6 @@ BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
 <p>//返回一个BOOL值，指明是否允许在按下回车键时结束编辑　</p>
 
 <pre><code>- (BOOL)textFieldShouldReturn:(UITextField *)textField;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UISegmentedControl详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/10/uisegmentedcontrol/"/>
-    <updated>2014-01-10T12:34:00+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/10/uisegmentedcontrol</id>
-    <content type="html"><![CDATA[<p><strong>引言</strong></p>
-
-<p>UISegmentedControl对象是一个水平控制使多个区段，每个区段用作离散的按钮。分段控件提供了一次小型的手段组合在一起的一些控制。</p>
-
-<p>UISegmentedControl继承于UIControl（有关UIControl请参照<a href="http://www.beyondabel.com/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）.</p>
-
-<!--more-->
-
-
-<p><strong>目录</strong></p>
-
-<pre><code>1、基本属性及方法
-2、iOS 5.0新增
-</code></pre>
-
-<p><strong>1、基本属性及方法</strong></p>
-
-<p>// 初始化UISegmentedControl（items可以是NSString类型或者UIImages）</p>
-
-<pre><code>- (id)initWithItems:(NSArray *)items;
-</code></pre>
-
-<p>//设置样式 （该样式只在ios2.0~7.0有效果）</p>
-
-<pre><code>UISegmentedControlStyle segmentedControlStyle;
-</code></pre>
-
-<p>//设置在点击后是否恢复原样（默认是NO）</p>
-
-<pre><code>BOOL momentary;
-</code></pre>
-
-<p>// 设置总选项数</p>
-
-<pre><code>NSUInteger numberOfSegments;
-</code></pre>
-
-<p>//是否根据segment的内容改变segment的宽度 (只使用ios5.0，默认为NO)</p>
-
-<pre><code>BOOL apportionsSegmentWidthsByContent;
-</code></pre>
-
-<p>//在指定的索引插入一个选项并设置题目</p>
-
-<pre><code>- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)segment animated:(BOOL)animated;
-</code></pre>
-
-<p>//在指定的索引插入一个选项并设置图片</p>
-
-<pre><code>- (void)insertSegmentWithImage:(UIImage *)image  atIndex:(NSUInteger)segment animated:(BOOL)animated;
-</code></pre>
-
-<p>//移除指定索引的选项</p>
-
-<pre><code>- (void)removeSegmentAtIndex:(NSUInteger)segment animated:(BOOL)animated;
-</code></pre>
-
-<p>//移除所有的选项</p>
-
-<pre><code>- (void)removeAllSegments;
-</code></pre>
-
-<p>//设置指定索引题目</p>
-
-<pre><code>- (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//获取指定索引选项的标题</p>
-
-<pre><code>- (NSString *)titleForSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//设置指定索引的图片</p>
-
-<pre><code>- (void)setImage:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//获取指定索引选项的图片</p>
-
-<pre><code>- (UIImage *)imageForSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//设置指定索引选项的宽度（默认是0）</p>
-
-<pre><code>- (void)setWidth:(CGFloat)width forSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//获取指定索引选项的宽度</p>
-
-<pre><code>- (CGFloat)widthForSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//设置选项中图片等的左上角的位置</p>
-
-<pre><code>- (void)setContentOffset:(CGSize)offset forSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//获取选项中图片等的左上角的位置</p>
-
-<pre><code>- (CGSize)contentOffsetForSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//设置指定索引选项不可选</p>
-
-<pre><code>- (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//判断指定索引选项是否可选</p>
-
-<pre><code>- (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment;
-</code></pre>
-
-<p>//设置默认选项索引</p>
-
-<pre><code>NSInteger selectedSegmentIndex; 
-</code></pre>
-
-<p>//设置UISegmentedControl的颜色</p>
-
-<pre><code>UIColor *tintColor; 
-</code></pre>
-
-<p><strong>2、iOS 5.0新增</strong></p>
-
-<p>//设置在某个状态下的背景图片</p>
-
-<pre><code>- (void)setBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
-</code></pre>
-
-<p>//获取在某个状态下的背景图片</p>
-
-<pre><code>- (UIImage *)backgroundImageForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics   
-</code></pre>
-
-<p>//设置分割线背景图片</p>
-
-<pre><code>- (void)setDividerImage:(UIImage *)dividerImage forLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMetCT
-</code></pre>
-
-<p>//获取分割线背景图片</p>
-
-<pre><code>- (UIImage *)dividerImageForLeftSegmentState:(UIControlState)leftState rightSegmentState:(UIControlState)rightState barMetrics:(UIBarMetrics)barMeE 
-</code></pre>
-
-<p>//设置文字显示样式</p>
-
-<pre><code>- (void)setTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state;
-</code></pre>
-
-<p>//获取文字显示样式</p>
-
-<pre><code>- (NSDictionary *)titleTextAttributesForState:(UIControlState)state;
-</code></pre>
-
-<p>//设置选项中内容的调整位置</p>
-
-<pre><code>- (void)setContentPositionAdjustment:(UIOffset)adjustment forSegmentType:(UISegmentedControlSegment)leftCenterRightOrAlone barMetrics:(UIBarMetrics)barMetrics; 
-</code></pre>
-
-<p>//获取选项中内容的调整位置</p>
-
-<pre><code>- (UIOffset)contentPositionAdjustmentForSegmentType:(UISegmentedControlSegment)leftCenterRightOrAlone barMetrics:(UIBarMetrics)barMetrics;
 </code></pre>
 ]]></content>
   </entry>
