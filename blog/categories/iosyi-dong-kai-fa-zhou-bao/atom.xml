@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS移动开发周报 | Abel's Den]]></title>
   <link href="http://www.beyondabel.com/blog/categories/iosyi-dong-kai-fa-zhou-bao/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-04-12T23:19:24+08:00</updated>
+  <updated>2016-04-25T13:06:08+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第6期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/04/22/weekly06/"/>
+    <updated>2016-04-22T12:50:11+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/04/22/weekly06</id>
+    <content type="html"><![CDATA[<p><img src="/images/2016/04/weekly06.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><p><a href="http://toutiao.com/a6275841927522861314/?tt_from=weixin&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=weixin&amp;iid=3824799348&amp;utm_medium=toutiao_ios&amp;wxshare_count=1">阿里宣布开源Weex 用Web方式开发Native性能体验应用</a> : 阿里巴巴今天在Qcon大会上宣布跨平台移动开发工具Weex开放内测邀请。Weex能够完美兼顾性能与动态性，让移动开发者通过简捷的前端语法写出Native级别的性能体验，并支持iOS、安卓、YunOS及Web等多端部署。
+对于移动开发者来说，Weex主要解决了频繁发版和多端研发两大痛点，同时解决了前端语言性能差和显示效果受限的问题。开发者可通过<a href="http://alibaba.github.io/weex/">Weex官网</a>申请内测。</p></li>
+<li><p><a href="http://daringfireball.net/linked/2016/04/14/bloomberg-app-store-search">Apple 可能正在策划推出 App Store 付费排名</a>：国外有消息指出，Apple 可能在考虑将竞价排名或者付费关键词搜索加入到 App Store 的搜索体系中。根据现有消息，App Store 的付费排名可能采取和 Google 搜索的关键字购买类似，开发商对某个关键字进行购买，并让自己的 app 出现在搜索前列。如果消息属实，那么这对整个 App Store 生态将产生相当大的影响。</p></li>
+<li><a href="http://www.jiemian.com/article/621007.html">苹果关闭中国区iTunes Movies和iBooks Store服务</a>: 目前在国内登陆上述两个内容商店均显示不可用。对于关闭的原因，苹果公司相关人士拒绝透露更多信息。</li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><p><a href="http://go.macrumors.com/?id=73726X1523000&amp;site=macrumors.com&amp;xs=1&amp;isjs=1&amp;url=https%3A%2F%2Fitunes.apple.com%2Fus%2Fcourse%2Fdeveloping-ios-9-apps-swift%2Fid1104579961&amp;xguid=074ac52994ec90a466b54092a91fa805&amp;xuuid=28851a1abff392d7a27a283d1a053ef0&amp;xsessid=d720f8c99835144c8cec6fc4c10cae45&amp;xcreo=0&amp;xed=0&amp;sref=http%3A%2F%2Fwww.macrumors.com%2F2016%2F04%2F20%2Fstanford-developing-ios-9-apps-course%2F&amp;xtz=-480&amp;abp=1">斯坦福大学更新iOS 9编程开发新课程</a>：想必很多从事或正在学习iOS应用编程开发的用户都是通过斯坦福大学教授Paul Hegarty的教学课程中起步，而且在过去几年间，斯坦福大学在iTunes U上向那些想要为iOS设备创建应用的用户提供了免费的开发课程。近日，面向iOS 9和Swift的2016年课程正式上线，在课程需求中要求掌握C语言和面向对象编程经验，并超过Programming Abstractions级别且完成Programming Paradigms课程。</p></li>
+<li><p><a href="http://www.jianshu.com/p/3fb19ce35e4b">老生常谈：深入浅出RAC</a> : RAC是ReactiveCocoa的简称，ReactiveCocoa是响应式编程(FRP)在iOS中的一个实现框架，它在Github上是开源的；ReactiveCocoa为事件定义了一个标准接口，从而可以使用一些基本工具来更容易的连接、过滤和组合。</p></li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/hypoyao/GYHttpMock">FBMemoryProfiler</a> : FBMemoryProfiler是Facebook开源的一款用于分析iOS内存使用和检测循环引用的工具库。</li>
+<li><a href="https://github.com/beyondabel/BANetworking">BANetworking</a>: BANetworking是一个类似于AFNetworkring的网络构架，它把一些基本的请求业务逻辑已经封装好了，使用非常简单。</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第5期]]></title>
@@ -42,7 +80,7 @@
 <h2>开源代码</h2>
 
 <ol>
-<li><a href="https://github.com/hypoyao/GYHttpMock">GYHttpMock：iOS HTTP请求模拟工具</a> : iOS App开发过程中，前台开发过程通常都是并行进行的，因此难免会出现一些客户端需要等待后台开发联调的情景，等待的过程往往痛若而无奈（后台被催得痛苦，前端无奈等待）。通常解决办法是，客户端在某处 hardcode 网络返回数据，当然，一不小心，这种测试代码被提交到了线上也是常有的事情。还有更“高级”一点，通过设置代理，用抓包工具修改网络数据，但这种效率低得令人抓狂。引入一个可以模拟网络请求的工具似乎就可以轻松满足需求，但实践证明，“模拟网络请求”这个需求并不简单。例如对于全新的业务，后台如果还没有数据，前端完全可以根据协议自己制造假数据返回。但是，很多情况下，可能是对已有业务的变更，也就是需要修改后台已有的业务数据。</li>
+<li><a href="https://github.com/hypoyao/GYHttpMock">GYHttpMock：iOS HTTP请求模拟工具</a> : iOS App开发过程中，前台开发过程通常都是并行进行的，因此难免会出现一些客户端需要等待后台开发联调的情景，等待的过程往往痛若而无奈（后台被催得痛苦，前端无奈等待）。通常解决办法是，客户端在某处 hardcode 网络返回数据，当然，一不小心，这种测试代码被提交到了线上也是常有的事情。还有更“高级”一点，通过设置代理，用抓包工具修改网络数据，但这种效率低得令人抓狂。</li>
 <li><a href="https://github.com/EddyBorja/EBPhotoPages">EBPhotoPages</a> : 用于显示一个滚动型照片页和元数据的图片库。用户可以放大、缩小图片，以及创建，编辑或删除注释和标记，共享或删除照片，并报告不当的照片。所有照片和内容异步加载。相片的用户权限通过委托协议控制。该库是使用状态模式来控制画廊的行为，让其他开发人员可以轻松地修改或增加新的状态，而不必了解太多的原代码设计。。</li>
 <li><a href="https://github.com/tdginternet/TGCameraViewController">TGCameraViewController</a> : 一款可定制的AVFoundation相机,界面美观、实用性强且容易集成。</li>
 </ol>
@@ -163,50 +201,6 @@
 <li><a href="https://github.com/Mantle/Mantle">Mantle</a> : Mantle是一个用于简化Cocoa或Cocoa Touch程序中model层的第三方库。通常我们的应该中都会定义大量的model来表示各种数据结构，而这些model的初始化和编码解码都需要写大量的代码。而Mantle的优点在于能够大大地简化这些代码。</li>
 <li><a href="https://github.com/marcuswestin/WebViewJavascriptBridge">WebViewJavaScriptBridge</a> : WebViewJavascriptBridge是Obj-C和JavaScript通过UIWebViews/WebViews互通消息的一个iOS/OSX的桥梁.</li>
 <li><a href="https://github.com/SnapKit/Masonry">Masonry</a> : 用过autolayout会感觉这东西好麻烦，写一个约束得一堆很罗嗦的代码，还不如直接frame来得快，Masonry是一个轻量级的布局框架 拥有自己的描述语法 采用更优雅的链式语法封装自动布局 简洁明了，非常好用</li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS移动开发周报-第1期]]></title>
-    <link href="http://www.beyondabel.com/blog/2016/02/28/weekly01/"/>
-    <updated>2016-02-28T17:05:32+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2016/02/28/weekly01</id>
-    <content type="html"><![CDATA[<p><img src="/images/2016/02/weekly01.png" alt="image" /></p>
-
-<!--more-->
-
-
-<h3>业界新闻</h3>
-
-<hr />
-
-<ol>
-<li><a href="http://tech2ipo.com/10027880">Facebook 再次进军搜索领域，想和 Google 干一仗？</a></li>
-<li><a href="http://tech.sina.com.cn/mobile/n/n/2016-02-26/doc-ifxpvysv4898279.shtml">传苹果将推出9.7英寸iPad Pro</a></li>
-<li><a href="http://tech.sina.com.cn/it/2016-02-26/doc-ifxpvysx1670446.shtml">微软正式宣布移植 Android 应用计划流产</a></li>
-</ol>
-
-
-<h3>教程</h3>
-
-<hr />
-
-<ol>
-<li><a href="http://www.jianshu.com/p/c467809bedb3">《七个Swift中的陷阱以及避免方法》</a>: Swift语言希望通过采用安全的编程模式去帮助开发者避免bug。然而这也会不可避免的产生一些人造的陷阱，他们会在编译器不报错的情况下引入一些Bug。这些陷阱有的已经在Swift book中提到，有一些还没有。这里有七个我在去年遇到的陷阱，它们涉及Swift协议扩展、可选链和函数式编程。</li>
-<li><a href="http://jspatch.com/Docs/intro">《JSPatch使用文档》</a>:JSPatch 是一个开源项目(Github链接)，只需要在项目里引入极小的引擎文件，就可以使用 JavaScript 调用任何 Objective-C 的原生接口，替换任意 Objective-C 原生方法。目前主要用于下发 JS 脚本替换原生 Objective-C 代码，实时修复线上 bug。</li>
-<li><a href="http://bugly.qq.com/bbs/forum.php?mod=viewthread&amp;tid=267&amp;extra=page%3D1">H5 缓存机制浅析 移动端 Web 加载性能优化</a>:如果曾经被UIWebView的cache虐过的人可以看看这篇文章是否能解决你的问题。</li>
-</ol>
-
-
-<h3>开源代码</h3>
-
-<hr />
-
-<ol>
-<li><a href="https://github.com/beyondabel/BATableView">BATableView</a> : BATableView是自定义列表中的索引栏（Index Bar）。手指滑动 index bar 时，中间会出现黑色小浮块，并把index Bar上的字显示在黑色小浮块上，黑色小浮块上的字会随手指index bar 变换。</li>
-<li><a href="https://github.com/dustturtle/RealReachability">RealReachability</a>：一个类似于Reachability的库，但比Reachability对网络侦听更好的库。</li>
 </ol>
 
 ]]></content>

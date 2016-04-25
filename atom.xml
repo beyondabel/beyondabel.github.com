@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-04-12T23:19:24+08:00</updated>
+  <updated>2016-04-25T13:06:08+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第6期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/04/22/weekly06/"/>
+    <updated>2016-04-22T12:50:11+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/04/22/weekly06</id>
+    <content type="html"><![CDATA[<p><img src="http://www.beyondabel.com/images/2016/04/weekly06.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><p><a href="http://toutiao.com/a6275841927522861314/?tt_from=weixin&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=weixin&amp;iid=3824799348&amp;utm_medium=toutiao_ios&amp;wxshare_count=1">阿里宣布开源Weex 用Web方式开发Native性能体验应用</a> : 阿里巴巴今天在Qcon大会上宣布跨平台移动开发工具Weex开放内测邀请。Weex能够完美兼顾性能与动态性，让移动开发者通过简捷的前端语法写出Native级别的性能体验，并支持iOS、安卓、YunOS及Web等多端部署。
+对于移动开发者来说，Weex主要解决了频繁发版和多端研发两大痛点，同时解决了前端语言性能差和显示效果受限的问题。开发者可通过<a href="http://alibaba.github.io/weex/">Weex官网</a>申请内测。</p></li>
+<li><p><a href="http://daringfireball.net/linked/2016/04/14/bloomberg-app-store-search">Apple 可能正在策划推出 App Store 付费排名</a>：国外有消息指出，Apple 可能在考虑将竞价排名或者付费关键词搜索加入到 App Store 的搜索体系中。根据现有消息，App Store 的付费排名可能采取和 Google 搜索的关键字购买类似，开发商对某个关键字进行购买，并让自己的 app 出现在搜索前列。如果消息属实，那么这对整个 App Store 生态将产生相当大的影响。</p></li>
+<li><a href="http://www.jiemian.com/article/621007.html">苹果关闭中国区iTunes Movies和iBooks Store服务</a>: 目前在国内登陆上述两个内容商店均显示不可用。对于关闭的原因，苹果公司相关人士拒绝透露更多信息。</li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><p><a href="http://go.macrumors.com/?id=73726X1523000&amp;site=macrumors.com&amp;xs=1&amp;isjs=1&amp;url=https%3A%2F%2Fitunes.apple.com%2Fus%2Fcourse%2Fdeveloping-ios-9-apps-swift%2Fid1104579961&amp;xguid=074ac52994ec90a466b54092a91fa805&amp;xuuid=28851a1abff392d7a27a283d1a053ef0&amp;xsessid=d720f8c99835144c8cec6fc4c10cae45&amp;xcreo=0&amp;xed=0&amp;sref=http%3A%2F%2Fwww.macrumors.com%2F2016%2F04%2F20%2Fstanford-developing-ios-9-apps-course%2F&amp;xtz=-480&amp;abp=1">斯坦福大学更新iOS 9编程开发新课程</a>：想必很多从事或正在学习iOS应用编程开发的用户都是通过斯坦福大学教授Paul Hegarty的教学课程中起步，而且在过去几年间，斯坦福大学在iTunes U上向那些想要为iOS设备创建应用的用户提供了免费的开发课程。近日，面向iOS 9和Swift的2016年课程正式上线，在课程需求中要求掌握C语言和面向对象编程经验，并超过Programming Abstractions级别且完成Programming Paradigms课程。</p></li>
+<li><p><a href="http://www.jianshu.com/p/3fb19ce35e4b">老生常谈：深入浅出RAC</a> : RAC是ReactiveCocoa的简称，ReactiveCocoa是响应式编程(FRP)在iOS中的一个实现框架，它在Github上是开源的；ReactiveCocoa为事件定义了一个标准接口，从而可以使用一些基本工具来更容易的连接、过滤和组合。</p></li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/hypoyao/GYHttpMock">FBMemoryProfiler</a> : FBMemoryProfiler是Facebook开源的一款用于分析iOS内存使用和检测循环引用的工具库。</li>
+<li><a href="https://github.com/beyondabel/BANetworking">BANetworking</a>: BANetworking是一个类似于AFNetworkring的网络构架，它把一些基本的请求业务逻辑已经封装好了，使用非常简单。</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第5期]]></title>
@@ -42,7 +80,7 @@
 <h2>开源代码</h2>
 
 <ol>
-<li><a href="https://github.com/hypoyao/GYHttpMock">GYHttpMock：iOS HTTP请求模拟工具</a> : iOS App开发过程中，前台开发过程通常都是并行进行的，因此难免会出现一些客户端需要等待后台开发联调的情景，等待的过程往往痛若而无奈（后台被催得痛苦，前端无奈等待）。通常解决办法是，客户端在某处 hardcode 网络返回数据，当然，一不小心，这种测试代码被提交到了线上也是常有的事情。还有更“高级”一点，通过设置代理，用抓包工具修改网络数据，但这种效率低得令人抓狂。引入一个可以模拟网络请求的工具似乎就可以轻松满足需求，但实践证明，“模拟网络请求”这个需求并不简单。例如对于全新的业务，后台如果还没有数据，前端完全可以根据协议自己制造假数据返回。但是，很多情况下，可能是对已有业务的变更，也就是需要修改后台已有的业务数据。</li>
+<li><a href="https://github.com/hypoyao/GYHttpMock">GYHttpMock：iOS HTTP请求模拟工具</a> : iOS App开发过程中，前台开发过程通常都是并行进行的，因此难免会出现一些客户端需要等待后台开发联调的情景，等待的过程往往痛若而无奈（后台被催得痛苦，前端无奈等待）。通常解决办法是，客户端在某处 hardcode 网络返回数据，当然，一不小心，这种测试代码被提交到了线上也是常有的事情。还有更“高级”一点，通过设置代理，用抓包工具修改网络数据，但这种效率低得令人抓狂。</li>
 <li><a href="https://github.com/EddyBorja/EBPhotoPages">EBPhotoPages</a> : 用于显示一个滚动型照片页和元数据的图片库。用户可以放大、缩小图片，以及创建，编辑或删除注释和标记，共享或删除照片，并报告不当的照片。所有照片和内容异步加载。相片的用户权限通过委托协议控制。该库是使用状态模式来控制画廊的行为，让其他开发人员可以轻松地修改或增加新的状态，而不必了解太多的原代码设计。。</li>
 <li><a href="https://github.com/tdginternet/TGCameraViewController">TGCameraViewController</a> : 一款可定制的AVFoundation相机,界面美观、实用性强且容易集成。</li>
 </ol>
@@ -2988,227 +3026,6 @@ self.avatarImageView.frame = CGRectMake(15, 10, 40, 40);
 - (CGRect)maximumValueImageRectForBounds:(CGRect)bounds;
 - (CGRect)trackRectForBounds:(CGRect)bounds;
 - (CGRect)thumbRectForBounds:(CGRect)bounds trackRect:(CGRect)rect value:(float)value;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS组件之UITextField详解]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/01/10/uitextfield/"/>
-    <updated>2014-01-10T12:34:12+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/01/10/uitextfield</id>
-    <content type="html"><![CDATA[<h3>引言</h3>
-
-<p>UITextField对象是显示可编辑的文本，当用户按下键盘上的return按钮发送一个动作消息到目标对象,UITextField继承于UIControl（有关UIControl请参照<a href="http://www.beyondabel.com/blog/2014/01/06/uicontrol/">《iOS组件之UIControl详解》</a>）。</p>
-
-<p>除了其基本的文本编辑行为，UITextField类还提供了清除当前文本内置按钮等一些功能。</p>
-
-<!--more-->
-
-
-<h3>目录</h3>
-
-<pre><code>1、基本属性及方法
-2、重写方法实现定制化UITextfiled
-3、第一响应设置
-4、UIView的UITextField的扩展属性
-5、UITextFieldDelegate代理协议（可选）
-</code></pre>
-
-<h3>1、基本属性及方法</h3>
-
-<p>// 设置文本内容</p>
-
-<pre><code>NSString               *text;                 
-</code></pre>
-
-<p>// 设置文本显示属性（iOS6.0）</p>
-
-<pre><code>NSAttributedString     *attributedText;
-</code></pre>
-
-<p>// 设置字体颜色</p>
-
-<pre><code>UIColor                *textColor;            
-</code></pre>
-
-<p>// 设置字体</p>
-
-<pre><code>UIFont                 *font;                 
-</code></pre>
-
-<p>// 内容的对齐方式（默认为NSLeftTextAlignment）</p>
-
-<pre><code>NSTextAlignment         textAlignment;        
-</code></pre>
-
-<p>// 设置边框样式，只有设置了才会显示边框样式</p>
-
-<pre><code>UITextBorderStyle       borderStyle;          
-</code></pre>
-
-<p>// 设置文本的显示属性（iOS7.0）</p>
-
-<pre><code>NSDictionary           *defaultTextAttributes; 
-</code></pre>
-
-<p>// 当输入框没有内容时，水印提示</p>
-
-<pre><code>NSString               *placeholder;          
-</code></pre>
-
-<p>// （iOS 6.0）</p>
-
-<pre><code>NSAttributedString     *attributedPlaceholder;
-</code></pre>
-
-<p>// 再次编辑就清空(默认为NO)</p>
-
-<pre><code>BOOL                    clearsOnBeginEditing;
-</code></pre>
-
-<p>// 设置为YES时文本会自动缩小以适应文本窗口大小.默认是保持原来大小,而让长文本滚动　</p>
-
-<pre><code>BOOL                    adjustsFontSizeToFitWidth; 
-</code></pre>
-
-<p>// 设置自动缩小显示的最小字体大小</p>
-
-<pre><code>CGFloat                 minimumFontSize;      
-</code></pre>
-
-<p>// 设置代理</p>
-
-<pre><code>id&lt;UITextFieldDelegate&gt; delegate; 
-</code></pre>
-
-<p>// 设置背景图片</p>
-
-<pre><code>UIImage                *background;
-</code></pre>
-
-<p>// 设置背景</p>
-
-<pre><code>UIImage                *disabledBackground;
-</code></pre>
-
-<p>// 是否正在编辑(只读)</p>
-
-<pre><code>BOOL editing;
-</code></pre>
-
-<p>// （iOS 6.0）</p>
-
-<pre><code>BOOL allowsEditingTextAttributes;
-</code></pre>
-
-<p>// （iOS 6.0）</p>
-
-<pre><code>NSDictionary *typingAttributes;
-</code></pre>
-
-<p>// 输入框中是否有个叉号，在什么时候显示，用于一次性删除输入框中的内容</p>
-
-<pre><code>UITextFieldViewMode  clearButtonMode;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>UIView              *leftView;
-UITextFieldViewMode  leftViewMode;
-
-UIView              *rightView;
-UITextFieldViewMode  rightViewMode;
-</code></pre>
-
-<h3>2、重写方法实现定制化UITextfiled</h3>
-
-<p>//重写来重置边缘区域</p>
-
-<pre><code>- (CGRect)borderRectForBounds:(CGRect)bounds;
-</code></pre>
-
-<p>// 重写来重置文字区域</p>
-
-<pre><code>- (CGRect)textRectForBounds:(CGRect)bounds;
-</code></pre>
-
-<p>// 重写来重置占位符区域</p>
-
-<pre><code>- (CGRect)placeholderRectForBounds:(CGRect)bounds;
-</code></pre>
-
-<p>// 重写来重置编辑区域</p>
-
-<pre><code>- (CGRect)editingRectForBounds:(CGRect)bounds;
-</code></pre>
-
-<p>// 重写来重置clearButton位置,改变size可能导致button的图片失真</p>
-
-<pre><code>- (CGRect)clearButtonRectForBounds:(CGRect)bounds;
-</code></pre>
-
-<p>//</p>
-
-<pre><code>- (CGRect)leftViewRectForBounds:(CGRect)bounds;
-- (CGRect)rightViewRectForBounds:(CGRect)bounds;
-
-- (void)drawTextInRect:(CGRect)rect;
-- (void)drawPlaceholderInRect:(CGRect)rect;
-</code></pre>
-
-<h3>3、第一响应设置</h3>
-
-<pre><code>UIView *inputView;             
-UIView *inputAccessoryView;
-
-BOOL clearsOnInsertion NS_AVAILABLE_IOS(6_0);
-</code></pre>
-
-<h3>4、UIView的UITextField的扩展属性</h3>
-
-<pre><code>- (BOOL)endEditing:(BOOL)force;
-</code></pre>
-
-<h3>5、UITextFieldDelegate代理协议（可选）</h3>
-
-<p>// 返回一个BOOL值，指定是否循序文本字段开始编辑　</p>
-
-<pre><code>- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;        
-</code></pre>
-
-<p>// 开始编辑时触发，文本字段将成为first responder</p>
-
-<pre><code>- (void)textFieldDidBeginEditing:(UITextField *)textField;
-</code></pre>
-
-<p>//返回BOOL值，指定是否允许文本字段结束编辑，当编辑结束，文本字段会让出first responder　要想在用户结束编辑时阻止文本字段消失，可以返回NO.这对一些文本字段必须始终保持活跃状态的程序很有用，比如即时消息</p>
-
-<pre><code>- (BOOL)textFieldShouldEndEditing:(UITextField *)textField;
-</code></pre>
-
-<p>// 结束编辑</p>
-
-<pre><code>- (void)textFieldDidEndEditing:(UITextField *)textField; 
-</code></pre>
-
-<p>//当用户使用自动更正功能，把输入的文字修改为推荐的文字时，就会调用这个方法。　
-//这对于想要加入撤销选项的应用程序特别有用　
-//可以跟踪字段内所做的最后一次修改，也可以对所有编辑做日志记录,用作审计用途。　　
-//要防止文字被改变可以返回NO　
-//这个方法的参数中有一个NSRange对象，指明了被改变文字的位置，建议修改的文本也在其中</p>
-
-<pre><code>- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string; 
-</code></pre>
-
-<p>//返回一个BOOL值指明是否允许根据用户请求清除内容.可以设置在特定条件下才允许清除内容</p>
-
-<pre><code>- (BOOL)textFieldShouldClear:(UITextField *)textField; 
-</code></pre>
-
-<p>//返回一个BOOL值，指明是否允许在按下回车键时结束编辑　</p>
-
-<pre><code>- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 </code></pre>
 ]]></content>
   </entry>
