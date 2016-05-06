@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS移动开发周报 | Abel's Den]]></title>
   <link href="http://www.beyondabel.com/blog/categories/iosyi-dong-kai-fa-zhou-bao/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-05-05T21:21:24+08:00</updated>
+  <updated>2016-05-06T16:06:04+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iOS移动开发周报-第6期]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/05/06/weekly07/"/>
+    <updated>2016-05-06T12:01:47+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/05/06/weekly07</id>
+    <content type="html"><![CDATA[<p><img src="/images/2016/04/weekly06.png" alt="image" /></p>
+
+<!--more-->
+
+
+<h2>业界新闻</h2>
+
+<ol>
+<li><p><a href="http://www.cnbeta.com/articles/498479.htm">苹果：6月1日后所有应用必须支持IPv6-only网络</a> : 本周三发布的声明中，苹果向应用开发者发出提醒&mdash;即将到来的App Store策略要求所有iOS应用必须包含对IPv6-only网络的支持。自今年6月1日开始，所有提交至苹果App Store的应用申请必须要兼容面向硬件识别和网络路由的最新互联网协议&mdash;IPv6-only标准。在去年的全球开发者大会上苹果就率先宣布iOS 9会向IPv6-only网络服务过渡。大家可能会问了，自己的App会不会被拒呀！这里我告诉大家一个消息，只要大家的网络请求使用的是NSURLSession就是支持最新的IPv6-only网络。</p></li>
+<li><p><a href="http://www.ithome.com/html/it/223286.htm">苹果App Store bug已修复，被“消失”的APP又回来了</a>：昨天上午有人突然在群里爆料说App Store突然无法搜索到自己的App，下午5点我的朋友圈已被无法搜索的相关文章刷爆了，昨天晚上10点左右，App Store搜索已陆续恢复正常。</p></li>
+<li><a href="http://www.techweb.com.cn/world/2016-05-04/2326854.shtml">苹果官方证实终止WebObjects 乔布斯最爱产品寿终正寝</a>: 据国外媒体报道，苹果公司向开发者证实，苹果公司将不再对WebObjects进行升级，乔布斯生前最爱的产品之一寿终正寝。Java开发者胡吉 桑达尔森（Hugi Thordarson）周二爆料称，最近，苹果一位多次同他联系的公关代表向他明确表示，“WebObjects已是一款终止的产品，苹果将不再对它进行升级。”</li>
+</ol>
+
+
+<h2>教程</h2>
+
+<ol>
+<li><p><a href="http://draveness.me/blockskit-1/">神奇的 BlocksKit （一）</a>：Block 到底是什么？这可能是困扰很多 iOS 初学者的一个问题。如果你在 Google 上搜索类似的问题时，可以查找到几十万条结果，block 在 iOS 开发中有着非常重要的地位，而且它的作用也越来越重要。</p></li>
+<li><p><a href="http://www.jianshu.com/p/56e36e5c55cb">第一篇：架构师和架构</a> : 做了多年的开发后，难免会对自己的前途有些疑虑，是走管理还是技术专家？是每个坚持下来的程序猿都会考虑的问题。诚然，在前路上需要很多机遇，我们所能做的最多是做好自己。在日复一日的开发中磨练，精进；然后浴火重生。是的，这就是程序员的生活，枯燥中带点乏味，痛苦时充满着惊喜。</p></li>
+</ol>
+
+
+<h2>开源代码</h2>
+
+<ol>
+<li><a href="https://github.com/square/PonyDebugger">PonyDebugger</a> : 由 Square 公司推出的一款优秀的 iOS 应用网络调试工具, 用户可以实时看到应用程序的网络请求, 也可以对 iOS 应用程序的核心数据栈进行远程调试。</li>
+<li><a href="https://github.com/zwaldowski/BlocksKit">BlocksKit</a>: 一个开源的与 Cocoa 紧密集合的基础性框架, 上面有关于BlocksKit的一些教程。</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS移动开发周报-第6期]]></title>
@@ -162,45 +199,6 @@
 <li><a href="https://github.com/hades0918/ipapy">ipapy</a> : 一个用Python写的iOS项目自动打包脚本工具。</li>
 <li><a href="https://github.com/BradLarson/GPUImage">GPUImage</a> : 一款强大的图片滤镜工具, 支持自定义滤镜, 可用来实时处理图片和视频流, 作者是 SonoPlot 公司的 CTO, 在很小的时候便开始接触编程, 他在 SO 上面的回答也有很多值得阅读, GPUImage 这个项目从 2012 年开始, 使用 OpenGL 图形程序接口编写, 性能非常好, 现在很多 iOS 程序员都用它来实现 iOS 的模糊效果.</li>
 <li><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a> : 由 GitHub 工程师们开发的一个应用于 iOS 和 OS X 开发的函数响应式编程新框架, Matt 称其为 &ldquo;An open source project that exemplifies this brave new era for Objective-C&rdquo;, 也有人说它是 Cocoa 的未来.</li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS移动开发周报-第2期]]></title>
-    <link href="http://www.beyondabel.com/blog/2016/03/03/weekly02/"/>
-    <updated>2016-03-03T00:36:30+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2016/03/03/weekly02</id>
-    <content type="html"><![CDATA[<p><img src="/images/2016/03/weekly02.png" alt="image" /></p>
-
-<!--more-->
-
-
-<h2>业界新闻</h2>
-
-<ol>
-<li><a href="http://www.cocoachina.com/apple/20160302/15503.html">苹果iOS 10系统已现身：允许删除系统预装软件</a></li>
-<li><a href="http://news.xinhuanet.com/fortune/2016-03/02/c_128769374.htm">OpenSSL曝新漏洞 超1100万HTTPS站点受影响</a></li>
-<li><a href="http://www.infoq.com/cn/news/2016/02/realm-react-native">Realm推出了适用于React Native的新数据库</a></li>
-<li><a href="http://tech.qq.com/a/20160303/028642.htm">苹果获柔性屏专利 或应用到未来iPhone中</a></li>
-</ol>
-
-
-<h2>教程</h2>
-
-<ol>
-<li><a href="http://www.jianshu.com/p/f970872fdc22">《iOS高效添加圆角效果实战讲解》</a>: 在项目中我们会经常使用圆角来做一些效果，通过这篇文章你就会知道为什么自己的项目会很卡，自己的姿势是否正确了。</li>
-<li><a href="http://wereadteam.github.io/2016/02/22/MLeaksFinder/">MLeaksFinder：精准 iOS 内存泄露检测工具</a>：在 iOS 开发中，稍不注意就会导致内存泄露的问题，MLeaksFinder 相较于 Instrument，为我们提供了更方便易用的内存泄露检测方案。这篇文章介绍了该工具的使用方式。</li>
-</ol>
-
-
-<h2>开源代码</h2>
-
-<ol>
-<li><a href="https://github.com/Mantle/Mantle">Mantle</a> : Mantle是一个用于简化Cocoa或Cocoa Touch程序中model层的第三方库。通常我们的应该中都会定义大量的model来表示各种数据结构，而这些model的初始化和编码解码都需要写大量的代码。而Mantle的优点在于能够大大地简化这些代码。</li>
-<li><a href="https://github.com/marcuswestin/WebViewJavascriptBridge">WebViewJavaScriptBridge</a> : WebViewJavascriptBridge是Obj-C和JavaScript通过UIWebViews/WebViews互通消息的一个iOS/OSX的桥梁.</li>
-<li><a href="https://github.com/SnapKit/Masonry">Masonry</a> : 用过autolayout会感觉这东西好麻烦，写一个约束得一堆很罗嗦的代码，还不如直接frame来得快，Masonry是一个轻量级的布局框架 拥有自己的描述语法 采用更优雅的链式语法封装自动布局 简洁明了，非常好用</li>
 </ol>
 
 ]]></content>
