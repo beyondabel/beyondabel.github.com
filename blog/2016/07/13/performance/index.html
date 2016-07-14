@@ -1,0 +1,301 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>金蛋理财 iOS 性能优化总结 - Abel's Den</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="金蛋理财 iOS 性能优化总结 金蛋理财作为一款金融类的App，经历过一年半的快速发展，用户量马上就破100w级别了。由于之前快速迭代导致开发人员并不注意的性能问题在业务的不断累积中体现出来。利用最近一段非常长的空余时间，团队对针对一些性能问题做了优化，其中一些需要注意的点还是值得记录下来的。 &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel's Den" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://www.beyondabel.com/blog/2016/07/13/performance/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel's Den</a></h1>
+  
+    <p class="subtitle">上善若水，厚德载物</p>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/openSource">开源项目</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">金蛋理财 iOS 性能优化总结</h1>
+	<div class="entry-content" itemprop="articleBody"><p>金蛋理财作为一款金融类的App，经历过一年半的快速发展，用户量马上就破100w级别了。由于之前快速迭代导致开发人员并不注意的性能问题在业务的不断累积中体现出来。利用最近一段非常长的空余时间，团队对针对一些性能问题做了优化，其中一些需要注意的点还是值得记录下来的。</p>
+
+<!--more-->
+
+
+<h3>移动端关注指标</h3>
+
+<ol>
+<li>运行时的崩溃率。</li>
+<li>开机启动时间</li>
+<li>服务器非正确返回数据，是否会导致崩溃</li>
+<li>界面体验是否流畅</li>
+<li>从数据库读的数据是否太慢</li>
+<li>App是否会有内存问题</li>
+</ol>
+
+
+<h3>如何追踪App崩溃率，如何解决线上闪退</h3>
+
+<p>当iOS设备上的App应用闪退时，操作系统会生成一个crash日志，保存在设备上。crash日志上有很多有用的信息，比如每个正在执行线程的完整堆栈跟踪信息和内存映像，这样就能够通过解析这些信息进而定位crash发生时的代码逻辑，从而找到App闪退的原因。通常来说，crash产生来源于两种问题：违反iOS系统规则导致的crash和App代码逻辑BUG导致的crash，下面分别对他们进行分析。</p>
+
+<p>违反iOS系统规则产生crash的三种类型：</p>
+
+<p>(1) 内存报警闪退</p>
+
+<p>当iOS检测到内存过低时，它的VM系统会发出低内存警告通知，尝试回收一些内存；如果情况没有得到足够的改善，iOS会终止后台应用以回收更多内存；最后，如果内存还是不足，那么正在运行的应用可能会被终止掉。在Debug模式下，可以主动将客户端执行的动作逻辑写入一个log文件中，这样程序童鞋可以将内存预警的逻辑写入该log文件，当发生如下截图中的内存报警时，就是提醒当前客户端性能内存吃紧，可以通过Instruments工具中的Allocations 和 Leaks模块库来发现内存分配问题和内存泄漏问题。</p>
+
+<p>(2) 响应超时</p>
+
+<p>当应用程序对一些特定的事件（比如启动、挂起、恢复、结束）响应不及时，苹果的Watchdog机制会把应用程序干掉，并生成一份相应的crash日志。这些事件与下列UIApplicationDelegate方法相对应，当遇到Watchdog日志时，可以检查上图中的几个方法是否有比较重的阻塞UI的动作。</p>
+
+<p><code>obj-c
+application:didFinishLaunchingWithOptions:
+applicationWillResignActive:
+applicationDidEnterBackground:
+applicationWillEnterForeground:
+applicationDidBecomeActive:
+applicationWillTerminate:
+</code></p>
+
+<p>(3) 用户强制退出</p>
+
+<p>一看到“用户强制退出”，首先可能想到的双击Home键，然后关闭应用程序。不过这种场景一般是不会产生crash日志的，因为双击Home键后，所有的应用程序都处于后台状态，而iOS随时都有可能关闭后台进程，当应用阻塞界面并停止响应时这种场景才会产生crash日志。这里指的“用户强制退出”场景，是稍微比较复杂点的操作：先按住电源键，直到出现“滑动关机”的界面时，再按住Home键，这时候当前应用程序会被终止掉，并且产生一份相应事件的crash日志。</p>
+
+<p>应用逻辑的Bug</p>
+
+<p>大多数闪退崩溃日志的产生都是因为应用中的Bug，这种Bug的错误种类有很多，比如：</p>
+
+<ul>
+<li>SEGV：（Segmentation Violation，段违例），无效内存地址，比如空指针，未初始化指针，栈溢出等；</li>
+<li>SIGABRT：收到Abort信号，可能自身调用abort()或者收到外部发送过来的信号；</li>
+<li>SIGBUS：总线错误。与SIGSEGV不同的是，SIGSEGV访问的是无效地址（比如虚存映射不到物理内存），而SIGBUS访问的是有效地址，但总线访问异常（比如地址对齐问题）；</li>
+<li>SIGILL：尝试执行非法的指令，可能不被识别或者没有权限；</li>
+<li>SIGFPE：Floating Point Error，数学计算相关问题（可能不限于浮点计算），比如除零操作；</li>
+<li>SIGPIPE：管道另一端没有进程接手数据；</li>
+</ul>
+
+
+<p>常见的崩溃原因基本都是代码逻辑问题或资源问题，比如数组越界，访问野指针或者资源不存在，或资源大小写错误等。</p>
+
+<p>crash的收集</p>
+
+<p>如果是在windows上你可以通过itools或pp助手等辅助工具查看系统产生的历史crash日志，然后再根据app来查看。如果是在Mac 系统上，只需要打开xcode->windows->devices，选择device logs进行查看，如下图，这些crash文件都可以导出来，然后再单独对这个crash文件做处理分析。</p>
+
+<p>市场上已有的商业软件提供crash收集服务，这些软件基本都提供了日志存储，日志符号化解析和服务端可视化管理等服务：</p>
+
+<ul>
+<li>Crashlytics (www.crashlytics.com)</li>
+<li>Crittercism (www.crittercism.com)</li>
+<li>Bugsense (www.bugsense.com)</li>
+<li>HockeyApp (www.hockeyapp.net)</li>
+<li>Flurry(www.flurry.com)</li>
+</ul>
+
+
+<p>开源的软件也可以拿来收集crash日志，比如Razor,QuincyKit（git链接）等，这些软件收集crash的原理其实大同小异，都是根据系统产生的crash日志进行了一次提取或封装，然后将封装后的crash文件上传到对应的服务端进行解析处理。很多商业软件都采用了Plcrashreporter这个开源工具来上传和解析crash，比如HockeyApp,Flurry和crittercism等。</p>
+
+<p>a9078e8653368c9c291ae2f8b74012e71.jpg</p>
+
+<p>crash信息</p>
+
+<p>由于自己的crash信息太长，找了一张示例：</p>
+
+<p>1)crash标识是应用进程产生crash时的一些标识信息，它描述了该crash的唯一标识（E838FEFB-ECF6-498C-8B35-D40F0F9FEAE4），所发生的硬件设备类型（iphone3,1代表iphone4），以及App进程相关的信息等；</p>
+
+<p>2）基本信息描述的是crash发生的时间和系统版本；</p>
+
+<p>3）异常类型描述的是crash发生时抛出的异常类型和错误码；</p>
+
+<p>4）线程回溯描述了crash发生时所有线程的回溯信息，每个线程在每一帧对应的函数调用信息（这里由于空间限制没有全部列出）；</p>
+
+<p>5）二进制映像是指crash发生时已加载的二进制文件。以上就是一份crash日志包含的所有信息，接下来就需要根据这些信息去解析定位导致crash发生的代码逻辑， 这就需要用到符号化解析的过程（洋名叫：symbolication)。</p>
+
+<p>解决线上闪退</p>
+
+<p>首先保证，发布前充分测试。发布后依然有闪退现象，查看崩溃日志，及时修复并发布。</p>
+
+<h3>如何保证界面体验流畅</h3>
+
+<p>导致界面“卡顿”的原因有二种：一种是用户交互产生的，还有一种是程序本身运行卡顿；如何解决“卡顿”：一个是程序本身的优化，如耗时任务子线程中完成，优化某个功能实现的算法等；另一个对操作系统的优化，再就是对硬件进行升级。对操作系统以及硬件方面作为程度猿的我们是无能为力了，那我们只能从自身程序出发了，要想解决这些问题，首先我们得知道会有哪些坑需要我们注意。</p>
+
+<ol>
+<li>在正确的地方使用reuseIdentifier</li>
+<li>尽可能使Views透明</li>
+<li>避免庞大的XIB</li>
+<li>不要block主线程</li>
+<li>在Image Views中调整图片大小</li>
+<li>选择正确的Collection</li>
+<li>重用和延迟加载Views</li>
+<li>Cache, Cache, 还是Cache！</li>
+<li>权衡渲染方法</li>
+<li>重用大开销的对象</li>
+<li>避免反复处理数据</li>
+<li>选择正确的数据格式</li>
+<li>正确地设定Background Images</li>
+<li>减少使用Web特性</li>
+<li>设定Shadow Path</li>
+<li>尽量避免日期格式转换</li>
+</ol>
+
+
+<h3>如何检查App是否有内存问题</h3>
+
+<p>金蛋理财对于内存检查使用是的微信读书团队开发的 <a href="https://github.com/Zepo/MLeaksFinder">MLeakFinder</a> ,  <a href="https://github.com/Zepo/MLeaksFinder">MLeakFinder</a>是团队成员zepo在github开源的一款内存泄露检测工具，具体原理和使用方法可以参见<a href="http://wereadteam.github.io/2016/02/22/MLeaksFinder/">这篇文章</a>。在此之前，内存泄露引起的性能问题是很难被察觉的，只有泄露到了相当严重的程度，然后通过Instrument工具，不断尝试才得以定位。MLeakFinder能在开发阶段，把内存泄露问题暴露无遗，减少了很多潜在的性能问题。</p>
+</div>
+
+
+
+<p>
+
+<br>
+	<img src="/images/qrcode_for_gh_7b77347c921b_430.jpg" width="280px" height="280px" />
+</br>
+
+
+<br></br>
+<!-- 代码1：放在页面需要展示的位置  -->
+<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+<div id="cyReward" role="cylabs" data-use="reward"></div>
+<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+<script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/??lib/jquery.js,changyan.labs.js?appid=cysj2LEws"></script>
+
+</p>
+</article>
+
+
+
+
+	<div class="share">
+	<!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style_32x32">
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1394432532557467" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc699c19000b89d76ce55e9a9fab7da1b' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+		</div>
+	</div>
+</body>
+</html>
