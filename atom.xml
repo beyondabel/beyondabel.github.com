@@ -4,7 +4,7 @@
   <title><![CDATA[Abel's Den]]></title>
   <link href="http://www.beyondabel.com/atom.xml" rel="self"/>
   <link href="http://www.beyondabel.com/"/>
-  <updated>2016-07-14T15:43:35+08:00</updated>
+  <updated>2016-09-20T17:35:22+08:00</updated>
   <id>http://www.beyondabel.com/</id>
   <author>
     <name><![CDATA[Abel]]></name>
@@ -14,16 +14,163 @@
 
   
   <entry>
-    <title type="html"><![CDATA[金蛋理财 iOS 性能优化总结]]></title>
-    <link href="http://www.beyondabel.com/blog/2016/07/13/performance/"/>
-    <updated>2016-07-13T22:33:49+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2016/07/13/performance</id>
-    <content type="html"><![CDATA[<p>金蛋理财作为一款金融类的App，经历过一年半的快速发展，用户量马上就破100w级别了。由于之前快速迭代导致开发人员并不注意的性能问题在业务的不断累积中体现出来。利用最近一段非常长的空余时间，团队对针对一些性能问题做了优化，其中一些需要注意的点还是值得记录下来的。</p>
+    <title type="html"><![CDATA[UIWebView迁移WKWebView过程中遇到的各种坑]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/09/05/wkwebview/"/>
+    <updated>2016-09-05T16:11:53+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/09/05/wkwebview</id>
+    <content type="html"><![CDATA[<p><img src="http://www.beyondabel.com/images/2016/09/webView.png" alt="image" /></p>
+
+<p>在开发App时，我们常常会遇到内部加载URL或者HTML网页的情况，这个时候我们需要使用到一个控件WebView，在iOS8之前我们只能使用UIWebView加载，UIWebView占用内存多、内存泄露、因过量占用内存CPU使程序假死和被系统kill等问题一直是iOS开发痛点，幸好在iOS8发布之后我们就可以使用WKWebView，然而WKWebView也会有一些坑等着你，相比较而言WKWebView还是非常不错的，但真正应用到项目中，还是需要我们知道这些坑提前绕行。</p>
+
+<p>关于WKWebView的特性与API我就不在些描述了，各位自行查看开发文档或者Google。</p>
 
 <!--more-->
 
 
-<h3>移动端关注指标</h3>
+<h4>坑1：Cookie加载</h4>
+
+<p>UIWebView的Cookie与一般HTTP请求共用一份Cookie，它都存放在NSHTTPCookie中，但WKWebView的cookie并不会再加载url后自动保存到NSHTTPCookieStorage中,原因是因为现在WKWebView会忽视默认的网络存储， NSURLCache, NSHTTPCookieStorage, NSCredentialStorage。 目前是这样的，WKWebView有自己的进程，同样也有自己的存储空间用来存储cookie和cache， 其他的网络类如NSURLConnection是无法访问到的。 同时WKWebView发起的资源请求也是不经过NSURLProtocol的，导致无法自定义请求。</p>
+
+<p>同一个应用，不同WKWebView之间的cookie同步，可以通过使用同一个WKProcessPool实现cookie的同步，那NSURLConnection或者UIWebView与WKWebView怎么共享Cookie呢？</p>
+
+<p>通过预加载JavaScript来实现Cookie之间的同步:</p>
+
+<ol>
+<li><p>构造JS方法</p>
+
+<pre><code>- (NSString *)cookieJavaScriptString {
+    NSMutableString *cookieString = [[NSMutableString alloc] init];
+    //取出cookie
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in cookieStorage.cookies) {
+        NSString *excuteJSString = [NSString stringWithFormat:@"document.cookie='%@=%@';", cookie.name, cookie.value];
+        [cookieString appendString:excuteJSString];
+    }
+    //执行js
+    return cookieString;
+}
+</code></pre></li>
+<li><p> 预设JS加载Cookie</p>
+
+<pre><code>WKUserContentController* userContentController = WKUserContentController.new; 
+WKWebViewConfiguration* webViewConfig = WKWebViewConfiguration.new;
+    webViewConfig.userContentController = userContentController;
+    webViewConfig.processPool = [BAWKWebViewCookieSyncManager shareManager].processPool;
+
+WKUserScript * cookieScript = [[WKUserScript alloc] initWithSource:[self cookieJavaScriptString] injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+
+[userContentController addUserScript:cookieScript];
+
+_webView = (UIWebView *)[[WKWebView alloc] initWithFrame:self.bounds configuration:webViewConfig];
+[self addSubview:_webView];
+((WKWebView *)_webView).navigationDelegate = self;
+((WKWebView *)_webView).UIDelegate = self;
+</code></pre></li>
+</ol>
+
+
+<p>通过以上已经可以同步Cookie了，但这中间其实还是有一个小问题，第一次进入时这个Cookie加载不上，这个原因是因为这个JS是等待页面加载完成时才会执行，所以第一次并不会有Cookie,解决办法是在第一次请求时手动往Header上插入Cookie</p>
+
+<pre><code>- (NSString *)cookieString {
+    NSMutableString *cookieString = [[NSMutableString alloc] init];
+//取出cookie
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in cookieStorage.cookies) {
+    NSString *excuteJSString = [NSString stringWithFormat:@"%@=%@;", cookie.name, cookie.value];
+        [cookieString appendString:excuteJSString];
+    }
+return cookieString;
+}
+
+NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+[mutableRequest setValue:[self cookieString] forHTTPHeaderField:@"Cookie"];
+
+通过以上的方式就可以彻底解决UIWebView与WKWebView的Cookie共用问题了，通过这种方法也可以去修改WKWebView的Cookie了。
+</code></pre>
+
+<h4>坑2：iOS8.0~8.2之间加载URL偶尔会白屏</h4>
+
+<p>出现白屏因为是偶尔的原因目前我也没定位到，所以目前的解决办法是通过判断系统版本号是否大于8.2，如果小于8.2还是用UIWebView吧，WKWebView刚出来时的Bug，后面已解决。</p>
+
+<h4>坑3：iOS8.0~9.0之间加载HTML不能加载样式</h4>
+
+<p>这个问题与上面一样，9.0之前加载HTML时会没有样式，主要是CSS没加载。如果加载HTML的话，你就只能在9.0以上使用WKWebView了。</p>
+
+<h4>坑4：需要自己处理警告框、确认框、输入框</h4>
+
+<p>如果需要显示JS弹出的框，就必须分别实现它的代理方法：</p>
+
+<pre><code>- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+    }]];
+    [viewController presentViewController:alert animated:YES completion:nil];
+}
+
+// JS端调用confirm函数时，会触发此方法
+// 通过message可以拿到JS端所传的数据
+// 在iOS端显示原生alert得到YES/NO后
+// 通过completionHandler回调给JS端
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler {
+
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(YES);
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    completionHandler(NO);
+}]];
+    [ViewController presentViewController:alert animated:YES completion:nil];
+}
+
+// JS端调用prompt函数时，会触发此方法
+// 要求输入一段文本
+// 在原生输入得到文本内容后，通过completionHandler回调给JS
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler {
+
+UIAlertController *alert = [UIAlertController alertControllerWithTitle:defaultText message:@"JS调用输入框" preferredStyle:UIAlertControllerStyleAlert];
+[alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    textField.textColor = [UIColor redColor];
+}];
+
+[alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    completionHandler([[alert.textFields lastObject] text]);
+}]];
+
+[viewController presentViewController:alert animated:YES completion:NULL];
+</code></pre>
+
+<p>}</p>
+
+<h4>坑5：URL协议</h4>
+
+<p>在UIWebView中类型于Weixin://、tel://等一些协议，如果UIWebView处理不了，会自动抛给UIAplication去打开，所以可以正常拨打电话，跳转微信等，如果你使用了WKWebView的话，你需要手动去识别这些协议，然后调用UIAplication去打开他，当然这样也可以带来一定的安全性。</p>
+
+<h4>坑6：无法执行POST请求</h4>
+
+<p>这个是一个巨大的坑，如果你需要在URL的时候load一个Post URL，你就需要放弃WKWebView了，当然你一般也用不到POST一个URL。</p>
+
+<p>整体来说WKWebView的性能还是非常不错的，慢慢地肯定会替换掉UIWebView，但就目前UIWebView与WKWebView的过渡阶段我们还是需要去了解WKWebView的一些坑，提高App的性能以及体验。</p>
+
+<p>这里有一个帮助大家无缝切换到WKWebView的库——<a href="https://github.com/beyondabel/BAWebView">BAWebView</a>，使用<a href="https://github.com/beyondabel/BAWebView">BAWebView</a>与UIWebView一样。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[解决iOS App 性能问题的基本思路和方法]]></title>
+    <link href="http://www.beyondabel.com/blog/2016/07/13/performance/"/>
+    <updated>2016-07-13T22:33:49+08:00</updated>
+    <id>http://www.beyondabel.com/blog/2016/07/13/performance</id>
+    <content type="html"><![CDATA[<h3>前言</h3>
+
+<p>当 App 发展到一定的程序后，性能问题总是不可能完全避免，我相信大家都会知道有一个关于猿界段子——《程序员十大谎言》，有很多的性能问题都是由于这十大谎言导致的。我们总是希望能寻找一种能一劳永逸解决性能问题方法，经历这几年的经历，我觉得有这种想法是不太现实的。那如果去解决 App 的性能问题呢？接下来我会根据自己的经验说说解决性能问题的基本思路与基本方法是什么~</p>
+
+<!--more-->
+
+
+<h3>移动端经常关注的指标</h3>
 
 <ol>
 <li>运行时的崩溃率。</li>
@@ -35,7 +182,28 @@
 </ol>
 
 
-<h3>如何追踪App崩溃率，如何解决线上闪退</h3>
+<h3>发现问题</h3>
+
+<p>既然我们关注的常用指标有以上6种，那么我们怎么去发现这些问题呢？</p>
+
+<ol>
+<li><p>用户反馈</p>
+
+<p> 受限于测试时间和用户反馈的积极性，性能问题往往到了比较严重的程序，开发人员才真正发现问题。</p></li>
+<li><p>在线监控</p></li>
+</ol>
+
+
+<p>· 业务性能监控</p>
+
+<p>在解决性能问题时，相信大家积累了很多的经验，产生性能的问题是多种多样，所以解决办法也不尽相同。</p>
+
+<p>· 卡顿监控</p>
+
+<ol>
+<li></li>
+</ol>
+
 
 <p>当iOS设备上的App应用闪退时，操作系统会生成一个crash日志，保存在设备上。crash日志上有很多有用的信息，比如每个正在执行线程的完整堆栈跟踪信息和内存映像，这样就能够通过解析这些信息进而定位crash发生时的代码逻辑，从而找到App闪退的原因。通常来说，crash产生来源于两种问题：违反iOS系统规则导致的crash和App代码逻辑BUG导致的crash，下面分别对他们进行分析。</p>
 
@@ -49,7 +217,7 @@
 
 <p>当应用程序对一些特定的事件（比如启动、挂起、恢复、结束）响应不及时，苹果的Watchdog机制会把应用程序干掉，并生成一份相应的crash日志。这些事件与下列UIApplicationDelegate方法相对应，当遇到Watchdog日志时，可以检查上图中的几个方法是否有比较重的阻塞UI的动作。</p>
 
-<p><code>obj-c
+<p><code>
 application:didFinishLaunchingWithOptions:
 applicationWillResignActive:
 applicationDidEnterBackground:
@@ -115,29 +283,91 @@ applicationWillTerminate:
 
 <p>首先保证，发布前充分测试。发布后依然有闪退现象，查看崩溃日志，及时修复并发布。</p>
 
-<h3>如何保证界面体验流畅</h3>
+<h3>界面卡顿产生的原因和解决方案</h3>
 
 <p>导致界面“卡顿”的原因有二种：一种是用户交互产生的，还有一种是程序本身运行卡顿；如何解决“卡顿”：一个是程序本身的优化，如耗时任务子线程中完成，优化某个功能实现的算法等；另一个对操作系统的优化，再就是对硬件进行升级。对操作系统以及硬件方面作为程度猿的我们是无能为力了，那我们只能从自身程序出发了，要想解决这些问题，首先我们得知道会有哪些坑需要我们注意。</p>
 
-<ol>
-<li>在正确的地方使用reuseIdentifier</li>
-<li>尽可能使Views透明</li>
-<li>避免庞大的XIB</li>
-<li>不要block主线程</li>
-<li>在Image Views中调整图片大小</li>
-<li>选择正确的Collection</li>
-<li>重用和延迟加载Views</li>
-<li>Cache, Cache, 还是Cache！</li>
-<li>权衡渲染方法</li>
-<li>重用大开销的对象</li>
-<li>避免反复处理数据</li>
-<li>选择正确的数据格式</li>
-<li>正确地设定Background Images</li>
-<li>减少使用Web特性</li>
-<li>设定Shadow Path</li>
-<li>尽量避免日期格式转换</li>
-</ol>
+<p>iOS界面处理是在主线程下进行的，系统图形服务通过 CADisplayLink 等机制通知 App，App 主线程开始在 CPU 中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后 CPU 会将计算好的内容提交到 GPU 去，由 GPU 进行变换、合成、渲染。随后 GPU 会把渲染结果提交到帧缓冲区去，等待下一次刷新信号到来时显示到屏幕上。显示器通常以固定频率进行刷新，如果在一个刷新时间内，CPU 或者 GPU 没有完成内容提交，则那一帧就会被丢弃，等待下一次机会再显示，而这时显示屏会保留之前的内容不变。这就是界面卡顿的原因。CPU 和 GPU 不论哪个阻碍了显示流程，都会造成掉帧现象。</p>
 
+<h4>CPU 资源消耗原因和解决方案</h4>
+
+<h4>对象创建</h4>
+
+<p>对象的创建会分配内存、调整属性、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，那么不需要响应触摸事件的控件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后台线程去创建，但可惜的是包含有 CALayer 的控件，都只能在主线程创建和操作。通过 Storyboard 创建视图对象时，其资源消耗会比直接通过代码创建对象要大非常多，在性能敏感的界面里，Storyboard 并不是一个好的技术选择。</p>
+
+<p>尽量推迟对象创建的时间，并把对象的创建分散到多个任务中去。尽管这实现起来比较麻烦，并且带来的优势并不多，但如果有能力做，还是要尽量尝试一下。如果对象可以复用，并且复用的代价比释放、创建新对象要小，那么这类对象应当尽量放到一个缓存池里复用。</p>
+
+<h4>对象调整</h4>
+
+<p>对象的调整也经常是消耗 CPU 资源的地方。这里特别说一下 CALayer：CALayer 内部并没有属性，当调用属性方法时，它内部是通过运行时 resolveInstanceMethod 为对象临时添加一个方法，并把对应属性值保存到内部的一个 Dictionary 里，同时还会通知 delegate、创建动画等等，非常消耗资源。UIView 的关于显示相关的属性（比如 frame/bounds/transform）等实际上都是 CALayer 属性映射来的，所以对 UIView 的这些属性进行调整时，消耗的资源要远大于一般的属性。对此你在应用中，应该尽量减少不必要的属性修改。当视图层次调整时，UIView、CALayer 之间会出现很多方法调用与通知，所以在优化性能时，应该尽量避免调整视图层次、添加和移除视图。</p>
+
+<h5>对象销毁</h5>
+
+<p>对象的销毁虽然消耗资源不多，但累积起来也是不容忽视的。通常当容器类持有大量对象时，其销毁时的资源消耗就非常明显。同样的，如果对象可以放到后台线程去释放，那就挪到后台线程去。这里有个小 Tip：把对象捕获到 block 中，然后扔到后台队列去随便发送个消息以避免编译器警告，就可以让对象在后台线程销毁了。</p>
+
+<pre><code>NSArray *tmp = self.array;
+    self.array = nil;
+    dispatch_async(queue, ^{
+    [tmp class];
+});
+</code></pre>
+
+<h5>布局计算</h5>
+
+<p>视图布局的计算是 App 中最为常见的消耗 CPU 资源的地方。如果能在后台线程提前计算好视图布局、并且对视图布局进行缓存，那么这个地方基本就不会产生性能问题了。</p>
+
+<p>不论通过何种技术对视图进行布局，其最终都会落到对 UIView.frame/bounds/center 等属性的调整上。上面也说过，对这些属性的调整非常消耗资源，所以尽量提前计算好布局，在需要时一次性调整好对应属性，而不要多次、频繁的计算和调整这些属性。</p>
+
+<h4>Autolayout</h4>
+
+<p>Autolayout 是苹果本身提倡的技术，在大部分情况下也能很好的提升开发效率，但是 Autolayout 对于复杂视图来说常常会产生严重的性能问题。随着视图数量的增长，Autolayout 带来的 CPU 消耗会呈指数级上升。如果你不想手动调整 frame 等属性，你可以用一些工具方法替代（比如常见的 left/right/top/bottom/width/height 快捷属性），或者使用 ComponentKit、AsyncDisplayKit 等框架。</p>
+
+<h4>文本计算</h4>
+
+<p>如果一个界面中包含大量文本（比如微博微信朋友圈等），文本的宽高计算会占用很大一部分资源，并且不可避免。如果你对文本显示没有特殊要求，可以参考下 UILabel 内部的实现方式：用 [NSAttributedString boundingRectWithSize:options:context:] 来计算文本宽高，用 &ndash;[NSAttributedString drawWithRect:options:context:] 来绘制文本。尽管这两个方法性能不错，但仍旧需要放到后台线程进行以避免阻塞主线程。如果你用 CoreText 绘制文本，那就可以先生成 CoreText 排版对象，然后自己计算了，并且 CoreText 对象还能保留以供稍后绘制使用。</p>
+
+<h5>文本渲染</h5>
+
+<p>屏幕上能看到的所有文本内容控件，包括 UIWebView，在底层都是通过 CoreText 排版、绘制为 Bitmap 显示的。常见的文本控件 （UILabel、UITextView 等），其排版和绘制都是在主线程进行的，当显示大量文本时，CPU 的压力会非常大。对此解决方案只有一个，那就是自定义文本控件，用 TextKit 或最底层的 CoreText 对文本异步绘制。尽管这实现起来非常麻烦，但其带来的优势也非常大，CoreText 对象创建好后，能直接获取文本的宽高等信息，避免了多次计算（调整 UILabel 大小时算一遍、UILabel 绘制时内部再算一遍）；CoreText 对象占用内存较少，可以缓存下来以备稍后多次渲染。</p>
+
+<h5>图片的解码</h5>
+
+<p>当你用 UIImage 或 CGImageSource 的那几个方法创建图片时，图片数据并不会立刻解码。图片设置到 UIImageView 或者 CALayer.contents 中去，并且 CALayer 被提交到 GPU 前，CGImage 中的数据才会得到解码。这一步是发生在主线程的，并且不可避免。如果想要绕开这个机制，常见的做法是在后台线程先把图片绘制到 CGBitmapContext 中，然后从 Bitmap 直接创建图片。目前常见的网络图片库都自带这个功能。</p>
+
+<h5>图像的绘制</h5>
+
+<p>图像的绘制通常是指用那些以 CG 开头的方法把图像绘制到画布中，然后从画布创建图片并显示这样一个过程。这个最常见的地方就是 [UIView drawRect:] 里面了。由于 CoreGraphic 方法通常都是线程安全的，所以图像的绘制可以很容易的放到后台线程进行。一个简单异步绘制的过程大致如下（实际情况会比这个复杂得多，但原理基本一致）：</p>
+
+<pre><code>- (void)display {
+    dispatch_async(backgroundQueue, ^{
+CGContextRef ctx = CGBitmapContextCreate(...);
+// draw in context...
+CGImageRef img = CGBitmapContextCreateImage(ctx);
+CFRelease(ctx);
+dispatch_async(mainQueue, ^{
+    layer.contents = img;
+});
+});
+}
+</code></pre>
+
+<h4>GPU 资源消耗原因和解决方案</h4>
+
+<p>相对于 CPU 来说，GPU 能干的事情比较单一：接收提交的纹理（Texture）和顶点描述（三角形），应用变换（transform）、混合并渲染，然后输出到屏幕上。通常你所能看到的内容，主要也就是纹理（图片）和形状（三角模拟的矢量图形）两类。</p>
+
+<h4>纹理的渲染</h4>
+
+<p>所有的 Bitmap，包括图片、文本、栅格化的内容，最终都要由内存提交到显存，绑定为 GPU Texture。不论是提交到显存的过程，还是 GPU 调整和渲染 Texture 的过程，都要消耗不少 GPU 资源。当在较短时间显示大量图片时（比如 TableView 存在非常多的图片并且快速滑动时），CPU 占用率很低，GPU 占用非常高，界面仍然会掉帧。避免这种情况的方法只能是尽量减少在短时间内大量图片的显示，尽可能将多张图片合成为一张进行显示。</p>
+
+<p>当图片过大，超过 GPU 的最大纹理尺寸时，图片需要先由 CPU 进行预处理，这对 CPU 和 GPU 都会带来额外的资源消耗。目前来说，iPhone 4S 以上机型，纹理尺寸上限都是 4096x4096，所以，尽量不要让图片和视图的大小超过这个值。</p>
+
+<h4>视图的混合 (Composing)</h4>
+
+<p>当多个视图（或者说 CALayer）重叠在一起显示时，GPU 会首先把他们混合到一起。如果视图结构过于复杂，混合的过程也会消耗很多 GPU 资源。为了减轻这种情况的 GPU 消耗，应用应当尽量减少视图数量和层次，并在不透明的视图里标明 opaque 属性以避免无用的 Alpha 通道合成。当然，这也可以用上面的方法，把多个视图预先渲染为一张图片来显示。</p>
+
+<h4>图形的生成</h4>
+
+<p>CALayer 的 border、圆角、阴影、遮罩（mask），CASharpLayer 的矢量图形显示，通常会触发离屏渲染（offscreen rendering），而离屏渲染通常发生在 GPU 中。当一个列表视图中出现大量圆角的 CALayer，并且快速滑动时，可以观察到 GPU 资源已经占满，而 CPU 资源消耗很少。这时界面仍然能正常滑动，但平均帧数会降到很低。为了避免这种情况，可以尝试开启 CALayer.shouldRasterize 属性，但这会把原本离屏渲染的操作转嫁到 CPU 上去。对于只需要圆角的某些场合，也可以用一张已经绘制好的圆角图片覆盖到原本视图上面来模拟相同的视觉效果。最彻底的解决办法，就是把需要显示的图形在后台线程绘制为图片，避免使用圆角、阴影、遮罩等属性</p>
 
 <h3>如何检查App是否有内存问题</h3>
 
@@ -2833,150 +3063,6 @@ BLOCK_EXPORT void * _NSConcreteWeakBlockVariable[32];
 <p>对于dipose辅助函数，其行为与copy是类似的，我们不再重复同样的东西，如果大家要了解，自行查阅runtime.c和Block_private.h即可。</p>
 
 <p>我们已经理解了非arc非gc情况下的block的内存管理内部实现，对arc和gc的情况，其行为也是类似的，只是一些函数的指针指向的真正函数会改变，比如_Block_use_GC函数，会将一些函数指向其他的实现，使其适用于gc开启的情况。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS安全攻防（一）：Hack必备的命令与工具]]></title>
-    <link href="http://www.beyondabel.com/blog/2014/02/11/iossafety-hacktools/"/>
-    <updated>2014-02-11T23:32:27+08:00</updated>
-    <id>http://www.beyondabel.com/blog/2014/02/11/iossafety-hacktools</id>
-    <content type="html"><![CDATA[<h3>Hack必备的命令与工具</h3>
-
-<p>你的应用正在被其他对手反向工程、跟踪和操作！你的应用是否依旧裸奔豪不防御？
-郑重声明一下，懂得如何攻击才会懂得如何防御，一切都是为了之后的防御作准备。废话少说，进入正题。
-今天总结一下为hack而做的准备工作。</p>
-
-<!--more-->
-
-
-<h3>常用的命令和工具</h3>
-
-<pre><code>ps           ——显示进程状态，CPU使用率，内存使用情况等
-sysctl       ——检查设定Kernel配置
-netstat      ——显示网络连接，路由表，接口状态等
-route        ——路由修改
-renice       ——调整程序运行的优先级
-ifconfig     ——查看网络配置
-tcpdump      ——截获分析网络数据包
-lsof         ——列出当前系统打开的文件列表，别忘记一切皆文件，包括网络连接、硬件等
-otool ①     ——查看程序依赖哪些动态库信息，反编代码段……等等等等
-nm ②        ——显示符号表
-ldid ③      ——签名工具
-gdb         ——调试工具
-patch       ——补丁工具
-SSH         ——远程控制
-</code></pre>
-
-<p>备注：</p>
-
-<p>① otool，可查看可执行程序都链接了那些库：</p>
-
-<pre><code>   otool  -L WQAlbum 
-</code></pre>
-
-<p>可以得到：</p>
-
-<pre><code>WQAlbum:
-    /System/Library/Frameworks/StoreKit.framework/StoreKit (compatibility version 1.0.0, current version 1.0.0)
-    /System/Library/Frameworks/AdSupport.framework/AdSupport (compatibility version 1.0.0, current version 1.0.0)
-    /usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.5)
-    /System/Library/Frameworks//MediaPlayer.framework/MediaPlayer (compatibility version 1.0.0, current version 1.0.0)
-    /System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices (compatibility version 1.0.0, current version 40.0.0)
-    /System/Library/Frameworks/CoreMedia.framework/CoreMedia (compatibility version 1.0.0, current version 1.0.0)
-    ……
-</code></pre>
-
-<p>可以反编译WQAlbum的<strong>TEXT</strong>段内容, 截前10行：</p>
-
-<pre><code>otool -tV WQAlbum |head -n 10 
-</code></pre>
-
-<p>可以得到：</p>
-
-<pre><code>WQAlbum:
-(__TEXT,__text) section
-start:
-00002de0    pushl   $0x00
-00002de2    movl    %esp,%ebp
-00002de4    andl    $0xf0,%esp
-00002de7    subl    $0x10,%esp
-00002dea    movl    0x04(%ebp),%ebx
-……
-</code></pre>
-
-<p>② nm，显示程序符号表，用我自己的应用程序私人相册现身说法一下：
-nm -g WQAlbum  （ -g 代表 global）</p>
-
-<p>可以得到：</p>
-
-<pre><code>001e5eec S _OBJC_IVAR_$_WQPhotoViewController.albumObject
-001e5efc S _OBJC_IVAR_$_WQPhotoViewController.int_current
-001e5f00 S _OBJC_IVAR_$_WQPhotoViewController.int_total
-</code></pre>
-
-<p>其中，WQPhotoViewController为类名，albumObject为该类的成员</p>
-
-<p>③ ldid，是iPhoneOS.platform提供的签名工具，我们自己编译的程序需要签上名才能跑在iPhone/iPad上，使用方法</p>
-
-<pre><code>export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate
-ldid -S helloworld 
-</code></pre>
-
-<p>编译Hello world</p>
-
-<h4>1.首先找到编译器：</h4>
-
-<p>arm-apple-darwin10-llvm-gcc-4.2 就是了。
-为了方便起见，可以在.bashrc或者profile 配置下环境变量，方便编译。</p>
-
-<h4>2.找到SDK</h4>
-
-<p>编译我们自己的程序的时候需要指定该目录下的SDK。</p>
-
-<h4>3.来个经典Hello world ：</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#include &lt;stdio.h&gt;                                                                                             </span>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-</span><span class='line'>   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world !!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-</span><span class='line'>   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>4.编译</h4>
-
-<p>其中 -isysroot用来指定build时的SDK</p>
-
-<h4>5.校验</h4>
-
-<p>file查看一下类型，没问题。</p>
-
-<h4>6.SCP给iPhone、iPad</h4>
-
-<p>前提是，设备已经越狱并且安装了SSH,且必须在同一网段。</p>
-
-<pre><code>$scp helloworld root@x.x.x.x:hello world
-</code></pre>
-
-<h4>7.登录设备签名</h4>
-
-<pre><code>$ssh -l root x.x.x.x
-#ldid -S helloworld
-</code></pre>
-
-<h4>8.执行程序</h4>
-
-<pre><code>#./helloworld
-Hello world !!!
-</code></pre>
-
-<p>运行成功，这就完成了最简单的手动执行自己的应用程序。</p>
 ]]></content>
   </entry>
   

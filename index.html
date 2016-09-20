@@ -9,7 +9,7 @@
 	<meta name="author" content="Abel">
 
 	
-	<meta name="description" content="Jul 13th, 2016 金蛋理财 iOS 性能优化总结 金蛋理财作为一款金融类的App，经历过一年半的快速发展，用户量马上就破100w级别了。由于之前快速迭代导致开发人员并不注意的性能问题在业务的不断累积中体现出来。利用最近一段非常长的空余时间，团队对针对一些性能问题做了优化， &hellip;">
+	<meta name="description" content="Sep 5th, 2016 UIWebView迁移WKWebView过程中遇到的各种坑 在开发App时，我们常常会遇到内部加载URL或者HTML网页的情况，这个时候我们需要使用到一个控件WebView，在iOS8之前我们只能使用UIWebView加载，UIWebView占用内存多、内存泄露、 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,15 +108,53 @@
   
 
 
+<time datetime="2016-09-05T16:11:53+08:00" data-updated="true" itemprop="datePublished">Sep 5<span>th</span>, 2016</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2016/09/05/wkwebview/" itemprop="url">UIWebView迁移WKWebView过程中遇到的各种坑</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/images/2016/09/webView.png" alt="image" /></p>
+
+<p>在开发App时，我们常常会遇到内部加载URL或者HTML网页的情况，这个时候我们需要使用到一个控件WebView，在iOS8之前我们只能使用UIWebView加载，UIWebView占用内存多、内存泄露、因过量占用内存CPU使程序假死和被系统kill等问题一直是iOS开发痛点，幸好在iOS8发布之后我们就可以使用WKWebView，然而WKWebView也会有一些坑等着你，相比较而言WKWebView还是非常不错的，但真正应用到项目中，还是需要我们知道这些坑提前绕行。</p>
+
+<p>关于WKWebView的特性与API我就不在些描述了，各位自行查看开发文档或者Google。</p>
+
+
+		
+		<a href="/blog/2016/09/05/wkwebview/" class="more-link">阅读全文 &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
 <time datetime="2016-07-13T22:33:49+08:00" data-updated="true" itemprop="datePublished">Jul 13<span>th</span>, 2016</time></div>
 		<div class="tags">
 
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2016/07/13/performance/" itemprop="url">金蛋理财 iOS 性能优化总结</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2016/07/13/performance/" itemprop="url">解决iOS App 性能问题的基本思路和方法</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>金蛋理财作为一款金融类的App，经历过一年半的快速发展，用户量马上就破100w级别了。由于之前快速迭代导致开发人员并不注意的性能问题在业务的不断累积中体现出来。利用最近一段非常长的空余时间，团队对针对一些性能问题做了优化，其中一些需要注意的点还是值得记录下来的。</p>
+		<h3>前言</h3>
+
+<p>当 App 发展到一定的程序后，性能问题总是不可能完全避免，我相信大家都会知道有一个关于猿界段子——《程序员十大谎言》，有很多的性能问题都是由于这十大谎言导致的。我们总是希望能寻找一种能一劳永逸解决性能问题方法，经历这几年的经历，我觉得有这种想法是不太现实的。那如果去解决 App 的性能问题呢？接下来我会根据自己的经验说说解决性能问题的基本思路与基本方法是什么~</p>
 
 
 		
@@ -402,42 +440,6 @@
 
 		
 		<a href="/blog/2016/03/14/comming-soon/" class="more-link">阅读全文 &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2016-03-11T13:01:11+08:00" data-updated="true" itemprop="datePublished">Mar 11<span>th</span>, 2016</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/iosyi-dong-kai-fa-zhou-bao/'>iOS移动开发周报</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2016/03/11/weekly03/" itemprop="url">iOS移动开发周报-第3期</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/images/2016/03/weekly03.png" alt="image" /></p>
-
-
-		
-		<a href="/blog/2016/03/11/weekly03/" class="more-link">阅读全文 &rarr;</a>
 	</div>
 
 </article>

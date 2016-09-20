@@ -1,0 +1,314 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>UIWebView迁移WKWebView过程中遇到的各种坑 - Abel's Den</title>
+	<meta name="author" content="Abel">
+
+	
+	<meta name="description" content="UIWebView迁移WKWebView过程中遇到的各种坑 在开发App时，我们常常会遇到内部加载URL或者HTML网页的情况，这个时候我们需要使用到一个控件WebView，在iOS8之前我们只能使用UIWebView加载，UIWebView占用内存多、内存泄露、 &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Abel's Den" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://www.beyondabel.com/blog/2016/09/05/wkwebview/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+	<script src="/javascripts/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		document.write("<img src='https://avatars2.githubusercontent.com/u/6227062?v=3&s=460' style='width:160px;'/>");
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Abel's Den</a></h1>
+  
+    <p class="subtitle">上善若水，厚德载物</p>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+  <li><a href="/openSource">开源项目</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:abel_tu@163.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+			<a class="github" href="https://github.com/beyondabel" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">UIWebView迁移WKWebView过程中遇到的各种坑</h1>
+	<div class="entry-content" itemprop="articleBody"><p><img src="/images/2016/09/webView.png" alt="image" /></p>
+
+<p>在开发App时，我们常常会遇到内部加载URL或者HTML网页的情况，这个时候我们需要使用到一个控件WebView，在iOS8之前我们只能使用UIWebView加载，UIWebView占用内存多、内存泄露、因过量占用内存CPU使程序假死和被系统kill等问题一直是iOS开发痛点，幸好在iOS8发布之后我们就可以使用WKWebView，然而WKWebView也会有一些坑等着你，相比较而言WKWebView还是非常不错的，但真正应用到项目中，还是需要我们知道这些坑提前绕行。</p>
+
+<p>关于WKWebView的特性与API我就不在些描述了，各位自行查看开发文档或者Google。</p>
+
+<!--more-->
+
+
+<h4>坑1：Cookie加载</h4>
+
+<p>UIWebView的Cookie与一般HTTP请求共用一份Cookie，它都存放在NSHTTPCookie中，但WKWebView的cookie并不会再加载url后自动保存到NSHTTPCookieStorage中,原因是因为现在WKWebView会忽视默认的网络存储， NSURLCache, NSHTTPCookieStorage, NSCredentialStorage。 目前是这样的，WKWebView有自己的进程，同样也有自己的存储空间用来存储cookie和cache， 其他的网络类如NSURLConnection是无法访问到的。 同时WKWebView发起的资源请求也是不经过NSURLProtocol的，导致无法自定义请求。</p>
+
+<p>同一个应用，不同WKWebView之间的cookie同步，可以通过使用同一个WKProcessPool实现cookie的同步，那NSURLConnection或者UIWebView与WKWebView怎么共享Cookie呢？</p>
+
+<p>通过预加载JavaScript来实现Cookie之间的同步:</p>
+
+<ol>
+<li><p>构造JS方法</p>
+
+<pre><code>- (NSString *)cookieJavaScriptString {
+    NSMutableString *cookieString = [[NSMutableString alloc] init];
+    //取出cookie
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in cookieStorage.cookies) {
+        NSString *excuteJSString = [NSString stringWithFormat:@"document.cookie='%@=%@';", cookie.name, cookie.value];
+        [cookieString appendString:excuteJSString];
+    }
+    //执行js
+    return cookieString;
+}
+</code></pre></li>
+<li><p> 预设JS加载Cookie</p>
+
+<pre><code>WKUserContentController* userContentController = WKUserContentController.new; 
+WKWebViewConfiguration* webViewConfig = WKWebViewConfiguration.new;
+    webViewConfig.userContentController = userContentController;
+    webViewConfig.processPool = [BAWKWebViewCookieSyncManager shareManager].processPool;
+
+WKUserScript * cookieScript = [[WKUserScript alloc] initWithSource:[self cookieJavaScriptString] injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+
+[userContentController addUserScript:cookieScript];
+
+_webView = (UIWebView *)[[WKWebView alloc] initWithFrame:self.bounds configuration:webViewConfig];
+[self addSubview:_webView];
+((WKWebView *)_webView).navigationDelegate = self;
+((WKWebView *)_webView).UIDelegate = self;
+</code></pre></li>
+</ol>
+
+
+<p>通过以上已经可以同步Cookie了，但这中间其实还是有一个小问题，第一次进入时这个Cookie加载不上，这个原因是因为这个JS是等待页面加载完成时才会执行，所以第一次并不会有Cookie,解决办法是在第一次请求时手动往Header上插入Cookie</p>
+
+<pre><code>- (NSString *)cookieString {
+    NSMutableString *cookieString = [[NSMutableString alloc] init];
+//取出cookie
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in cookieStorage.cookies) {
+    NSString *excuteJSString = [NSString stringWithFormat:@"%@=%@;", cookie.name, cookie.value];
+        [cookieString appendString:excuteJSString];
+    }
+return cookieString;
+}
+
+NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+[mutableRequest setValue:[self cookieString] forHTTPHeaderField:@"Cookie"];
+
+通过以上的方式就可以彻底解决UIWebView与WKWebView的Cookie共用问题了，通过这种方法也可以去修改WKWebView的Cookie了。
+</code></pre>
+
+<h4>坑2：iOS8.0~8.2之间加载URL偶尔会白屏</h4>
+
+<p>出现白屏因为是偶尔的原因目前我也没定位到，所以目前的解决办法是通过判断系统版本号是否大于8.2，如果小于8.2还是用UIWebView吧，WKWebView刚出来时的Bug，后面已解决。</p>
+
+<h4>坑3：iOS8.0~9.0之间加载HTML不能加载样式</h4>
+
+<p>这个问题与上面一样，9.0之前加载HTML时会没有样式，主要是CSS没加载。如果加载HTML的话，你就只能在9.0以上使用WKWebView了。</p>
+
+<h4>坑4：需要自己处理警告框、确认框、输入框</h4>
+
+<p>如果需要显示JS弹出的框，就必须分别实现它的代理方法：</p>
+
+<pre><code>- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+    }]];
+    [viewController presentViewController:alert animated:YES completion:nil];
+}
+
+// JS端调用confirm函数时，会触发此方法
+// 通过message可以拿到JS端所传的数据
+// 在iOS端显示原生alert得到YES/NO后
+// 通过completionHandler回调给JS端
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler {
+
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(YES);
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    completionHandler(NO);
+}]];
+    [ViewController presentViewController:alert animated:YES completion:nil];
+}
+
+// JS端调用prompt函数时，会触发此方法
+// 要求输入一段文本
+// 在原生输入得到文本内容后，通过completionHandler回调给JS
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler {
+
+UIAlertController *alert = [UIAlertController alertControllerWithTitle:defaultText message:@"JS调用输入框" preferredStyle:UIAlertControllerStyleAlert];
+[alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    textField.textColor = [UIColor redColor];
+}];
+
+[alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    completionHandler([[alert.textFields lastObject] text]);
+}]];
+
+[viewController presentViewController:alert animated:YES completion:NULL];
+</code></pre>
+
+<p>}</p>
+
+<h4>坑5：URL协议</h4>
+
+<p>在UIWebView中类型于Weixin://、tel://等一些协议，如果UIWebView处理不了，会自动抛给UIAplication去打开，所以可以正常拨打电话，跳转微信等，如果你使用了WKWebView的话，你需要手动去识别这些协议，然后调用UIAplication去打开他，当然这样也可以带来一定的安全性。</p>
+
+<h4>坑6：无法执行POST请求</h4>
+
+<p>这个是一个巨大的坑，如果你需要在URL的时候load一个Post URL，你就需要放弃WKWebView了，当然你一般也用不到POST一个URL。</p>
+
+<p>整体来说WKWebView的性能还是非常不错的，慢慢地肯定会替换掉UIWebView，但就目前UIWebView与WKWebView的过渡阶段我们还是需要去了解WKWebView的一些坑，提高App的性能以及体验。</p>
+
+<p>这里有一个帮助大家无缝切换到WKWebView的库——<a href="https://github.com/beyondabel/BAWebView">BAWebView</a>，使用<a href="https://github.com/beyondabel/BAWebView">BAWebView</a>与UIWebView一样。</p>
+</div>
+
+
+
+<p>
+
+<br>
+	<img src="/images/qrcode_for_gh_7b77347c921b_430.jpg" width="280px" height="280px" />
+</br>
+
+
+<br></br>
+<!-- 代码1：放在页面需要展示的位置  -->
+<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+<div id="cyReward" role="cylabs" data-use="reward"></div>
+<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+<script type="text/javascript" charset="utf-8" src="http://changyan.itc.cn/js/??lib/jquery.js,changyan.labs.js?appid=cysj2LEws"></script>
+
+</p>
+</article>
+
+
+
+
+	<div class="share">
+	<!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style_32x32">
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_renren"></a>
+        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+        <a class="jiathis_counter_style"></a>
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1394432532557467" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+<section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+    var duoshuoQuery = {short_name:"abel"};
+    (function() {
+     var ds = document.createElement('script');
+     ds.type = 'text/javascript';ds.async = true;
+     ds.src = 'http://static.duoshuo.com/embed.js';
+     ds.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<!-- Duoshuo Comment END --></div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Abel -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc699c19000b89d76ce55e9a9fab7da1b' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+		</div>
+	</div>
+</body>
+</html>
